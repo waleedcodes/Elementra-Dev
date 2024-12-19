@@ -1,15 +1,11 @@
 import localFont from "next/font/local";
+import { Jost } from "next/font/google"; // Importing Jost font from Google Fonts
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const jost = Jost({
+  // Adding Jost font with all weights
+  subsets: ["latin"],
+  weights: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {
@@ -21,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={jost.className} // Including Jost font variable
       >
         {children}
       </body>
