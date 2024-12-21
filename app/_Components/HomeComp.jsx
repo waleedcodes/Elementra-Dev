@@ -7,13 +7,14 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { ContainerScroll } from "@/components/ui/container-scroll";
 import Image from "next/image";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams";
+import { Button } from "@/components/ui/button";
 
 export function HomeComp() {
   return (
     <>
       <BackgroundBeamsWithCollision>
         {/* ******************************** */}
-        <div className="w-full bg-gradient-to-r from-[#0f172a]  to-[#334155] flex flex-col items-center justify-center overflow-hidden rounded-md py-20">
+        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden rounded-md py-20 mask-image[radial-gradient(100% 100% at top right, white, transparent)]">
           <div className="flex flex-col overflow-hidden ">
             <ContainerScroll
               titleComponent={
@@ -38,15 +39,14 @@ export function HomeComp() {
                         }}
                         className="text-xl px-4 md:text-2xl lg:text-3xl font-medium text-white max-w-4xl leading-relaxed lg:leading-relaxed text-center mx-auto py-10"
                       >
-                        Build Awesome
+                        Build Awesome React
                         <Highlight className="text-white mx-4 px-6 py-2 rounded-full">
-                          React Reusable UI
+                          Reusable UI
                         </Highlight>
                         Components!
                       </motion.h1>
                     </HeroHighlight>
                     {/* <TypewriterEffect /> */}
-
                     <div className="flex justify-center">
                       <div className="w-1/2 h-20 relative justify-end">
                         {/* Gradients */}
@@ -83,6 +83,12 @@ export function HomeComp() {
               />
             </ContainerScroll>
           </div>
+          {/* ****************** */}
+          <Button className="py-8 px-10 my-10 text-2xl font-normal tracking-wider">
+            Get Started
+          </Button>
+
+          {/* ****************** */}
         </div>
         {/* ******************************** */}
       </BackgroundBeamsWithCollision>
