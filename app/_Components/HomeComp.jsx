@@ -2,12 +2,12 @@
 
 import React from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { motion } from "framer-motion";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { ContainerScroll } from "@/components/ui/container-scroll";
 import Image from "next/image";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { MoveRight } from "lucide-react";
 
 export function HomeComp() {
   return (
@@ -20,34 +20,27 @@ export function HomeComp() {
               titleComponent={
                 <>
                   <div className="mb-28">
+                    <Badge
+                      variant="outline"
+                      className="text-white font-light text-md rounded-full border-primary px-5 py-1"
+                    >
+                      Build Awesome React Reusable UI Components
+                      <MoveRight className="ps-3" size={32} />
+                    </Badge>
                     <h1 className="md:text-7xl text-3xl lg:text-9xl font-semibold text-center text-white relative z-20">
                       Elementra UI
                     </h1>
-                    <HeroHighlight>
-                      <motion.h1
-                        initial={{
-                          opacity: 0,
-                          y: 20,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: [20, -5, 0],
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.4, 0.0, 0.2, 1],
-                        }}
-                        className="text-xl px-4 md:text-2xl lg:text-3xl font-medium text-white max-w-4xl leading-relaxed lg:leading-relaxed text-center mx-auto py-10"
-                      >
-                        Build Awesome React
-                        <Highlight className="text-white mx-4 px-6 py-2 rounded-full">
-                          Reusable UI
-                        </Highlight>
-                        Components!
-                      </motion.h1>
-                    </HeroHighlight>
+
+                    <p className="text-white text-xl font-light">
+                      Elementra is a modern, reusable component library designed
+                      to simplify your workflow and accelerate the development
+                      of stunning, accessible, and responsive user interfaces.
+                      Built with React.js, Tailwind CSS, and Framer Motion,
+                      Elementra empowers developers to craft beautiful UIs with
+                      ease.
+                    </p>
                     {/* <TypewriterEffect /> */}
-                    <div className="flex justify-center">
+                    <div className="flex justify-center mt-10">
                       <div className="w-1/2 h-20 relative justify-end">
                         {/* Gradients */}
                         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />

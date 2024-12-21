@@ -32,13 +32,13 @@ export function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Docs", href: "/docs" },
+    { name: "Components", href: "/components" },
   ];
   const searchItems = [
     { name: "Documentation", href: "/docs" },
-    { name: "Guides", href: "/guides" },
-    { name: "API Reference", href: "/api" },
+    // { name: "Guides", href: "/guides" },
+    // { name: "API Reference", href: "/api" },
     { name: "Components", href: "/components" },
   ];
 
