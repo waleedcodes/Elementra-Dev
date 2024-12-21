@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import { Jost } from "next/font/google"; // Importing Jost font from Google Fonts
 import "./globals.css";
 import { Navbar } from "./_Components/Navbar";
+import { Providers } from "./providers";
 
 const jost = Jost({
   // Adding Jost font with all weights
@@ -20,8 +21,10 @@ export default function RootLayout({ children }) {
       <body
         className={jost.className} // Including Jost font variable
       >
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
