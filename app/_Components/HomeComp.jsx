@@ -4,7 +4,6 @@ import React from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import { Banner } from "./Banner";
 import { ContainerScroll } from "@/components/ui/container-scroll";
 import Image from "next/image";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams";
@@ -37,14 +36,16 @@ export function HomeComp() {
                           duration: 0.5,
                           ease: [0.4, 0.0, 0.2, 1],
                         }}
-                        className="text-2xl px-4 md:text-3xl lg:text-4xl font-medium text-white max-w-4xl leading-relaxed lg:leading-relaxed text-center mx-auto py-10"
+                        className="text-xl px-4 md:text-2xl lg:text-3xl font-medium text-white max-w-4xl leading-relaxed lg:leading-relaxed text-center mx-auto py-10"
                       >
+                        Build Awesome
                         <Highlight className="text-white mx-4 px-6 py-2 rounded-full">
-                          Reusable UI Components
+                          React Reusable UI
                         </Highlight>
-                        library for stunning, responsive interfaces.
+                        Components!
                       </motion.h1>
                     </HeroHighlight>
+                    {/* <TypewriterEffect /> */}
 
                     <div className="flex justify-center">
                       <div className="w-1/2 h-20 relative justify-end">
