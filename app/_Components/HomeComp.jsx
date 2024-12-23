@@ -14,7 +14,7 @@ export function HomeComp() {
     <>
       <BackgroundBeamsWithCollision>
         {/* ******************************** */}
-        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden rounded-md py-20 mask-image[radial-gradient(100% 100% at top right, white, transparent)]">
+        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden rounded-md py-20 mask-image[radial-gradient(100% 100% at top right, white, transparent)] pt-44">
           <div className="flex flex-col overflow-hidden ">
             <ContainerScroll
               titleComponent={
@@ -27,11 +27,11 @@ export function HomeComp() {
                       Build Awesome React Reusable UI Components
                       <MoveRight className="ps-3" size={32} />
                     </Badge>
-                    <h1 className="md:text-7xl text-3xl lg:text-9xl font-semibold text-center text-white relative z-20">
+                    <h1 className="md:text-7xl text-3xl lg:text-9xl font-semibold text-center text-white relative z-20 py-7">
                       Elementra UI
                     </h1>
 
-                    <p className="text-white text-xl font-light">
+                    <p className="text-white text-xl font-light ">
                       Elementra is a modern, reusable component library designed
                       to simplify your workflow and accelerate the development
                       of stunning, accessible, and responsive user interfaces.
