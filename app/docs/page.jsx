@@ -1,10 +1,11 @@
 "use client";
+import Introduction from "./Introduction/page";
 
 
 export default function Page() {
   return (
     <>
-    <h1>hfiafd</h1>
+    <Introduction />
     </>
   );
 }
