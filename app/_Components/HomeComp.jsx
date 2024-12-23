@@ -8,6 +8,7 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MoveRight } from "lucide-react";
+import Link from "next/link";
 
 export function HomeComp() {
   return (
@@ -31,13 +32,16 @@ export function HomeComp() {
                       Elementra UI
                     </h1>
 
-                    <p className="text-white text-xl font-light ">
-                      Elementra is a modern, reusable component library designed
-                      to simplify your workflow and accelerate the development
-                      of stunning, accessible, and responsive user interfaces.
-                      Built with React.js, Tailwind CSS, and Framer Motion,
-                      Elementra empowers developers to craft beautiful UIs with
-                      ease.
+                    <p className="text-white text-xl font-light">
+                      Elementra is an innovative{" "}
+                      <span className="bg-primary px-4 rounded-full">
+                        component
+                      </span>{" "}
+                      library that streamlines your workflow and enhances the
+                      creation of beautiful, accessible, and responsive user
+                      interfaces. Developed using React.js, Tailwind CSS, and
+                      Framer Motion, Elementra enables developers to
+                      effortlessly build stunning UIs.
                     </p>
                     {/* <TypewriterEffect /> */}
                     <div className="flex justify-center mt-10">
@@ -77,9 +81,11 @@ export function HomeComp() {
             </ContainerScroll>
           </div>
           {/* ****************** */}
-          <Button className="py-8 px-10 my-10 text-2xl font-normal tracking-wider">
-            Get Started
-          </Button>
+          <Link href="/docs">
+            <Button className="py-8 px-10 my-10 text-2xl font-normal tracking-wider">
+              Get Started
+            </Button>
+          </Link>
 
           {/* ****************** */}
         </div>
