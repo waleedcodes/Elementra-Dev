@@ -33,14 +33,10 @@ const data = {
           title: "Installation",
           url: "/docs/Installation",
         },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Components",
       url: "#",
       items: [
         {
@@ -184,10 +180,10 @@ export function AppSidebar({ ...props }) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu>
+          <SidebarMenu >
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild className="text-lg py-8">
                   <Link href={item.url} className="font-medium">
                     {item.title}
                   </Link>
@@ -196,7 +192,10 @@ export function AppSidebar({ ...props }) {
                   <SidebarMenuSub>
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={path === item.url}>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={path === item.url}
+                        >
                           <Link href={item.url}>{item.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>

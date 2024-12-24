@@ -1,13 +1,32 @@
+"use client";
 import React from "react";
 import { Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { toast } from "sonner";
 
 const NextDocsPage = () => {
+  const handleCopy = (text) => {
+    if (text) {
+      navigator.clipboard.writeText(text);
+    }
+    toast("Copied to clipboard", { type: "success" });
+  };
+
+  const codeExample = `import { Button } from "elementra-ui"
+
+export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div>
+      <Button variant="primary">Click Me</Button>
+    </div>
+  )
+}`;
+
+  return (
+    <div className="">
       {/* Header */}
-      <h1 className="text-4xl font-bold mb-4">Next.js</h1>
+      <h1 className="text-4xl font-semibold mb-4">Next.js</h1>
       <p className="text-muted-foreground mb-8">
         Install and configure Next.js.
       </p>
@@ -27,13 +46,13 @@ const NextDocsPage = () => {
       <div className="space-y-12">
         {/* Create Project Section */}
         <section>
-          <h2 className="text-xl font-semibold flex items-center gap-2 mb-4">
+          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
             <span className="text-muted-foreground">1</span>
             Create project
           </h2>
 
           <p className="mb-4">
-            Run the
+            Run the{" "}
             <code className="px-1.5 py-0.5 bg-muted rounded-md text-sm">
               npx create-next-app@latest
             </code>{" "}
@@ -41,7 +60,7 @@ const NextDocsPage = () => {
           </p>
 
           <div className="relative mb-4">
-            <div className="bg-black rounded-lg p-4 font-mono text-sm text-white">
+            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
               <div className="flex items-center gap-2">
                 <span>npm i elementra-ui</span>
               </div>
@@ -50,6 +69,7 @@ const NextDocsPage = () => {
               size="sm"
               variant="ghost"
               className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              onClick={() => handleCopy("npm i elementra-ui")}
             >
               <Copy className="h-4 w-4" />
             </Button>
@@ -58,7 +78,7 @@ const NextDocsPage = () => {
 
         {/* That's it Section */}
         <section>
-          <h2 className="text-xl font-semibold flex items-center gap-2 mb-4">
+          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
             <span className="text-muted-foreground">2</span>
             That's it
           </h2>
@@ -73,32 +93,14 @@ const NextDocsPage = () => {
           </p>
 
           <div className="relative">
-            <div className="bg-black rounded-lg p-4 font-mono text-sm text-white space-y-1">
-              <div>
-                <span className="text-purple-400">import</span>
-                <span> {"{ Button }"} </span>
-                <span className="text-purple-400">from </span>
-                <span className="text-green-400">"elementra-ui"</span>
-              </div>
-              <div>
-                <span className="text-pink-500">export default function</span>
-                <span className="text-blue-400"> Home</span>
-                <span>() {`{`}</span>
-              </div>
-              <div className="ml-2">
-                <span className="text-pink-500">return</span>
-                <span> (</span>
-              </div>
-              <div className="ml-4">{"<div>"}</div>
-              <div className="ml-6">{`<Button variant="primary">Click Me</Button>`}</div>
-              <div className="ml-4">{"</div>"}</div>
-              <div className="ml-2">)</div>
-              <div>{`}`}</div>
+          <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+              <pre className="space-y-1">{codeExample}</pre>
             </div>
             <Button
               size="sm"
               variant="ghost"
               className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              onClick={() => handleCopy(codeExample)}
             >
               <Copy className="h-4 w-4" />
             </Button>
