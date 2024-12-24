@@ -569,7 +569,7 @@ const SidebarMenuSubItem = React.forwardRef(({ ...props }, ref) => <li ref={ref}
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
 
 const SidebarMenuSubButton = React.forwardRef(
-  ({ asChild = false, size = "md", isActive, className, ...props }, ref) => {
+  ({ asChild = false, size = "lg", isActive, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "a"
 
     return (

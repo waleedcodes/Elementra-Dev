@@ -3,6 +3,7 @@ import { Jost } from "next/font/google"; // Importing Jost font from Google Font
 import "./globals.css";
 import { Navbar } from "./_Components/Navbar";
 import { Providers } from "./providers";
+import { Toaster } from "@/components/ui/sonner";
 
 const jost = Jost({
   // Adding Jost font with all weights
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <Providers>
           <Navbar />
           {children}
+          <Toaster />
         </Providers>
       </body>
     </html>
