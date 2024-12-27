@@ -17,10 +17,9 @@ const ButtonPage = () => {
 export default function Example() {
   return (
     <div>
-      <Button variant="primary">Primary Button</Button>
-      <Button variant="secondary">Secondary Button</Button>
-      <Button variant="outline">Outline Button</Button>
-      <Button variant="ghost">Ghost Button</Button>
+      <Button variant="default">Primary Button</Button>
+      <Button variant="outline">Secondary Button</Button>
+      <Button variant="ghost">Outline Button</Button>
     </div>
   )
 }`;
