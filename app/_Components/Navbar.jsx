@@ -33,7 +33,7 @@ export function Navbar() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Docs", href: "/docs" },
-    { name: "Components", href: "/components" },
+    { name: "Components", href: "/docs/Components/button" },
   ];
   const searchItems = [
     { name: "Documentation", href: "/docs" },
@@ -128,10 +128,10 @@ export function Navbar() {
             <span className="sr-only">Toggle theme</span>
           </Button>
 
-          <Button className="relative">
+          {/* <Button className="relative">
             Login
             <span className="absolute inset-x-0 mx-auto -bottom-px h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
-          </Button>
+          </Button> */}
         </div>
       </div>
     </>

@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
-import { Copy } from "lucide-react";
+import { Copy, CopyIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ButtonPage = () => {
   const handleCopy = (text) => {
@@ -65,7 +67,7 @@ export default function Buttons() {
               className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
               onClick={() => handleCopy("npm i elementra-ui")}
             >
-              <Copy className="h-4 w-4" />
+              <CopyIcon className="h-4 w-4" />
             </Button>
           </div>
           <div className="relative mb-4">
@@ -142,7 +144,57 @@ export default function Buttons() {
             Component button added successfully!
           </p>
         </section>
+        {/* ************************** */}
+        <div className="w-full p-4">
+          <Tabs defaultValue="preview" className="w-full">
+            <div className="flex items-center justify-between mb-4">
+              <TabsList className="grid w-[200px] grid-cols-2">
+                <TabsTrigger value="preview" className="font-medium">
+                  Preview
+                </TabsTrigger>
+                <TabsTrigger value="code" className="font-medium">
+                  Code
+                </TabsTrigger>
+              </TabsList>
+              <div className="flex gap-2">
+                <Button variant="outline" size="icon">
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
 
+            <AnimatePresence mode="wait">
+              <TabsContent value="preview" className="mt-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="rounded-lg border bg-white p-8 min-h-[400px] flex items-center justify-center"
+                >
+                  <Button variant="default">Primary Button</Button>
+                </motion.div>
+              </TabsContent>
+
+              <TabsContent value="code" className="mt-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="rounded-lg bg-zinc-950 p-4"
+                >
+                  <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 font-mono overflow-x-auto">
+                    <code className="whitespace-pre-wrap">{`import { Button } from "@/components/ui/button"
+
+export function ButtonDemo() {
+  return <Button>Button</Button>
+}`}</code>
+                  </pre>
+                </motion.div>
+              </TabsContent>
+            </AnimatePresence>
+          </Tabs>
+        </div>
+        {/* ************************** */}
         {/* Usage Section */}
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
@@ -151,12 +203,18 @@ export default function Buttons() {
           </h2>
 
           <p className="mb-6 text-gray-700">
-            Import and use the Button component in your Next.js project. When you add a component using the CLI, it will be added to the components folder in the src directory. If you are using the app directory structure, the component will be added outside of the app folder.
+            Import and use the Button component in your Next.js project. When
+            you add a component using the CLI, it will be added to the
+            components folder in the src directory. If you are using the app
+            directory structure, the component will be added outside of the app
+            folder.
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
-              <pre className="space-y-1">{codeExample1}</pre>
+            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+              <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                {codeExample2}
+              </pre>
             </div>
             <Button
               size="sm"
@@ -176,12 +234,19 @@ export default function Buttons() {
           </h2>
 
           <p className="mb-6 text-gray-700">
-            Import and use the Button component in your React.js project. When you add a component using the CLI, it will be added to the components folder in your project directory. Since React.js doesn't use the app directory structure like Next.js, you can organize your components directly in the components folder at the root level or within src/components.
+            Import and use the Button component in your React.js project. When
+            you add a component using the CLI, it will be added to the
+            components folder in your project directory. Since React.js doesn't
+            use the app directory structure like Next.js, you can organize your
+            components directly in the components folder at the root level or
+            within src/components.
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
-              <pre className="space-y-1">{codeExample2}</pre>
+            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+              <pre className="text-[0.6rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                {codeExample2}
+              </pre>
             </div>
             <Button
               size="sm"
@@ -193,6 +258,7 @@ export default function Buttons() {
             </Button>
           </div>
         </section>
+        {/* ************************** */}
         {/* ************************** */}
       </div>
     </div>
