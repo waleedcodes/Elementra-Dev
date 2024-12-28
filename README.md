@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Elementra Ui
 
-## Getting Started
+Your Building Blocks for Modern UIs
 
-First, run the development server:
+[![npm version](https://img.shields.io/npm/v/elementra-ui.svg)](https://www.npmjs.com/package/elementra-ui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dm/elementra.svg)](https://www.npmjs.com/package/elementra-ui)
+
+</div>
+
+## Overview
+
+Elementra is a modern, reusable component library designed to simplify your workflow and accelerate the development of stunning, accessible, and responsive user interfaces. Built with **React.js**, **Next.js**, **Tailwind CSS**, and **Framer Motion**, Elementra empowers developers to craft beautiful UIs with ease.
+
+## Features 🚀
+
+- **Customizable Components**: Tailor components to fit your brand and design system effortlessly
+- **Theming Support**: Light, dark, and custom themes out-of-the-box
+- **Built-in Animations**: Smooth, high-performance animations powered by Framer Motion
+- **Accessibility First**: Designed to meet modern accessibility standards
+- **Lightweight & Performant**: Minimal dependencies, maximum efficiency
+
+## Installation 📦
+
+Install Elementra using your preferred package manager:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Using npm
+npm install elementra-ui
+
+# Using yarn
+yarn add elementra-ui
+
+# Using pnpm
+pnpm add elementra-ui
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+# Using npx
+npx install elementra-ui add
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Required Dependencies 📦
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install the following utilities that are required for Elementra UI:
 
-## Learn More
+```bash
+# Using npm
+npm install clsx tailwind-merge
+```
 
-To learn more about Next.js, take a look at the following resources:
+Select components using the up/down arrow keys. Press spacebar to select multiple components, then press enter to add them to your src folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Quick Start 💻
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```jsx
+import { Button } from "@/src/components/ui/button";"
 
-## Deploy on Vercel
+export default function Buttons() {
+  return (
+    <div>
+      <Button variant="default">Primary Button</Button>
+      <Button variant="outline">Secondary Button</Button>
+      <Button variant="ghost">Outline Button</Button>
+    </div>
+  )
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Component Library 🛠️
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Core Components
+
+- **Buttons**
+
+  - Primary, secondary, outlined,ghost variants
+  - sizes (lg, md, sm)
+
+- **Cards**
+  - Flexible layouts
+  - Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
+
+## Documentation 📖
+
+Visit our [documentation website](https://elementraui.com) for:
+
+- Detailed API references
+- Interactive examples
+- Theme customization guides
+- Best practices
+- Migration guides
+
+## Contributing 🤝
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+1. Setting up the development environment
+2. Submitting pull requests
+3. Code style guidelines
+4. Bug reporting process
+
+## Community & Support 💬
+
+- 📫 [GitHub Discussions](https://github.com/elementra/discussions)
+- 📺 [YouTube Channel](https://youtube.com/@waleedcodes)
+
+## License 📄
+
+Elementra is open-source software licensed under the [MIT License](LICENSE).
+
+<div align="center">
+  Made with ❤️ by @waleedcodes
+</div>
