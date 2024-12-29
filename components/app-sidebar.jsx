@@ -1,5 +1,5 @@
+"use client";
 import * as React from "react";
-import { GalleryVerticalEnd } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import {
@@ -180,7 +180,7 @@ export function AppSidebar({ ...props }) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu >
+          <SidebarMenu>
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild className="text-lg py-8">
