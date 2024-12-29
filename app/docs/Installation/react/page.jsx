@@ -136,44 +136,6 @@ module.exports = {
   }
 }`;
 
-  const tsConfig = `{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}`;
-
-  const componentsJson = `{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": false,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "src/index.css",
-    "baseColor": "zinc",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "iconLibrary": "lucide"
-}`;
-
-  const utilsTs = `import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}`;
-
   return (
     <div className="">
       {/* Header */}
@@ -270,8 +232,10 @@ export function cn(...inputs: ClassValue[]) {
                 Configure tailwind.config.js
               </h3>
               <div className="relative">
-                <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
-                  <pre className="space-y-1">{tailwindConfig}</pre>
+                <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                    {tailwindConfig}
+                  </pre>
                 </div>
                 <Button
                   size="sm"
@@ -290,8 +254,10 @@ export function cn(...inputs: ClassValue[]) {
                 Configure globals.css
               </h3>
               <div className="relative">
-                <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
-                  <pre className="space-y-1">{globalCSS}</pre>
+                <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                    {globalCSS}
+                  </pre>
                 </div>
                 <Button
                   size="sm"
@@ -377,8 +343,10 @@ export function cn(...inputs: ClassValue[]) {
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
-              <pre className="space-y-1">{codeExample2}</pre>
+            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+              <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                {codeExample2}
+              </pre>
             </div>
             <Button
               size="sm"

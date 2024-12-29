@@ -181,8 +181,10 @@ export default function Buttons() {
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
-              <pre className="space-y-1">{codeExample1}</pre>
+            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+              <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                {codeExample1}
+              </pre>
             </div>
             <Button
               size="sm"
