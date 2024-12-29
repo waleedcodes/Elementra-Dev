@@ -149,10 +149,10 @@ export default function Buttons() {
           <Tabs defaultValue="preview" className="w-full">
             <div className="flex items-center justify-between mb-4">
               <TabsList className="grid w-[200px] grid-cols-2">
-                <TabsTrigger value="preview" className="font-medium">
+                <TabsTrigger value="preview" className="font-medium" key="preview-tab">
                   Preview
                 </TabsTrigger>
-                <TabsTrigger value="code" className="font-medium">
+                <TabsTrigger value="code" className="font-medium" key="code-tab">
                   Code
                 </TabsTrigger>
               </TabsList>
