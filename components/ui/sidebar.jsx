@@ -269,7 +269,7 @@ const SidebarInset = React.forwardRef(({ className, ...props }, ref) => {
     (<main
       ref={ref}
       className={cn(
-        "relative flex min-h-svh flex-1 flex-col",
+        "relative flex min-h-svh flex-1 flex-col bg-background",
         "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
         className
       )}
@@ -284,7 +284,7 @@ const SidebarInput = React.forwardRef(({ className, ...props }, ref) => {
       ref={ref}
       data-sidebar="input"
       className={cn(
-        "h-8 w-full  shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
+        "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
         className
       )}
       {...props} />)
@@ -420,7 +420,7 @@ const sidebarMenuButtonVariants = cva(
       variant: {
         default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         outline:
-          " shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
+          "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
       },
       size: {
         default: "h-8 text-sm",
@@ -569,7 +569,7 @@ const SidebarMenuSubItem = React.forwardRef(({ ...props }, ref) => <li ref={ref}
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
 
 const SidebarMenuSubButton = React.forwardRef(
-  ({ asChild = false, size = "lg", isActive, className, ...props }, ref) => {
+  ({ asChild = false, size = "md", isActive, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "a"
 
     return (

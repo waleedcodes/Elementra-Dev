@@ -11,6 +11,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const DashboardLayout = ({ children }) => {
   const path = usePathname();
@@ -22,7 +23,8 @@ const DashboardLayout = ({ children }) => {
       <SidebarInset>
         {path !== "/docs" && (
           <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-            <div className="flex items-center gap-2 px-4">
+            <div className="flex items-center gap-2 px-4 ">
+            <SidebarTrigger />
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
@@ -39,7 +41,7 @@ const DashboardLayout = ({ children }) => {
             </div>
           </header>
         )}
-        <div className="py-32 w-4/5 mx-auto">{children}</div>
+        <div className="py-12 w-4/5 mx-auto">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

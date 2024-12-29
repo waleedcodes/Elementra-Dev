@@ -1,7 +1,6 @@
 import localFont from "next/font/local";
 import { Jost } from "next/font/google"; // Importing Jost font from Google Fonts
 import "./globals.css";
-import { Navbar } from "./_Components/Navbar";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -23,7 +22,6 @@ export default function RootLayout({ children }) {
         className={jost.className} // Including Jost font variable
       >
         <Providers>
-          <Navbar />
           {children}
           <Toaster />
         </Providers>

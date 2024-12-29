@@ -70,7 +70,7 @@ export const Card = ({ rotate, scale, children }) => {
         boxShadow:
           "0 0px 80px rgba(128, 0, 128, 0.6), 0 1px 60px rgba(128, 0, 128, 0.3)",
       }}
-      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-white p-2 md:p-6 bg-primary rounded-[30px] shadow-2xl"
+      className="max-w-5xl -mt-12 mx-auto h-[21rem] md:h-[43rem] w-full border-4 border-white p-2 md:p-6 bg-primary md:rounded-[30px]  shadow-2xl"
     >
       <div className=" h-full w-full  overflow-hidden  bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
         {children}
