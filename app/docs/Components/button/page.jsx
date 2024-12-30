@@ -41,7 +41,7 @@ export default function Buttons() {
     <div className="">
       {/* Header */}
       <h1 className="text-4xl font-semibold mb-4">Button</h1>
-      <p className="text-muted-foreground mb-8">
+      <p className="text-muted-foreground dark:text-white mb-8">
         Displays a button or a component that looks like a button.
       </p>
 
@@ -50,11 +50,11 @@ export default function Buttons() {
         {/* Installation Section */}
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-            <span className="text-muted-foreground">1</span>
+            <span className="text-muted-foreground dark:text-white">1</span>
             Installation
           </h2>
           <div className="relative mb-4">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <span>npm i elementra-ui</span>
@@ -64,21 +64,21 @@ export default function Buttons() {
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy("npm i elementra-ui")}
             >
               <CopyIcon className="h-4 w-4" />
             </Button>
           </div>
           <div className="relative mb-4">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <span>npm install clsx tailwind-merge</span>
                 </div>
               </div>
             </div>
-            <p className="my-3 text-gray-600 text-sm">
+            <p className="my-3 text-gray-600 dark:text-white text-sm">
               These utilities are required dependencies - clsx helps combine CSS
               class names conditionally, while tailwind-merge efficiently
               handles Tailwind CSS class merging and conflicts. They're
@@ -87,7 +87,7 @@ export default function Buttons() {
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy("npm install clsx tailwind-merge")}
             >
               <Copy className="h-4 w-4" />
@@ -97,12 +97,12 @@ export default function Buttons() {
 
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-            <span className="text-muted-foreground">2</span>
+            <span className="text-muted-foreground dark:text-white">2</span>
             Add Components Using CLI
           </h2>
 
           <div className="relative mb-4">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <span>npx elementra-ui add</span>
@@ -112,13 +112,13 @@ export default function Buttons() {
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy("npx elementra-ui add")}
             >
               <Copy className="h-4 w-4" />
             </Button>
           </div>
-          <p className="my-3 text-gray-600 text-sm">
+          <p className="my-3 text-gray-600 dark:text-white text-sm">
             Select components using the up/down arrow keys. Press spacebar to
             select multiple components, then press enter to add them to your{" "}
             <span className="text-purple-600">src</span> folder. this step add
@@ -149,10 +149,18 @@ export default function Buttons() {
           <Tabs defaultValue="preview" className="w-full">
             <div className="flex items-center justify-between mb-4">
               <TabsList className="grid w-[200px] grid-cols-2">
-                <TabsTrigger value="preview" className="font-medium" key="preview-tab">
+                <TabsTrigger
+                  value="preview"
+                  className="font-medium"
+                  key="preview-tab"
+                >
                   Preview
                 </TabsTrigger>
-                <TabsTrigger value="code" className="font-medium" key="code-tab">
+                <TabsTrigger
+                  value="code"
+                  className="font-medium"
+                  key="code-tab"
+                >
                   Code
                 </TabsTrigger>
               </TabsList>
@@ -198,11 +206,11 @@ export function ButtonDemo() {
         {/* Usage Section */}
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-            <span className="text-muted-foreground">3:</span>
+            <span className="text-muted-foreground dark:text-white">3:</span>
             Using in Next Js
           </h2>
 
-          <p className="mb-6 text-gray-700">
+          <p className="mb-6 text-gray-700 dark:text-white">
             Import and use the Button component in your Next.js project. When
             you add a component using the CLI, it will be added to the
             components folder in the src directory. If you are using the app
@@ -219,7 +227,7 @@ export function ButtonDemo() {
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy(codeExample1)}
             >
               <Copy className="h-4 w-4" />
@@ -229,11 +237,11 @@ export function ButtonDemo() {
         {/* ************************** */}
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-            <span className="text-muted-foreground">4:</span>
+            <span className="text-muted-foreground dark:text-white">4:</span>
             Using In React Js
           </h2>
 
-          <p className="mb-6 text-gray-700">
+          <p className="mb-6 text-gray-700 dark:text-white">
             Import and use the Button component in your React.js project. When
             you add a component using the CLI, it will be added to the
             components folder in your project directory. Since React.js doesn't
@@ -251,7 +259,7 @@ export function ButtonDemo() {
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy(codeExample2)}
             >
               <Copy className="h-4 w-4" />

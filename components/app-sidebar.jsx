@@ -166,14 +166,15 @@ export function AppSidebar({ ...props }) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/">
+            <Link href="/" className="flex gap-4 items-center">
               <Image
-                src="/logo.png"
-                className="p-2"
+                src="/logo2.png"
+                className=""
                 alt="Logo"
-                width={220}
-                height={220}
+                width={50}
+                height={50}
               />
+              <h1 className="text-gray-800 dark:text-white text-[1.4rem] font-semibold">Elementra UI</h1>
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>

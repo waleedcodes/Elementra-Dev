@@ -48,7 +48,7 @@ export function HomeComp() {
                     {/* Description with responsive padding and font size */}
                     <p className="text-white text-base sm:text-lg md:text-xl font-light max-w-3xl text-center px-4 sm:px-6">
                       Elementra is an innovative{" "}
-                      <span className="bg-primary px-2 md:px-4 rounded-full inline-block my-1">
+                      <span className="bg-primary dark:bg-gray-900 px-2 md:px-4 rounded-full inline-block my-1 py-1">
                         component
                       </span>{" "}
                       library that streamlines your workflow and enhances the

@@ -64,7 +64,7 @@ export default function Buttons() {
           </p>
           {/* ******************************** */}
           <div className="relative mb-4">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
               <div className="flex items-center gap-2">
                 <span>npm i elementra-ui</span>
               </div>
@@ -80,7 +80,7 @@ export default function Buttons() {
           </div>
           {/* ******************************** */}
           <div className="relative mb-4">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <span>npm install clsx tailwind-merge</span>
@@ -112,7 +112,7 @@ export default function Buttons() {
           </h2>
           {/* ******************************** */}
           <div className="relative mb-4">
-            <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm text-black">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <span>npx elementra-ui add</span>
