@@ -11,12 +11,10 @@ const jost = Jost({
 });
 
 export const metadata = {
-  title: "Elementra Ui",
+  title: "Elementra UI | Build Awesome React Reusable UI Components", // Fixed capitalization
   description:
     "Elementra is a modern, reusable component library designed to simplify your workflow and accelerate the development of stunning, accessible, and responsive user interfaces. Built with React.js, Next.js, Tailwind CSS, and Framer Motion, Elementra empowers developers to craft beautiful UIs with ease.",
-  image: "https://elementra-ui.vercel.app/og-image.png",
   url: "https://elementra-ui.vercel.app",
-  // twitter: "@elementraui",
   siteName: "Elementra UI",
   type: "website",
   keywords:
@@ -28,6 +26,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo2.png" />
+      </head>
       <body
         className={jost.className} // Including Jost font variable
       >
