@@ -24,7 +24,23 @@ export default function Buttons() {
     </div>
   )
 }`;
-
+  const tailwindConfig = `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      // Add any customizations here
+    },
+  },
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
+}`;
   /* ******************************** */
 
   return (
@@ -104,6 +120,113 @@ export default function Buttons() {
           </div>
         </section>
 
+        {/* ******************************** */}
+        <div className="relative mb-4">
+          <div className="relative mb-4">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <span>npm install -D tailwindcss postcss autoprefixer</span>
+                </div>
+              </div>
+            </div>
+            <p className="my-3 text-gray-600 text-sm">
+              This command installs Tailwind CSS and its peer dependencies.
+              After installation, run the following command to generate the
+              configuration files:
+            </p>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              onClick={() =>
+                handleCopy("npm install -D tailwindcss postcss autoprefixer")
+              }
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <div className="relative mb-4">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <span>npx tailwindcss init -p</span>
+                </div>
+              </div>
+            </div>
+            <p className="my-3 text-gray-600 text-sm">
+              This command will create both{" "}
+              <code className="px-1.5 py-0.5 bg-muted rounded-md text-sm">
+                tailwind.config.js
+              </code>{" "}
+              and{" "}
+              <code className="px-1.5 py-0.5 bg-muted rounded-md text-sm">
+                postcss.config.js
+              </code>{" "}
+              files in your project.
+            </p>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              onClick={() => handleCopy("npx tailwindcss init -p")}
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        {/* ******************************** */}
+        <div>
+          <h3 className="text-lg font-medium mb-2">
+            Configure tailwind.config.js
+          </h3>
+          <div className="relative">
+            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+              <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
+                {tailwindConfig}
+              </pre>
+            </div>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+              onClick={() => handleCopy(tailwindConfig)}
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        {/* ******************************** */}
+        <div className="relative mb-4">
+          <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
+            <div className="flex flex-col gap-2">
+              <span>@tailwind base;</span>
+              <span> @tailwind components;</span>
+              <span> @tailwind utilities;</span>
+            </div>
+          </div>
+          <p className="my-3 text-gray-600 text-sm">
+            Add the @tailwind directives for each of Tailwind’s layers to your
+            <code className="px-1.5 py-0.5 bg-muted rounded-md text-sm mx-1">
+              globals.css
+            </code>
+            file.
+          </p>
+          <Button
+            size="sm"
+            variant="ghost"
+            className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground"
+            onClick={() =>
+              handleCopy(`
+                    @tailwind base;
+                    @tailwind components;
+                    @tailwind utilities;`)
+            }
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
         {/* ******************************** */}
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
