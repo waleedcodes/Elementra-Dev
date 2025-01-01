@@ -219,7 +219,7 @@ export function ButtonDemo() {
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
               <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
                 {codeExample2}
               </pre>
@@ -251,7 +251,7 @@ export function ButtonDemo() {
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
               <pre className="text-[0.6rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
                 {codeExample2}
               </pre>
