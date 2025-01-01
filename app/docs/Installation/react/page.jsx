@@ -159,7 +159,7 @@ export default {
                 </div>
               </div>
             </div>
-            <p className="my-3 text-gray-600 text-sm">
+            <p className="my-3 text-gray-700 dark:text-white text-sm">
               These utilities are required dependencies for styling and
               functionality of components.
             </p>
@@ -187,7 +187,7 @@ export default {
                 </div>
               </div>
             </div>
-            <p className="my-3 text-gray-600 text-sm">
+            <p className="my-3 text-gray-700 dark:text-white text-sm">
               This command installs Tailwind CSS and its peer dependencies.
               After installation, run the following command to generate the
               configuration files:
@@ -212,7 +212,7 @@ export default {
                 </div>
               </div>
             </div>
-            <p className="my-3 text-gray-600 text-sm">
+            <p className="my-3 text-gray-700 dark:text-white text-sm">
               This command will create both{" "}
               <code className="px-1.5 py-0.5 bg-muted rounded-md text-sm">
                 tailwind.config.js
@@ -239,7 +239,7 @@ export default {
             Configure tailwind.config.js
           </h2>
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
               <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
                 {tailwindConfig}
               </pre>
@@ -267,7 +267,7 @@ export default {
                 <span> @tailwind utilities;</span>
               </div>
             </div>
-            <p className="my-3 text-gray-600 text-sm">
+            <p className="my-3 text-gray-700 dark:text-white text-sm">
               If you are setting up a project with Vite, then add the @tailwind
               directives for each of Tailwind’s layers to your
               <code className="px-1.5 py-0.5 bg-muted rounded-md text-sm mx-1">
@@ -315,7 +315,7 @@ export default {
             </Button>
           </div>
 
-          <p className="my-3 text-gray-600 text-sm">
+          <p className="my-3 text-gray-700 dark:text-white text-sm">
             Select components using the up/down arrow keys. Press spacebar to
             select multiple components, then press enter to add them to your{" "}
             <span className="text-purple-600">src</span> folder.
@@ -349,7 +349,7 @@ export default {
             Using In React Js
           </h2>
 
-          <p className="mb-6 text-gray-700">
+          <p className="mb-6 text-gray-700 dark:text-white text-sm">
             Import and use the Button component in your React.js project. When
             you add a component using the CLI, it will be added to the
             components folder in your project directory. Since React.js doesn't
@@ -359,7 +359,7 @@ export default {
           </p>
 
           <div className="relative">
-            <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
               <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
                 {codeExample2}
               </pre>
