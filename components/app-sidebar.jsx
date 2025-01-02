@@ -41,11 +41,11 @@ const data = {
       items: [
         {
           title: "Button",
-          url: "/docs/Components/button",
+          url: "/docs/Components/Button",
         },
         {
-          title: "Data Fetching",
-          url: "#",
+          title: "Card",
+          url: "/docs/Components/Card",
         },
         {
           title: "Rendering",

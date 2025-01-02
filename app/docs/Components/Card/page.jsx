@@ -5,8 +5,16 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-const ButtonComponent = () => {
+const CardComponent = () => {
   const handleCopy = (text) => {
     if (text) {
       navigator.clipboard.writeText(text);
@@ -14,35 +22,79 @@ const ButtonComponent = () => {
     toast("Copied to clipboard", { type: "success" });
   };
 
-  const codeExample1 = `import { Button } from "@/src/components/ui/button";
+  const codeExample1 = `import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+    CardFooter,
+  } from "@/src/components/ui/card";
+  import { Button } from "@/src/components/ui/button";
 
-export default function Buttons() {
-  return (
-    <div>
-      <Button variant="default">Primary Button</Button>
-      <Button variant="outline">Secondary Button</Button>
-      <Button variant="ghost">Outline Button</Button>
-    </div>
-  )
-}`;
-  const codeExample2 = `import { Button } from "./components/ui/button";
+  export default function Card() {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardDescription>
+            This is a sample card description that explains the card's
+            purpose.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>
+            This is the main content of the card. You can put any content
+            here.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button>Action</Button>
+        </CardFooter>
+      </Card>
+    )
+  }`;
 
-export default function Buttons() {
-  return (
-    <div>
-      <Button variant="default">Primary Button</Button>
-      <Button variant="outline">Secondary Button</Button>
-      <Button variant="ghost">Outline Button</Button>
-    </div>
-  )
-}`;
+  const codeExample2 = `import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+    CardFooter,
+  } from "./components/ui/card";
+  import { Button } from "./components/ui/button";
+
+  export default function Card() {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardDescription>
+            This is a sample card description that explains the card's
+            purpose.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>
+            This is the main content of the card. You can put any content
+            here.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button>Action</Button>
+        </CardFooter>
+      </Card>
+    )
+  }`;
 
   return (
     <div className="">
       {/* Header */}
-      <h1 className="text-4xl font-semibold mb-4">Button</h1>
+      <h1 className="text-4xl font-semibold mb-4">Card</h1>
       <p className="text-muted-foreground dark:text-white mb-8">
-        Displays a button or a component that looks like a button.
+        A card component that includes a header, title, description, content,
+        and footer for related actions and information.
       </p>
 
       {/* Content Sections */}
@@ -136,12 +188,12 @@ export default function Buttons() {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;enter/return: Complete answer
             <br />
-            ◉&nbsp;&nbsp;&nbsp;Button
+            ◯&nbsp;&nbsp;&nbsp;Button
             <br />
-            ◯&nbsp;&nbsp;&nbsp;Card
+            ◉&nbsp;&nbsp;&nbsp;Card
           </div>
           <p className="text-green-700 bg-gray-100 p-3 rounded-md my-3">
-            Component button added successfully!
+            Component Card added successfully!
           </p>
         </section>
         {/* ************************** */}
@@ -177,9 +229,27 @@ export default function Buttons() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg border bg-white  p-8 min-h-[400px] flex items-center justify-center"
+                  className="rounded-lg md:border bg-white  md:p-8 min-h-[400px] flex items-center justify-center"
                 >
-                  <Button variant="default">Primary Button</Button>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Energy Drink</CardTitle>
+                      <CardDescription>
+                        This is an orange drink that is very tasty and healthy
+                        for you.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <img
+                        src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        alt="Product"
+                        className="md:h-80 w-full object-cover"
+                      />
+                    </CardContent>
+                    <CardFooter>
+                      <Button>Buy Now</Button>
+                    </CardFooter>
+                  </Card>
                 </motion.div>
               </TabsContent>
 
@@ -191,11 +261,38 @@ export default function Buttons() {
                   className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-4"
                 >
                   <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
-                    <code className="whitespace-pre-wrap">{`import { Button } from "@/components/ui/button"
+                    <code className="whitespace-pre-wrap">{`import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button"; // Added import for Button
 
-export function ButtonDemo() {
-  return <Button>Button</Button>
-}`}</code>
+const CardComponent = () => {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardDescription>
+            This is a sample card description that explains the card's purpose.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <img src="You can put any Image here." alt="Product" className="md:h-80 w-full object-cover"/>
+          <p>
+            Add more Content You can put any content here.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button>Action</Button>
+        </CardFooter>
+      </Card>
+    );
+}
+`}</code>
                   </pre>
                 </motion.div>
               </TabsContent>
@@ -211,17 +308,16 @@ export function ButtonDemo() {
           </h2>
 
           <p className="mb-6 text-gray-700 dark:text-white">
-            Import and use the Button component in your Next.js project. When
-            you add a component using the CLI, it will be added to the
-            components folder in the src directory. If you are using the app
-            directory structure, the component will be added outside of the app
-            folder.
+            Import and use the Card component in your Next.js project. When you
+            add a component using the CLI, it will be added to the components
+            folder in the src directory. If you are using the app directory
+            structure, the component will be added outside of the app folder.
           </p>
 
           <div className="relative">
             <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
               <pre className="text-[0.5rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
-                {codeExample2}
+                {codeExample1}
               </pre>
             </div>
             <Button
@@ -242,12 +338,12 @@ export function ButtonDemo() {
           </h2>
 
           <p className="mb-6 text-gray-700 dark:text-white">
-            Import and use the Button component in your React.js project. When
-            you add a component using the CLI, it will be added to the
-            components folder in your project directory. Since React.js doesn't
-            use the app directory structure like Next.js, you can organize your
-            components directly in the components folder at the root level or
-            within src/components.
+            Import and use the Card component in your React.js project. When you
+            add a component using the CLI, it will be added to the components
+            folder in your project directory. Since React.js doesn't use the app
+            directory structure like Next.js, you can organize your components
+            directly in the components folder at the root level or within
+            src/components.
           </p>
 
           <div className="relative">
@@ -273,4 +369,4 @@ export function ButtonDemo() {
   );
 };
 
-export default ButtonComponent;
+export default CardComponent;

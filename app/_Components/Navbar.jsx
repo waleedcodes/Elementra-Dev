@@ -42,7 +42,7 @@ export function Navbar() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Docs", href: "/docs" },
-    { name: "Components", href: "/docs/Components/button" },
+    { name: "Components", href: "/docs/Components/Button" },
   ];
   const searchItems = [
     { name: "Documentation", href: "/docs" },
