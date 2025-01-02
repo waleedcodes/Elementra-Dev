@@ -16,7 +16,7 @@ export function HomeComp() {
     <>
       <Navbar />
       <BackgroundBeamsWithCollision>
-        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden rounded-md ">
+        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden md:pb-20">
           {/* Main container with responsive padding */}
           <div className="flex flex-col overflow-hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ContainerScroll

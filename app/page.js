@@ -1,10 +1,13 @@
-import { Banner } from "./_Components/Banner";
+import HomeCardComp from "./_Components/HomeCardComp";
 import { HomeComp } from "./_Components/HomeComp";
 
 export default function Home() {
   return (
     <>
-      <HomeComp />
+      <div className="bg-gradient-to-r from-[#0f172a] to-[#334155]">
+        <HomeComp />
+        <HomeCardComp />
+      </div>
     </>
   );
 }
