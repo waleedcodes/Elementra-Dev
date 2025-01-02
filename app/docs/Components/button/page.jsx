@@ -14,7 +14,7 @@ const ButtonPage = () => {
     toast("Copied to clipboard", { type: "success" });
   };
 
-  const codeExample1 = `import { Button } from "@/src/components/ui/button";"
+  const codeExample1 = `import { Button } from "@/src/components/ui/button";
 
 export default function Buttons() {
   return (
@@ -25,7 +25,7 @@ export default function Buttons() {
     </div>
   )
 }`;
-  const codeExample2 = `import { Button } from "./components/ui/button";"
+  const codeExample2 = `import { Button } from "./components/ui/button";
 
 export default function Buttons() {
   return (
@@ -177,7 +177,7 @@ export default function Buttons() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg border bg-white p-8 min-h-[400px] flex items-center justify-center"
+                  className="rounded-lg border bg-white  p-8 min-h-[400px] flex items-center justify-center"
                 >
                   <Button variant="default">Primary Button</Button>
                 </motion.div>
@@ -188,9 +188,9 @@ export default function Buttons() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg bg-zinc-950 p-4"
+                  className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-4"
                 >
-                  <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 font-mono overflow-x-auto">
+                  <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
                     <code className="whitespace-pre-wrap">{`import { Button } from "@/components/ui/button"
 
 export function ButtonDemo() {
