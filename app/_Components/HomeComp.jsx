@@ -86,7 +86,7 @@ export function HomeComp() {
               {/* Responsive image container */}
               <div className="w-full px-4 sm:px-2 ">
                 <Image
-                  src="/MainHome.png"
+                  src="/npmHome.png"
                   alt="hero"
                   height={720}
                   width={1400}
