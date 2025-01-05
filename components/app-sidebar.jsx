@@ -48,8 +48,8 @@ const data = {
           url: "/docs/Components/Card",
         },
         {
-          title: "Rendering",
-          url: "#",
+          title: "Alert",
+          url: "/docs/Components/Alert",
         },
         {
           title: "Caching",
