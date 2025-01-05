@@ -237,7 +237,7 @@ const HomeCardComp = () => {
           >
             <div className="pb-4">
               <motion.h1
-                className="md:text-6xl font-semibold pb-5 text-white md:leading-tight"
+                className="md:text-6xl text-3xl font-semibold pb-5 text-white md:leading-tight"
                 variants={itemVariants}
               >
                 Apply This Code on Our Card Component
@@ -250,7 +250,7 @@ const HomeCardComp = () => {
               </motion.p>
             </div>
 
-            <div className="space-y-6">
+            <div className="md:space-y-6 space-y-4">
               {[
                 "Header with a captivating title for user engagement",
                 "Detailed description highlighting the card's features",
@@ -263,7 +263,7 @@ const HomeCardComp = () => {
                   variants={itemVariants}
                 >
                   <div className="w-2 h-2 mt-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-500" />
-                  <p className="text-gray-300">{text}</p>
+                  <p className="text-gray-300 text-sm md:text-[1rem]">{text}</p>
                 </motion.div>
               ))}
             </div>
