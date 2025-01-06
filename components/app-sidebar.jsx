@@ -41,7 +41,7 @@ const data = {
       items: [
         {
           title: "Button",
-          url: "/docs/Components/Button",
+          url: "/docs/Components/button",
         },
         {
           title: "Card",
