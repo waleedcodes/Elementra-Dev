@@ -1,10 +1,23 @@
 "use client";
 import React from "react";
-import { Copy, CopyIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Plus,
+  Star,
+  Heart,
+  Mail,
+  Settings,
+  Bell,
+  Send,
+  Download,
+  User,
+  ArrowRight,
+  Copy,
+  CopyIcon,
+} from "lucide-react";
 
 const ButtonComponent = () => {
   const handleCopy = (text) => {
@@ -44,7 +57,115 @@ export default function Buttons() {
       <p className="text-muted-foreground dark:text-white mb-8">
         Displays a button or a component that looks like a button.
       </p>
+      {/* ********************** */}
+      {/* Interactive Button Showcase */}
+      <div className="p-8 bg-gray-50 dark:bg-gray-800 min-h-screen">
+        <div className="container mx-auto space-y-8">
+          <h1 className="text-3xl font-bold">Interactive Button Showcase</h1>
 
+          <div className="grid md:grid-cols-3 gap-8 sm:grid-cols-2 ">
+            {/* Basic Variants */}
+            <div className="space-y-4 flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">Basic Variants</h2>
+              <Button variant="default">Default Button</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="gradient">Gradient</Button>
+            </div>
+
+            {/* Status Variants */}
+            <div className="space-y-4 flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">Status Variants</h2>
+              <Button variant="success" icon={Plus}>
+                Success
+              </Button>
+              <Button variant="danger" icon={Heart}>
+                Danger
+              </Button>
+              <Button variant="warning" icon={Bell}>
+                Warning
+              </Button>
+              <Button variant="info" icon={Mail}>
+                Info
+              </Button>
+            </div>
+
+            {/* Effect Variants */}
+            <div className="space-y-4 flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">Effect Variants</h2>
+              <Button variant="glass">Glass Effect</Button>
+              <Button variant="shadow">Shadow</Button>
+              <Button variant="neon">Neon</Button>
+              <Button variant="frosted">Frosted</Button>
+            </div>
+
+            {/* Animation Variants */}
+            <div className="space-y-4 flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">Animation Variants</h2>
+              <Button variant="ripple" icon={ArrowRight}>
+                Ripple
+              </Button>
+              <Button variant="bounce" icon={Download}>
+                Bounce
+              </Button>
+              <Button variant="pulse" icon={Star}>
+                Pulse
+              </Button>
+              <Button variant="shake" icon={Bell}>
+                Shake
+              </Button>
+            </div>
+
+            {/* Special States */}
+            <div className="space-y-4 flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">Special States</h2>
+              <Button isLoading>Loading</Button>
+              <Button disabled>Disabled</Button>
+              <Button variant="toggle">Toggle</Button>
+              <Button variant="emoji">🚀 Emoji</Button>
+            </div>
+
+            {/* Size Variants */}
+            <div className="space-y-4 flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">Sizes</h2>
+              <div className="flex flex-col gap-3">
+                <Button size="xs">XS</Button>
+                <Button size="sm">SM</Button>
+                <Button size="md">MD</Button>
+                <Button size="lg">LG</Button>
+                <Button size="xl">XL</Button>
+              </div>
+            </div>
+
+            {/* Interactive Examples */}
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">Interactive Examples</h2>
+              <div className="flex flex-col gap-3">
+                <Button variant="elevated" icon={Settings}>
+                  Elevated
+                </Button>
+                <Button variant="scale" icon={Send}>
+                  Scale
+                </Button>
+                <Button variant="link">Link Style</Button>
+                <Button variant="text">Text Button</Button>
+              </div>
+            </div>
+
+            {/* Icon Variations */}
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">Icon Variations</h2>
+              <div className="flex gap-5">
+                <Button variant="default" icon={User} size="icon" />
+                <Button variant="outline" icon={Settings} size="icon" />
+                <Button variant="success" icon={Plus} size="icon" />
+                <Button variant="danger" icon={Heart} size="icon" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ********************** */}
       {/* Content Sections */}
       <div className="space-y-12">
         {/* Installation Section */}
@@ -179,7 +300,8 @@ export default function Buttons() {
                   exit={{ opacity: 0, y: -10 }}
                   className="rounded-lg border bg-white  p-8 min-h-[400px] flex items-center justify-center"
                 >
-                  <Button variant="default">Primary Button</Button>
+                  <Button variant="gradient" size="md">Gradient Button</Button>
+                  
                 </motion.div>
               </TabsContent>
 
