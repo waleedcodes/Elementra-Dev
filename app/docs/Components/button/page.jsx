@@ -18,6 +18,7 @@ import {
   Copy,
   CopyIcon,
 } from "lucide-react";
+import { Buttons } from "@/components/Buttons";
 
 const ButtonComponent = () => {
   const handleCopy = (text) => {
@@ -67,72 +68,72 @@ export default function Buttons() {
             {/* Basic Variants */}
             <div className="space-y-4 flex flex-col gap-3">
               <h2 className="text-xl font-semibold">Basic Variants</h2>
-              <Button variant="default">Default Button</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="gradient">Gradient</Button>
+              <Buttons variant="default">Default Button</Buttons>
+              <Buttons variant="outline">Outline</Buttons>
+              <Buttons variant="gradient">Gradient</Buttons>
             </div>
 
             {/* Status Variants */}
             <div className="space-y-4 flex flex-col gap-3">
               <h2 className="text-xl font-semibold">Status Variants</h2>
-              <Button variant="success" icon={Plus}>
+              <Buttons variant="success" icon={Plus}>
                 Success
-              </Button>
-              <Button variant="danger" icon={Heart}>
+              </Buttons>
+              <Buttons variant="danger" icon={Heart}>
                 Danger
-              </Button>
-              <Button variant="warning" icon={Bell}>
+              </Buttons>
+              <Buttons variant="warning" icon={Bell}>
                 Warning
-              </Button>
-              <Button variant="info" icon={Mail}>
+              </Buttons>
+              <Buttons variant="info" icon={Mail}>
                 Info
-              </Button>
+              </Buttons>
             </div>
 
             {/* Effect Variants */}
             <div className="space-y-4 flex flex-col gap-3">
               <h2 className="text-xl font-semibold">Effect Variants</h2>
-              <Button variant="glass">Glass Effect</Button>
-              <Button variant="shadow">Shadow</Button>
-              <Button variant="neon">Neon</Button>
-              <Button variant="frosted">Frosted</Button>
+              <Buttons variant="glass">Glass Effect</Buttons>
+              <Buttons variant="shadow">Shadow</Buttons>
+              <Buttons variant="neon">Neon</Buttons>
+              <Buttons variant="frosted">Frosted</Buttons>
             </div>
 
             {/* Animation Variants */}
             <div className="space-y-4 flex flex-col gap-3">
               <h2 className="text-xl font-semibold">Animation Variants</h2>
-              <Button variant="ripple" icon={ArrowRight}>
+              <Buttons variant="ripple" icon={ArrowRight}>
                 Ripple
-              </Button>
-              <Button variant="bounce" icon={Download}>
+              </Buttons>
+              <Buttons variant="bounce" icon={Download}>
                 Bounce
-              </Button>
-              <Button variant="pulse" icon={Star}>
+              </Buttons>
+              <Buttons variant="pulse" icon={Star}>
                 Pulse
-              </Button>
-              <Button variant="shake" icon={Bell}>
+              </Buttons>
+              <Buttons variant="shake" icon={Bell}>
                 Shake
-              </Button>
+              </Buttons>
             </div>
 
             {/* Special States */}
             <div className="space-y-4 flex flex-col gap-3">
               <h2 className="text-xl font-semibold">Special States</h2>
-              <Button isLoading>Loading</Button>
-              <Button disabled>Disabled</Button>
-              <Button variant="toggle">Toggle</Button>
-              <Button variant="emoji">🚀 Emoji</Button>
+              <Buttons isLoading>Loading</Buttons>
+              <Buttons disabled>Disabled</Buttons>
+              <Buttons variant="toggle">Toggle</Buttons>
+              <Buttons variant="emoji">🚀 Emoji</Buttons>
             </div>
 
             {/* Size Variants */}
             <div className="space-y-4 flex flex-col gap-3">
               <h2 className="text-xl font-semibold">Sizes</h2>
               <div className="flex flex-col gap-3">
-                <Button size="xs">XS</Button>
-                <Button size="sm">SM</Button>
-                <Button size="md">MD</Button>
-                <Button size="lg">LG</Button>
-                <Button size="xl">XL</Button>
+                <Buttons size="xs">XS</Buttons>
+                <Buttons size="sm">SM</Buttons>
+                <Buttons size="md">MD</Buttons>
+                <Buttons size="lg">LG</Buttons>
+                <Buttons size="xl">XL</Buttons>
               </div>
             </div>
 
@@ -140,14 +141,14 @@ export default function Buttons() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">Interactive Examples</h2>
               <div className="flex flex-col gap-3">
-                <Button variant="elevated" icon={Settings}>
+                <Buttons variant="elevated" icon={Settings}>
                   Elevated
-                </Button>
-                <Button variant="scale" icon={Send}>
+                </Buttons>
+                <Buttons variant="scale" icon={Send}>
                   Scale
-                </Button>
-                <Button variant="link">Link Style</Button>
-                <Button variant="text">Text Button</Button>
+                </Buttons>
+                <Buttons variant="link">Link Style</Buttons>
+                <Buttons variant="text">Text Button</Buttons>
               </div>
             </div>
 
@@ -155,10 +156,10 @@ export default function Buttons() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">Icon Variations</h2>
               <div className="flex gap-5">
-                <Button variant="default" icon={User} size="icon" />
-                <Button variant="outline" icon={Settings} size="icon" />
-                <Button variant="success" icon={Plus} size="icon" />
-                <Button variant="danger" icon={Heart} size="icon" />
+                <Buttons variant="default" icon={User} size="icon" />
+                <Buttons variant="outline" icon={Settings} size="icon" />
+                <Buttons variant="success" icon={Plus} size="icon" />
+                <Buttons variant="danger" icon={Heart} size="icon" />
               </div>
             </div>
           </div>
@@ -167,7 +168,7 @@ export default function Buttons() {
 
       {/* ********************** */}
       {/* Content Sections */}
-      <div className="space-y-12">
+      <div className="space-y-12 pt-10">
         {/* Installation Section */}
         <section>
           <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
