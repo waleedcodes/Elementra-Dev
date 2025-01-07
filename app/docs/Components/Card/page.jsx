@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import CardComp from "./CardComp";
 
 const CardComponent = () => {
   const handleCopy = (text) => {
@@ -96,7 +97,9 @@ const CardComponent = () => {
         A card component that includes a header, title, description, content,
         and footer for related actions and information.
       </p>
-
+      {/* *************************************************************** */}
+      <CardComp />
+      {/* *************************************************************** */}
       {/* Content Sections */}
       <div className="space-y-12">
         {/* Installation Section */}
