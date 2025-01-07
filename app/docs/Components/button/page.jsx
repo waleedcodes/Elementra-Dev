@@ -301,8 +301,7 @@ export default function Buttons() {
                   exit={{ opacity: 0, y: -10 }}
                   className="rounded-lg border bg-white  p-8 min-h-[400px] flex items-center justify-center"
                 >
-                  <Button variant="gradient" size="md">Gradient Button</Button>
-                  
+                  <Button>Gradient Button</Button>
                 </motion.div>
               </TabsContent>
 
