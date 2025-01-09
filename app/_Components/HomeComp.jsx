@@ -47,15 +47,16 @@ export function HomeComp() {
 
                     {/* Description with responsive padding and font size */}
                     <p className="text-white text-base sm:text-lg md:text-xl font-light max-w-3xl text-center px-4 sm:px-6">
-                      Elementra is an innovative{" "}
-                      <span className="bg-primary dark:bg-gray-900 px-2 md:px-4 rounded-full inline-block my-1 py-1">
-                        component
-                      </span>{" "}
-                      library that streamlines your workflow and enhances the
-                      creation of beautiful, accessible, and responsive user
-                      interfaces. Developed using React.js, Tailwind CSS, and
-                      Framer Motion, Elementra enables developers to
-                      effortlessly build stunning UIs.
+                      Elementra UI is a collection of
+                      <span className="bg-primary dark:bg-gray-900 px-2 md:px-4 rounded-full inline-block my-1 py-1 mx-2">
+                        reusable ui
+                      </span>
+                      components that you can copy and paste into your projects.
+                      It's not a traditional component library — you don't
+                      install it via npm or manage it as a dependency. Instead,
+                      it's a toolbox of building blocks designed to help you
+                      craft responsive, accessible, and visually stunning UIs
+                      with ease.
                     </p>
 
                     {/* Sparkles container with responsive width */}
