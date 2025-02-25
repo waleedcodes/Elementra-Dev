@@ -51,6 +51,10 @@ const data = {
           title: "Alert",
           url: "/docs/Components/Alert",
         },
+        {
+          title: "Toast",
+          url: "/docs/Components/Toast",
+        },
       ],
     },
   ],
