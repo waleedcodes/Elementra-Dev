@@ -44,6 +44,10 @@ const data = {
           url: "/docs/Components/button",
         },
         {
+          title: "Badge",
+          url: "/docs/Components/Badge",
+        },
+        {
           title: "Card",
           url: "/docs/Components/Card",
         },
