@@ -1,7 +1,7 @@
 import HomeButtonComp from "./_Components/DisplayComp/HomeButtonComp";
 import HomeCardComp from "./_Components/DisplayComp/HomeCardComp";
+import Footer from "./_Components/Footer";
 import { HomeComp } from "./_Components/HomeComp";
-
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
         <HomeComp />
         <HomeCardComp />
         <HomeButtonComp />
+        <Footer />
       </div>
     </>
   );
