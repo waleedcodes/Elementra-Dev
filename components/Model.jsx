@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react"; // Assuming you have lucide-react installed
@@ -31,9 +32,13 @@ export const ModalProvider = ({ children }) => {
     <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
       {children}
       {isOpen && (
-        <Modal isOpen={isOpen} onClose={closeModal}>
-          {content}
-        </Modal>
+        <div className="fixed inset-0 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={closeModal}
+          ></div>
+          <div className="z-50 w-full max-w-md p-4 mx-auto">{content}</div>
+        </div>
       )}
     </ModalContext.Provider>
   );
@@ -65,25 +70,28 @@ const Modal = React.forwardRef(
     return (
       <div
         ref={ref}
-        className={cn(
-          "fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300",
-          isVisible ? "opacity-100" : "opacity-0"
-        )}
         onClick={handleBackdropClick}
+        className={cn(
+          "fixed inset-0 z-50 flex items-center justify-center transition-opacity",
+          isVisible ? "opacity-100" : "opacity-0",
+          isOpen ? "pointer-events-auto" : "pointer-events-none",
+          className
+        )}
         {...props}
       >
+        <div className="absolute inset-0 bg-black/50" />
         <div
           className={cn(
-            "relative w-full max-w-md max-h-[90vh] overflow-auto rounded-lg bg-white p-6 shadow-lg transition-all duration-300",
-            isVisible ? "scale-100" : "scale-95",
-            className
+            "relative bg-white rounded-lg shadow-lg w-full max-w-md mx-auto transform transition-transform",
+            isVisible ? "scale-100" : "scale-95"
           )}
         >
           <button
-            className="absolute right-4 top-4 rounded-sm p-1 opacity-70 hover:opacity-100"
             onClick={onClose}
+            className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100"
+            aria-label="Close"
           >
-            <X className="h-4 w-4" />
+            <X size={18} />
           </button>
           {children}
         </div>
@@ -94,11 +102,7 @@ const Modal = React.forwardRef(
 
 export const ModalHeader = React.forwardRef(
   ({ className, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("mb-4 text-lg font-semibold", className)}
-      {...props}
-    >
+    <div ref={ref} className={cn("px-6 py-4 border-b", className)} {...props}>
       {children}
     </div>
   )
@@ -106,7 +110,7 @@ export const ModalHeader = React.forwardRef(
 
 export const ModalBody = React.forwardRef(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("mb-5", className)} {...props}>
+    <div ref={ref} className={cn("px-6 py-4", className)} {...props}>
       {children}
     </div>
   )
@@ -114,11 +118,7 @@ export const ModalBody = React.forwardRef(
 
 export const ModalFooter = React.forwardRef(
   ({ className, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("flex justify-end space-x-2", className)}
-      {...props}
-    >
+    <div ref={ref} className={cn("px-6 py-4 border-t", className)} {...props}>
       {children}
     </div>
   )
