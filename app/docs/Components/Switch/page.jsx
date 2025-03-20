@@ -430,6 +430,15 @@ const SwitchDocsPage = () => {
 
   return (
     <div className="max-w-8xl mx-auto px-4 py-8">
+      <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-6">
+        <p className="text-red-600 font-medium">
+          This UI component is not available in version 0.1.4
+        </p>
+        <p className="text-red-500 text-sm mt-1">
+          The Toast component will be included in the next npm package update.
+          Stay tuned!
+        </p>
+      </div>
       <div className="border-b pb-8 mb-8">
         <h1 className="text-3xl font-bold mb-2">Switch</h1>
         <p className="text-gray-600">
