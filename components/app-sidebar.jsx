@@ -40,6 +40,10 @@ const data = {
       url: "#",
       items: [
         {
+          title: "Alert",
+          url: "/docs/Components/Alert",
+        },
+        {
           title: "Button",
           url: "/docs/Components/button",
         },
@@ -52,8 +56,12 @@ const data = {
           url: "/docs/Components/Card",
         },
         {
-          title: "Alert",
-          url: "/docs/Components/Alert",
+          title: "Model",
+          url: "/docs/Components/Model",
+        },
+        {
+          title: "Progress",
+          url: "/docs/Components/Progress",
         },
         {
           title: "Switch",
