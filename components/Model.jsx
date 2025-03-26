@@ -129,4 +129,5 @@ ModalHeader.displayName = "ModalHeader";
 ModalBody.displayName = "ModalBody";
 ModalFooter.displayName = "ModalFooter";
 
-export { Modal, ModalHeader, ModalBody, ModalFooter };
+// Change this line to only export components that aren't already exported earlier
+export { Modal, ModalBody, ModalFooter };

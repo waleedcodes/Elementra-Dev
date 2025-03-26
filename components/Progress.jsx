@@ -95,4 +95,5 @@ export const Progress = React.forwardRef(
 
 Progress.displayName = "Progress";
 
-export { Progress };
+// Remove this line completely since Progress is already exported earlier
+// export { Progress };
