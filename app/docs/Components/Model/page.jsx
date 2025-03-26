@@ -1,15 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import {
-  useModal,
-  ModalProvider,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "@/components/Model";
+
 import { Button } from "@/components/ui/button";
+import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/Model";
 // Assuming you have a Button component
 
 export default function ModalDemo() {
