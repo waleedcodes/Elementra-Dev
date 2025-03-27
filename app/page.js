@@ -8,7 +8,7 @@ export default function Home() {
         <HomeComp />
         {/* <HomeCardComp />
         <HomeButtonComp /> */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

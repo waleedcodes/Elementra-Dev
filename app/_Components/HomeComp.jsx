@@ -7,104 +7,107 @@ import Image from "next/image";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MoveRight } from "lucide-react";
+import { ArrowRight, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { Navbar } from "./Navbar";
+import { motion } from "framer-motion";
 
 export function HomeComp() {
   return (
     <>
       <Navbar />
       <BackgroundBeamsWithCollision>
-        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden md:pb-20">
+        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden py-20 lg:h-[750px] xl:h-[1000px] h-auto">
           {/* Main container with responsive padding */}
-          <div className="flex flex-col overflow-hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ContainerScroll
-              titleComponent={
-                <>
-                  <div className="flex flex-col items-center space-y-6 py-12 md:py-16 lg:py-20">
-                    {/* Badge with responsive sizing */}
-                    <Badge
-                      variant="outline"
-                      className="text-white font-light text-sm md:text-md rounded-full border-primary px-3 md:px-5 py-1 whitespace-normal text-center"
-                    >
-                      <span className="hidden sm:inline">
-                        Build Awesome React Reusable UI Components
-                      </span>
-                      <span className="inline sm:hidden">
-                        React UI Components
-                      </span>
-                      <MoveRight
-                        className="hidden sm:block ps-2 md:ps-3"
-                        size={24}
-                      />
-                    </Badge>
 
-                    {/* Responsive heading */}
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold text-center text-white relative z-20">
-                      Elementra UI
-                    </h1>
-
-                    {/* Description with responsive padding and font size */}
-                    <p className="text-white text-base sm:text-lg md:text-xl font-light max-w-3xl text-center px-4 sm:px-6">
-                      Elementra UI is a collection of
-                      <span className="bg-primary dark:bg-gray-900 px-2 md:px-4 rounded-full inline-block my-1 py-1 mx-2">
-                        reusable ui
-                      </span>
-                      components that you can copy and paste into your projects.
-                      It's not a traditional component library — you don't
-                      install it via npm or manage it as a dependency. Instead,
-                      it's a toolbox of building blocks designed to help you
-                      craft responsive, accessible, and visually stunning UIs
-                      with ease.
-                    </p>
-
-                    {/* Sparkles container with responsive width */}
-                    <div className="w-full sm:w-3/4 md:w-1/2 h-20 relative">
-                      {/* Gradients with responsive positioning */}
-                      <div className="absolute inset-x-10 sm:inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-                      <div className="absolute inset-x-10 sm:inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-                      <div className="absolute inset-x-30 sm:inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-                      <div className="absolute inset-x-30 sm:inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
-
-                      {/* Core sparkles component */}
-                      <SparklesCore
-                        background="transparent"
-                        minSize={0.4}
-                        maxSize={1}
-                        particleDensity={1200}
-                        className="w-full h-full"
-                        particleColor="#FFFFFF"
-                      />
-
-                      {/* Radial gradient mask */}
-                      <div className="absolute inset-0 w-full h-full bg-transparent [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
-                    </div>
-                  </div>
-                </>
-              }
-            >
-              {/* Responsive image container */}
-              <div className="w-full px-4 sm:px-2 ">
-                <Image
-                  src="/npmHome.png"
-                  alt="hero"
-                  height={720}
-                  width={1400}
-                  className="w-full rounded-none md:rounded-2xl object-cover h-[300px]  md:h-[500px] lg:h-[600px] object-left-top"
-                  draggable={false}
-                  priority
+          <div className="flex flex-col items-center space-y-8 py-12 md:py-16 lg:py-20">
+            {/* Enhanced Badge with better styling and glow effect */}
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-indigo-500/30 rounded-full blur-md opacity-70 animate-pulse"></div>
+              <Badge
+                variant="outline"
+                className="relative text-white font-medium text-sm md:text-md rounded-full border-primary/70 px-4 md:px-6 py-1.5 whitespace-normal text-center bg-black/20 backdrop-blur-sm shadow-[0_0_15px_rgba(99,102,241,0.3)]"
+              >
+                <span className="hidden sm:inline">
+                  Build Awesome React Reusable UI Components
+                </span>
+                <span className="inline sm:hidden">React UI Components</span>
+                <MoveRight
+                  className="hidden sm:block ps-2 md:ps-3 text-primary animate-pulse"
+                  style={{ animationDuration: "3s" }}
+                  size={20}
                 />
-              </div>
-            </ContainerScroll>
-          </div>
+              </Badge>
+            </div>
 
-          {/* CTA button with responsive sizing */}
-          <Link href="/docs" className="my-8 sm:my-10 md:my-12">
-            <Button className="py-6 sm:py-7 md:py-8 px-6 sm:px-8 md:px-10 text-lg sm:text-xl md:text-2xl font-normal tracking-wider">
-              Get Started
-            </Button>
-          </Link>
+            {/* Enhanced heading with gradient text and glow effect */}
+            <div className="relative">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[10rem] font-bold text-center relative z-20 tracking-tight">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-foreground to-white">
+                  Elementra UI
+                </span>
+              </h1>
+              <div className="absolute -inset-x-20 -inset-y-10 bg-primary/5 blur-3xl rounded-full z-10 opacity-50"></div>
+            </div>
+
+            {/* Enhanced description with better typography and highlight */}
+            <p className="text-white/90 text-base sm:text-lg font-light max-w-5xl text-center px-4 sm:px-6 leading-relaxed">
+              Elementra UI is a collection of
+              <span className="relative inline-flex items-center px-3 md:px-4 py-1 mx-2 my-1 rounded-full bg-gradient-to-r from-primary/80 to-indigo-500/70 text-white font-medium shadow-lg">
+                <span className="absolute -inset-1 bg-primary/20 blur-md rounded-full animate-pulse opacity-70"></span>
+                <span className="relative z-10 flex items-center">
+                  <svg
+                    className="w-4 h-4 mr-1.5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                    />
+                  </svg>
+                  reusable ui
+                </span>
+              </span>
+              components that you can copy and paste into your projects. It's
+              not a traditional component library — you don't install it via npm
+              or manage it as a dependency. Instead, it's a toolbox of building
+              blocks designed to help you craft responsive, accessible, and
+              visually stunning UIs with ease.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 items-center"
+            >
+              <Link href="/docs">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg font-medium rounded-full shadow-[0_0_20px_rgba(149,76,233,0.5)] hover:shadow-[0_0_30px_rgba(149,76,233,0.7)] transition-all duration-300 hover:-translate-y-1 group"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </Link>
+
+              <Link href="/docs/Components/Alert">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white/10 bg-white/5 hover:bg-white/10 text-white px-6 py-6 text-lg font-medium rounded-full backdrop-blur-sm transition-all duration-300 hover:-translate-y-1"
+                >
+                  Browse Components
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </BackgroundBeamsWithCollision>
     </>
