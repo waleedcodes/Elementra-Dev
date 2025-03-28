@@ -130,5 +130,5 @@ ModalBody.displayName = "ModalBody";
 ModalFooter.displayName = "ModalFooter";
 useModal.displayName = "useModal";
 
-// Add this line to export the Modal component
-export { Modal, ModalFooter };
+// Add this line to export the Modal component, but not ModalFooter since it's already exported
+export { Modal };
