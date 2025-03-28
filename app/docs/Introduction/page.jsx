@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -38,6 +38,16 @@ function App() {
 export default App;
   `;
 const FloatingParticles = () => {
+  const [dimensions, setDimensions] = useState({ width: 1000, height: 800 });
+  
+  useEffect(() => {
+    // Only access window in useEffect (client-side)
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+  }, []);
+  
   return (
     <div className="absolute inset-0 overflow-hidden z-1">
       {[...Array(20)].map((_, i) => (
@@ -45,8 +55,8 @@ const FloatingParticles = () => {
           key={i}
           className="absolute w-2 h-2 rounded-full bg-blue-500/20"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
             scale: Math.random() * 0.5 + 0.5,
           }}
           animate={{
