@@ -19,13 +19,13 @@ export const metadata = {
   type: "website",
   keywords:
     "component library, React, Next.js, Tailwind CSS, Framer Motion, UI design",
-  author: "Elementra Team",
+  author: "waleed codes",
   robots: "index, follow",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <link rel="icon" href="/logo2.png" />
       </head>
