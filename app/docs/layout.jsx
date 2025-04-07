@@ -41,7 +41,7 @@ const DashboardLayout = ({ children }) => {
             </div>
           </header>
         )}
-        <div className="py-12 w-4/5 mx-auto">{children}</div>
+        <div className="px-4 py-12 md:w-4/5 md:mx-auto">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );
