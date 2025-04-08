@@ -95,7 +95,12 @@ const navigationData = {
         {
           title: "Switch",
           url: "/docs/Components/Switch",
-          description: "Toggle switch components",
+          description: "Toggle Switch components",
+        },
+        {
+          title: "Select",
+          url: "/docs/Components/Select",
+          description: "Toggle Select components",
         },
         {
           title: "Toast",
@@ -152,7 +157,7 @@ export function AppSidebar({ ...props }) {
   React.useEffect(() => {
     setOpenMenus({
       "Getting Started": true,
-      "Components": true
+      Components: true,
     });
   }, []);
 
@@ -209,7 +214,9 @@ export function AppSidebar({ ...props }) {
                   <h1 className="text-gray-800 dark:text-white text-[1.4rem] font-semibold">
                     Elementra UI
                   </h1>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">v0.1.5 - Documentation</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    v0.1.5 - Documentation
+                  </span>
                 </div>
               </Link>
             </SidebarMenuItem>
@@ -242,7 +249,8 @@ export function AppSidebar({ ...props }) {
                     <div className="flex items-center gap-3">
                       {section.icon &&
                         React.createElement(section.icon, {
-                          className: "w-5 h-5 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform",
+                          className:
+                            "w-5 h-5 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform",
                         })}
                       <span className="font-medium">{section.title}</span>
                     </div>
