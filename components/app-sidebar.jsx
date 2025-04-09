@@ -109,40 +109,6 @@ const navigationData = {
         },
       ],
     },
-    {
-      title: "Resources",
-      icon: Book,
-      url: "#",
-      items: [
-        {
-          title: "Changelog",
-          url: "/docs/Changelog",
-          description: "Recent updates and improvements",
-        },
-        {
-          title: "Contributing",
-          url: "/docs/Contributing",
-          description: "How to contribute to the project",
-        },
-      ],
-    },
-    {
-      title: "Help",
-      icon: HelpCircle,
-      url: "#",
-      items: [
-        {
-          title: "FAQ",
-          url: "/docs/FAQ",
-          description: "Frequently asked questions",
-        },
-        {
-          title: "Support",
-          url: "/docs/Support",
-          description: "Get help and support",
-        },
-      ],
-    },
   ],
 };
 
