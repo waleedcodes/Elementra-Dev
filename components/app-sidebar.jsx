@@ -103,6 +103,11 @@ const navigationData = {
           description: "Toggle Select components",
         },
         {
+          title: "Tabs",
+          url: "/docs/Components/Tabs",
+          description: "Tab navigation components",
+        },
+        {
           title: "Toast",
           url: "/docs/Components/Toast",
           description: "Notification toasts",
