@@ -98,6 +98,12 @@ const navigationData = {
           description: "Toggle Switch components",
         },
         {
+          title: "Scratch To Reveal",
+          url: "/docs/Components/Scratch-To-Reveal",
+          description:
+            "An interactive scratch card component that reveals content when scratched",
+        },
+        {
           title: "Select",
           url: "/docs/Components/Select",
           description: "Toggle Select components",
@@ -235,14 +241,14 @@ export function AppSidebar({ ...props }) {
                   </SidebarMenuButton>
 
                   {section.items?.length && openMenus[section.title] ? (
-                    <SidebarMenuSub className="mt-2 space-y-1 pl-4">
+                    <SidebarMenuSub className="mt-2 space-y-3 pl-4">
                       {section.items.map((item) => (
                         <SidebarMenuSubItem key={item.title} className="group">
                           <SidebarMenuSubButton
                             asChild
                             isActive={path === item.url}
                             className={`
-                              w-full text-left py-2 px-4 rounded-md 
+                              w-full h-8 px-4 rounded-md 
                               ${
                                 path === item.url
                                   ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium"
@@ -251,12 +257,9 @@ export function AppSidebar({ ...props }) {
                               transition-all duration-200
                             `}
                           >
-                            <Link href={item.url} className="flex flex-col">
+                            <Link href={item.url} className="flex flex-col items-center justify-center">
                               <span className="font-normal text-md">
                                 {item.title}
-                              </span>
-                              <span className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
-                                {item.description}
                               </span>
                             </Link>
                           </SidebarMenuSubButton>
