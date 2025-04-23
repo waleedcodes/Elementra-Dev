@@ -16,9 +16,16 @@ import {
 import { Moon, Sun, Search, Github } from "lucide-react";
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, mounted } = useTheme();
   const [open, setOpen] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
+
+  // Prevent hydration mismatch by not rendering theme-dependent content until mounted
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   React.useEffect(() => {
     const down = (e) => {
@@ -109,19 +116,21 @@ export function Navbar() {
               <span className="sr-only">GitHub</span>
             </Button>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-9 px-0"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+            {isMounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-9 px-0"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            )}
           </div>
         </div>
       )}

@@ -6,9 +6,10 @@ export function Providers({ children }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
-      enableSystem
+      defaultTheme="system"
+      enableSystem={true}
       disableTransitionOnChange
+      suppressHydrationWarning
     >
       {children}
     </ThemeProvider>
