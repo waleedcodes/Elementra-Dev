@@ -83,14 +83,14 @@ export default function HomePage() {
             </p>
           </div>
           <h1
-            className="text-7xl font-bold text-center mb-6
+            className="text-5xl md:text-7xl font-bold text-center mb-6
             bg-clip-text text-transparent bg-gradient-to-b from-purple-700 to-blue-700 
             dark:from-neutral-50 dark:to-neutral-400"
           >
             Elementra UI
           </h1>
           <p
-            className="max-w-2xl mx-auto mb-8
+            className="max-w-2xl mx-auto px-5 mb-8
             text-gray-600 dark:text-neutral-300"
           >
             Elementra UI is a collection of{" "}
@@ -106,7 +106,7 @@ export default function HomePage() {
             blocks designed to help you craft responsive, accessible, and
             visually stunning UIs with ease.
           </p>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-4 mx-5">
             <Link href="/docs">
               <Button
                 size="lg"
