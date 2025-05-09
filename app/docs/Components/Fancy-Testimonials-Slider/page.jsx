@@ -7,7 +7,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { FancyTestimonialsSlider } from "@/components/fancy-testimonials-slider";
 
-
 const FancyTestimonialsDocs = () => {
   const handleCopy = (text) => {
     if (text) {
@@ -179,30 +178,32 @@ export default function InteractiveTestimonials() {
   ];
 
   return (
-    <div className="">
+    <div className="px-4 md:px-6 lg:px-8 max-w-full overflow-hidden">
       {/* Header */}
-      <h1 className="text-4xl font-semibold mb-4">Fancy Testimonials Slider</h1>
-      <p className="text-muted-foreground dark:text-white mb-8">
+      <h1 className="text-3xl md:text-4xl font-semibold mb-3 md:mb-4">
+        Fancy Testimonials Slider
+      </h1>
+      <p className="text-sm md:text-base text-muted-foreground dark:text-white mb-6 md:mb-8">
         A polished, animated testimonial carousel with customizable themes and
         transitions.
       </p>
 
       {/* Content Sections */}
-      <div className="space-y-12">
+      <div className="space-y-8 md:space-y-12">
         {/* Installation Section */}
         <section>
-          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
+          <h2 className="text-lg md:text-xl font-medium flex items-center gap-2 mb-3 md:mb-4">
             <span className="text-muted-foreground dark:text-white">1</span>
             Installation
           </h2>
           <div className="relative mb-4">
-            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-3 md:p-4 font-mono text-xs md:text-sm text-gray-800 dark:text-white overflow-x-auto">
               <span>npm i elementra-ui</span>
             </div>
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
+              className="absolute top-2 right-2 md:top-3 md:right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy("npm i elementra-ui")}
             >
               <CopyIcon className="h-4 w-4" />
@@ -211,45 +212,45 @@ export default function InteractiveTestimonials() {
         </section>
 
         <section>
-          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
+          <h2 className="text-lg md:text-xl font-medium flex items-center gap-2 mb-3 md:mb-4">
             <span className="text-muted-foreground dark:text-white">2</span>
             Add Components Using CLI
           </h2>
 
           <div className="relative mb-4">
-            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
+            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-3 md:p-4 font-mono text-xs md:text-sm text-gray-800 dark:text-white overflow-x-auto">
               <span>npx elementra-ui add</span>
             </div>
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
+              className="absolute top-2 right-2 md:top-3 md:right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
               onClick={() => handleCopy("npx elementra-ui add")}
             >
               <Copy className="h-4 w-4" />
             </Button>
           </div>
-          <p className="my-3 text-gray-600 dark:text-white text-sm">
+          <p className="my-3 text-gray-600 dark:text-white text-xs md:text-sm">
             Select components using the up/down arrow keys. Press spacebar to
             select multiple components, then press enter to add them to your{" "}
             <span className="text-purple-600">src</span> folder.
           </p>
         </section>
         {/* ************************** */}
-        <div className="w-full p-4">
+        <div className="w-full p-2 md:p-4">
           <Tabs defaultValue="preview" className="w-full">
-            <div className="flex items-center justify-between mb-4">
-              <TabsList className="grid w-[200px] grid-cols-2">
+            <div className="flex items-center justify-between mb-3 md:mb-4">
+              <TabsList className="grid w-[180px] md:w-[200px] grid-cols-2">
                 <TabsTrigger
                   value="preview"
-                  className="font-medium"
+                  className="font-medium text-sm"
                   key="preview-tab"
                 >
                   Preview
                 </TabsTrigger>
                 <TabsTrigger
                   value="code"
-                  className="font-medium"
+                  className="font-medium text-sm"
                   key="code-tab"
                 >
                   Code
@@ -263,7 +264,7 @@ export default function InteractiveTestimonials() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg md:border bg-white md:p-8 min-h-[400px] flex items-center justify-center"
+                  className="rounded-lg md:border bg-white p-4 md:p-8 min-h-[300px] md:min-h-[400px] flex items-center justify-center"
                 >
                   <FancyTestimonialsSlider
                     testimonials={testimonials}
@@ -279,9 +280,9 @@ export default function InteractiveTestimonials() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-4"
+                  className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-3 md:p-4"
                 >
-                  <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
+                  <pre className="text-[0.65rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
                     <code className="whitespace-pre-wrap">
                       {codeExamples[0].code}
                     </code>
@@ -295,43 +296,49 @@ export default function InteractiveTestimonials() {
         {/* Usage Section */}
         {codeExamples.map((example, index) => (
           <section key={index}>
-            <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
+            <h2 className="text-lg md:text-xl font-medium flex items-center gap-2 mb-3 md:mb-4">
               <span className="text-muted-foreground dark:text-white">
                 {index + 3}:
               </span>
-              {example.description}
+              <span className="text-sm md:text-base">
+                {example.description}
+              </span>
             </h2>
 
-            <p className="mb-6 text-gray-700 dark:text-white">
+            <p className="mb-4 md:mb-6 text-gray-700 dark:text-white text-xs md:text-sm">
               Import and use the FancyTestimonialsSlider component in your
               project.
             </p>
 
             <Tabs defaultValue="preview" className="w-full">
-              <TabsList className="">
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
+              <TabsList className="w-full md:w-auto flex space-x-1">
+                <TabsTrigger value="preview" className="flex-1 text-sm">
+                  Preview
+                </TabsTrigger>
+                <TabsTrigger value="code" className="flex-1 text-sm">
+                  Code
+                </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="preview" className="mt-4">
+              <TabsContent value="preview" className="mt-3 md:mt-4">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg md:border bg-white md:p-8 min-h-[400px] flex items-center justify-center"
+                  className="rounded-lg md:border bg-white p-4 md:p-8 min-h-[300px] md:min-h-[400px] flex items-center justify-center"
                 >
                   {example.preview}
                 </motion.div>
               </TabsContent>
 
-              <TabsContent value="code" className="mt-4">
+              <TabsContent value="code" className="mt-3 md:mt-4">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-4"
+                  className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-3 md:p-4"
                 >
-                  <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
+                  <pre className="text-[0.65rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
                     <code className="whitespace-pre-wrap">{example.code}</code>
                   </pre>
                 </motion.div>
@@ -342,127 +349,127 @@ export default function InteractiveTestimonials() {
 
         {/* Props Section */}
         <section>
-          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
+          <h2 className="text-lg md:text-xl font-medium flex items-center gap-2 mb-3 md:mb-4">
             <span className="text-muted-foreground dark:text-white">6:</span>
             Props Reference
           </h2>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto -mx-4 px-4">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-2 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Prop
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-2 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-2 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Default
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-2 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Description
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     testimonials
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     array
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     required
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Array of testimonial objects with img, quote, name, and role
                     properties
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     colorVariant
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     string
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     'purple'
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Color theme: 'purple', 'blue', 'green', 'amber', 'red',
                     'gray', 'black', or custom hex color
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     animationPreset
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     string
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     'default'
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Animation style: 'default', 'fade', 'slide', 'zoom'
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     size
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     string
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     'md'
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Size of the slider: 'sm', 'md', 'lg'
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     autorotate
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     boolean
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     true
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Whether testimonials should automatically rotate
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     autorotateTiming
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     number
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     7000
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Time in milliseconds between testimonial transitions
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                     className
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     string
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     undefined
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                  <td className="px-2 md:px-6 py-2 md:py-4 text-xs md:text-sm text-gray-500 dark:text-gray-300">
                     Additional CSS classes to apply to the component
                   </td>
                 </tr>
@@ -473,13 +480,13 @@ export default function InteractiveTestimonials() {
 
         {/* Testimonial Item Structure */}
         <section>
-          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
+          <h2 className="text-lg md:text-xl font-medium flex items-center gap-2 mb-3 md:mb-4">
             <span className="text-muted-foreground dark:text-white">7:</span>
             Testimonial Item Structure
           </h2>
 
-          <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
-            <pre>
+          <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-3 md:p-4 font-mono text-xs md:text-sm text-gray-800 dark:text-white overflow-x-auto">
+            <pre className="text-xs md:text-sm">
               {`{
   img: string,    // URL to the testimonial author's image
   quote: string,  // The testimonial text content
