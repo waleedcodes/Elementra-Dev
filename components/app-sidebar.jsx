@@ -83,6 +83,11 @@ const navigationData = {
           description: "Flexible card layouts",
         },
         {
+          title: "Fancy Testimonial Sliders",
+          url: "/docs/Components/Fancy-Testimonials-Slider",
+          description: "Fancy Testimonial Sliders",
+        },
+        {
           title: "Modal",
           url: "/docs/Components/Modal",
           description: "Popup dialog components",
@@ -257,7 +262,10 @@ export function AppSidebar({ ...props }) {
                               transition-all duration-200
                             `}
                           >
-                            <Link href={item.url} className="flex flex-col items-center justify-center">
+                            <Link
+                              href={item.url}
+                              className="flex flex-col items-center justify-center"
+                            >
                               <span className="font-normal text-md">
                                 {item.title}
                               </span>
