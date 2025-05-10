@@ -109,6 +109,12 @@ const navigationData = {
             "An interactive scratch card component that reveals content when scratched",
         },
         {
+          title: "Signature",
+          url: "/docs/Components/Signature",
+          description:
+            "A component for capturing and displaying electronic signatures",
+        },
+        {
           title: "Select",
           url: "/docs/Components/Select",
           description: "Toggle Select components",
