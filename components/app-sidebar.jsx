@@ -83,7 +83,7 @@ const navigationData = {
           description: "Flexible card layouts",
         },
         {
-          title: "Fancy Testimonial Sliders",
+          title: "Fancy Testimonial",
           url: "/docs/Components/Fancy-Testimonials-Slider",
           description: "Fancy Testimonial Sliders",
         },
