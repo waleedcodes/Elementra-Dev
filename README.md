@@ -1,113 +1,215 @@
-# Elementra UI
+# 🚀 Elementra UI
 
-Your Building Blocks for Modern UIs
-
-[![npm version](https://img.shields.io/npm/v/elementra-ui.svg)](https://www.npmjs.com/package/elementra-ui)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/npm/dm/elementra-ui.svg)](https://www.npmjs.com/package/elementra-ui)
-
+<div align="center">
+  <h3>Your Building Blocks for Modern UIs</h3>
+  <p>
+    <a href="https://www.npmjs.com/package/elementra-ui">
+      <img src="https://img.shields.io/npm/v/elementra-ui.svg" alt="npm version" />
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" />
+    </a>
+    <a href="https://www.npmjs.com/package/elementra-ui">
+      <img src="https://img.shields.io/npm/dm/elementra-ui.svg" alt="Downloads" />
+    </a>
+  </p>
+  <p>
+    <a href="https://elementra-ui.vercel.app/docs/">Documentation</a> •
+    <a href="https://github.com/elementra-ui/discussions">Discussions</a> •
+    <a href="https://youtube.com/@waleedcodes">YouTube</a> •
+    <a href="https://twitter.com/waleedcodes">Twitter</a>
+  </p>
 </div>
 
-## Overview
+---
 
-Elementra UI is a modern, reusable component library designed to simplify your workflow and accelerate the development of stunning, accessible, and responsive user interfaces. Built with **React.js**, **Next.js**, **Tailwind CSS**, and **Framer Motion**, Elementra empowers developers to craft beautiful UIs with ease.
+## ✨ Overview
 
-## Features 🚀
+**Elementra UI** is a modern, reusable component library for React, Next.js, and beyond. Build stunning, accessible, and responsive UIs faster than ever—powered by **Tailwind CSS** and **Framer Motion**.
 
-- **Customizable Components**: Tailor components to fit your brand and design system effortlessly
-- **Theming Support**: Light, dark, and custom themes out-of-the-box
-- **Built-in Animations**: Smooth, high-performance animations powered by Framer Motion
-- **Accessibility First**: Designed to meet modern accessibility standards
-- **Lightweight & Performant**: Minimal dependencies, maximum efficiency
+---
 
-## Installation 📦
+## 🎁 Features
 
-Install Elementra UI using your preferred package manager:
+- 🎨 **Modern Design** — Beautiful, consistent, and themeable components
+- 📱 **Responsive** — Works seamlessly across all devices
+- ♿ **Accessible** — WAI-ARIA standards for everyone
+- 🎭 **Animated** — Smooth transitions with Framer Motion
+- ⚡ **Easy Integration** — Plug-and-play with React/Next.js
+- 🛠️ **Customizable** — Tailwind CSS for effortless theming
+
+---
+
+## 🧱 Available Components
+
+| Component                        | Description                   |
+| -------------------------------- | ----------------------------- |
+| 🔘 **Button**                    | Versatile button styles       |
+| 🎯 **Alert**                     | Informative alert banners     |
+| 🏷️ **Badge**                     | Status and label badges       |
+| 💳 **Card**                      | Flexible content containers   |
+| 🖼️ **Modal**                     | Accessible modal dialogs      |
+| 📊 **Progress**                  | Progress indicators           |
+| 📝 **Select**                    | Custom select dropdowns       |
+| 🔄 **Switch**                    | Toggle switches               |
+| 📑 **Tabs**                      | Tabbed navigation             |
+| 🍞 **Toast**                     | Toast notifications           |
+| 🌟 **Fancy Testimonials Slider** | Animated testimonial carousel |
+| ✍️ **React Signature**           | Signature pad input           |
+| 🪄 **Scratch to Reveal**         | Scratch-off effect component  |
+| ⌨️ **Input**                     | Text/password/email inputs    |
+| ☰ **Dropdown Menu**              | Context and action menus      |
+| 💬 **Tooltip**                   | Hover/focus hints             |
+
+> ...and more coming soon!
+
+---
+
+## 📦 Installation
 
 ```bash
-# Using npm
+# With npm
 npm install elementra-ui
 
-# Using yarn
-yarn add elementra-ui
-
-# Using pnpm
-pnpm add elementra-ui
+# Or from GitHub Packages
+npm install @waleedcodes/elementra-ui
 ```
 
-```bash
-# Using npx
-npx elementra-ui add
-```
+---
 
-## Required Dependencies 📦
+## ⚡ Quick Start
 
-Install the following utilities that are required for Elementra UI:
+1. **Install peer dependencies:**
 
-```bash
-# Using npm
-npm install clsx tailwind-merge
-```
+   ```bash
+   npm install clsx tailwind-merge
+   ```
 
-Select components using the up/down arrow keys. Press spacebar to select multiple components, then press enter to add them to your src folder.
+2. **Add components using the CLI:**
 
-## Quick Start 💻
+   ```bash
+   npx elementra-ui add
+   ```
+
+   _Use arrow keys to select, spacebar to multi-select, and enter to confirm._
+
+3. **Import and use in your app:**
+
+   ```jsx
+   import { Button } from "@/components/ui/button";
+
+   export default function App() {
+     return <Button variant="default">Click me</Button>;
+   }
+   ```
+
+---
+
+## 📎 Usage Examples
 
 ```jsx
-import { Button } from "@/src/components/ui/button";"
+// Input
+import { Input } from "@/components/ui/input";
 
-export default function Buttons() {
+export function ExampleInput() {
   return (
-    <div>
-      <Button variant="default">Primary Button</Button>
-      <Button variant="outline">Secondary Button</Button>
-      <Button variant="ghost">Outline Button</Button>
+    <div className="space-y-3">
+      <Input placeholder="Your name" size="md" />
+      <Input type="password" placeholder="Password" intent="error" />
+      <Input
+        placeholder="With counter"
+        maxLength={20}
+        value="Hello"
+        onChange={() => {}}
+      />
     </div>
-  )
+  );
 }
 ```
 
-## Component Library 🛠️
+```jsx
+// Dropdown Menu
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
 
-### Core Components
+export function ExampleDropdown() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuItem onSelect={() => alert("Profile")}>
+          Profile
+        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => alert("Settings")}>
+          Settings
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem disabled>Disabled</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
 
-- **Buttons**
+```jsx
+// Tooltip
+import { Tooltip } from "@/components/ui/tooltip";
 
-  - Primary,  secondary,  outlined, ghost variants
-  - sizes (lg, md, sm)
+export function ExampleTooltip() {
+  return (
+    <Tooltip content="Save changes" side="top">
+      <button className="rounded-md border bg-background px-3 py-2 text-sm">
+        Hover me
+      </button>
+    </Tooltip>
+  );
+}
+```
 
-- **Cards**
-  - Flexible layouts
-  - Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
+---
 
-## Documentation 📖
+## 🎨 Tailwind CSS Setup
 
-Visit our [documentation website](https://elementra-ui.vercel.app/docs/) for:
+Add to your `tailwind.config.js`:
 
-- Detailed API references
+```js
+module.exports = {
+  content: ["./src/components/**/*.{js,jsx}"],
+  plugins: [require("tailwindcss-animate")],
+};
+```
+
+---
+
+## 📚 Documentation
+
+Explore the [full documentation](https://elementra-ui.vercel.app/docs/) for:
+
+- Component APIs & props
 - Interactive examples
-- Theme customization guides
+- Theming & customization
 - Best practices
 - Migration guides
 
-## Contributing 🤝
+---
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+## 🤝 Community & Support
 
-1. Setting up the development environment
-2. Submitting pull requests
-3. Code style guidelines
-4. Bug reporting process
-
-## Community & Support 💬
-
-- 📫 [GitHub Discussions](https://github.com/elementra-ui/discussions)
+- 💬 [GitHub Discussions](https://github.com/elementra-ui/discussions)
 - 📺 [YouTube Channel](https://youtube.com/@waleedcodes)
+- 🐦 [Twitter](https://twitter.com/waleedcodes)
+- 📝 [Blog](https://elementra-ui.vercel.app/blog)
 
-## License 📄
-
-Elementra is open-source software licensed under the [MIT License](LICENSE).
+---
 
 <div align="center">
-  Made with ❤️ by @waleedcodes
+  Made with ❤️ by <a href="https://github.com/waleedcodes">@waleedcodes</a> & contributors.<br/>
+  © 2025 Elementra UI. All rights reserved.
 </div>
