@@ -203,7 +203,7 @@ export function AppSidebar({ ...props }) {
                     Elementra UI
                   </h1>
                   <span className="text-xs text-gray-500 dark:text-gray-400">
-                    v0.1.5 - Documentation
+                    v0.1.7 - Documentation
                   </span>
                 </div>
               </Link>
