@@ -309,10 +309,7 @@ export default {
                   <div className="p-4 font-mono text-sm text-white">
                     <div className="flex items-center gap-2">
                       <span className="text-green-400">$</span>
-                      <span>
-                        npm install tailwindcss-animate clsx tailwind-merge
-                        lucide-react
-                      </span>
+                      <span>npm install tailwindcss @tailwindcss/vite</span>
                     </div>
                   </div>
                 </div>
@@ -330,7 +327,7 @@ export default {
                   }`}
                   onClick={() =>
                     handleCopy(
-                      "npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react",
+                      "npm install tailwindcss @tailwindcss/vite",
                       "cmd2"
                     )
                   }
