@@ -45,6 +45,13 @@ export default function Buttons() {
     </div>
   )
 }`;
+  const codeExample3 = `import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+  ],
+})`;
 
   const tailwindConfig = `/** @type {import('tailwindcss').Config} */
 export default {
@@ -309,13 +316,12 @@ export default {
                   <div className="p-4 font-mono text-sm text-white">
                     <div className="flex items-center gap-2">
                       <span className="text-green-400">$</span>
-                      <span>npm install tailwindcss @tailwindcss/vite</span>
+                      <span>{codeExample3}</span>
                     </div>
                   </div>
                 </div>
                 <p className="my-3 text-gray-700 dark:text-gray-300 text-sm">
-                  These utilities are required dependencies for styling and
-                  functionality of components.
+                  Add the @tailwindcss/vite plugin to your Vite configuration.
                 </p>
                 <Button
                   size="sm"
@@ -345,21 +351,17 @@ export default {
                 <div className="bg-gray-900 rounded-lg overflow-hidden">
                   <div className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-gray-400 text-sm">
                     <Terminal className="h-4 w-4" />
-                    <span>Terminal</span>
+                    <span>CSS</span>
                   </div>
                   <div className="p-4 font-mono text-sm text-white">
                     <div className="flex items-center gap-2">
                       <span className="text-green-400">$</span>
-                      <span>
-                        npm install -D tailwindcss postcss autoprefixer
-                      </span>
+                      <span>@import "tailwindcss";</span>
                     </div>
                   </div>
                 </div>
                 <p className="my-3 text-gray-700 dark:text-gray-300 text-sm">
-                  This command installs Tailwind CSS and its peer dependencies.
-                  After installation, run the following command to generate the
-                  configuration files:
+                  Add an @import to your CSS file that imports Tailwind CSS.
                 </p>
                 <Button
                   size="sm"
@@ -371,7 +373,7 @@ export default {
                   }`}
                   onClick={() =>
                     handleCopy(
-                      "npm install -D tailwindcss postcss autoprefixer",
+                      `@import "tailwindcss";`,
                       "cmd3"
                     )
                   }
