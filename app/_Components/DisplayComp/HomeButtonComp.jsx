@@ -35,7 +35,7 @@ const HomeButtonComp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#0f172a] to-[#334155] py-20">
+    <div className="min-h-screen bg-gradient-to-r from-primary to-primary/80 py-20">
       <motion.div
         className="container mx-auto p-4 sm:p-8"
         initial="hidden"
@@ -51,13 +51,13 @@ const HomeButtonComp = () => {
               <TabsList className="grid w-full sm:w-[200px] grid-cols-2 bg-gray-800">
                 <TabsTrigger
                   value="preview"
-                  className="font-medium data-[state=active]:bg-purple-500 data-[state=active]:text-white"
+                  className="font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                 >
                   Preview
                 </TabsTrigger>
                 <TabsTrigger
                   value="code"
-                  className="font-medium data-[state=active]:bg-purple-500 data-[state=active]:text-white"
+                  className="font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                 >
                   Code
                 </TabsTrigger>
@@ -148,7 +148,7 @@ const HomeButtonComp = () => {
                   className="flex items-start space-x-4"
                   variants={itemVariants}
                 >
-                  <div className="w-2 h-2 mt-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-500" />
+                  <div className="w-2 h-2 mt-2 rounded-full bg-gradient-to-r from-primary to-primary/80" />
                   <p className="text-gray-300 text-sm md:text-[1rem]">{text}</p>
                 </motion.div>
               ))}

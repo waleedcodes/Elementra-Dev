@@ -3,7 +3,7 @@ import NewHomePage from "./_Components/NewHomePage";
 export default function Home() {
   return (
     <>
-      <div className="bg-gradient-to-r from-[#0f172a] to-[#334155]">
+      <div className="bg-gradient-to-r from-primary to-primary/80">
         <NewHomePage />
       </div>
     </>

@@ -17,7 +17,7 @@ export function HomeComp() {
     <>
       <Navbar />
       <BackgroundBeamsWithCollision>
-        <div className="w-full bg-gradient-to-r from-[#0f172a] to-[#334155] flex flex-col items-center justify-center overflow-hidden md:pb-20">
+        <div className="w-full bg-gradient-to-r from-primary to-primary/80 flex flex-col items-center justify-center overflow-hidden md:pb-20">
           {/* Main container with responsive padding */}
           <div className="flex flex-col overflow-hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ContainerScroll
@@ -184,7 +184,7 @@ export function HomeComp() {
               <Link href="/docs">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg font-medium rounded-full shadow-[0_0_20px_rgba(149,76,233,0.5)] hover:shadow-[0_0_30px_rgba(149,76,233,0.7)] transition-all duration-300 hover:-translate-y-1 group"
+                  className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground px-8 py-6 text-lg font-medium rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)] hover:shadow-[0_0_30px_rgba(99,102,241,0.7)] transition-all duration-300 hover:-translate-y-1 group"
                 >
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
