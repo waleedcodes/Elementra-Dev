@@ -70,13 +70,13 @@ export default function HomePage() {
             maxSize={1.4}
             particleDensity={100}
             className="w-full h-full"
-            particleColor={isDarkMode ? "#FFFFFF" : "#6D28D9"}
+            particleColor={isDarkMode ? "#FFFFFF" : "hsl(var(--primary))"}
           />
         </div>
         <div className="relative z-10 text-center">
           <div
             className="px-4 py-1 rounded-full w-fit mx-auto mb-6 
-            bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-500"
+            bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary"
           >
             <p className="text-sm">
               Build Awesome React Reusable UI Components
@@ -84,7 +84,7 @@ export default function HomePage() {
           </div>
           <h1
             className="text-5xl md:text-7xl font-bold text-center mb-6
-            bg-clip-text text-transparent bg-gradient-to-b from-purple-700 to-blue-700 
+            bg-clip-text text-transparent bg-gradient-to-b from-primary to-primary/80 
             dark:from-neutral-50 dark:to-neutral-400"
           >
             Elementra UI
@@ -96,7 +96,7 @@ export default function HomePage() {
             Elementra UI is a collection of{" "}
             <span
               className="px-2 py-1 rounded
-              bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300"
+              bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary"
             >
               reusable ui
             </span>{" "}
@@ -110,7 +110,7 @@ export default function HomePage() {
             <Link href="/docs">
               <Button
                 size="lg"
-                className="bg-purple-700 hover:bg-purple-800 text-white"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 Get Started
                 <Zap className="ml-2 h-4 w-4" />
@@ -120,7 +120,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-purple-300 text-purple-700 hover:bg-purple-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="border-primary/30 text-primary hover:bg-primary/5 dark:border-primary/50 dark:text-primary dark:hover:bg-primary/10"
               >
                 Browse Components
               </Button>
@@ -132,12 +132,12 @@ export default function HomePage() {
       {/* Features Section */}
       <section
         className="py-24 
-        bg-gradient-to-b from-purple-50 to-white dark:from-black dark:to-neutral-950"
+        bg-gradient-to-b from-primary/5 to-background dark:from-black dark:to-neutral-950"
       >
         <div className="container mx-auto px-4">
           <h2
             className="text-4xl font-bold text-center mb-16
-            text-purple-900 dark:text-white"
+            text-primary dark:text-white"
           >
             Why Choose Elementra UI?
           </h2>
@@ -181,7 +181,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <h2
             className="text-4xl font-bold text-center mb-16 
-            text-purple-900 dark:text-white"
+            text-primary dark:text-white"
           >
             Featured Components
           </h2>
@@ -223,12 +223,12 @@ export default function HomePage() {
       {/* CTA Section */}
       <section
         className="py-24 
-        bg-gradient-to-b from-white to-purple-50 dark:from-neutral-950 dark:to-black"
+        bg-gradient-to-b from-background to-primary/5 dark:from-neutral-950 dark:to-black"
       >
         <div className="container mx-auto px-4 text-center">
           <h2
             className="text-4xl font-bold mb-6 
-            text-purple-900 dark:text-white"
+            text-primary dark:text-white"
           >
             Ready to Build Something Amazing?
           </h2>
@@ -243,7 +243,7 @@ export default function HomePage() {
             <Link href="/docs">
               <Button
                 size="lg"
-                className="bg-purple-700 hover:bg-purple-800 text-white"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 Get Started Now
                 <Zap className="ml-2 h-4 w-4" />
@@ -253,7 +253,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-purple-300 text-purple-700 hover:bg-purple-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="border-primary/30 text-primary hover:bg-primary/5 dark:border-primary/50 dark:text-primary dark:hover:bg-primary/10"
               >
                 View on GitHub
               </Button>
@@ -267,7 +267,7 @@ export default function HomePage() {
         <Button
           onClick={toggleTheme}
           size="icon"
-          className="rounded-full p-3 bg-white hover:bg-gray-100 text-purple-700 shadow-lg dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-yellow-300"
+          className="rounded-full p-3 bg-background hover:bg-muted text-primary shadow-lg dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-yellow-300"
         >
           {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
         </Button>
@@ -280,18 +280,18 @@ function FeatureCard({ icon, title, description }) {
   return (
     <Card
       className="p-6 transition-all duration-300
-      bg-white border-gray-200 hover:border-purple-300 shadow-sm hover:shadow-md
-      dark:bg-neutral-900/50 dark:border-neutral-800 dark:hover:border-purple-500/50"
+      bg-card border-border hover:border-primary/30 shadow-sm hover:shadow-md
+      dark:bg-neutral-900/50 dark:border-neutral-800 dark:hover:border-primary/50"
     >
       <div
         className="h-12 w-12 rounded-lg flex items-center justify-center mb-4
-        bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-500"
+        bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary"
       >
         {icon}
       </div>
       <h3
         className="text-xl font-semibold mb-2
-        text-purple-900 dark:text-white"
+        text-primary dark:text-white"
       >
         {title}
       </h3>
@@ -305,20 +305,20 @@ function ComponentPreviewCard({ title, description, href }) {
     <Link href={href}>
       <Card
         className="p-6 cursor-pointer group transition-all duration-300
-        bg-white border-gray-200 hover:border-purple-300 shadow-sm hover:shadow-md
-        dark:bg-neutral-900/50 dark:border-neutral-800 dark:hover:border-purple-500/50"
+        bg-card border-border hover:border-primary/30 shadow-sm hover:shadow-md
+        dark:bg-neutral-900/50 dark:border-neutral-800 dark:hover:border-primary/50"
       >
         <h3
           className="text-xl font-semibold mb-2 transition-colors
-          text-purple-900 group-hover:text-purple-700 
-          dark:text-white dark:group-hover:text-purple-400"
+          text-primary group-hover:text-primary/80 
+          dark:text-white dark:group-hover:text-primary"
         >
           {title}
         </h3>
         <p className="mb-4 text-gray-600 dark:text-neutral-400">
           {description}
         </p>
-        <div className="flex items-center text-sm text-purple-700 dark:text-purple-500">
+        <div className="flex items-center text-sm text-primary dark:text-primary">
           <span>Learn more</span>
           <svg
             className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"

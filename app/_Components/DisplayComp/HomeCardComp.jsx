@@ -43,7 +43,7 @@ const HomeCardComp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#0f172a] to-[#334155] py-20">
+    <div className="min-h-screen bg-gradient-to-r from-primary to-primary/80 py-20">
       <motion.div
         className="container mx-auto p-4 sm:p-8"
         initial="hidden"
@@ -59,13 +59,13 @@ const HomeCardComp = () => {
               <TabsList className="grid w-full sm:w-[200px] grid-cols-2 bg-gray-800">
                 <TabsTrigger
                   value="preview"
-                  className="font-medium data-[state=active]:bg-purple-500 data-[state=active]:text-white"
+                  className="font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                 >
                   Preview
                 </TabsTrigger>
                 <TabsTrigger
                   value="code"
-                  className="font-medium data-[state=active]:bg-purple-500 data-[state=active]:text-white"
+                  className="font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                 >
                   Code
                 </TabsTrigger>
@@ -112,7 +112,7 @@ const HomeCardComp = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                       >
-                        <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-400 to-purple-600 bg-clip-text text-transparent">
+                        <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                           Energy Drink
                         </CardTitle>
                       </motion.div>
@@ -132,7 +132,7 @@ const HomeCardComp = () => {
                           className="w-full h-60 sm:h-80 object-cover rounded-lg"
                         />
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-t from-pink-400/50 to-transparent"
+                          className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"
                           initial={{ opacity: 0 }}
                           whileHover={{ opacity: 1 }}
                           transition={{ duration: 0.3 }}
@@ -141,7 +141,7 @@ const HomeCardComp = () => {
                     </CardContent>
                     <CardFooter className="flex justify-between items-center p-4 sm:p-6">
                       <motion.span
-                        className="font-bold text-2xl sm:text-3xl bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent"
+                        className="font-bold text-2xl sm:text-3xl bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"
                         whileHover={{ scale: 1.1 }}
                       >
                         $2.99
@@ -150,7 +150,7 @@ const HomeCardComp = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Button className="bg-gradient-to-r from-pink-400 to-purple-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-4 sm:px-6">
+                        <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold px-4 sm:px-6">
                           Buy Now
                         </Button>
                       </motion.div>
@@ -262,7 +262,7 @@ const HomeCardComp = () => {
                   className="flex items-start space-x-4"
                   variants={itemVariants}
                 >
-                  <div className="w-2 h-2 mt-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-500" />
+                  <div className="w-2 h-2 mt-2 rounded-full bg-gradient-to-r from-primary to-primary/80" />
                   <p className="text-gray-300 text-sm md:text-[1rem]">{text}</p>
                 </motion.div>
               ))}
