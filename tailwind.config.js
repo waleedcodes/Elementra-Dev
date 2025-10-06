@@ -1,6 +1,8 @@
+const { flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	darkMode: ["class"],
+    darkMode: ["class"],
 	content: [
 	  "./pages/**/*.{js,ts,jsx,tsx,mdx}",
 	  "./components/**/*.{js,ts,jsx,tsx,mdx}",
