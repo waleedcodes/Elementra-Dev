@@ -12,8 +12,8 @@ import {
 
 const GradientBackground = () => (
   <div className="absolute inset-0 overflow-hidden z-0">
-    <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-r from-blue-200/40 via-purple-200/40 to-pink-200/20 animate-slow-spin origin-center blur-3xl"></div>
-    <div className="absolute -bottom-1/2 -right-1/2 w-[200%] h-[200%] bg-gradient-to-l from-green-200/40 via-teal-200/20 to-cyan-200/20 animate-slow-spin-reverse origin-center blur-3xl"></div>
+    <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-r from-primary/20 via-primary/30 to-primary/10 animate-slow-spin origin-center blur-3xl"></div>
+    <div className="absolute -bottom-1/2 -right-1/2 w-[200%] h-[200%] bg-gradient-to-l from-primary/20 via-primary/10 to-primary/15 animate-slow-spin-reverse origin-center blur-3xl"></div>
     <div className="absolute inset-0 bg-white/90 backdrop-blur-sm"></div>
   </div>
 );
@@ -34,7 +34,7 @@ const FloatingParticles = () => {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 rounded-full bg-blue-500/20"
+          className="absolute w-2 h-2 rounded-full bg-primary/20"
           initial={{
             x: Math.random() * dimensions.width,
             y: Math.random() * dimensions.height,
@@ -116,14 +116,14 @@ const Introduction = () => {
               transition={{ duration: 0.5 }}
               className="inline-block mb-4"
             >
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-sm font-medium">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Next-Gen UI Library
               </span>
             </motion.div>
 
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 text-transparent bg-clip-text"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 text-transparent bg-clip-text"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
@@ -146,7 +146,7 @@ const Introduction = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-full text-lg font-medium flex items-center justify-center space-x-2 shadow-lg hover:shadow-purple-500/30 transition-all"
+                className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-8 py-3 rounded-full text-lg font-medium flex items-center justify-center space-x-2 shadow-lg hover:shadow-primary/30 transition-all"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-5 h-5" />
@@ -155,7 +155,7 @@ const Introduction = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gray-100 text-gray-800 px-8 py-3 rounded-full text-lg font-medium border border-gray-200 hover:bg-gray-200 transition-all"
+                className="bg-muted text-muted-foreground px-8 py-3 rounded-full text-lg font-medium border border-border hover:bg-muted/80 transition-all"
               >
                 <span>View Components</span>
               </motion.button>
@@ -170,8 +170,8 @@ const Introduction = () => {
             variants={itemVariants}
             className="p-4 sm:p-8 lg:p-20 xl:py-40"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-gray-800">
-              Why Choose <span className="text-blue-600">Elementra UI</span>?
+            <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-foreground">
+              Why Choose <span className="text-primary">Elementra UI</span>?
             </h2>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -179,10 +179,10 @@ const Introduction = () => {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-4 flex items-center space-x-3 shadow-sm"
+                  className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4 flex items-center space-x-3 shadow-sm"
                 >
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-gray-700">{benefit}</span>
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">{benefit}</span>
                 </motion.div>
               ))}
             </div>
@@ -198,31 +198,31 @@ const Introduction = () => {
                 icon: Package,
                 value: "50+",
                 label: "Components",
-                color: "text-blue-600",
+                color: "text-primary",
               },
               {
                 icon: Star,
                 value: "4.9/5",
                 label: "User Rating",
-                color: "text-yellow-600",
+                color: "text-primary",
               },
               {
                 icon: Cpu,
                 value: "12kb",
                 label: "Avg. Bundle Size",
-                color: "text-green-600",
+                color: "text-primary",
               },
             ].map((stat, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
-                className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-6 text-center shadow-sm"
+                className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-6 text-center shadow-sm"
               >
                 <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
-                <div className="text-4xl font-bold mb-1 text-gray-800">
+                <div className="text-4xl font-bold mb-1 text-foreground">
                   {stat.value}
                 </div>
-                <div className="text-gray-500">{stat.label}</div>
+                <div className="text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -230,19 +230,19 @@ const Introduction = () => {
           {/* Call to Action */}
           <motion.div
             variants={itemVariants}
-            className="text-center bg-gradient-to-r from-blue-50 to-purple-50 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-gray-200 shadow-lg"
+            className="text-center bg-gradient-to-r from-primary/5 to-primary/10 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-border shadow-lg"
           >
-            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-gray-800">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-foreground">
               Ready to Transform Your UI?
             </h3>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
               Join thousands of developers building beautiful interfaces with
               Elementra UI.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-4 rounded-full text-lg font-bold flex items-center justify-center mx-auto space-x-3 shadow-xl hover:shadow-purple-500/30 transition-all"
+              className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-10 py-4 rounded-full text-lg font-bold flex items-center justify-center mx-auto space-x-3 shadow-xl hover:shadow-primary/30 transition-all"
             >
               <span>Get Started Today</span>
               <ArrowRight className="w-6 h-6 ml-2" />
