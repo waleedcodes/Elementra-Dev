@@ -65,9 +65,12 @@ export default {
   plugins: [],
 }`;
 
-  const globalCSS = `@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  const globalCSS = `@import "tailwindcss";
+ 
+@theme {
+  --radius-lg: 0.75rem;
+  --brand-500: 34 197 94;
+}
  
 @layer base {
   :root {
@@ -321,7 +324,7 @@ export default {
                   </div>
                 </div>
                 <p className="my-3 text-gray-700 dark:text-gray-300 text-sm">
-                  Add the @tailwindcss/vite plugin to your Vite configuration.
+                  Add the @tailwindcss/vite plugin to your Vite configuration for Tailwind CSS v4.0.
                 </p>
                 <Button
                   size="sm"
@@ -333,7 +336,7 @@ export default {
                   }`}
                   onClick={() =>
                     handleCopy(
-                      "npm install tailwindcss @tailwindcss/vite",
+                      "npm install -D tailwindcss @tailwindcss/vite",
                       "cmd2"
                     )
                   }
@@ -361,7 +364,7 @@ export default {
                   </div>
                 </div>
                 <p className="my-3 text-gray-700 dark:text-gray-300 text-sm">
-                  Add an @import to your CSS file that imports Tailwind CSS.
+                  Add a single @import to your CSS file that imports Tailwind CSS v4.0.
                 </p>
                 <Button
                   size="sm"
@@ -409,7 +412,7 @@ export default {
                   <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-md text-sm">
                     postcss.config.js
                   </code>{" "}
-                  files in your project.
+                  files in your project. Note: Tailwind CSS v4.0 supports CSS-first configuration using @theme directive.
                 </p>
                 <Button
                   size="sm"
@@ -450,10 +453,9 @@ export default {
               </motion.h2>
 
               <motion.div variants={itemVariants} className="mb-8">
-                <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 rounded-r-lg">
-                  <p className="text-yellow-800 dark:text-yellow-200 text-sm">
-                    Remember to configure your content paths correctly to
-                    include all your component files.
+                <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="text-blue-800 dark:text-blue-200 text-sm">
+                    <strong>Tailwind CSS v4.0:</strong> Now supports CSS-first configuration using @theme directive for more intuitive customization.
                   </p>
                 </div>
               </motion.div>
@@ -493,10 +495,10 @@ export default {
                 </div>
               </motion.div>
 
-              <motion.div variants={itemVariants}>
+              <motion.div variants={itemVariants} className="mb-8">
                 <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
                   <Code className="h-5 w-5 text-indigo-500" />
-                  Add the Tailwind directives to your CSS
+                  Add Tailwind CSS v4.0 to your CSS
                 </h3>
                 <div className="relative mb-6">
                   <div className="bg-gray-900 rounded-lg p-4 overflow-hidden">
@@ -505,16 +507,11 @@ export default {
                       <span>index.css</span>
                     </div>
                     <pre className="font-mono text-sm text-white">
-                      @tailwind base; @tailwind components; @tailwind utilities;
+                      @import "tailwindcss";
                     </pre>
                   </div>
                   <p className="my-3 text-gray-700 dark:text-gray-300 text-sm">
-                    If you are setting up a project with Vite, then add the
-                    @tailwind directives for each of Tailwind's layers to your
-                    <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-md text-sm mx-1">
-                      index.css
-                    </code>
-                    file.
+                    Tailwind CSS v4.0 uses a simplified single import instead of multiple @tailwind directives.
                   </p>
                   <Button
                     size="sm"
@@ -526,9 +523,7 @@ export default {
                     }`}
                     onClick={() =>
                       handleCopy(
-                        `@tailwind base;
-@tailwind components;
-@tailwind utilities;`,
+                        `@import "tailwindcss";`,
                         "twcss"
                       )
                     }
@@ -539,6 +534,59 @@ export default {
                       <Copy className="h-3 w-3" />
                     )}
                     {copied["twcss"] ? "Copied" : "Copy"}
+                  </Button>
+                </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <Code className="h-5 w-5 text-indigo-500" />
+                  CSS-first Configuration (Optional)
+                </h3>
+                <div className="relative mb-6">
+                  <div className="bg-gray-900 rounded-lg p-4 overflow-hidden">
+                    <div className="flex items-center gap-2 px-2 py-1 mb-2 bg-gray-800/50 text-gray-400 text-xs w-fit rounded">
+                      <Code className="h-3 w-3" />
+                      <span>index.css</span>
+                    </div>
+                    <pre className="font-mono text-sm text-white">
+                      {`@import "tailwindcss";
+
+@theme {
+  --radius-lg: 0.75rem;
+  --brand-500: 34 197 94;
+}`}
+                    </pre>
+                  </div>
+                  <p className="my-3 text-gray-700 dark:text-gray-300 text-sm">
+                    Tailwind CSS v4.0 supports CSS-first configuration using the @theme directive for more intuitive customization.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant={copied["theme"] ? "default" : "outline"}
+                    className={`absolute top-4 right-3 h-8 flex items-center gap-1 ${
+                      copied["theme"]
+                        ? "bg-green-500 border-green-500 text-white"
+                        : "text-gray-400 border-gray-700"
+                    }`}
+                    onClick={() =>
+                      handleCopy(
+                        `@import "tailwindcss";
+
+@theme {
+  --radius-lg: 0.75rem;
+  --brand-500: 34 197 94;
+}`,
+                        "theme"
+                      )
+                    }
+                  >
+                    {copied["theme"] ? (
+                      <Check className="h-3 w-3" />
+                    ) : (
+                      <Copy className="h-3 w-3" />
+                    )}
+                    {copied["theme"] ? "Copied" : "Copy"}
                   </Button>
                 </div>
               </motion.div>
