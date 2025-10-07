@@ -83,9 +83,6 @@ const Introduction = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted))_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-
       <motion.div
         ref={ref}
         initial="hidden"
@@ -102,7 +99,7 @@ const Introduction = () => {
             className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-accent/10 border border-accent/20"
           >
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-accent-foreground">
+            <span className="text-sm font-medium text-accent-foreground dark:text-white">
               Production-Ready Component Library
             </span>
           </motion.div>
@@ -240,7 +237,6 @@ const Introduction = () => {
           variants={itemVariants}
           className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary/80 p-12 text-center"
         >
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
 
           <div className="relative">
             <h3 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
