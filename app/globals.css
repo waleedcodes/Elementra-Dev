@@ -46,6 +46,12 @@
     --sidebar-accent-foreground: 25 10% 15%;
     --sidebar-border: 30 40% 85%;
     --sidebar-ring: 24 94% 54%;
+    
+    /* Responsive Sidebar Widths */
+    --sidebar-width-mobile: 14rem;
+    --sidebar-width-tablet: 16rem;
+    --sidebar-width-laptop: 18rem;
+    --sidebar-width-desktop: 20rem;
   }
 
   .dark {
@@ -91,6 +97,12 @@
     --sidebar-accent-foreground: 32 100% 98%;
     --sidebar-border: 30 10% 25%;
     --sidebar-ring: 30 96% 60%;
+    
+    /* Responsive Sidebar Widths (same for dark mode) */
+    --sidebar-width-mobile: 14rem;
+    --sidebar-width-tablet: 16rem;
+    --sidebar-width-laptop: 18rem;
+    --sidebar-width-desktop: 20rem;
   }
 }
 
@@ -123,5 +135,28 @@
   
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground/50;
+  }
+
+  /* Sidebar responsive utilities */
+  .sidebar-responsive {
+    width: var(--sidebar-width-mobile);
+  }
+
+  @media (min-width: 640px) {
+    .sidebar-responsive {
+      width: var(--sidebar-width-tablet);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sidebar-responsive {
+      width: var(--sidebar-width-laptop);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .sidebar-responsive {
+      width: var(--sidebar-width-desktop);
+    }
   }
 }
