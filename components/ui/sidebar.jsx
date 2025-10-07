@@ -20,9 +20,11 @@ import {
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_WIDTH = "16rem"
-const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "3rem"
+const SIDEBAR_WIDTH = "20rem" // Desktop/Large screens (1200px+)
+const SIDEBAR_WIDTH_LAPTOP = "18rem" // Laptop screens (1024px-1199px)
+const SIDEBAR_WIDTH_TABLET = "16rem" // Tablet screens (768px-1023px)
+const SIDEBAR_WIDTH_MOBILE = "14rem" // Mobile screens (<768px)
+const SIDEBAR_WIDTH_ICON = "4rem" // Icon mode
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 const SidebarContext = React.createContext(null)
@@ -111,6 +113,9 @@ const SidebarProvider = React.forwardRef((
           style={
             {
               "--sidebar-width": SIDEBAR_WIDTH,
+              "--sidebar-width-laptop": SIDEBAR_WIDTH_LAPTOP,
+              "--sidebar-width-tablet": SIDEBAR_WIDTH_TABLET,
+              "--sidebar-width-mobile": SIDEBAR_WIDTH_MOBILE,
               "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
               ...style
             }
@@ -162,10 +167,13 @@ const Sidebar = React.forwardRef((
         <SheetContent
           data-sidebar="sidebar"
           data-mobile="true"
-          className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+          className="w-[--sidebar-width-mobile] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden sm:w-[--sidebar-width-tablet] md:w-[--sidebar-width-laptop] lg:w-[--sidebar-width]"
           style={
             {
-              "--sidebar-width": SIDEBAR_WIDTH_MOBILE
+              "--sidebar-width-mobile": SIDEBAR_WIDTH_MOBILE,
+              "--sidebar-width-tablet": SIDEBAR_WIDTH_TABLET,
+              "--sidebar-width-laptop": SIDEBAR_WIDTH_LAPTOP,
+              "--sidebar-width": SIDEBAR_WIDTH
             }
           }
           side={side}>
@@ -186,7 +194,9 @@ const Sidebar = React.forwardRef((
       {/* This is what handles the sidebar gap on desktop */}
       <div
         className={cn(
-          "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
+          "duration-200 relative h-svh transition-[width] ease-linear",
+          "w-[--sidebar-width-mobile] sm:w-[--sidebar-width-tablet] md:w-[--sidebar-width-laptop] lg:w-[--sidebar-width] xl:w-[--sidebar-width]",
+          "bg-transparent",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
           variant === "floating" || variant === "inset"
@@ -195,7 +205,8 @@ const Sidebar = React.forwardRef((
         )} />
       <div
         className={cn(
-          "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
+          "duration-200 fixed inset-y-0 z-10 hidden transition-[left,right,width] ease-linear md:flex",
+          "h-svh w-[--sidebar-width-mobile] sm:w-[--sidebar-width-tablet] md:w-[--sidebar-width-laptop] lg:w-[--sidebar-width] xl:w-[--sidebar-width]",
           side === "left"
             ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
