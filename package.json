@@ -1,12 +1,48 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "elementra-ui",
+  "version": "0.1.7",
+  "description": "Modern React component library with 50+ production-ready components. Built with Next.js, Tailwind CSS, and Framer Motion for creating beautiful, accessible UIs fast.",
+  "keywords": [
+    "react",
+    "nextjs", 
+    "components",
+    "ui",
+    "design-system",
+    "tailwindcss",
+    "framer-motion",
+    "typescript",
+    "accessibility",
+    "responsive",
+    "component-library",
+    "react-components",
+    "ui-components",
+    "frontend",
+    "web-development",
+    "modern-ui",
+    "dashboard-components",
+    "form-components"
+  ],
+  "homepage": "https://elementra-ui.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waleedcodes/Elementra-Dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/waleedcodes/Elementra-Dev/issues"
+  },
+  "author": {
+    "name": "Waleed Codes",
+    "url": "https://github.com/waleedcodes"
+  },
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
