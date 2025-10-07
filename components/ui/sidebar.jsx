@@ -20,10 +20,10 @@ import {
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_WIDTH = "20rem" // Desktop/Large screens (1200px+)
+const SIDEBAR_WIDTH = "22rem" // Desktop/Large screens (1200px+)
 const SIDEBAR_WIDTH_LAPTOP = "18rem" // Laptop screens (1024px-1199px)
 const SIDEBAR_WIDTH_TABLET = "16rem" // Tablet screens (768px-1023px)
-const SIDEBAR_WIDTH_MOBILE = "14rem" // Mobile screens (<768px)
+const SIDEBAR_WIDTH_MOBILE = "19rem" // Mobile screens (<768px)
 const SIDEBAR_WIDTH_ICON = "4rem" // Icon mode
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
