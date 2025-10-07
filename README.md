@@ -1,13 +1,17 @@
-# Elementra UI
+# 🎨 Elementra UI - Modern React Component Library
 
 <div align="center">
-  <h2>Production-Ready React Component Library</h2>
-  <p><em>Modern, accessible, and customizable UI components for React and Next.js applications</em></p>
+  <img src="./public/logo2.png" alt="Elementra UI Logo" width="120" height="120" />
   
-  <p>
-    <a href="https://www.npmjs.com/package/elementra-ui">
-      <img src="https://img.shields.io/npm/v/elementra-ui.svg" alt="npm version" />
-    </a>
+  <h3>Build Beautiful UIs Fast</h3>
+  <p>A comprehensive React component library with 50+ components for modern web applications</p>
+
+  [![NPM Version](https://img.shields.io/npm/v/elementra-ui?style=for-the-badge&color=F97316)](https://www.npmjs.com/package/elementra-ui)
+  [![Downloads](https://img.shields.io/npm/dm/elementra-ui?style=for-the-badge&color=FB923C)](https://www.npmjs.com/package/elementra-ui)
+  [![License](https://img.shields.io/github/license/waleedcodes/Elementra-Dev?style=for-the-badge&color=F97316)](./LICENSE)
+  [![GitHub Stars](https://img.shields.io/github/stars/waleedcodes/Elementra-Dev?style=for-the-badge&color=FB923C)](https://github.com/waleedcodes/Elementra-Dev)
+
+</div>
     <a href="https://opensource.org/licenses/MIT">
       <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License" />
     </a>
@@ -696,7 +700,7 @@ Special thanks to:
 ---
 
 <div align="center">
-  <p>Made with ❤️ by the Elementra UI team</p>
+  <p>Made with ❤️ by the @waleedcodes</p>
   <p>
     <a href="https://github.com/elementra-ui/elementra-ui">⭐ Star us on GitHub</a> •
     <a href="https://twitter.com/waleedcodes">🐦 Follow updates</a> •
