@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Hero from "@/components/home/hero";
-import Features from "@/components/features";
+
 import { TestimonialsSection } from "@/components/testimonials";
 import { NewReleasePromo } from "@/components/new-release-promo";
 import { FAQSection } from "@/components/faq-section";
@@ -9,6 +9,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
 import Image from "next/image";
+import Features from "@/components/features";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
