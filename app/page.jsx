@@ -5,7 +5,7 @@ import Hero from "@/components/home/hero";
 import { TestimonialsSection } from "@/components/testimonials";
 import { NewReleasePromo } from "@/components/new-release-promo";
 import { FAQSection } from "@/components/faq-section";
-import { PricingSection } from "@/components/pricing-section";
+// import { PricingSection } from "@/components/pricing-section";
 import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
 import Image from "next/image";
@@ -265,9 +265,9 @@ export default function Home() {
         <Features />
       </div>
       {/* Pricing Section */}
-      <div id="pricing">
+      {/* <div id="pricing">
         <PricingSection />
-      </div>
+      </div> */}
       {/* Testimonials Section */}
       <div id="testimonials">
         <TestimonialsSection />
