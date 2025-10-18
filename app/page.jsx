@@ -6,7 +6,7 @@ import { TestimonialsSection } from "@/components/testimonials";
 import { NewReleasePromo } from "@/components/new-release-promo";
 import { FAQSection } from "@/components/faq-section";
 // import { PricingSection } from "@/components/pricing-section";
-import { StickyFooter } from "@/components/sticky-footer";
+// import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
 import Image from "next/image";
 import Features from "@/components/features";
@@ -274,11 +274,11 @@ export default function Home() {
       </div>
       <NewReleasePromo />
       {/* FAQ Section */}
-      <div id="faq">
+      <div id="faq" className="pb-52">
         <FAQSection />
       </div>
       {/* Sticky Footer */}
-      <StickyFooter />
+      {/* <StickyFooter /> */}
     </div>
   );
 }
