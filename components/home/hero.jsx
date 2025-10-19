@@ -286,7 +286,7 @@ export default function Hero() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="w-full sm:w-auto h-14 px-8 text-lg font-semibold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-sm hover:bg-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                    className="w-full sm:w-auto h-14 px-8 text-lg font-semibold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-sm hover:bg-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl hover:text-white"
                   >
                     Browse Components
                     <ExternalLink className="ml-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -306,7 +306,7 @@ export default function Hero() {
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="w-full sm:w-auto h-14 px-8 text-lg font-semibold hover:bg-muted/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+                    className="w-full sm:w-auto h-14 px-8 text-lg font-semibold bg-muted/80 hover:bg-muted/100 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl hover:text-white"
                   >
                     <Github className="mr-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
                     GitHub
