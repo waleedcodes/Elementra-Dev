@@ -1,4 +1,4 @@
-# 🎨 Elementra UI - Modern React Component Library
+## Elementra UI - Modern React Component Library
 
 <div align="center">
   <img src="./public/logo2.png" alt="Elementra UI Logo" width="120" height="120" />
