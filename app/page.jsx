@@ -1,15 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
 import Hero from "@/components/home/hero";
-
-import { TestimonialsSection } from "@/components/testimonials";
+import Features from "@/components/features";
+import { InteractiveDemo } from "@/components/interactive-demo";
+import { ComponentStats } from "@/components/component-stats";
+import { CodeShowcase } from "@/components/code-showcase";
+import { TestimonialsSection } from "@/components/testimonials-section";
+import { NewsletterSection } from "@/components/newsletter-section";
 import { NewReleasePromo } from "@/components/new-release-promo";
 import { FAQSection } from "@/components/faq-section";
 // import { PricingSection } from "@/components/pricing-section";
-// import { StickyFooter } from "@/components/sticky-footer";
+import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
 import Image from "next/image";
-import Features from "@/components/features";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,84 +91,42 @@ export default function Home() {
 
         <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-muted-foreground transition duration-200 hover:text-foreground md:flex md:space-x-2">
           <a
-            className="relative px-4 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="relative px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById("features");
               if (element) {
-                const headerOffset = 120; // Account for sticky header height + margin
+                const headerOffset = 120;
                 const elementPosition =
                   element.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
               }
             }}
           >
             <span className="relative z-20">Features</span>
           </a>
-          <a
-            className="relative px-4 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("pricing");
-              if (element) {
-                const headerOffset = 120; // Account for sticky header height + margin
-                const elementPosition =
-                  element.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
-              }
-            }}
+          <Link
+            href="/docs"
+            className="relative px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
           >
-            <span className="relative z-20">Pricing</span>
-          </a>
+            <span className="relative z-20">Docs</span>
+          </Link>
           <a
-            className="relative px-4 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="relative px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById("testimonials");
               if (element) {
-                const headerOffset = 120; // Account for sticky header height + margin
+                const headerOffset = 120;
                 const elementPosition =
                   element.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
               }
             }}
           >
-            <span className="relative z-20">Testimonials</span>
-          </a>
-          <a
-            className="relative px-4 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("faq");
-              if (element) {
-                const headerOffset = 120; // Account for sticky header height + margin
-                const elementPosition =
-                  element.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
-              }
-            }}
-          >
-            <span className="relative z-20">FAQ</span>
+            <span className="relative z-20">Reviews</span>
           </a>
         </div>
 
@@ -222,17 +183,18 @@ export default function Home() {
               >
                 Features
               </button>
-              <button
-                onClick={() => handleMobileNavClick("pricing")}
+              <Link
+                href="/docs"
                 className="text-left px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
-              </button>
+                Documentation
+              </Link>
               <button
                 onClick={() => handleMobileNavClick("testimonials")}
                 className="text-left px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
               >
-                Testimonials
+                Reviews
               </button>
               <button
                 onClick={() => handleMobileNavClick("faq")}
@@ -260,25 +222,39 @@ export default function Home() {
       )}
       {/* Hero Section */}
       <Hero />
+      
+      {/* Component Stats Section */}
+      <ComponentStats />
+      
       {/* Features Section */}
       <div id="features">
         <Features />
       </div>
-      {/* Pricing Section */}
-      {/* <div id="pricing">
-        <PricingSection />
-      </div> */}
+      
+      {/* Interactive Demo Section */}
+      <InteractiveDemo />
+      
+      {/* Code Showcase Section */}
+      <CodeShowcase />
+      
       {/* Testimonials Section */}
       <div id="testimonials">
         <TestimonialsSection />
       </div>
+      
+      {/* Newsletter Section */}
+      <NewsletterSection />
+      
+      {/* New Release Promo */}
       <NewReleasePromo />
+      
       {/* FAQ Section */}
-      <div id="faq" className="pb-52">
+      <div id="faq">
         <FAQSection />
       </div>
+      
       {/* Sticky Footer */}
-      {/* <StickyFooter /> */}
+      <StickyFooter />
     </div>
   );
 }
