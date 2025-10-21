@@ -5,12 +5,25 @@ import { Plus, Minus } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function FAQSection() {
-  const [openItems, setOpenItems] = useState([])
+  const [openItems, setOpenItems] = useState(new Set())
 
   const toggleItem = (index) => {
-    setOpenItems(
-      (prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index])
-    )
+    setOpenItems((prev) => {
+      const newSet = new Set(prev)
+      if (newSet.has(index)) {
+        newSet.delete(index)
+      } else {
+        newSet.add(index)
+      }
+      return newSet
+    })
+  }
+
+  const handleKeyPress = (e, index) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      toggleItem(index)
+    }
   }
 
   const faqs = [
@@ -42,93 +55,118 @@ export function FAQSection() {
   ]
 
   return (
-    <section id="faq" className="relative overflow-hidden pb-120 pt-24">
-      {/* Background blur effects */}
-      <div
-        className="bg-primary/20 absolute top-1/2 -right-20 z-[-1] h-64 w-64 rounded-full opacity-80 blur-3xl"></div>
-      <div
-        className="bg-primary/20 absolute top-1/2 -left-20 z-[-1] h-64 w-64 rounded-full opacity-80 blur-3xl"></div>
-      <div className="z-10 container mx-auto px-4">
+    <section id="faq" className="relative overflow-hidden py-24 lg:py-32">
+      {/* Decorative background elements */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute right-0 top-1/4 h-96 w-96 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute left-0 top-3/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section badge */}
         <motion.div
           className="flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}>
-          <div
-            className="border-primary/40 text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 uppercase">
-            <span>✶</span>
-            <span className="text-sm">Faqs</span>
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-4 py-1.5 text-sm font-medium uppercase tracking-wide text-primary backdrop-blur-sm">
+            <span className="text-base" aria-hidden="true">✶</span>
+            <span>FAQs</span>
           </div>
         </motion.div>
 
+        {/* Section heading */}
         <motion.h2
-          className="mx-auto mt-6 max-w-xl text-center text-4xl font-medium md:text-[54px] md:leading-[60px]"
+          className="mx-auto mt-6 max-w-2xl text-center text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl lg:leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}>
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           Questions? We've got{" "}
-          <span
-            className="bg-gradient-to-b from-foreground via-rose-200 to-primary bg-clip-text text-transparent">
+          <span className="bg-gradient-to-b from-foreground via-rose-200 to-primary bg-clip-text text-transparent">
             answers
           </span>
         </motion.h2>
 
-        <div className="mx-auto mt-12 flex max-w-xl flex-col gap-6">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              className="from-secondary/40 to-secondary/10 rounded-2xl border border-white/10 bg-gradient-to-b p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] transition-all duration-300 hover:border-white/20 cursor-pointer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => toggleItem(index)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault()
-                  toggleItem(index)
-                }
-              }}
-              {...(index === faqs.length - 1 && { "data-faq": faq.question })}>
-              <div className="flex items-start justify-between">
-                <h3 className="m-0 font-medium pr-4">{faq.question}</h3>
+        {/* FAQ items */}
+        <div className="mx-auto mt-16 max-w-3xl">
+          <div className="space-y-4">
+            {faqs.map((faq, index) => {
+              const isOpen = openItems.has(index)
+              
+              return (
                 <motion.div
-                  animate={{ rotate: openItems.includes(index) ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="">
-                  {openItems.includes(index) ? (
-                    <Minus className="text-primary flex-shrink-0 transition duration-300" size={24} />
-                  ) : (
-                    <Plus className="text-primary flex-shrink-0 transition duration-300" size={24} />
-                  )}
+                  key={index}
+                  className="group rounded-2xl border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] transition-all duration-300 hover:border-white/20 hover:shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                >
+                  <button
+                    className="flex w-full items-start justify-between gap-4 p-6 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    onClick={() => toggleItem(index)}
+                    onKeyDown={(e) => handleKeyPress(e, index)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
+                  >
+                    <h3 className="flex-1 text-lg font-semibold leading-tight sm:text-xl">
+                      {faq.question}
+                    </h3>
+                    
+                    <motion.div
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                      className="flex-shrink-0 text-primary"
+                    >
+                      {isOpen ? (
+                        <Minus className="h-6 w-6" strokeWidth={2.5} />
+                      ) : (
+                        <Plus className="h-6 w-6" strokeWidth={2.5} />
+                      )}
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={`faq-answer-${index}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ 
+                          height: "auto", 
+                          opacity: 1,
+                          transition: {
+                            height: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+                            opacity: { duration: 0.25, delay: 0.05 }
+                          }
+                        }}
+                        exit={{ 
+                          height: 0, 
+                          opacity: 0,
+                          transition: {
+                            height: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+                            opacity: { duration: 0.2 }
+                          }
+                        }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 pt-0">
+                          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
-              </div>
-              <AnimatePresence>
-                {openItems.includes(index) && (
-                  <motion.div
-                    className="mt-4 text-muted-foreground leading-relaxed overflow-hidden"
-                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                    animate={{ opacity: 1, height: "auto", marginTop: 16 }}
-                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: "easeInOut",
-                      opacity: { duration: 0.2 },
-                    }}>
-                    {faq.answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
