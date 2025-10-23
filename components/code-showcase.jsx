@@ -292,9 +292,13 @@ function Dashboard() {
             
             <CardContent>
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-4 mb-6">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 mb-6">
                   {Object.entries(codeExamples).map(([key, example]) => (
-                    <TabsTrigger key={key} value={key} className="text-sm">
+                    <TabsTrigger
+                      key={key}
+                      value={key}
+                      className="text-sm rounded-md px-2 py-1 hover:bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                    >
                       {example.title}
                     </TabsTrigger>
                   ))}
@@ -318,6 +322,7 @@ function Dashboard() {
                             size="sm"
                             onClick={() => copyToClipboard(example.code, key)}
                             className="flex items-center gap-2"
+                            aria-label={`Copy ${example.title} code`}
                           >
                             <AnimatePresence mode="wait">
                               {copiedCode === key ? (
@@ -344,6 +349,7 @@ function Dashboard() {
                                 </motion.div>
                               )}
                             </AnimatePresence>
+                            <span className="sr-only" aria-live="polite">{copiedCode === key ? 'Code copied to clipboard' : ''}</span>
                           </Button>
                         </div>
                         
@@ -357,8 +363,8 @@ function Dashboard() {
                             </span>
                           </div>
                           
-                          <pre className="p-4 text-sm overflow-x-auto">
-                            <code className={`language-${example.language} text-green-400`}>
+                          <pre className="p-4 text-sm overflow-x-auto max-h-[320px] md:max-h-[480px]">
+                            <code className={`language-${example.language} text-green-400 block font-mono whitespace-pre`}>
                               {example.code}
                             </code>
                           </pre>
@@ -378,7 +384,7 @@ function Dashboard() {
                             <span className="text-sm font-medium">Live Preview</span>
                           </div>
                           
-                          <div className="flex-1 bg-background/50 rounded-lg border border-white/10 p-6 flex items-center justify-center min-h-[300px]">
+                          <div className="flex-1 bg-background/50 rounded-lg border border-white/10 p-6 flex items-center justify-center min-h-[220px] md:min-h-[300px]">
                             <PreviewComponent type={example.preview} />
                           </div>
                         </motion.div>
@@ -398,7 +404,11 @@ function Dashboard() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-wrap items-center justify-center gap-4 mt-12"
         >
-          <Button size="lg" className="flex items-center gap-2">
+          <Button
+            size="lg"
+            className="flex items-center gap-2 bg-primary text-primary-foreground hover:opacity-95"
+            aria-label="Get started with Elementra UI"
+          >
             <Download className="w-5 h-5" />
             Get Started
           </Button>
