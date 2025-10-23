@@ -291,13 +291,13 @@ function Dashboard() {
             </CardHeader>
             
             <CardContent>
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 mb-6">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full ">
+                <TabsList className="flex items-center justify-around w-full gap-2 mb-6 p-2 h-16">
                   {Object.entries(codeExamples).map(([key, example]) => (
                     <TabsTrigger
                       key={key}
                       value={key}
-                      className="text-sm rounded-md px-2 py-1 hover:bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                      className="text-sm rounded-md px-6 py-3 hover:bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                     >
                       {example.title}
                     </TabsTrigger>
@@ -306,7 +306,7 @@ function Dashboard() {
 
                 {Object.entries(codeExamples).map(([key, example]) => (
                   <TabsContent key={key} value={key}>
-                    <div className={`grid gap-6 ${example.preview && isPreviewVisible ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
+                    <div className={`grid gap-6 pt-16 ${example.preview && isPreviewVisible ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
                       {/* Code Block */}
                       <div className="relative">
                         <div className="flex items-center justify-between mb-3">
