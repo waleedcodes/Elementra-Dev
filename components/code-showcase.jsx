@@ -402,23 +402,23 @@ function Dashboard() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-4 mt-12"
+          className="flex flex-wrap items-center justify-center gap-10 mt-12"
         >
           <Button
             size="lg"
-            className="flex items-center gap-2 bg-primary text-primary-foreground hover:opacity-95"
+            className="flex items-center gap-2 bg-primary text-primary-foreground hover:opacity-95 py-6"
             aria-label="Get started with Elementra UI"
           >
             <Download className="w-5 h-5" />
             Get Started
           </Button>
           
-          <Button variant="outline" size="lg" className="flex items-center gap-2">
+          <Button variant="outline" size="lg" className="flex items-center gap-2 py-6">
             <Code2 className="w-5 h-5" />
             View Documentation
           </Button>
           
-          <Button variant="ghost" size="lg" className="flex items-center gap-2">
+          <Button variant="secondary" size="lg" className="flex items-center gap-2 text-white py-6">
             <Sparkles className="w-5 h-5" />
             Explore Examples
           </Button>
