@@ -236,6 +236,117 @@ function Dashboard() {
     }
   }
 
+  // Enhanced syntax highlighter with window header and realistic theme
+  const SyntaxHighlight = ({ code, language = "tsx", fileName = "snippet" }) => {
+    const escapeHtml = (str) =>
+      str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    const classes = {
+      base: "text-[#9af69d]",
+      comment: "text-[#6b6b6b]",
+      keyword: "text-[#f08fb0]",
+      func: "text-[#7fe3d6]",
+      string: "text-[#c1ffdb]",
+      number: "text-[#9ae0b2]",
+      tag: "text-[#f6d58a]",
+      plain: "text-[#d1d5db]",
+    };
+
+    // Tokenize in a single pass to preserve order and avoid nested replacements
+    const tokenize = (input, lang) => {
+      const patterns = {
+        tsx: [
+          { type: "comment", rx: /\/\*[\s\S]*?\*\/|\/\/.*$/m },
+          { type: "string", rx: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/ },
+          { type: "keyword", rx: /\b(?:import|export|from|function|return|const|let|var|if|else|switch|case|break|new|class|extends|interface|type)\b/ },
+          { type: "func", rx: /\b(?:useState|useEffect|useRef|React|console|set[A-Z]\w*)\b/ },
+          { type: "number", rx: /\b\d+\b/ },
+          { type: "tag", rx: /<\/?[A-Za-z][\w\-:\.]*/ },
+        ],
+        bash: [
+          { type: "comment", rx: /#.*$/m },
+          { type: "string", rx: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/ },
+          { type: "keyword", rx: /\b(?:npm|yarn|npx|pnpm|echo)\b/ },
+          { type: "func", rx: /\b(?:install|add|init|run)\b/ },
+          { type: "number", rx: /\b\d+\b/ },
+        ],
+        css: [
+          { type: "comment", rx: /\/\*[\s\S]*?\*\// },
+          { type: "string", rx: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/ },
+          { type: "tag", rx: /[.#][\w-]+/ },
+          { type: "func", rx: /--[\w-]+/ },
+          { type: "number", rx: /\b\d+\b/ },
+        ],
+      };
+
+      const rules = patterns[lang] || patterns.tsx;
+      const master = new RegExp(rules.map((r) => `(${r.rx.source})`).join("|"), "gm");
+
+      const tokens = [];
+      let lastIndex = 0;
+      let m;
+
+      while ((m = master.exec(input)) !== null) {
+        const idx = m.index;
+        if (idx > lastIndex) {
+          tokens.push({ type: "plain", value: input.slice(lastIndex, idx) });
+        }
+
+        // find which group matched
+        let matched = null;
+        let offset = 1;
+        for (const r of rules) {
+          if (m[offset] !== undefined) {
+            matched = { type: r.type, value: m[offset] };
+            break;
+          }
+          offset++;
+        }
+
+        if (!matched) matched = { type: "plain", value: m[0] };
+        tokens.push(matched);
+        lastIndex = master.lastIndex;
+      }
+
+      if (lastIndex < input.length) {
+        tokens.push({ type: "plain", value: input.slice(lastIndex) });
+      }
+
+      return tokens;
+    };
+
+    const tokens = tokenize(code, language);
+
+    return (
+      <div className="rounded-lg overflow-hidden shadow-2xl border border-white/6">
+        <div className="flex items-center justify-between px-3 py-2 bg-[#0b0c0d] border-b border-white/6">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-inner" />
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-inner" />
+            <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-inner" />
+          </div>
+          <div className="text-xs text-[#9aa6b2] font-medium tracking-wide">
+            {fileName} <span className="ml-2 px-2 py-0.5 rounded bg-white/3 text-[10px] uppercase">{language}</span>
+          </div>
+          <div className="w-6" />
+        </div>
+
+        <pre className="p-4 text-sm overflow-x-auto max-h-[420px] bg-[#071012]">
+          <code className="block font-mono whitespace-pre leading-relaxed">
+            {tokens.map((t, i) => {
+              const cls = classes[t.type] || classes.plain;
+              return (
+                <span key={i} className={cls}>
+                  {escapeHtml(t.value)}
+                </span>
+              );
+            })}
+          </code>
+        </pre>
+      </div>
+    );
+  };
+
   return (
     <section ref={ref} className="py-24 bg-gradient-to-b from-background to-background/50 relative overflow-hidden">
       {/* Background Effects */}
@@ -363,11 +474,7 @@ function Dashboard() {
                             </span>
                           </div>
                           
-                          <pre className="p-4 text-sm overflow-x-auto max-h-[320px] md:max-h-[480px]">
-                            <code className={`language-${example.language} text-green-400 block font-mono whitespace-pre`}>
-                              {example.code}
-                            </code>
-                          </pre>
+                          <SyntaxHighlight code={example.code} language={example.language} fileName={`${example.title}.${example.language}`} />
                         </div>
                       </div>
 
