@@ -8,7 +8,6 @@ import { CodeShowcase } from "@/components/code-showcase";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { NewsletterSection } from "@/components/newsletter-section";
 import { NewReleasePromo } from "@/components/new-release-promo";
-import { FAQSection } from "@/components/faq-section";
 // import { PricingSection } from "@/components/pricing-section";
 import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
@@ -248,10 +247,7 @@ export default function Home() {
       {/* New Release Promo */}
       <NewReleasePromo />
       
-      {/* FAQ Section */}
-      <div id="faq">
-        <FAQSection />
-      </div>
+
       
       {/* Sticky Footer */}
       <StickyFooter />
