@@ -48,7 +48,7 @@ export function StickyFooter() {
     <AnimatePresence>
       {isAtBottom && (
         <motion.footer
-          className="fixed z-50 bottom-0 left-0 w-full h-80 flex justify-center items-center backdrop-blur-xl border-t border-white/10"
+          className="  w-full h-80 flex justify-center items-center backdrop-blur-xl border-t border-white/10"
           style={{ 
             background: "linear-gradient(135deg, #e78a53 0%, #d67043 100%)",
             boxShadow: "0 -20px 40px rgba(231, 138, 83, 0.3)"

@@ -6,12 +6,12 @@ import { InteractiveDemo } from "@/components/interactive-demo";
 import { ComponentStats } from "@/components/component-stats";
 import { CodeShowcase } from "@/components/code-showcase";
 import { TestimonialsSection } from "@/components/testimonials-section";
-import { NewsletterSection } from "@/components/newsletter-section";
 import { NewReleasePromo } from "@/components/new-release-promo";
 // import { PricingSection } from "@/components/pricing-section";
 import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
 import Image from "next/image";
+import NewsletterSection from "@/components/newsletter-section";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
