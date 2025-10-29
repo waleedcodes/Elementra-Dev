@@ -8,10 +8,10 @@ import { CodeShowcase } from "@/components/code-showcase";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { NewReleasePromo } from "@/components/new-release-promo";
 // import { PricingSection } from "@/components/pricing-section";
-import { StickyFooter } from "@/components/sticky-footer";
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterSection from "@/components/newsletter-section";
+import StickyFooter from "@/components/sticky-footer";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -246,8 +246,6 @@ export default function Home() {
       
       {/* New Release Promo */}
       <NewReleasePromo />
-      
-
       
       {/* Sticky Footer */}
       <StickyFooter />
