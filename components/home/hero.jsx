@@ -44,7 +44,7 @@ export default function Hero() {
           animation: gradient-x 3s ease infinite;
         }
       `}</style>
-      <section className="relative overflow-hidden min-h-screen flex flex-col bg-gradient-to-br from-background via-background to-muted/20">
+      <section className="relative overflow-hidden  flex flex-col bg-gradient-to-br from-purple-500/5 via-gray-900 to-blue-500/5">
         {/* Background Effects */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>

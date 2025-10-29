@@ -130,7 +130,7 @@ export function ComponentStats() {
   ]
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-b from-background/50 to-background relative overflow-hidden">
+    <section ref={ref} className="py-24 bg-gradient-to-t from-primary/30 via-gray-900 to-secondary/40 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl transform -translate-y-1/2"></div>
