@@ -17,7 +17,7 @@
     --primary-foreground: 0 0% 100%;
     --secondary: 350 95% 80%; /* #FB7185 */
     --secondary-foreground: 0 0% 10%;
-    --accent: 350 95% 80%; /* Pink accent */
+    --accent: 260 80% 60%; /* Pink accent */
     --accent-foreground: 0 0% 10%;
     --muted: 24 15% 90%;
     --muted-foreground: 25 10% 45%;
@@ -42,7 +42,7 @@
     --sidebar-foreground: 25 10% 15%;
     --sidebar-primary: 24 94% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 350 95% 80%;
+    --sidebar-accent: 260 80% 60%;
     --sidebar-accent-foreground: 25 10% 15%;
     --sidebar-border: 30 40% 85%;
     --sidebar-ring: 24 94% 54%;
@@ -68,7 +68,7 @@
     --primary-foreground: 0 0% 10%;
     --secondary: 340 80% 65%; /* #F472B6 */
     --secondary-foreground: 0 0% 10%;
-    --accent: 340 80% 65%;
+    --accent:260 80% 60%;
     --accent-foreground: 0 0% 10%;
     --muted: 24 10% 20%;
     --muted-foreground: 30 10% 75%;
@@ -93,7 +93,7 @@
     --sidebar-foreground: 32 100% 98%;
     --sidebar-primary: 30 96% 60%;
     --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 340 80% 65%;
+    --sidebar-accent: 260 80% 60%;
     --sidebar-accent-foreground: 32 100% 98%;
     --sidebar-border: 30 10% 25%;
     --sidebar-ring: 30 96% 60%;

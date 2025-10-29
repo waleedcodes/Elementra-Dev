@@ -59,7 +59,7 @@ export const metadata = {
       "Build beautiful, accessible React applications with our comprehensive component library. 50+ components, TypeScript support, and production-ready.",
     images: [
       {
-        url: "/logo2.png",
+        url: "/icon2.png",
         width: 1200,
         height: 630,
         alt: "Elementra UI - React Component Library",
@@ -77,16 +77,16 @@ export const metadata = {
     title: "Elementra UI - Modern React Component Library",
     description:
       "Build beautiful, accessible React applications with our comprehensive component library. 50+ components, TypeScript support, and production-ready.",
-    images: ["/logo2.png"],
+    images: ["/icon2.png"],
     creator: "@waleedcodes",
   },
   icons: {
     icon: [
-      { url: "/logo2.png", sizes: "32x32", type: "image/png" },
-      { url: "/logo2.png", sizes: "16x16", type: "image/png" },
+      { url: "/icon2.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon2.png", sizes: "16x16", type: "image/png" },
     ],
-    apple: "/logo2.png",
-    shortcut: "/logo2.png",
+    apple: "/icon2.png",
+    shortcut: "/icon2.png",
   },
   manifest: "/manifest.json",
   alternates: {
@@ -128,7 +128,7 @@ export default function RootLayout({ children }) {
         url: "https://elementra-ui.vercel.app/",
         logo: {
           "@type": "ImageObject",
-          url: "https://elementra-ui.vercel.app/logo2.png",
+          url: "https://elementra-ui.vercel.app/icon2.png",
           width: 512,
           height: 512,
         },
@@ -240,7 +240,7 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
 
         {/* Performance Hints */}
-        <link rel="preload" href="/logo2.png" as="image" type="image/png" />
+        <link rel="preload" href="/icon2.png" as="image" type="image/png" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
