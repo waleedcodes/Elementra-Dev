@@ -77,10 +77,10 @@ const animationPresets = {
   default: {
     image: {
       enter:
-        "transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first",
+        "transition ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; duration-700 order-first",
       enterFrom: "opacity-0 -rotate-[60deg]",
       enterTo: "opacity-100 rotate-0",
-      leave: "transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700",
+      leave: "transition ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; duration-700",
       leaveFrom: "opacity-100 rotate-0",
       leaveTo: "opacity-0 rotate-[60deg]",
     },

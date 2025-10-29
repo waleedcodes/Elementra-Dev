@@ -220,7 +220,7 @@ export function AppSidebar({ ...props }) {
               >
                 <div className="relative">
                   <Image
-                    src="/logo2.png"
+                    src="/icon2.png"
                     alt="Logo"
                     width={50}
                     height={50}
