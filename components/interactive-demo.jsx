@@ -56,7 +56,7 @@ export function InteractiveDemo() {
   ]
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-b from-background to-background/50 relative overflow-hidden">
+    <section ref={ref} className="py-24 bg-gradient-to-t from-primary/30 via-gray-900 to-secondary/40 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
