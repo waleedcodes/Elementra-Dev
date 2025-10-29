@@ -1,5 +1,8 @@
 "use client"
 
+import { motion } from "framer-motion"
+import { Globe, ArrowRight } from "lucide-react"
+
 export function NewReleasePromo() {
   return (
     <section className="mt-12 w-full">
@@ -46,70 +49,43 @@ export function NewReleasePromo() {
                   d="M30.5625 27.3357C29.9525 30.7343 29.3425 34.133 28.704 37.5284C29.1225 37.4018 29.5411 37.2751 29.9882 37.1516C28.6034 35.0617 27.2504 32.9465 25.8655 30.8565C25.6406 30.5425 25.1523 30.517 24.8669 30.7451C24.5497 30.9987 24.5305 31.4299 24.7555 31.7439C26.1403 33.8338 27.4933 35.9491 28.8781 38.039C29.2489 38.6003 30.0417 38.2265 30.1624 37.6621C30.7724 34.2635 31.3824 30.8648 32.0209 27.4694C32.0908 27.1016 31.758 26.7178 31.3871 26.6765C30.9559 26.6573 30.6324 26.9679 30.5625 27.3357Z"></path>
               </svg>
               <div className="flex items-center justify-center">
-                <a href="/docs/get-started">
-                  <div
-                    className="group border-border bg-secondary/70 flex h-[64px] cursor-pointer items-center gap-2 rounded-full border p-[11px] mt-10">
-                    <div
-                      className="border-border bg-primary flex h-[43px] items-center justify-center rounded-full border">
-                      <p
-                        className="mr-3 ml-2 flex items-center justify-center gap-2 font-medium tracking-tight text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-globe animate-spin"
-                          aria-hidden="true">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                          <path d="M2 12h20"></path>
-                        </svg>
-                        Get started
-                      </p>
-                    </div>
-                    <div
-                      className="border-border flex size-[26px] items-center justify-center rounded-full border-2 transition-all ease-in-out group-hover:ml-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-arrow-right transition-all ease-in-out group-hover:rotate-45"
-                        aria-hidden="true">
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
-                    </div>
-                  </div>
+                <a
+                  href="/docs/get-started"
+                  aria-label="Get started with Elementra UI"
+                  className="group mt-10 inline-flex items-center gap-4 rounded-full bg-secondary/70 border border-border px-5 py-3 transition-transform hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <span className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-primary">
+                    <Globe className="w-5 h-5 text-white animate-spin" aria-hidden="true" />
+                  </span>
+                  <span className="font-medium tracking-tight text-white">Get started</span>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full border-2 border-border transition-transform group-hover:translate-x-1">
+                    <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:rotate-45" aria-hidden="true" />
+                  </span>
                 </a>
               </div>
             </div>
 
             {/* Stroked text wordmark */}
-            <h1
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="absolute inset-x-0 mt-[120px] text-center text-[100px] font-semibold text-transparent sm:mt-[30px] sm:text-[190px] pointer-events-none"
-              style={{
-                WebkitTextStroke: "1px currentColor",
-                color: "transparent",
-              }}
-              aria-hidden="true">
+              style={{ WebkitTextStroke: "1px currentColor", color: "transparent" }}
+              aria-hidden="true"
+            >
               skiper/ui
-            </h1>
-            <h1
+            </motion.h1>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
               className="absolute inset-x-0 mt-[120px] text-center text-[100px] font-semibold text-primary sm:mt-[30px] sm:text-[190px] pointer-events-none"
-              aria-hidden="true">
+              aria-hidden="true"
+            >
               skiper/ui
-            </h1>
+            </motion.h1>
           </div>
         </div>
       </div>
