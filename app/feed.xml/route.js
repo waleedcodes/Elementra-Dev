@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// Ensure this route is treated as static when using `output: export`.
+export const dynamic = 'force-static';
+
 export async function GET() {
   const baseUrl = 'https://elementra-ui.vercel.app';
   
