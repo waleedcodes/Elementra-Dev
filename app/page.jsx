@@ -6,12 +6,11 @@ import { InteractiveDemo } from "@/components/interactive-demo";
 import { ComponentStats } from "@/components/component-stats";
 import { CodeShowcase } from "@/components/code-showcase";
 import { TestimonialsSection } from "@/components/testimonials-section";
-import { NewReleasePromo } from "@/components/new-release-promo";
-// import { PricingSection } from "@/components/pricing-section";
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterSection from "@/components/newsletter-section";
-import StickyFooter from "@/components/sticky-footer";
+import Footer from "./_Components/Footer";
+
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +50,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full relative bg-black">
+    <div className="">
       {/* Pearl Mist Background with Top Glow */}
       <div
         className="absolute inset-0 z-0"
@@ -221,34 +220,30 @@ export default function Home() {
       )}
       {/* Hero Section */}
       <Hero />
-      
+
       {/* Component Stats Section */}
       <ComponentStats />
-      
+
       {/* Features Section */}
       <div id="features">
         <Features />
       </div>
-      
+
       {/* Interactive Demo Section */}
       <InteractiveDemo />
-      
+
       {/* Code Showcase Section */}
       <CodeShowcase />
-      
+
       {/* Testimonials Section */}
       <div id="testimonials">
         <TestimonialsSection />
       </div>
-      
+
       {/* Newsletter Section */}
       <NewsletterSection />
-      
-      {/* New Release Promo */}
-      <NewReleasePromo />
-      
-      {/* Sticky Footer */}
-      <StickyFooter />
+
+      <Footer />
     </div>
   );
 }
