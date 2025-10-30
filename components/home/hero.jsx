@@ -44,7 +44,7 @@ export default function Hero() {
           animation: gradient-x 3s ease infinite;
         }
       `}</style>
-      <section className="relative overflow-hidden  flex flex-col bg-gradient-to-br from-purple-500/5 via-gray-900 to-blue-500/5">
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-500/5 via-gray-900 to-blue-500/5">
         {/* Background Effects */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -63,7 +63,7 @@ export default function Hero() {
           ></div>
         </div>
 
-        <div className="container mx-auto px-4 py-24 sm:py-32 relative z-10 flex-1 flex flex-col">
+        <div className="container mx-auto px-4 py-24 sm:py-32 relative z-10 ">
           <div className="mx-auto max-w-5xl text-center flex-1 flex flex-col justify-center">
             {/* Badge */}
             <motion.div
@@ -72,26 +72,26 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="mb-8"
             >
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-primary/10">
-                    <Sparkles className="h-3 w-3 text-primary animate-pulse" />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
+                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="flex items-center justify-center w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-primary/10">
+                    <Sparkles className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-primary animate-pulse" />
                   </div>
-                  <span className="text-sm font-medium text-primary">
+                  <span className="text-xs sm:text-sm font-medium text-primary">
                     50+ React Components
                   </span>
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-sm">
-                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-sm">
+                  <Star className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-yellow-500 fill-yellow-500" />
                   <span className="text-xs font-medium text-yellow-600 dark:text-yellow-400">
                     1.2k+ GitHub Stars
                   </span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/5 backdrop-blur-sm">
-                  <Download className="h-3 w-3 text-green-500" />
+                <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full border border-green-500/20 bg-green-500/5 backdrop-blur-sm">
+                  <Download className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-green-500" />
                   <span className="text-xs font-medium text-green-600 dark:text-green-400">
                     10k+ Downloads
                   </span>
@@ -108,7 +108,7 @@ export default function Hero() {
             >
               <h1
                 id="main-title"
-                className="text-5xl font-bold tracking-tight sm:text-7xl lg:text-8xl"
+                className="text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl xl:text-8xl"
               >
                 <div className="relative inline-block">
                   <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient-x font-extrabold">
@@ -117,7 +117,7 @@ export default function Hero() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-25 animate-pulse"></div>
                 </div>
                 <br />
-                <span className="text-muted-foreground text-3xl sm:text-4xl lg:text-5xl font-normal mt-4 block">
+                <span className="text-muted-foreground text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal mt-2 sm:mt-4 block">
                   Modern React Component Library
                 </span>
               </h1>
@@ -130,7 +130,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-12"
             >
-              <p className="mx-auto max-w-4xl text-xl text-muted-foreground leading-relaxed mb-6">
+              <p className="mx-auto max-w-4xl text-sm sm:text-xl text-muted-foreground leading-relaxed mb-6">
                 A comprehensive collection of{" "}
                 <span className="text-primary font-semibold bg-primary/10 px-2 py-1 rounded-md">
                   accessible, customizable, and production-ready
@@ -149,21 +149,21 @@ export default function Hero() {
               >
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative bg-slate-900 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700/50 p-4 shadow-2xl">
+                  <div className="relative bg-slate-900 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700/50 p-3 sm:p-4 shadow-2xl">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-red-500"></div>
+                        <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-green-500"></div>
                       </div>
                       <div className="flex items-center gap-2 ml-auto">
-                        <Terminal className="h-3 w-3 text-slate-400" />
+                        <Terminal className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-slate-400" />
                         <span className="text-xs text-slate-400 font-mono">
                           component.tsx
                         </span>
                       </div>
                     </div>
-                    <pre className="text-sm font-mono text-left overflow-x-auto">
+                    <pre className="text-xs sm:text-sm font-mono text-left overflow-x-auto">
                       <code className="text-slate-300">
                         <span className="text-purple-400">import</span>{" "}
                         <span className="text-yellow-300">{"{ Button }"}</span>{" "}
@@ -257,7 +257,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16 sm:mb-20"
             >
               <Link href="/docs">
                 <motion.div
@@ -268,11 +268,11 @@ export default function Hero() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
                   <Button
                     size="lg"
-                    className="relative w-full sm:w-auto h-14 px-8 text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-2xl hover:shadow-primary/25 transition-all duration-300 border-0 rounded-xl"
+                    className="relative w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-2xl hover:shadow-primary/25 transition-all duration-300 border-0 rounded-xl"
                   >
-                    <Zap className="mr-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                    <Zap className="mr-2 sm:mr-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:rotate-12 transition-transform duration-300" />
                     Get Started
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="ml-1 sm:ml-2 h-3 sm:h-4 w-3 sm:w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </motion.div>
               </Link>
@@ -286,10 +286,10 @@ export default function Hero() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="w-full sm:w-auto h-14 px-8 text-lg font-semibold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-sm hover:bg-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl hover:text-white"
+                    className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-sm hover:bg-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl hover:text-white"
                   >
                     Browse Components
-                    <ExternalLink className="ml-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                    <ExternalLink className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                   </Button>
                 </motion.div>
               </Link>
@@ -306,11 +306,11 @@ export default function Hero() {
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="w-full sm:w-auto h-14 px-8 text-lg font-semibold bg-muted/80 hover:bg-muted/100 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl hover:text-white"
+                    className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold bg-muted/80 hover:bg-muted/100 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl hover:text-white"
                   >
-                    <Github className="mr-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                    <Github className="mr-2 sm:mr-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:rotate-12 transition-transform duration-300" />
                     GitHub
-                    <Star className="ml-2 h-4 w-4 text-yellow-500 group-hover:fill-yellow-500 transition-all duration-300" />
+                    <Star className="ml-1 sm:ml-2 h-3 sm:h-4 w-3 sm:w-4 text-yellow-500 group-hover:fill-yellow-500 transition-all duration-300" />
                   </Button>
                 </motion.div>
               </Link>
@@ -323,43 +323,43 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mx-auto max-w-2xl"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                 {/* NPM Install */}
                 <motion.div
                   whileHover={{ scale: 1.02, y: -2 }}
-                  className="group relative p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300"
+                  className="group relative p-4 sm:p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                      <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 rounded-lg bg-primary/10">
                         <svg
-                          className="w-4 h-4 text-primary"
+                          className="w-3 sm:w-4 h-3 sm:h-4 text-primary"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
                           <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                         </svg>
                       </div>
-                      <p className="text-base font-semibold text-foreground">
+                      <p className="text-sm sm:text-base font-semibold text-foreground">
                         Install Package
                       </p>
                     </div>
-                    <div className="flex items-center justify-between p-4 rounded-xl bg-muted/80 border border-border/50 group-hover:border-primary/30 transition-colors duration-300">
-                      <code className="text-sm font-mono text-foreground font-medium">
+                    <div className="flex items-center justify-between p-3 sm:p-4 rounded-xl bg-muted/80 border border-border/50 group-hover:border-primary/30 transition-colors duration-300">
+                      <code className="text-xs sm:text-sm font-mono text-foreground font-medium">
                         npm install elementra-ui
                       </code>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
-                        className="p-2 rounded-lg hover:bg-primary/10 transition-colors duration-200"
+                        className="p-1.5 sm:p-2 rounded-lg hover:bg-primary/10 transition-colors duration-200"
                         onClick={() =>
                           navigator.clipboard.writeText(
                             "npm install elementra-ui"
                           )
                         }
                       >
-                        <Copy className="h-4 w-4 text-muted-foreground hover:text-primary transition-colors duration-200" />
+                        <Copy className="h-3 sm:h-4 w-3 sm:w-4 text-muted-foreground hover:text-primary transition-colors duration-200" />
                       </motion.button>
                     </div>
                   </div>
@@ -368,33 +368,33 @@ export default function Hero() {
                 {/* CLI Usage */}
                 <motion.div
                   whileHover={{ scale: 1.02, y: -2 }}
-                  className="group relative p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300"
+                  className="group relative p-4 sm:p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-green-500/10">
-                        <Terminal className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                      <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 rounded-lg bg-green-500/10">
+                        <Terminal className="w-3 sm:w-4 h-3 sm:h-4 text-green-600 dark:text-green-400" />
                       </div>
-                      <p className="text-base font-semibold text-foreground">
+                      <p className="text-sm sm:text-base font-semibold text-foreground">
                         CLI Add Component
                       </p>
                     </div>
-                    <div className="flex items-center justify-between p-4 rounded-xl bg-muted/80 border border-border/50 group-hover:border-green-500/30 transition-colors duration-300">
-                      <code className="text-sm font-mono text-foreground font-medium">
+                    <div className="flex items-center justify-between p-3 sm:p-4 rounded-xl bg-muted/80 border border-border/50 group-hover:border-green-500/30 transition-colors duration-300">
+                      <code className="text-xs sm:text-sm font-mono text-foreground font-medium">
                         npx elementra-ui add button
                       </code>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
-                        className="p-2 rounded-lg hover:bg-green-500/10 transition-colors duration-200"
+                        className="p-1.5 sm:p-2 rounded-lg hover:bg-green-500/10 transition-colors duration-200"
                         onClick={() =>
                           navigator.clipboard.writeText(
                             "npx elementra-ui add button"
                           )
                         }
                       >
-                        <Copy className="h-4 w-4 text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors duration-200" />
+                        <Copy className="h-3 sm:h-4 w-3 sm:w-4 text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors duration-200" />
                       </motion.button>
                     </div>
                   </div>
@@ -414,18 +414,18 @@ export default function Hero() {
               <p className="text-base text-muted-foreground mb-8 font-medium">
                 Powering modern development with cutting-edge technologies
               </p>
-              <div className="flex flex-row gap-10 items-center justify-center max-w-7xl mx-auto">
+              <div className="flex flex-row gap-6 sm:gap-10 items-center justify-center max-w-7xl mx-auto flex-wrap">
                 {/* React Logo */}
                 <motion.div
                   whileHover={{ scale: 1.1, y: -4 }}
-                  className="group opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:drop-shadow-[0_0_20px_rgba(97,218,251,0.4)] transition-all duration-500 flex flex-col items-center gap-2"
+                  className="group opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:drop-shadow-[0_0_20px_rgba(97,218,251,0.4)] transition-all duration-500 flex flex-col items-center gap-1 sm:gap-2"
                 >
                   <div className="relative">
                     <svg
                       width="40"
                       height="40"
                       viewBox="0 0 24 24"
-                      className="h-10 w-10 fill-current text-[#61DAFB] group-hover:animate-spin"
+                      className="h-8 sm:h-10 w-8 sm:w-10 fill-current text-[#61DAFB] group-hover:animate-spin"
                       style={{ animationDuration: "3s" }}
                     >
                       <path d="M12 10.11c1.03 0 1.87.84 1.87 1.89s-.84 1.89-1.87 1.89c-1.03 0-1.87-.84-1.87-1.89s.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7-.52-.59-1.03-1.23-1.51-1.9a22.7 22.7 0 01-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86.27.06.57.11.88.16l-.3-.51m6.54-.76l.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9s-1.17 0-1.71.03c-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03s1.17 0 1.71-.03c.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.52.59 1.03 1.23 1.51 1.9.82.08 1.63.2 2.4.36.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68s-1.83 2.93-4.37 3.68c.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.37 1.95-1.47-.84-1.63-3.05-1.01-5.63-2.54-.75-4.37-1.99-4.37-3.68s1.83-2.93 4.37-3.68c-.62-2.58-.46-4.79 1.01-5.63 1.46-.84 3.45.12 5.37 1.95 1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26 2.1-.63 3.28-1.53 3.28-2.26S20.07 10.37 17.97 9.74c-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26-2.1.63-3.28 1.53-3.28 2.26s1.18 1.63 3.28 2.26c.25-.76.55-1.51.89-2.26M6.92 9.74c.25-.76.55-1.51.89-2.26-1.08-.21-2.06-.36-2.88-.45C4.51 7.79 4.21 8.54 4.09 9.35c.63.89 1.52 1.76 2.83 2.39m5.17-8.39C11.91.85 11.72.71 11.46.71c-.25 0-.45.14-.63.64-.18.5-.18 1.26 0 2.16.45-.02.91-.04 1.37-.04s.92.02 1.37.04c-.18-.9-.18-1.66 0-2.16M5.69 7.03c.82.09 1.8.24 2.88.45-.34-.75-.64-1.5-.89-2.26-1.31.63-2.2 1.5-2.83 2.39.18-.81.48-1.56.84-2.58M12 1.04c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5" />
