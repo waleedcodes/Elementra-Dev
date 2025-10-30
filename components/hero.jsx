@@ -82,35 +82,35 @@ export default function Hero() {
   return (
     <div
       id="hero-section"
-      className="bg-background relative min-h-screen w-full overflow-x-hidden py-32 md:px-6">
+      className="bg-background relative min-h-screen w-full overflow-x-hidden py-16 sm:py-24 md:py-32 px-4 md:px-6">
       <img
         src="/vector1.webp"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
-        className="absolute top-0 right-0 z-[2] object-cover object-center select-none" />
+        className="absolute top-0 right-0 z-[2] object-cover object-center select-none hidden md:block" />
       <img
         src="/vector2.png"
         alt="Vector"
         width={300}
         height={300}
         draggable={false}
-        className="absolute top-0 left-0 z-[2] object-cover object-center select-none" />
+        className="absolute top-0 left-0 z-[2] object-cover object-center select-none hidden md:block" />
       <img
         src="/vector5.webp"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
-        className="absolute bottom-0 -left-44 z-[2] -rotate-90 object-cover object-center select-none" />
+        className="absolute bottom-0 -left-44 z-[2] -rotate-90 object-cover object-center select-none hidden md:block" />
       <img
         src="/vector6.png"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
-        className="absolute -right-44 bottom-0 z-[2] rotate-90 object-cover object-center select-none" />
+        className="absolute -right-44 bottom-0 z-[2] rotate-90 object-cover object-center select-none hidden md:block" />
       <div className="container mx-auto px-4 2xl:max-w-[1400px]">
         <motion.div
           className="flex justify-center"
@@ -119,11 +119,11 @@ export default function Hero() {
           transition={{ duration: 0.75, delay: 0.1 }}>
           <HomeBadge />
         </motion.div>
-        <div className="mx-auto mt-5 max-w-3xl text-center">
+        <div className="mx-auto mt-4 sm:mt-5 max-w-3xl text-center">
           <Beam />
           <motion.h1
             className={cn(
-              "from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent sm:text-5xl xl:text-6xl/none",
+              "from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-transparent",
               geist.className
             )}
             initial={{ opacity: 0, y: 50 }}
@@ -134,16 +134,16 @@ export default function Hero() {
               src="/rose.webp"
               alt="Logo"
               draggable={false}
-              className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16" />
+              className="mx-2 sm:mx-4 mb-2 inline-block h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16" />
             blocks to ship beautiful MVPs fast.
           </motion.h1>
         </div>
         <motion.div
-          className="mx-auto mt-5 max-w-3xl text-center"
+          className="mx-auto mt-4 sm:mt-5 max-w-3xl text-center px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.3 }}>
-          <p className="text-muted-foreground text-xl">
+          <p className="text-muted-foreground text-base sm:text-lg md:text-xl">
             Copy-paste beautiful, responsive components without worrying about styling or animations. Build faster,
             launch sooner.
           </p>

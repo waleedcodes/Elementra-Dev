@@ -144,20 +144,20 @@ export function ComponentStats() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <Badge variant="outline" className="mb-6 px-4 py-2">
-            <Star className="w-4 h-4 mr-2" />
+          <Badge variant="outline" className="mb-4 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2">
+            <Star className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
             Trusted by Developers
           </Badge>
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent px-4">
             Built for Scale
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
             Join thousands of developers building amazing products with Elementra UI
           </p>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto px-4">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -166,14 +166,14 @@ export function ComponentStats() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Card className={`${stat.bgColor} border-white/10 backdrop-blur-sm hover:scale-105 transition-transform duration-300`}>
-                  <CardContent className="p-6 text-center">
-                    <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
-                      <stat.icon className="w-6 h-6 text-white" />
+                  <CardContent className="p-4 sm:p-6 text-center">
+                    <div className={`w-8 sm:w-12 h-8 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
+                      <stat.icon className="w-4 sm:w-6 h-4 sm:h-6 text-white" />
                     </div>
-                    <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                    <div className={`text-lg sm:text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
                       {stat.value}{stat.suffix}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">
+                    <div className="text-xs sm:text-sm text-muted-foreground mt-1">
                       {stat.label}
                     </div>
                   </CardContent>
@@ -188,7 +188,7 @@ export function ComponentStats() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 px-4"
         >
           {features.map((feature, index) => (
             <motion.div
@@ -200,9 +200,9 @@ export function ComponentStats() {
               className="group"
             >
               <Card className="h-full bg-background/50 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300">
-                <CardContent className="p-6">
-                  <feature.icon className={`w-8 h-8 ${feature.color} mb-4 group-hover:scale-110 transition-transform duration-300`} />
-                  <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                <CardContent className="p-4 sm:p-6">
+                  <feature.icon className={`w-6 sm:w-8 h-6 sm:h-8 ${feature.color} mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300`} />
+                  <h3 className="text-base sm:text-lg font-semibold mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
@@ -215,10 +215,10 @@ export function ComponentStats() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center"
+          className="text-center px-4"
         >
-          <h3 className="text-2xl font-bold mb-8">Works on Every Device</h3>
-          <div className="flex justify-center items-center gap-8 mb-8">
+          <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Works on Every Device</h3>
+          <div className="flex justify-center items-center gap-4 sm:gap-8 mb-6 sm:mb-8 flex-wrap">
             {devicePreview.map((device, index) => (
               <motion.div
                 key={device.label}
@@ -230,14 +230,14 @@ export function ComponentStats() {
                   device.active ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                <div className={`w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                <div className={`w-12 sm:w-16 h-12 sm:h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                   device.active 
                     ? 'border-primary bg-primary/10' 
                     : 'border-muted-foreground/30 hover:border-foreground/50'
                 }`}>
-                  <device.icon className="w-8 h-8" />
+                  <device.icon className="w-6 sm:w-8 h-6 sm:h-8" />
                 </div>
-                <span className="text-sm font-medium">{device.label}</span>
+                <span className="text-xs sm:text-sm font-medium">{device.label}</span>
               </motion.div>
             ))}
           </div>
@@ -249,18 +249,18 @@ export function ComponentStats() {
             className="max-w-2xl mx-auto"
           >
             <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-white/10 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <div className="text-lg text-muted-foreground">
+              <CardContent className="p-6 sm:p-8">
+                <div className="text-base sm:text-lg text-muted-foreground">
                   "Elementra UI has revolutionized our development process. The components are beautiful, 
                   performant, and incredibly easy to customize."
                 </div>
                 <div className="mt-4 flex items-center justify-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm sm:text-base">
                     W
                   </div>
                   <div className="text-left">
-                    <div className="font-semibold">WaleedCodes</div>
-                    <div className="text-sm text-muted-foreground">Creator, Elementra UI</div>
+                    <div className="font-semibold text-sm sm:text-base">WaleedCodes</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Creator, Elementra UI</div>
                   </div>
                 </div>
               </CardContent>

@@ -56,7 +56,7 @@ export function InteractiveDemo() {
   ]
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-t from-primary/30 via-gray-900 to-secondary/40 relative overflow-hidden">
+    <section ref={ref} className="py-16 sm:py-24 bg-gradient-to-t from-primary/30 via-gray-900 to-secondary/40 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
@@ -68,16 +68,16 @@ export function InteractiveDemo() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <Badge variant="outline" className="mb-6 px-4 py-2">
-            <Play className="w-4 h-4 mr-2" />
+          <Badge variant="outline" className="mb-4 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2">
+            <Play className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
             Interactive Playground
           </Badge>
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent px-4">
             Try Components Live
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Experience Elementra UI components in action. No installation required – just click, interact, and see the magic happen.
           </p>
         </motion.div>

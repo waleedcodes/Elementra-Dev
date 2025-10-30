@@ -74,18 +74,19 @@ export default function Features() {
     >
       <div className="bg-primary absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl select-none"></div>
       <div className="via-primary/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent transition-all ease-in-out"></div>
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.5, delay: 0 }}
-        className="container mx-auto flex flex-col items-center gap-6 sm:gap-12"
-      >
+              <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.5, delay: 0 }}
+          className="container mx-auto flex flex-col items-center gap-4 sm:gap-6 md:gap-12 px-4"
+        >
         <h2
           className={cn(
-            "via-foreground mb-8 bg-gradient-to-b from-zinc-800 to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
+            "via-foreground mb-6 sm:mb-8 bg-gradient-to-b from-zinc-800 to-zinc-700 bg-clip-text text-center text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold tracking-tighter text-transparent px-4",
             geist.className
           )}
+          style={{ lineHeight: "1.1" }}
         >
           Component Showcase
         </h2>
@@ -98,10 +99,10 @@ export default function Features() {
           }
         >
           <div className="cursor-none">
-            <div className="grid grid-cols-12 gap-4 justify-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 justify-center max-w-7xl mx-auto">
               {/* Interactive Components */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-2"
+                className="group border-secondary/40 text-card-foreground relative col-span-1 lg:col-span-6 xl:col-start-2 flex flex-col overflow-hidden rounded-xl border-2 p-4 sm:p-6 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsCliHovering(true)}
                 onMouseLeave={() => setIsCliHovering(false)}
                 ref={ref}

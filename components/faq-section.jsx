@@ -55,11 +55,11 @@ export function FAQSection() {
   ]
 
   return (
-    <section id="faq" className="relative overflow-hidden py-24 lg:py-32">
+    <section id="faq" className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-32">
       {/* Decorative background elements */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute right-0 top-1/4 h-96 w-96 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute left-0 top-3/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
+        <div className="absolute right-0 top-1/4 h-64 w-64 sm:h-96 sm:w-96 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute left-0 top-3/4 h-64 w-64 sm:h-96 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,15 +71,15 @@ export function FAQSection() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-4 py-1.5 text-sm font-medium uppercase tracking-wide text-primary backdrop-blur-sm">
-            <span className="text-base" aria-hidden="true">✶</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium uppercase tracking-wide text-primary backdrop-blur-sm">
+            <span className="text-sm sm:text-base" aria-hidden="true">✶</span>
             <span>FAQs</span>
           </div>
         </motion.div>
 
         {/* Section heading */}
         <motion.h2
-          className="mx-auto mt-6 max-w-2xl text-center text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl lg:leading-tight"
+          className="mx-auto mt-4 sm:mt-6 max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight lg:leading-tight px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -92,7 +92,7 @@ export function FAQSection() {
         </motion.h2>
 
         {/* FAQ items */}
-        <div className="mx-auto mt-16 max-w-3xl">
+        <div className="mx-auto mt-12 sm:mt-16 max-w-3xl">
           <div className="space-y-4">
             {faqs.map((faq, index) => {
               const isOpen = openItems.has(index)
