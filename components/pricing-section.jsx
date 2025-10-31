@@ -51,7 +51,7 @@ export function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(false)
 
   return (
-    <section className="relative py-24 px-4">
+    <section className="relative py-16 sm:py-20 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -59,23 +59,23 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16">
+          className="text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
-            <Sparkles className="w-4 h-4 text-[#e78a53]" />
-            <span className="text-sm font-medium text-white/80">Pricing</span>
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-4 sm:mb-6">
+            <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#e78a53]" />
+            <span className="text-xs sm:text-sm font-medium text-white/80">Pricing</span>
           </motion.div>
 
           <h2
-            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent mb-4">
+            className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent mb-4 px-4">
             Choose your plan
           </h2>
 
-          <p className="text-lg text-white/60 max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
             Start building beautiful components today. Upgrade anytime as your needs grow.
           </p>
 
@@ -85,17 +85,17 @@ export function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center justify-center gap-4 p-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm w-fit mx-auto">
+            className="flex items-center justify-center gap-2 sm:gap-4 p-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm w-fit mx-auto">
             <button
               onClick={() => setIsAnnual(false)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
                 !isAnnual ? "bg-[#e78a53] text-white shadow-lg" : "text-white/60 hover:text-white/80"
               }`}>
               Monthly
             </button>
             <button
               onClick={() => setIsAnnual(true)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 relative ${
+              className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 relative ${
                 isAnnual ? "bg-[#e78a53] text-white shadow-lg" : "text-white/60 hover:text-white/80"
               }`}>
               Annual

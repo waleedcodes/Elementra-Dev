@@ -348,11 +348,11 @@ function Dashboard() {
   };
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-b from-background to-background/50 relative overflow-hidden">
+    <section ref={ref} className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-background to-background/50 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-64 sm:w-96 h-64 sm:h-96 bg-secondary/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -360,16 +360,16 @@ function Dashboard() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <Badge variant="outline" className="mb-6 px-4 py-2">
-            <Code2 className="w-4 h-4 mr-2" />
+          <Badge variant="outline" className="mb-4 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2">
+            <Code2 className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
             Developer Experience
           </Badge>
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent px-4">
             Ready to Code?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Get started with Elementra UI in minutes. Copy, paste, and customize to your heart's content.
           </p>
         </motion.div>
@@ -381,18 +381,18 @@ function Dashboard() {
           className="max-w-7xl mx-auto"
         >
           <Card className="backdrop-blur-sm bg-background/80 border-white/10">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center gap-2">
-                  <Terminal className="w-5 h-5" />
+            <CardHeader className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-2">
+                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                  <Terminal className="w-4 sm:w-5 h-4 sm:h-5" />
                   Code Examples
                 </CardTitle>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 w-full sm:w-auto">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setIsPreviewVisible(!isPreviewVisible)}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 flex-1 sm:flex-none justify-center"
                   >
                     {isPreviewVisible ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     {isPreviewVisible ? "Hide" : "Show"} Preview

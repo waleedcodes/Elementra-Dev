@@ -182,30 +182,29 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-b from-background/50 to-background relative overflow-hidden">
-      {/* Background Effects */}
+    <section ref={ref} className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
+      {/* Background decoration */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-secondary/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <Badge variant="outline" className="mb-6 px-4 py-2">
-            <Heart className="w-4 h-4 mr-2" />
-            Loved by Developers
+          <Badge variant="outline" className="mb-4 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2">
+            <Star className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
+            Testimonials
           </Badge>
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-            What Developers Say
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent px-4">
+            Loved by Developers
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of developers who have transformed their workflow with Elementra UI
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+            See what developers are saying about Elementra UI and how it's transforming their development workflow.
           </p>
         </motion.div>
 
