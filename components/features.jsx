@@ -99,7 +99,7 @@ export default function Features() {
           }
         >
           <div className="cursor-none">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 justify-center max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-12 gap-4 justify-center max-w-7xl mx-auto">
               {/* Interactive Components */}
               <motion.div
                 className="group border-secondary/40 text-card-foreground relative col-span-1 lg:col-span-6 xl:col-start-2 flex flex-col overflow-hidden rounded-xl border-2 p-4 sm:p-6 shadow-xl transition-all ease-in-out"
