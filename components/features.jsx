@@ -102,7 +102,7 @@ export default function Features() {
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-12 gap-4 justify-center max-w-7xl mx-auto">
               {/* Interactive Components */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-1 lg:col-span-6 xl:col-start-2 flex flex-col overflow-hidden rounded-xl border-2 p-4 sm:p-6 shadow-xl transition-all ease-in-out"
+                className="group border-secondary/40 text-card-foreground relative col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 xl:col-start-2 flex flex-col overflow-hidden rounded-xl border-2 p-4 sm:p-6 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsCliHovering(true)}
                 onMouseLeave={() => setIsCliHovering(false)}
                 ref={ref}
@@ -118,22 +118,22 @@ export default function Features() {
                 }}
                 style={{ transition: "all 0s ease-in-out" }}
               >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <h3 className="text-xl sm:text-2xl leading-none font-semibold tracking-tight">
                     Interactive Components
                   </h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
+                  <div className="text-sm sm:text-md text-muted-foreground flex flex-col gap-2">
                     <p className="max-w-[460px]">
                       Beautiful, interactive components including badges,
                       buttons, and switches with smooth animations.
                     </p>
                   </div>
                 </div>
-                <div className="pointer-events-auto flex grow items-center justify-center select-none relative min-h-[300px] p-4">
-                  <div className="w-full max-w-md space-y-8">
+                <div className="pointer-events-auto flex grow items-center justify-center select-none relative min-h-[250px] sm:min-h-[300px] p-2 sm:p-4">
+                  <div className="w-full max-w-sm space-y-6 sm:space-y-8">
                     {/* Badges Section */}
                     <motion.div
-                      className="space-y-3"
+                      className="space-y-2 sm:space-y-3"
                       initial={{ opacity: 0, y: 20 }}
                       animate={
                         isCliHovering
@@ -142,17 +142,17 @@ export default function Features() {
                       }
                       transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                      <h4 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2">
                         Interactive Badges
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         <motion.div
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           <Badge
                             variant="default"
-                            className="cursor-pointer hover:shadow-lg transition-all"
+                            className="cursor-pointer hover:shadow-lg transition-all text-xs"
                           >
                             Default
                           </Badge>
@@ -163,7 +163,7 @@ export default function Features() {
                         >
                           <Badge
                             variant="secondary"
-                            className="cursor-pointer hover:shadow-lg transition-all"
+                            className="cursor-pointer hover:shadow-lg transition-all text-xs"
                           >
                             Secondary
                           </Badge>
@@ -174,7 +174,7 @@ export default function Features() {
                         >
                           <Badge
                             variant="destructive"
-                            className="cursor-pointer hover:shadow-lg transition-all"
+                            className="cursor-pointer hover:shadow-lg transition-all text-xs"
                           >
                             Destructive
                           </Badge>
@@ -185,7 +185,7 @@ export default function Features() {
                         >
                           <Badge
                             variant="outline"
-                            className="cursor-pointer hover:shadow-lg transition-all"
+                            className="cursor-pointer hover:shadow-lg transition-all text-xs"
                           >
                             Outline
                           </Badge>
@@ -195,7 +195,7 @@ export default function Features() {
 
                     {/* Buttons Section */}
                     <motion.div
-                      className="space-y-3"
+                      className="space-y-2 sm:space-y-3"
                       initial={{ opacity: 0, y: 20 }}
                       animate={
                         isCliHovering
@@ -204,17 +204,17 @@ export default function Features() {
                       }
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                      <h4 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2">
                         Interactive Buttons
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         <motion.div
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           <Button
                             size="sm"
-                            className="shadow-lg hover:shadow-xl transition-all"
+                            className="shadow-lg hover:shadow-xl transition-all text-xs h-7 sm:h-8"
                           >
                             Primary
                           </Button>
@@ -226,7 +226,7 @@ export default function Features() {
                           <Button
                             variant="secondary"
                             size="sm"
-                            className="shadow-lg hover:shadow-xl transition-all"
+                            className="shadow-lg hover:shadow-xl transition-all text-xs h-7 sm:h-8"
                           >
                             Secondary
                           </Button>
@@ -238,7 +238,7 @@ export default function Features() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="shadow-lg hover:shadow-xl transition-all"
+                            className="shadow-lg hover:shadow-xl transition-all text-xs h-7 sm:h-8"
                           >
                             Outline
                           </Button>
@@ -250,7 +250,7 @@ export default function Features() {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="shadow-lg hover:shadow-xl transition-all"
+                            className="shadow-lg hover:shadow-xl transition-all text-xs h-7 sm:h-8"
                           >
                             Ghost
                           </Button>
@@ -260,7 +260,7 @@ export default function Features() {
 
                     {/* Switch & Input Section */}
                     <motion.div
-                      className="space-y-4"
+                      className="space-y-3 sm:space-y-4"
                       initial={{ opacity: 0, y: 20 }}
                       animate={
                         isCliHovering
@@ -269,17 +269,17 @@ export default function Features() {
                       }
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                      <h4 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2">
                         Form Controls
                       </h4>
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-4">
+                      <div className="space-y-2 sm:space-y-3">
+                        <div className="flex items-center gap-3 sm:gap-4">
                           <Switch
                             checked={switchValue}
                             onCheckedChange={setSwitchValue}
-                            className="cursor-pointer"
+                            className="cursor-pointer scale-90 sm:scale-100"
                           />
-                          <span className="text-sm">
+                          <span className="text-xs sm:text-sm">
                             {switchValue ? "Enabled" : "Disabled"}
                           </span>
                         </div>
@@ -290,7 +290,7 @@ export default function Features() {
                           <Input
                             id="demo-input"
                             placeholder="Type something..."
-                            className="h-8 text-sm"
+                            className="h-7 sm:h-8 text-xs sm:text-sm"
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
                           />
@@ -339,7 +339,7 @@ export default function Features() {
 
               {/* Beautiful UI Elements */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-8"
+                className="group border-secondary/40 text-card-foreground relative col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 xl:col-start-8 flex flex-col overflow-hidden rounded-xl border-2 p-4 sm:p-6 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 ref={ref}
