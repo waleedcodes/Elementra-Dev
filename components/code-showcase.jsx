@@ -166,15 +166,15 @@ function Dashboard() {
       
       case "dashboard-example":
         return (
-          <div className="space-y-4 max-w-md">
-            <Card className="p-4">
+          <div className="space-y-3 sm:space-y-4 max-w-xs sm:max-w-md w-full">
+            <Card className="p-3 sm:p-4">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-medium">Project Progress</h3>
-                <span className="text-sm">75%</span>
+                <h3 className="font-medium text-sm sm:text-base">Project Progress</h3>
+                <span className="text-xs sm:text-sm">75%</span>
               </div>
-              <div className="w-full bg-secondary rounded-full h-2">
+              <div className="w-full bg-secondary rounded-full h-1.5 sm:h-2">
                 <motion.div 
-                  className="bg-primary h-2 rounded-full"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: "75%" }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -182,17 +182,17 @@ function Dashboard() {
               </div>
             </Card>
             
-            <Card className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-5 bg-primary rounded-full relative">
+            <Card className="p-3 sm:p-4">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-8 sm:w-10 h-4 sm:h-5 bg-primary rounded-full relative">
                   <motion.div 
-                    className="w-4 h-4 bg-white rounded-full absolute top-0.5"
+                    className="w-3 sm:w-4 h-3 sm:h-4 bg-white rounded-full absolute top-0.5"
                     initial={{ x: 2 }}
-                    animate={{ x: 18 }}
+                    animate={{ x: 14 }}
                     transition={{ duration: 0.3, delay: 1 }}
                   />
                 </div>
-                <span className="text-sm">Enable Notifications</span>
+                <span className="text-xs sm:text-sm">Enable Notifications</span>
               </div>
             </Card>
             
@@ -201,8 +201,8 @@ function Dashboard() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
             >
-              <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
-                <div className="text-sm text-green-400">Notifications are enabled!</div>
+              <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-2 sm:p-3">
+                <div className="text-xs sm:text-sm text-green-400">Notifications are enabled!</div>
               </div>
             </motion.div>
           </div>
@@ -210,22 +210,22 @@ function Dashboard() {
       
       case "theme-example":
         return (
-          <div className="space-y-3 max-w-md">
-            <div className="grid grid-cols-3 gap-3">
+          <div className="space-y-2 sm:space-y-3 max-w-xs sm:max-w-md w-full">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <motion.div 
-                className="h-16 rounded-lg bg-gradient-to-br from-primary/20 to-primary/40"
+                className="h-12 sm:h-16 rounded-lg bg-gradient-to-br from-primary/20 to-primary/40"
                 whileHover={{ scale: 1.05 }}
               />
               <motion.div 
-                className="h-16 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/40"
+                className="h-12 sm:h-16 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/40"
                 whileHover={{ scale: 1.05 }}
               />
               <motion.div 
-                className="h-16 rounded-lg bg-gradient-to-br from-muted/20 to-muted/40"
+                className="h-12 sm:h-16 rounded-lg bg-gradient-to-br from-muted/20 to-muted/40"
                 whileHover={{ scale: 1.05 }}
               />
             </div>
-            <div className="text-center text-sm text-muted-foreground">
+            <div className="text-center text-xs sm:text-sm text-muted-foreground">
               Customizable color system
             </div>
           </div>
