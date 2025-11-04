@@ -49,22 +49,21 @@ export default function Home() {
   };
 
   return (
-    <div className="">
+    <div className="min-h-screen">
       {/* Desktop Header */}
       <header
-        className={`sticky top-4 z-[9999] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full bg-background/80 md:flex backdrop-blur-sm border border-border/50 shadow-lg transition-all duration-300 ${
-          isScrolled ? "max-w-3xl px-2" : "max-w-5xl px-4"
-        } py-2`}
+        className={`fixed top-2 sm:top-4 z-[9999] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full bg-background/90 md:flex backdrop-blur-md border border-border/50 shadow-lg transition-all duration-300 ${
+          isScrolled ? "max-w-2xl sm:max-w-3xl px-2 sm:px-3" : "max-w-4xl sm:max-w-5xl px-3 sm:px-4"
+        } py-2 left-1/2 transform -translate-x-1/2`}
         style={{
           willChange: "transform",
-          transform: "translateZ(0)",
           backfaceVisibility: "hidden",
           perspective: "1000px",
         }}
       >
         <Link
           className={`z-50 flex items-center justify-center gap-2 transition-all duration-300 ${
-            isScrolled ? "ml-4" : ""
+            isScrolled ? "ml-2 sm:ml-4" : ""
           }`}
           href="#"
           aria-label="Elementra UI Logo"
@@ -72,9 +71,9 @@ export default function Home() {
           <Image
             src="/icon2.png"
             alt="Elementra UI Logo"
-            width={50}
-            height={50}
-            className="rounded-full"
+            width={isScrolled ? 40 : 50}
+            height={isScrolled ? 40 : 50}
+            className="rounded-full transition-all duration-300"
           />
         </Link>
 
