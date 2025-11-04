@@ -77,9 +77,9 @@ export default function Home() {
           />
         </Link>
 
-        <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-muted-foreground transition duration-200 hover:text-foreground md:flex md:space-x-2">
+        <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1 sm:space-x-2 text-sm font-medium text-muted-foreground transition duration-200 hover:text-foreground md:flex">
           <a
-            className="relative px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="relative px-2 sm:px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer text-xs sm:text-sm"
             onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById("features");
@@ -96,12 +96,12 @@ export default function Home() {
           </a>
           <Link
             href="/docs"
-            className="relative px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="relative px-2 sm:px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer text-xs sm:text-sm"
           >
             <span className="relative z-20">Docs</span>
           </Link>
           <a
-            className="relative px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="relative px-2 sm:px-3 py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer text-xs sm:text-sm"
             onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById("testimonials");
@@ -118,42 +118,56 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <a
             href="/login"
-            className="font-medium transition-colors hover:text-foreground text-muted-foreground text-sm cursor-pointer"
+            className="font-medium transition-colors hover:text-foreground text-muted-foreground text-xs sm:text-sm cursor-pointer"
           >
             Log In
           </a>
 
           <a
             href="/signup"
-            className="rounded-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center bg-gradient-to-b from-primary to-primary/80 text-primary-foreground shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-4 py-2 text-sm"
+            className="rounded-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center bg-gradient-to-b from-primary to-primary/80 text-primary-foreground shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm"
           >
             Sign Up
           </a>
         </div>
       </header>
       {/* Mobile Header */}
-      <header className="sticky top-4 z-[9999] mx-4 flex w-auto flex-row items-center justify-between rounded-full bg-background/80 backdrop-blur-sm border border-border/50 shadow-lg md:hidden px-4 py-3">
+      <header className="fixed top-2 z-[9999] mx-2 sm:mx-4 flex w-auto flex-row items-center justify-between rounded-full bg-background/90 backdrop-blur-md border border-border/50 shadow-lg md:hidden px-3 sm:px-4 py-2.5 sm:py-3 left-1/2 transform -translate-x-1/2 min-w-[calc(100vw-1rem)] sm:min-w-[calc(100vw-2rem)]">
+        <Link
+          href="#"
+          className="flex items-center justify-center"
+          aria-label="Elementra UI Logo"
+        >
+          <Image
+            src="/icon2.png"
+            alt="Elementra UI Logo"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+        </Link>
+        
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-background/50 border border-border/50 transition-colors hover:bg-background/80"
+          className="flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-background/50 border border-border/50 transition-colors hover:bg-background/80"
           aria-label="Toggle menu"
         >
-          <div className="flex flex-col items-center justify-center w-5 h-5 space-y-1">
+          <div className="flex flex-col items-center justify-center w-4 sm:w-5 h-4 sm:h-5 space-y-1">
             <span
-              className={`block w-4 h-0.5 bg-foreground transition-all duration-300 ${
+              className={`block w-3 sm:w-4 h-0.5 bg-foreground transition-all duration-300 ${
                 isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
               }`}
             ></span>
             <span
-              className={`block w-4 h-0.5 bg-foreground transition-all duration-300 ${
+              className={`block w-3 sm:w-4 h-0.5 bg-foreground transition-all duration-300 ${
                 isMobileMenuOpen ? "opacity-0" : ""
               }`}
             ></span>
             <span
-              className={`block w-4 h-0.5 bg-foreground transition-all duration-300 ${
+              className={`block w-3 sm:w-4 h-0.5 bg-foreground transition-all duration-300 ${
                 isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
               }`}
             ></span>
@@ -163,43 +177,39 @@ export default function Home() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm md:hidden">
-          <div className="absolute top-20 left-4 right-4 bg-background/95 backdrop-blur-md border border-border/50 rounded-2xl shadow-2xl p-6">
-            <nav className="flex flex-col space-y-4">
+          <div className="absolute top-16 sm:top-20 left-2 sm:left-4 right-2 sm:right-4 bg-background/95 backdrop-blur-md border border-border/50 rounded-2xl shadow-2xl p-4 sm:p-6">
+            <nav className="flex flex-col space-y-3 sm:space-y-4">
               <button
                 onClick={() => handleMobileNavClick("features")}
-                className="text-left px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
+                className="text-left px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
               >
                 Features
               </button>
               <Link
                 href="/docs"
-                className="text-left px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
+                className="text-left px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Documentation
               </Link>
               <button
                 onClick={() => handleMobileNavClick("testimonials")}
-                className="text-left px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
+                className="text-left px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
               >
                 Reviews
               </button>
-              <button
-                onClick={() => handleMobileNavClick("faq")}
-                className="text-left px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50"
-              >
-                FAQ
-              </button>
-              <div className="border-t border-border/50 pt-4 mt-4 flex flex-col space-y-3">
+              <div className="border-t border-border/50 pt-3 sm:pt-4 mt-3 sm:mt-4 flex flex-col space-y-2 sm:space-y-3">
                 <a
                   href="/login"
-                  className="px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50 cursor-pointer"
+                  className="px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-background/50 cursor-pointer"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Log In
                 </a>
                 <a
                   href="/signup"
-                  className="px-4 py-3 text-lg font-bold text-center bg-gradient-to-b from-primary to-primary/80 text-primary-foreground rounded-lg shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                  className="px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg font-bold text-center bg-gradient-to-b from-primary to-primary/80 text-primary-foreground rounded-lg shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign Up
                 </a>
@@ -209,7 +219,9 @@ export default function Home() {
         </div>
       )}
       {/* Hero Section */}
-      <Hero />
+      <div className="pt-16 sm:pt-20">
+        <Hero />
+      </div>
 
       {/* Component Stats Section */}
       <ComponentStats />
