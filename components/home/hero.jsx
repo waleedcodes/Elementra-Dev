@@ -72,26 +72,26 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="mb-6 sm:mb-8"
             >
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
-                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-primary/10">
-                    <Sparkles className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-primary animate-pulse" />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="flex items-center justify-center w-3 sm:w-4 md:w-5 h-3 sm:h-4 md:h-5 rounded-full bg-primary/10">
+                    <Sparkles className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-primary animate-pulse" />
                   </div>
                   <span className="text-xs sm:text-sm font-medium text-primary">
                     50+ React Components
                   </span>
-                  <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="w-1 sm:w-1.5 md:w-2 h-1 sm:h-1.5 md:h-2 bg-green-500 rounded-full animate-pulse"></div>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-sm">
-                  <Star className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-yellow-500 fill-yellow-500" />
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 md:px-3 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-sm">
+                  <Star className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-yellow-500 fill-yellow-500" />
                   <span className="text-xs font-medium text-yellow-600 dark:text-yellow-400">
-                    1.2k+ GitHub Stars
+                    1.2k+ Stars
                   </span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full border border-green-500/20 bg-green-500/5 backdrop-blur-sm">
-                  <Download className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-green-500" />
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 md:px-3 py-1 rounded-full border border-green-500/20 bg-green-500/5 backdrop-blur-sm">
+                  <Download className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-green-500" />
                   <span className="text-xs font-medium text-green-600 dark:text-green-400">
                     10k+ Downloads
                   </span>
@@ -104,11 +104,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="mb-8"
+              className="mb-6 sm:mb-8"
             >
               <h1
                 id="main-title"
-                className="text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl xl:text-8xl"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
               >
                 <div className="relative inline-block">
                   <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient-x font-extrabold">
@@ -117,7 +117,7 @@ export default function Hero() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-25 animate-pulse"></div>
                 </div>
                 <br />
-                <span className="text-muted-foreground text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal mt-2 sm:mt-4 block">
+                <span className="text-muted-foreground text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal mt-2 sm:mt-4 block">
                   Modern React Component Library
                 </span>
               </h1>
@@ -128,11 +128,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-12"
+              className="mb-8 sm:mb-10 md:mb-12"
             >
-              <p className="mx-auto max-w-4xl text-sm sm:text-xl text-muted-foreground leading-relaxed mb-6">
+              <p className="mx-auto max-w-3xl sm:max-w-4xl text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-4 sm:mb-6 px-4 sm:px-0">
                 A comprehensive collection of{" "}
-                <span className="text-primary font-semibold bg-primary/10 px-2 py-1 rounded-md">
+                <span className="text-primary font-semibold bg-primary/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md">
                   accessible, customizable, and production-ready
                 </span>{" "}
                 React components. Built with Tailwind CSS, TypeScript, and
@@ -145,20 +145,20 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="mx-auto max-w-2xl"
+                className="mx-auto max-w-xl sm:max-w-2xl px-4 sm:px-0"
               >
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative bg-slate-900 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700/50 p-3 sm:p-4 shadow-2xl">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="flex gap-1.5">
-                        <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-red-500"></div>
-                        <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-yellow-500"></div>
-                        <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-green-500"></div>
+                  <div className="relative bg-slate-900 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700/50 p-2.5 sm:p-3 md:p-4 shadow-2xl">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+                      <div className="flex gap-1 sm:gap-1.5">
+                        <div className="w-1.5 sm:w-2 md:w-3 h-1.5 sm:h-2 md:h-3 rounded-full bg-red-500"></div>
+                        <div className="w-1.5 sm:w-2 md:w-3 h-1.5 sm:h-2 md:h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-1.5 sm:w-2 md:w-3 h-1.5 sm:h-2 md:h-3 rounded-full bg-green-500"></div>
                       </div>
-                      <div className="flex items-center gap-2 ml-auto">
-                        <Terminal className="h-2.5 sm:h-3 w-2.5 sm:w-3 text-slate-400" />
-                        <span className="text-xs text-slate-400 font-mono">
+                      <div className="flex items-center gap-1 sm:gap-2 ml-auto">
+                        <Terminal className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-slate-400" />
+                        <span className="text-xs text-slate-400 font-mono hidden sm:inline">
                           component.tsx
                         </span>
                       </div>
@@ -209,45 +209,47 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap items-center justify-center gap-4 mb-16"
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-12 sm:mb-14 md:mb-16 px-4 sm:px-0"
             >
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold border border-primary/20 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Copy className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
-                Copy & Paste
+                <Copy className="h-3 sm:h-4 w-3 sm:w-4 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="hidden xs:inline">Copy & Paste</span>
+                <span className="xs:hidden">Copy</span>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-semibold border border-emerald-500/20 backdrop-blur-sm hover:bg-emerald-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-semibold border border-emerald-500/20 backdrop-blur-sm hover:bg-emerald-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <span className="text-lg group-hover:scale-110 transition-transform duration-300">
+                <span className="text-base sm:text-lg group-hover:scale-110 transition-transform duration-300">
                   ♿
                 </span>
                 Accessible
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-semibold border border-blue-500/20 backdrop-blur-sm hover:bg-blue-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs sm:text-sm font-semibold border border-blue-500/20 backdrop-blur-sm hover:bg-blue-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <span className="text-lg group-hover:rotate-12 transition-transform duration-300">
+                <span className="text-base sm:text-lg group-hover:rotate-12 transition-transform duration-300">
                   🎨
                 </span>
-                Customizable
+                <span className="hidden xs:inline">Customizable</span>
+                <span className="xs:hidden">Custom</span>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-semibold border border-purple-500/20 backdrop-blur-sm hover:bg-purple-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs sm:text-sm font-semibold border border-purple-500/20 backdrop-blur-sm hover:bg-purple-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Code2 className="h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
+                <Code2 className="h-3 sm:h-4 w-3 sm:w-4 group-hover:scale-110 transition-transform duration-300" />
                 TypeScript
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 text-sm font-semibold border border-orange-500/20 backdrop-blur-sm hover:bg-orange-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs sm:text-sm font-semibold border border-orange-500/20 backdrop-blur-sm hover:bg-orange-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Terminal className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
+                <Terminal className="h-3 sm:h-4 w-3 sm:w-4 group-hover:rotate-12 transition-transform duration-300" />
                 CLI Ready
               </motion.div>
             </motion.div>
@@ -257,22 +259,22 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16 sm:mb-20"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-16 md:mb-20 px-4 sm:px-0"
             >
               <Link href="/docs">
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative"
+                  className="group relative w-full sm:w-auto"
                 >
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
                   <Button
                     size="lg"
-                    className="relative w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-2xl hover:shadow-primary/25 transition-all duration-300 border-0 rounded-xl"
+                    className="relative w-full sm:w-auto h-10 sm:h-12 md:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-2xl hover:shadow-primary/25 transition-all duration-300 border-0 rounded-xl"
                   >
-                    <Zap className="mr-2 sm:mr-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:rotate-12 transition-transform duration-300" />
+                    <Zap className="mr-1.5 sm:mr-2 md:mr-3 h-3 sm:h-4 md:h-5 w-3 sm:w-4 md:w-5 group-hover:rotate-12 transition-transform duration-300" />
                     Get Started
-                    <ArrowRight className="ml-1 sm:ml-2 h-3 sm:h-4 w-3 sm:w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="ml-1 sm:ml-2 h-2.5 sm:h-3 md:h-4 w-2.5 sm:w-3 md:w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </motion.div>
               </Link>
@@ -281,15 +283,16 @@ export default function Hero() {
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group"
+                  className="group w-full sm:w-auto"
                 >
                   <Button
                     variant="outline"
                     size="lg"
-                    className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-sm hover:bg-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl hover:text-white"
+                    className="w-full sm:w-auto h-10 sm:h-12 md:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg font-semibold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-sm hover:bg-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl hover:text-white"
                   >
-                    Browse Components
-                    <ExternalLink className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                    <span className="hidden sm:inline">Browse Components</span>
+                    <span className="sm:hidden">Components</span>
+                    <ExternalLink className="ml-1.5 sm:ml-2 md:ml-3 h-3 sm:h-4 md:h-5 w-3 sm:w-4 md:w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                   </Button>
                 </motion.div>
               </Link>
