@@ -71,143 +71,218 @@ export default function AlertExample() {
   ];
 
   return (
-    <div className="">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <h1 className="text-4xl font-semibold mb-4">Alert</h1>
-      <p className="text-muted-foreground dark:text-white mb-8">
-        An alert component that displays important messages to the user.
-      </p>
+      <div className="mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">Alert</h1>
+        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          An alert component that displays important messages to the user with customizable variants and animations.
+        </p>
+      </div>
 
       {/* Content Sections */}
-      <div className="space-y-12">
+      <div className="space-y-8 sm:space-y-12">
         {/* Installation Section */}
-        <section>
-          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-            <span className="text-muted-foreground dark:text-white">1</span>
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
+            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">1</span>
             Installation
           </h2>
-          <div className="relative mb-4">
-            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
-              <span>npm i elementra-ui</span>
+          <div className="relative">
+            <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <code className="text-foreground">npm i elementra-ui</code>
             </div>
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
+              className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
               onClick={() => handleCopy("npm i elementra-ui")}
             >
-              <CopyIcon className="h-4 w-4" />
+              <CopyIcon className="h-4 w-4 text-muted-foreground" />
             </Button>
           </div>
         </section>
 
-        <section>
-          <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-            <span className="text-muted-foreground dark:text-white">2</span>
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
+            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">2</span>
             Add Components Using CLI
           </h2>
 
-          <div className="relative mb-4">
-            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-800 dark:text-white">
-              <span>npx elementra-ui add</span>
+          <div className="relative">
+            <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <code className="text-foreground">npx elementra-ui add</code>
             </div>
             <Button
               size="sm"
               variant="ghost"
-              className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
+              className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
               onClick={() => handleCopy("npx elementra-ui add")}
             >
-              <Copy className="h-4 w-4" />
+              <Copy className="h-4 w-4 text-muted-foreground" />
             </Button>
           </div>
-          <p className="my-3 text-gray-600 dark:text-white text-sm">
-            Select components using the up/down arrow keys. Press spacebar to
-            select multiple components, then press enter to add them to your{" "}
-            <span className="text-purple-600">src</span> folder.
-          </p>
-        </section>
-        {/* ************************** */}
-        <div className="w-full p-4">
-          <Tabs defaultValue="preview" className="w-full">
-            <div className="flex items-center justify-between mb-4">
-              <TabsList className="grid w-[200px] grid-cols-2">
-                <TabsTrigger
-                  value="preview"
-                  className="font-medium"
-                  key="preview-tab"
-                >
-                  Preview
-                </TabsTrigger>
-                <TabsTrigger
-                  value="code"
-                  className="font-medium"
-                  key="code-tab"
-                >
-                  Code
-                </TabsTrigger>
-              </TabsList>
-            </div>
-
-            <AnimatePresence>
-              <TabsContent value="preview" className="mt-0">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg md:border bg-white md:p-8 min-h-[400px] flex items-center justify-center"
-                >
-                  <Alert variant="success" animation="slideUp">
-                    <AlertTitle>Success!</AlertTitle>
-                    <AlertDescription>This alert will slide up.</AlertDescription>
-                  </Alert>
-                </motion.div>
-              </TabsContent>
-
-              <TabsContent value="code" className="mt-0">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="rounded-lg bg-zinc-950 dark:bg-zinc-100 p-4"
-                >
-                  <pre className="text-[0.7rem] md:text-[0.9rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
-                    <code className="whitespace-pre-wrap">{codeExamples[0].code}</code>
-                  </pre>
-                </motion.div>
-              </TabsContent>
-            </AnimatePresence>
-          </Tabs>
-        </div>
-        {/* ************************** */}
-        {/* Usage Section */}
-        {codeExamples.map((example, index) => (
-          <section key={index}>
-            <h2 className="text-xl font-medium flex items-center gap-2 mb-4">
-              <span className="text-muted-foreground dark:text-white">{index + 3}:</span>
-              {example.description}
-            </h2>
-
-            <p className="mb-6 text-gray-700 dark:text-white">
-              Import and use the Alert component in your project.
+          <div className="bg-muted/50 border border-border rounded-lg p-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Select components using the up/down arrow keys. Press spacebar to
+              select multiple components, then press enter to add them to your{" "}
+              <code className="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-xs font-mono">src</code> folder.
             </p>
-
-            <div className="relative">
-              <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-[0.6rem] md:text-[0.9rem] font-mono whitespace-pre-wrap">
-                  {example.code}
-                </pre>
+          </div>
+        </section>
+        {/* Preview Section */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
+            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
+            Component Preview
+          </h2>
+          
+          <div className="w-full">
+            <Tabs defaultValue="preview" className="w-full">
+              <div className="flex items-center justify-between mb-6">
+                <TabsList className="grid w-[240px] grid-cols-2 bg-muted">
+                  <TabsTrigger
+                    value="preview"
+                    className="font-medium data-[state=active]:bg-background data-[state=active]:text-foreground"
+                    key="preview-tab"
+                  >
+                    Preview
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="code"
+                    className="font-medium data-[state=active]:bg-background data-[state=active]:text-foreground"
+                    key="code-tab"
+                  >
+                    Code
+                  </TabsTrigger>
+                </TabsList>
               </div>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
-                onClick={() => handleCopy(example.code)}
-              >
-                <Copy className="h-4 w-4" />
-              </Button>
+
+              <AnimatePresence mode="wait">
+                <TabsContent value="preview" className="mt-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="rounded-lg border border-border bg-background p-6 sm:p-8 min-h-[300px] sm:min-h-[400px] flex items-center justify-center"
+                  >
+                    <Alert variant="success" animation="slideUp">
+                      <AlertTitle>Success!</AlertTitle>
+                      <AlertDescription>This alert will slide up smoothly with a success variant.</AlertDescription>
+                    </Alert>
+                  </motion.div>
+                </TabsContent>
+
+                <TabsContent value="code" className="mt-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative rounded-lg border border-border bg-card"
+                  >
+                    <div className="p-4 overflow-x-auto">
+                      <pre className="text-xs sm:text-sm text-foreground font-mono">
+                        <code className="whitespace-pre-wrap">{codeExamples[0].code}</code>
+                      </pre>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
+                      onClick={() => handleCopy(codeExamples[0].code)}
+                    >
+                      <Copy className="h-4 w-4 text-muted-foreground" />
+                    </Button>
+                  </motion.div>
+                </TabsContent>
+              </AnimatePresence>
+            </Tabs>
+          </div>
+        </section>
+        {/* Additional Examples Section */}
+        <section className="space-y-6">
+          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
+            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
+            More Examples
+          </h2>
+          
+          <div className="space-y-6">
+            {codeExamples.slice(1).map((example, index) => (
+              <div key={index + 1} className="space-y-3">
+                <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
+                  <span className="w-1 h-6 bg-primary rounded-full"></span>
+                  {example.description}
+                </h3>
+                
+                <p className="text-sm text-muted-foreground">
+                  Import and use the Alert component with different variants and animations.
+                </p>
+
+                <div className="relative">
+                  <div className="bg-card border border-border rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-xs sm:text-sm font-mono text-foreground">
+                      <code className="whitespace-pre-wrap">{example.code}</code>
+                    </pre>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
+                    onClick={() => handleCopy(example.code)}
+                  >
+                    <Copy className="h-4 w-4 text-muted-foreground" />
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        {/* API Reference Section */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
+            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">5</span>
+            API Reference
+          </h2>
+          
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4 text-foreground">Alert Props</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 px-2 font-medium text-foreground">Prop</th>
+                    <th className="text-left py-2 px-2 font-medium text-foreground">Type</th>
+                    <th className="text-left py-2 px-2 font-medium text-foreground">Default</th>
+                    <th className="text-left py-2 px-2 font-medium text-foreground">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 px-2"><code className="bg-muted px-1 py-0.5 rounded text-xs">variant</code></td>
+                    <td className="py-2 px-2">string</td>
+                    <td className="py-2 px-2">"default"</td>
+                    <td className="py-2 px-2">Alert variant: default, success, warning, error, info</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 px-2"><code className="bg-muted px-1 py-0.5 rounded text-xs">animation</code></td>
+                    <td className="py-2 px-2">string</td>
+                    <td className="py-2 px-2">"fade"</td>
+                    <td className="py-2 px-2">Animation type: fade, bounce, shake, slideDown, slideUp</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-2"><code className="bg-muted px-1 py-0.5 rounded text-xs">children</code></td>
+                    <td className="py-2 px-2">ReactNode</td>
+                    <td className="py-2 px-2">-</td>
+                    <td className="py-2 px-2">The content of the alert</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </section>
-        ))}
+          </div>
+        </section>
+
         {/* ************************** */}
       </div>
     </div>
