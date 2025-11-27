@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import NewsletterSection from "@/components/newsletter-section";
 import Footer from "./_Components/Footer";
+import { Github } from "lucide-react";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,7 +54,9 @@ export default function Home() {
       {/* Desktop Header */}
       <header
         className={`fixed top-2 sm:top-4 z-[9999] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full bg-background/90 md:flex backdrop-blur-md border border-border/50 shadow-lg transition-all duration-300 ${
-          isScrolled ? "max-w-2xl sm:max-w-3xl px-2 sm:px-3" : "max-w-4xl sm:max-w-5xl px-3 sm:px-4"
+          isScrolled
+            ? "max-w-2xl sm:max-w-3xl px-2 sm:px-3"
+            : "max-w-4xl sm:max-w-5xl px-3 sm:px-4"
         } py-2 left-1/2 transform -translate-x-1/2`}
         style={{
           willChange: "transform",
@@ -118,21 +121,12 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-4">
-          <a
-            href="/login"
-            className="font-medium transition-colors hover:text-foreground text-muted-foreground text-xs sm:text-sm cursor-pointer"
-          >
-            Log In
-          </a>
-
-          <a
-            href="/signup"
-            className="rounded-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center bg-gradient-to-b from-primary to-primary/80 text-primary-foreground shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm"
-          >
-            Sign Up
-          </a>
-        </div>
+        <Link className="cursor-pointer z-10" href="https://github.com/waleedcodes/Elementra-Dev" target="_blank" rel="noopener noreferrer">
+          <Github
+            size={25}
+            className="text-muted-foreground hover:text-foreground transition-colorsmr-2"
+          />
+        </Link>
       </header>
       {/* Mobile Header */}
       <header className="fixed top-2 z-[9999] mx-2 sm:mx-4 flex w-auto flex-row items-center justify-between rounded-full bg-background/90 backdrop-blur-md border border-border/50 shadow-lg md:hidden px-3 sm:px-4 py-2.5 sm:py-3 left-1/2 transform -translate-x-1/2 min-w-[calc(100vw-1rem)] sm:min-w-[calc(100vw-2rem)]">
@@ -149,7 +143,7 @@ export default function Home() {
             className="rounded-full"
           />
         </Link>
-        
+
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-background/50 border border-border/50 transition-colors hover:bg-background/80"
