@@ -82,13 +82,13 @@ const Modal = React.forwardRef(
         <div className="absolute inset-0 bg-black/50" />
         <div
           className={cn(
-            "relative bg-white rounded-lg shadow-lg w-full max-w-md mx-auto transform transition-transform",
+            "relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md mx-auto transform transition-transform",
             isVisible ? "scale-100" : "scale-95"
           )}
         >
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100"
+            className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-200"
             aria-label="Close"
           >
             <X size={18} />
@@ -102,7 +102,7 @@ const Modal = React.forwardRef(
 
 export const ModalHeader = React.forwardRef(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("px-6 py-4 border-b", className)} {...props}>
+    <div ref={ref} className={cn("px-6 py-4 border-b dark:border-gray-600 text-gray-900 dark:text-white", className)} {...props}>
       {children}
     </div>
   )
@@ -110,7 +110,7 @@ export const ModalHeader = React.forwardRef(
 
 export const ModalBody = React.forwardRef(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("px-6 py-4", className)} {...props}>
+    <div ref={ref} className={cn("px-6 py-4 text-gray-900 dark:text-gray-100", className)} {...props}>
       {children}
     </div>
   )
@@ -118,7 +118,7 @@ export const ModalBody = React.forwardRef(
 
 export const ModalFooter = React.forwardRef(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("px-6 py-4 border-t", className)} {...props}>
+    <div ref={ref} className={cn("px-6 py-4 border-t dark:border-gray-600 text-gray-900 dark:text-white", className)} {...props}>
       {children}
     </div>
   )
