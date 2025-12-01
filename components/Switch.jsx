@@ -34,36 +34,36 @@ export const Switch = React.forwardRef(
 
     const variants = {
       default: {
-        base: "bg-gray-200 focus-visible:ring-gray-400",
-        active: "bg-gray-900",
+        base: "bg-gray-200 dark:bg-gray-700 focus-visible:ring-gray-400 dark:focus-visible:ring-gray-500",
+        active: "bg-gray-900 dark:bg-gray-100",
       },
       primary: {
-        base: "bg-blue-200 focus-visible:ring-blue-400",
-        active: "bg-blue-600",
+        base: "bg-blue-200 dark:bg-blue-800 focus-visible:ring-blue-400 dark:focus-visible:ring-blue-500",
+        active: "bg-blue-600 dark:bg-blue-500",
       },
       success: {
-        base: "bg-green-200 focus-visible:ring-green-400",
-        active: "bg-green-600",
+        base: "bg-green-200 dark:bg-green-800 focus-visible:ring-green-400 dark:focus-visible:ring-green-500",
+        active: "bg-green-600 dark:bg-green-500",
       },
       warning: {
-        base: "bg-yellow-200 focus-visible:ring-yellow-400",
-        active: "bg-yellow-600",
+        base: "bg-yellow-200 dark:bg-yellow-800 focus-visible:ring-yellow-400 dark:focus-visible:ring-yellow-500",
+        active: "bg-yellow-600 dark:bg-yellow-500",
       },
       danger: {
-        base: "bg-red-200 focus-visible:ring-red-400",
-        active: "bg-red-600",
+        base: "bg-red-200 dark:bg-red-800 focus-visible:ring-red-400 dark:focus-visible:ring-red-500",
+        active: "bg-red-600 dark:bg-red-500",
       },
       info: {
-        base: "bg-teal-200 focus-visible:ring-teal-400",
-        active: "bg-teal-600",
+        base: "bg-teal-200 dark:bg-teal-800 focus-visible:ring-teal-400 dark:focus-visible:ring-teal-500",
+        active: "bg-teal-600 dark:bg-teal-500",
       },
       light: {
-        base: "bg-gray-100 focus-visible:ring-gray-300",
-        active: "bg-gray-500",
+        base: "bg-gray-100 dark:bg-gray-600 focus-visible:ring-gray-300 dark:focus-visible:ring-gray-400",
+        active: "bg-gray-500 dark:bg-gray-300",
       },
       dark: {
-        base: "bg-gray-500 focus-visible:ring-gray-600",
-        active: "bg-gray-900",
+        base: "bg-gray-500 dark:bg-gray-400 focus-visible:ring-gray-600 dark:focus-visible:ring-gray-300",
+        active: "bg-gray-900 dark:bg-gray-100",
       },
     };
 
@@ -135,7 +135,7 @@ export const Switch = React.forwardRef(
         >
           <span
             className={cn(
-              "pointer-events-none inline-block transform rounded-full bg-white shadow-lg ring-0",
+              "pointer-events-none inline-block transform rounded-full bg-white dark:bg-gray-900 shadow-lg ring-0",
               animations[animation],
               sizes[size].thumb,
               actualChecked ? sizes[size].translate : "translate-x-0"
@@ -145,7 +145,7 @@ export const Switch = React.forwardRef(
         {label && (
           <span
             className={cn(
-              "select-none text-sm font-medium",
+              "select-none text-sm font-medium text-gray-900 dark:text-gray-100",
               labelPosition === "left" ? "mr-2" : "ml-2"
             )}
           >

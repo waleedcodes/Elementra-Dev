@@ -3,50 +3,53 @@ import { cn } from "@/lib/utils";
 
 const cardVariants = {
   default:
-    "rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow",
-  flat: "rounded-lg bg-gray-50 text-gray-900 hover:bg-gray-100 transition-colors",
+    "rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100",
+  flat: "rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors",
   elevated:
-    "rounded-lg bg-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-1",
+    "rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 dark:shadow-gray-900/30",
   outlined:
-    "rounded-lg border-2 border-primary/20 hover:border-primary/40 transition-colors",
+    "rounded-lg border-2 border-primary/20 dark:border-primary/30 hover:border-primary/40 dark:hover:border-primary/50 transition-colors dark:bg-gray-900",
   gradient:
     "rounded-lg bg-gradient-to-br from-primary to-primary-foreground text-white shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]",
   glass: `
     relative rounded-lg 
     bg-gradient-to-br from-white/40 to-white/10 
+    dark:from-gray-800/40 dark:to-gray-900/10
     backdrop-blur-md 
-    border border-white/20 
+    border border-white/20 dark:border-gray-700/30
     shadow-xl hover:shadow-2xl 
     transition-all
     before:absolute before:inset-0 
     before:bg-gradient-to-br before:from-primary/10 before:to-secondary/10 
     before:rounded-lg before:-z-10
+    dark:text-gray-100
   `,
-  neon: "rounded-lg bg-black text-white shadow-[0_0_15px_rgba(0,255,255,0.5)] hover:shadow-[0_0_25px_rgba(0,255,255,0.7)] transition-shadow",
+  neon: "rounded-lg bg-black dark:bg-gray-900 text-white shadow-[0_0_15px_rgba(0,255,255,0.5)] hover:shadow-[0_0_25px_rgba(0,255,255,0.7)] transition-shadow",
   interactive:
-    "rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer",
+    "rounded-lg border bg-card text-card-foreground dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer",
   minimal: `
     rounded-lg 
-    bg-gray-100 
+    bg-gray-100 dark:bg-gray-800
+    text-gray-900 dark:text-gray-100
     transition-colors 
-    hover:bg-gray-200
+    hover:bg-gray-200 dark:hover:bg-gray-700
     p-6
   `,
   floating:
-    "rounded-lg bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300",
+    "rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl dark:shadow-gray-900/30 hover:-translate-y-2 transition-all duration-300 dark:text-gray-100",
   // New variants
   ecommerce:
-    "rounded-lg bg-white shadow-md hover:shadow-xl transition-all overflow-hidden",
+    "rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all overflow-hidden dark:text-gray-100",
   login:
-    "rounded-lg bg-white shadow-lg border border-gray-200 hover:border-primary/50 transition-all",
+    "rounded-lg bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 hover:border-primary/50 dark:hover:border-primary/50 transition-all dark:text-gray-100",
   register:
-    "rounded-lg bg-gradient-to-tr from-primary/5 to-primary/20 shadow-lg hover:shadow-xl transition-all",
+    "rounded-lg bg-gradient-to-tr from-primary/5 to-primary/20 dark:from-primary/10 dark:to-primary/30 shadow-lg hover:shadow-xl transition-all dark:text-gray-100",
   dashboard:
-    "rounded-lg bg-white shadow-sm hover:shadow-md transition-all border-l-4 border-primary",
+    "rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all border-l-4 border-primary dark:text-gray-100",
   testimonial:
-    "rounded-lg bg-gray-50 shadow-inner hover:bg-gray-100 transition-colors p-6",
+    "rounded-lg bg-gray-50 dark:bg-gray-800 shadow-inner hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors p-6 dark:text-gray-100",
   pricing:
-    "rounded-lg bg-white shadow-lg hover:shadow-xl transition-all border-t-4 border-primary",
+    "rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all border-t-4 border-primary dark:text-gray-100",
 };
 
 const Card = React.forwardRef(
@@ -80,16 +83,16 @@ const Card = React.forwardRef(
 Card.displayName = "Card";
 
 const cardHeaderVariants = {
-  default: "flex flex-col space-y-1.5 p-6",
-  centered: "flex flex-col items-center space-y-1.5 p-6 text-center",
-  bordered: "flex flex-col space-y-1.5 p-6 border-b",
+  default: "flex flex-col space-y-1.5 p-6 dark:text-gray-100",
+  centered: "flex flex-col items-center space-y-1.5 p-6 text-center dark:text-gray-100",
+  bordered: "flex flex-col space-y-1.5 p-6 border-b dark:border-gray-700 dark:text-gray-100",
   gradient:
-    "flex flex-col space-y-1.5 p-6 bg-gradient-to-r from-primary/10 to-transparent rounded-t-lg",
-  compact: "flex flex-col space-y-1 p-4",
+    "flex flex-col space-y-1.5 p-6 bg-gradient-to-r from-primary/10 to-transparent rounded-t-lg dark:text-gray-100",
+  compact: "flex flex-col space-y-1 p-4 dark:text-gray-100",
   // New variants
-  ecommerce: "flex justify-between items-center p-4 bg-gray-50",
-  login: "flex flex-col items-center space-y-2 p-6 bg-primary/5",
-  dashboard: "flex justify-between items-center p-4 bg-gray-50 border-b",
+  ecommerce: "flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 dark:text-gray-100",
+  login: "flex flex-col items-center space-y-2 p-6 bg-primary/5 dark:bg-primary/10 dark:text-gray-100",
+  dashboard: "flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 border-b dark:border-gray-600 dark:text-gray-100",
 };
 
 const CardHeader = React.forwardRef(
@@ -161,15 +164,15 @@ const CardDescription = React.forwardRef(
 CardDescription.displayName = "CardDescription";
 
 const cardContentVariants = {
-  default: "p-6 pt-0",
-  bordered: "p-6 pt-0 border-t mt-6",
-  padded: "p-8 pt-2",
-  compact: "p-4 pt-0",
-  separated: "p-6 pt-0 divide-y divide-border",
+  default: "p-6 pt-0 dark:text-gray-200",
+  bordered: "p-6 pt-0 border-t dark:border-gray-700 mt-6 dark:text-gray-200",
+  padded: "p-8 pt-2 dark:text-gray-200",
+  compact: "p-4 pt-0 dark:text-gray-200",
+  separated: "p-6 pt-0 divide-y divide-border dark:divide-gray-700 dark:text-gray-200",
   // New variants
-  ecommerce: "p-4 flex flex-col space-y-4",
-  login: "p-6 flex flex-col space-y-4",
-  dashboard: "p-4 grid gap-4",
+  ecommerce: "p-4 flex flex-col space-y-4 dark:text-gray-200",
+  login: "p-6 flex flex-col space-y-4 dark:text-gray-200",
+  dashboard: "p-4 grid gap-4 dark:text-gray-200",
 };
 
 const CardContent = React.forwardRef(
@@ -186,16 +189,16 @@ const CardContent = React.forwardRef(
 CardContent.displayName = "CardContent";
 
 const cardFooterVariants = {
-  default: "flex items-center p-6 pt-0",
-  bordered: "flex items-center p-6 pt-0 border-t mt-6",
-  separated: "flex items-center justify-between p-6 pt-0",
-  centered: "flex items-center justify-center p-6 pt-0",
+  default: "flex items-center p-6 pt-0 dark:text-gray-200",
+  bordered: "flex items-center p-6 pt-0 border-t dark:border-gray-700 mt-6 dark:text-gray-200",
+  separated: "flex items-center justify-between p-6 pt-0 dark:text-gray-200",
+  centered: "flex items-center justify-center p-6 pt-0 dark:text-gray-200",
   sticky:
-    "flex items-center p-6 pt-0 sticky bottom-0 bg-background border-t mt-6",
+    "flex items-center p-6 pt-0 sticky bottom-0 bg-background dark:bg-gray-800 border-t dark:border-gray-700 mt-6 dark:text-gray-200",
   // New variants
-  ecommerce: "flex justify-between items-center p-4 bg-gray-50 mt-4",
-  login: "flex flex-col space-y-4 p-6 bg-gray-50 rounded-b-lg",
-  dashboard: "flex justify-end space-x-2 p-4 bg-gray-50 border-t mt-4",
+  ecommerce: "flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 mt-4 dark:text-gray-200",
+  login: "flex flex-col space-y-4 p-6 bg-gray-50 dark:bg-gray-700 rounded-b-lg dark:text-gray-200",
+  dashboard: "flex justify-end space-x-2 p-4 bg-gray-50 dark:bg-gray-700 border-t dark:border-gray-600 mt-4 dark:text-gray-200",
 };
 
 const CardFooter = React.forwardRef(
