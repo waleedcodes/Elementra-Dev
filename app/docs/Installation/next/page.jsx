@@ -159,7 +159,7 @@ module.exports = {
 
   return (
     <motion.div
-      className="max-w-4xl mx-auto px-6 py-12 bg-white dark:bg-gray-950 min-h-screen transition-colors"
+      className="xlmax-w-8xl mx-auto p-12 bg-white dark:bg-gray-950 min-h-screen transition-colors"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -167,7 +167,7 @@ module.exports = {
       {/* Header */}
       <motion.header variants={itemVariants} className="mb-12">
         <motion.h1
-          className="text-6xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-6"
+          className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
@@ -191,8 +191,8 @@ module.exports = {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <AlertDescription className="flex items-center text-primary-foreground dark:text-primary">
-            <ChevronRight className="mr-2 text-primary dark:text-primary" />
+          <AlertDescription className="flex items-center text-black dark:text-primary">
+            <ChevronRight className="mr-2 text-black dark:text-primary" />
             If you're using Next.js 15, see the{" "}
             <span className="text-primary hover:text-primary/80 cursor-pointer ml-1 font-medium underline decoration-primary/30">
               Next.js 15 + React 19 guide
