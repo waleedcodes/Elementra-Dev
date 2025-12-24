@@ -17,14 +17,14 @@ import { motion, useAnimation } from "framer-motion";
 const ScratchToReveal = ({
   width,
   height,
-  minScratchPercentage = 100,
+  minScratchPercentage = 90,
   onComplete,
   children,
   className,
   variant = "gradient", // "gradient", "radial", "solid", "pattern"
-  gradientColors = ["#f97316", "#fb923c", "#f472b6"], // Theme colors: primary orange to secondary pink
+  gradientColors = ["#fb923c", "#f472b6", "#a855f7"], // Enhanced theme colors: primary orange to secondary pink to accent purple
   scratchRadius = 30,
-  backgroundColor = "hsl(var(--background) / 0.8)", // Uses theme background with opacity for better overlay effect
+  backgroundColor = "hsl(var(--muted))", // Uses muted color for better contrast across themes
   revealAnimation = "pop", // "pop", "fade", "spin", "bounce"
   cursorSize = 32,
   borderRadius = "24px", // Rounded corners by default
@@ -75,24 +75,24 @@ const ScratchToReveal = ({
           ctx.fillStyle = radialGradient;
           break;
         case "solid":
-          ctx.fillStyle = backgroundColor;
+          ctx.fillStyle = gradientColors[0] || backgroundColor;
           break;
         case "pattern":
-          // Create a pattern
+          // Create a pattern with better dark mode support
           const patternCanvas = document.createElement("canvas");
           patternCanvas.width = 20;
           patternCanvas.height = 20;
           const patternCtx = patternCanvas.getContext("2d");
           patternCtx.fillStyle = gradientColors[0];
           patternCtx.fillRect(0, 0, 20, 20);
-          patternCtx.fillStyle = gradientColors[1] || "#ffffff";
+          patternCtx.fillStyle = gradientColors[1] || "hsl(var(--muted-foreground))";
           patternCtx.fillRect(0, 0, 10, 10);
           patternCtx.fillRect(10, 10, 10, 10);
           const pattern = ctx.createPattern(patternCanvas, "repeat");
           ctx.fillStyle = pattern;
           break;
         default:
-          ctx.fillStyle = backgroundColor;
+          ctx.fillStyle = gradientColors[0] || backgroundColor;
       }
 
       // Draw with rounded corners if specified
@@ -255,13 +255,16 @@ const ScratchToReveal = ({
 
   return (
     <motion.div
-      className={cn("relative select-none shadow-lg dark:shadow-xl dark:shadow-black/20", className)}
+      className={cn(
+        "relative select-none shadow-lg border bg-card", 
+        "dark:shadow-xl dark:shadow-black/20 dark:border-border", 
+        className
+      )}
       style={{
         width,
         height,
         cursor: `url('${cursorDataUri}'), auto`,
         borderRadius,
-        background: backgroundColor,
       }}
       animate={controls}
     >
