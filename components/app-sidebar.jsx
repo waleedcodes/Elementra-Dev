@@ -39,6 +39,7 @@ import {
   Hash,
   Menu,
   Bell,
+  ChevronUp,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -79,6 +80,12 @@ const navigationData = {
       icon: Package,
       url: "#",
       items: [
+        {
+          title: "Accordion",
+          url: "/docs/Components/accordion",
+          description: "Collapsible content sections",
+          icon: ChevronUp,
+        },
         {
           title: "Alert",
           url: "/docs/Components/Alert",
