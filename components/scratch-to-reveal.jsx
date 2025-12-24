@@ -3,17 +3,28 @@ import { cn } from "@/lib/utils";
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
+/**
+ * ScratchToReveal Component - Enhanced with Dark Mode Support
+ * 
+ * Features:
+ * - Interactive scratch-to-reveal functionality with canvas
+ * - Full dark mode compatibility with theme colors
+ * - Custom cursor with theme-aware colors
+ * - Responsive shadow system for light/dark themes
+ * - Multiple variants: gradient, radial, solid, pattern
+ * - Smooth animations and transitions
+ */
 const ScratchToReveal = ({
   width,
   height,
-  minScratchPercentage = 100,
+  minScratchPercentage = 90,
   onComplete,
   children,
   className,
   variant = "gradient", // "gradient", "radial", "solid", "pattern"
-  gradientColors = ["#A97CF8", "#F38CB8", "#FDCC92"], // Default gradient colors
+  gradientColors = ["#fb923c", "#f472b6", "#a855f7"], // Enhanced theme colors: primary orange to secondary pink to accent purple
   scratchRadius = 30,
-  backgroundColor = "#f0f0f0", // Light gray background
+  backgroundColor = "hsl(var(--muted))", // Uses muted color for better contrast across themes
   revealAnimation = "pop", // "pop", "fade", "spin", "bounce"
   cursorSize = 32,
   borderRadius = "24px", // Rounded corners by default
@@ -64,24 +75,24 @@ const ScratchToReveal = ({
           ctx.fillStyle = radialGradient;
           break;
         case "solid":
-          ctx.fillStyle = backgroundColor;
+          ctx.fillStyle = gradientColors[0] || backgroundColor;
           break;
         case "pattern":
-          // Create a pattern
+          // Create a pattern with better dark mode support
           const patternCanvas = document.createElement("canvas");
           patternCanvas.width = 20;
           patternCanvas.height = 20;
           const patternCtx = patternCanvas.getContext("2d");
           patternCtx.fillStyle = gradientColors[0];
           patternCtx.fillRect(0, 0, 20, 20);
-          patternCtx.fillStyle = gradientColors[1] || "#ffffff";
+          patternCtx.fillStyle = gradientColors[1] || "hsl(var(--muted-foreground))";
           patternCtx.fillRect(0, 0, 10, 10);
           patternCtx.fillRect(10, 10, 10, 10);
           const pattern = ctx.createPattern(patternCanvas, "repeat");
           ctx.fillStyle = pattern;
           break;
         default:
-          ctx.fillStyle = backgroundColor;
+          ctx.fillStyle = gradientColors[0] || backgroundColor;
       }
 
       // Draw with rounded corners if specified
@@ -228,12 +239,15 @@ const ScratchToReveal = ({
     }
   };
 
-  // Create a custom cursor SVG string
+  // Create a custom cursor SVG string with dark mode support
   const cursorSvg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="${cursorSize}" height="${cursorSize}" viewBox="0 0 ${cursorSize} ${cursorSize}">
       <circle cx="${cursorSize / 2}" cy="${cursorSize / 2}" r="${
     cursorSize / 2 - 1
-  }" fill="rgba(255,255,255,0.7)" stroke="#000" stroke-width="1px" />
+  }" fill="rgba(249, 115, 22, 0.8)" stroke="rgba(251, 146, 60, 0.9)" stroke-width="2px" />
+      <circle cx="${cursorSize / 2}" cy="${cursorSize / 2}" r="${
+    cursorSize / 4
+  }" fill="rgba(255, 255, 255, 0.9)" />
     </svg>
   `;
 
@@ -241,20 +255,22 @@ const ScratchToReveal = ({
 
   return (
     <motion.div
-      className={cn("relative select-none", className)}
+      className={cn(
+        "relative select-none shadow-lg border bg-card", 
+        "dark:shadow-xl dark:shadow-black/20 dark:border-border", 
+        className
+      )}
       style={{
         width,
         height,
         cursor: `url('${cursorDataUri}'), auto`,
         borderRadius,
-        background: backgroundColor,
-        boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
       }}
       animate={controls}
     >
       {/* Content container - hidden initially if showOverlayOnly is true */}
       <div
-        className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
+        className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-foreground"
         style={{
           opacity: showOverlayOnly && !isComplete ? 0 : 1,
           transition: "opacity 0.3s ease",
@@ -265,12 +281,12 @@ const ScratchToReveal = ({
         {children}
       </div>
 
-      {/* Canvas overlay for scratching */}
+      {/* Canvas overlay for scratching - with dark mode support */}
       <canvas
         ref={canvasRef}
         width={width}
         height={height}
-        className="absolute left-0 top-0"
+        className="absolute left-0 top-0 transition-all duration-300"
         style={{ borderRadius }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
