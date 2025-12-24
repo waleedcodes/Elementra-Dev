@@ -240,7 +240,7 @@ export function AppSidebar({ ...props }) {
                     Elementra UI
                   </h1>
                   <span className="text-xs text-muted-foreground">
-                    v0.1.7 - Documentation
+                    v0.1.8 - Documentation
                   </span>
                 </div>
               </Link>
