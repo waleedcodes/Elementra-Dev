@@ -40,6 +40,7 @@ import {
   Menu,
   Bell,
   ChevronUp,
+  User,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -91,6 +92,12 @@ const navigationData = {
           url: "/docs/Components/Alert",
           description: "Customizable alert components",
           icon: AlertCircle,
+        },
+        {
+          title: "Avatar",
+          url: "/docs/Components/avatar",
+          description: "User profile images with fallbacks",
+          icon: User,
         },
         {
           title: "Button",
