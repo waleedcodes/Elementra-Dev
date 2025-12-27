@@ -100,6 +100,12 @@ const navigationData = {
           icon: User,
         },
         {
+          title: "Breadcrumb",
+          url: "/docs/Components/breadcrumb",
+          description: "Navigation breadcrumb trail",
+          icon: ChevronRight,
+        },
+        {
           title: "Button",
           url: "/docs/Components/button",
           description: "Interactive button styles",
