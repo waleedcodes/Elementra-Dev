@@ -32,6 +32,7 @@ import {
   Settings,
   Code,
   AlertCircle,
+  Calendar,
   CreditCard,
   Star,
   ToggleLeft,
@@ -122,6 +123,12 @@ const navigationData = {
           url: "/docs/Components/Card",
           description: "Flexible card layouts",
           icon: CreditCard,
+        },
+        {
+          title: "Calendar",
+          url: "/docs/Components/calendar",
+          description: "Date picker and calendar component",
+          icon: Calendar,
         },
         {
           title: "Fancy Testimonial",
