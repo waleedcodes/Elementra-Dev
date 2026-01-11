@@ -18,6 +18,10 @@ const nextConfig = {
   generateEtags: false,
   poweredByHeader: false,
   
+  // NOTE: headers() and redirects() are commented out because they don't work with output: 'export'
+  // If you need these features, remove output: 'export' and use a different deployment strategy
+  
+  /*
   // Headers for security and performance
   async headers() {
     return [
@@ -91,6 +95,7 @@ const nextConfig = {
       },
     ];
   },
+  */
   
   // Experimental features for performance
   experimental: {
