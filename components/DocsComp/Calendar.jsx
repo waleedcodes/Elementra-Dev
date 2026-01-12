@@ -141,7 +141,7 @@ export function Calendar({
 
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  // Default Variant (Professional Blue)
+  // Default Variant (Primary Theme)
   if (variant === "default") {
     return (
       <div className={cn("w-full max-w-md", className)} {...props}>
@@ -165,13 +165,13 @@ export function Calendar({
           }
         `}</style>
 
-        <div className="bg-gray-50 p-1 rounded-2xl shadow-lg border border-gray-200">
-          <div className="bg-white rounded-xl p-6 shadow-sm">
+        <div className="bg-muted/20 p-1 rounded-2xl shadow-lg border border-border">
+          <div className="bg-card rounded-xl p-6 shadow-sm">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
               <button
                 onClick={() => changeMonth(-1)}
-                className="group relative inline-flex items-center justify-center rounded-lg p-3 bg-blue-600 text-white shadow-md hover:bg-blue-700 transition-all duration-200"
+                className="group relative inline-flex items-center justify-center rounded-lg p-3 bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-200"
               >
                 <svg
                   className="h-4 w-4"
@@ -189,17 +189,17 @@ export function Calendar({
               </button>
 
               <div className="text-center">
-                <h2 className="text-2xl font-bold text-gray-800">
+                <h2 className="text-2xl font-bold text-foreground">
                   {monthNames[month]}
                 </h2>
-                <p className="text-sm font-medium text-gray-600 mt-1">
+                <p className="text-sm font-medium text-muted-foreground mt-1">
                   {year}
                 </p>
               </div>
 
               <button
                 onClick={() => changeMonth(1)}
-                className="group relative inline-flex items-center justify-center rounded-lg p-3 bg-blue-600 text-white shadow-md hover:bg-blue-700 transition-all duration-200"
+                className="group relative inline-flex items-center justify-center rounded-lg p-3 bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-200"
               >
                 <svg
                   className="h-4 w-4"
@@ -222,7 +222,7 @@ export function Calendar({
               {dayNames.map((day) => (
                 <div
                   key={day}
-                  className="text-center text-xs font-semibold text-gray-500 py-3 uppercase tracking-wide"
+                  className="text-center text-xs font-semibold text-muted-foreground py-3 uppercase tracking-wide"
                 >
                   {day}
                 </div>
@@ -251,21 +251,21 @@ export function Calendar({
                     disabled={isDisabled}
                     className={cn(
                       "calendar-day relative inline-flex items-center justify-center rounded-lg text-sm font-medium h-11 w-full",
-                      "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-                      !isCurrentMonth && "text-gray-300",
+                      "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                      !isCurrentMonth && "text-muted-foreground/40",
                       isCurrentMonth &&
                         !selected &&
                         !inRange &&
                         !todayDate &&
-                        "text-gray-700 hover:bg-blue-50 hover:text-blue-600",
+                        "text-foreground hover:bg-primary/10 hover:text-primary",
                       todayDate &&
                         !selected &&
-                        "bg-blue-100 text-blue-700 font-semibold border border-blue-200",
+                        "bg-secondary text-secondary-foreground font-semibold border border-secondary/20",
                       (selected || rangeStart || rangeEnd) &&
-                        "bg-blue-600 text-white font-semibold shadow-md",
+                        "bg-primary text-primary-foreground font-semibold shadow-md",
                       inRange &&
                         !selected &&
-                        "bg-blue-50 text-blue-600 font-medium",
+                        "bg-primary/10 text-primary font-medium",
                       isDisabled &&
                         "opacity-30 cursor-not-allowed hover:transform-none"
                     )}
@@ -278,15 +278,15 @@ export function Calendar({
 
             {/* Range Display */}
             {mode === "range" && Array.isArray(value) && value.length > 0 && (
-              <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="mt-6 pt-4 border-t border-border">
                 <div className="flex items-center justify-center gap-3 text-sm">
-                  <div className="px-4 py-2 rounded-lg bg-blue-50 text-blue-700 font-medium border border-blue-200">
+                  <div className="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/20">
                     {value[0]?.toLocaleDateString()}
                   </div>
                   {value.length === 2 && (
                     <>
-                      <span className="text-gray-400 font-medium">→</span>
-                      <div className="px-4 py-2 rounded-lg bg-blue-50 text-blue-700 font-medium border border-blue-200">
+                      <span className="text-muted-foreground font-medium">→</span>
+                      <div className="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/20">
                         {value[1]?.toLocaleDateString()}
                       </div>
                     </>
@@ -300,7 +300,7 @@ export function Calendar({
     );
   }
 
-  // Minimal Variant (Clean Gray)
+  // Minimal Variant (Clean Muted)
   if (variant === "minimal") {
     return (
       <div className={cn("w-full max-w-md", className)} {...props}>
@@ -309,17 +309,17 @@ export function Calendar({
             transition: all 0.15s ease; 
           }
           .minimal-day:hover:not(:disabled) { 
-            background: #f8fafc; 
+            background: hsl(var(--muted)); 
             transform: scale(1.02);
           }
         `}</style>
 
-        <div className="bg-white rounded-lg border border-gray-300 shadow-md p-6">
+        <div className="bg-card rounded-lg border border-border shadow-md p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <button
               onClick={() => changeMonth(-1)}
-              className="p-2.5 hover:bg-gray-100 rounded-lg transition-colors duration-200 text-gray-600 hover:text-gray-800"
+              className="p-2.5 hover:bg-muted rounded-lg transition-colors duration-200 text-muted-foreground hover:text-foreground"
             >
               <svg
                 className="h-5 w-5"
@@ -337,15 +337,15 @@ export function Calendar({
             </button>
 
             <div className="text-center">
-              <h2 className="text-xl font-bold text-gray-800">
+              <h2 className="text-xl font-bold text-foreground">
                 {monthNames[month]}
               </h2>
-              <p className="text-sm font-medium text-gray-500 mt-1">{year}</p>
+              <p className="text-sm font-medium text-muted-foreground mt-1">{year}</p>
             </div>
 
             <button
               onClick={() => changeMonth(1)}
-              className="p-2.5 hover:bg-gray-100 rounded-lg transition-colors duration-200 text-gray-600 hover:text-gray-800"
+              className="p-2.5 hover:bg-muted rounded-lg transition-colors duration-200 text-muted-foreground hover:text-foreground"
             >
               <svg
                 className="h-5 w-5"
@@ -368,7 +368,7 @@ export function Calendar({
             {dayNames.map((day) => (
               <div
                 key={day}
-                className="text-center text-xs font-semibold text-gray-500 py-2 uppercase tracking-wide"
+                className="text-center text-xs font-semibold text-muted-foreground py-2 uppercase tracking-wide"
               >
                 {day.substring(0, 2)}
               </div>
@@ -390,20 +390,20 @@ export function Calendar({
                   disabled={isDisabled}
                   className={cn(
                     "minimal-day h-10 w-10 flex items-center justify-center text-sm font-medium rounded-lg",
-                    "focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2",
-                    !isCurrentMonth && "text-gray-300",
+                    "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    !isCurrentMonth && "text-muted-foreground/40",
                     isCurrentMonth &&
                       !selected &&
                       !inRange &&
                       !todayDate &&
-                      "text-gray-700",
+                      "text-foreground",
                     todayDate &&
                       !selected &&
-                      "font-semibold text-gray-800 bg-gray-100 border border-gray-300",
-                    selected && "bg-gray-800 text-white font-semibold shadow-md",
+                      "font-semibold text-foreground bg-muted border border-border",
+                    selected && "bg-foreground text-background font-semibold shadow-md",
                     inRange &&
                       !selected &&
-                      "bg-gray-100 text-gray-700 font-medium",
+                      "bg-muted text-foreground font-medium",
                     isDisabled &&
                       "opacity-30 cursor-not-allowed hover:transform-none"
                   )}
@@ -416,15 +416,15 @@ export function Calendar({
 
           {/* Range Display */}
           {mode === "range" && Array.isArray(value) && value.length > 0 && (
-            <div className="mt-6 pt-4 border-t border-gray-200">
+            <div className="mt-6 pt-4 border-t border-border">
               <div className="flex items-center justify-center gap-3 text-sm">
-                <div className="px-3 py-2 rounded-md bg-gray-100 text-gray-700 font-medium border border-gray-300">
+                <div className="px-3 py-2 rounded-md bg-muted text-foreground font-medium border border-border">
                   {value[0]?.toLocaleDateString()}
                 </div>
                 {value.length === 2 && (
                   <>
-                    <span className="text-gray-400">→</span>
-                    <div className="px-3 py-2 rounded-md bg-gray-100 text-gray-700 font-medium border border-gray-300">
+                    <span className="text-muted-foreground">→</span>
+                    <div className="px-3 py-2 rounded-md bg-muted text-foreground font-medium border border-border">
                       {value[1]?.toLocaleDateString()}
                     </div>
                   </>
@@ -437,7 +437,7 @@ export function Calendar({
     );
   }
 
-  // Card Variant (Corporate Style)
+  // Card Variant (Accent Theme)
   if (variant === "card") {
     return (
       <div className={cn("w-full max-w-2xl", className)} {...props}>
@@ -451,12 +451,12 @@ export function Calendar({
           }
         `}</style>
 
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+        <div className="bg-card rounded-2xl border border-border shadow-lg p-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <button
               onClick={() => changeMonth(-1)}
-              className="p-4 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md transition-colors duration-200"
+              className="p-4 bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg shadow-md transition-colors duration-200"
             >
               <svg
                 className="h-6 w-6"
@@ -474,17 +474,17 @@ export function Calendar({
             </button>
 
             <div className="text-center">
-              <h2 className="text-4xl font-bold text-gray-800">
+              <h2 className="text-4xl font-bold text-foreground">
                 {monthNames[month]}
               </h2>
-              <p className="text-xl font-medium text-gray-600 mt-2">
+              <p className="text-xl font-medium text-muted-foreground mt-2">
                 {year}
               </p>
             </div>
 
             <button
               onClick={() => changeMonth(1)}
-              className="p-4 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md transition-colors duration-200"
+              className="p-4 bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg shadow-md transition-colors duration-200"
             >
               <svg
                 className="h-6 w-6"
@@ -507,7 +507,7 @@ export function Calendar({
             {dayNames.map((day) => (
               <div
                 key={day}
-                className="text-center text-lg font-semibold text-gray-600 py-2"
+                className="text-center text-lg font-semibold text-muted-foreground py-2"
               >
                 {day}
               </div>
@@ -529,21 +529,21 @@ export function Calendar({
                   disabled={isDisabled}
                   className={cn(
                     "card-day h-16 flex flex-col items-center justify-center rounded-lg text-base font-medium shadow-sm border",
-                    "focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2",
-                    !isCurrentMonth && "text-gray-300 bg-gray-50 border-gray-200",
+                    "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    !isCurrentMonth && "text-muted-foreground/40 bg-muted/20 border-border/50",
                     isCurrentMonth &&
                       !selected &&
                       !inRange &&
                       !todayDate &&
-                      "text-gray-700 bg-white border-gray-300 hover:bg-gray-50",
+                      "text-foreground bg-card border-border hover:bg-muted/50",
                     todayDate &&
                       !selected &&
-                      "bg-blue-600 text-white font-semibold shadow-md border-blue-600",
+                      "bg-secondary text-secondary-foreground font-semibold shadow-md border-secondary",
                     selected &&
-                      "bg-gray-800 text-white font-semibold shadow-lg border-gray-800",
+                      "bg-accent text-accent-foreground font-semibold shadow-lg border-accent",
                     inRange &&
                       !selected &&
-                      "bg-gray-100 text-gray-700 font-medium border-gray-400",
+                      "bg-accent/20 text-accent-foreground font-medium border-accent/30",
                     isDisabled &&
                       "opacity-30 cursor-not-allowed hover:transform-none hover:shadow-sm"
                   )}
@@ -556,17 +556,17 @@ export function Calendar({
 
           {/* Range Display */}
           {mode === "range" && Array.isArray(value) && value.length > 0 && (
-            <div className="mt-8 pt-6 border-t border-gray-200">
+            <div className="mt-8 pt-6 border-t border-border">
               <div className="flex items-center justify-center gap-4 text-base">
-                <div className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium border border-gray-300 shadow-sm">
+                <div className="px-6 py-3 rounded-lg bg-accent/10 text-accent-foreground font-medium border border-accent/20 shadow-sm">
                   {value[0]?.toLocaleDateString()}
                 </div>
                 {value.length === 2 && (
                   <>
-                    <span className="text-gray-400 font-medium text-xl">
+                    <span className="text-muted-foreground font-medium text-xl">
                       →
                     </span>
-                    <div className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium border border-gray-300 shadow-sm">
+                    <div className="px-6 py-3 rounded-lg bg-accent/10 text-accent-foreground font-medium border border-accent/20 shadow-sm">
                       {value[1]?.toLocaleDateString()}
                     </div>
                   </>
@@ -579,15 +579,15 @@ export function Calendar({
     );
   }
 
-  // Inline Variant (Business Compact)
+  // Inline Variant (Secondary Theme)
   if (variant === "inline") {
     return (
       <div className={cn("w-full max-w-2xl", className)} {...props}>
-        <div className="flex items-center gap-6 bg-gray-50 rounded-lg p-6 shadow-md border border-gray-200">
+        <div className="flex items-center gap-6 bg-muted/50 rounded-lg p-6 shadow-md border border-border">
           {/* Navigation Button */}
           <button
             onClick={() => changeMonth(-1)}
-            className="p-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm transition-colors duration-200 shrink-0"
+            className="p-3 bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg shadow-sm transition-colors duration-200 shrink-0"
           >
             <svg
               className="h-5 w-5"
@@ -605,10 +605,10 @@ export function Calendar({
           </button>
 
           {/* Calendar Content */}
-          <div className="flex-1 bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+          <div className="flex-1 bg-card rounded-lg p-4 shadow-sm border border-border">
             {/* Header */}
             <div className="text-center mb-4">
-              <span className="text-xl font-bold text-gray-800">
+              <span className="text-xl font-bold text-foreground">
                 {monthNames[month]} {year}
               </span>
             </div>
@@ -618,7 +618,7 @@ export function Calendar({
               {days.slice(0, 7).map((_, idx) => (
                 <div
                   key={idx}
-                  className="text-center text-xs text-gray-600 font-semibold uppercase tracking-wide"
+                  className="text-center text-xs text-muted-foreground font-semibold uppercase tracking-wide"
                 >
                   {dayNames[idx].substring(0, 2)}
                 </div>
@@ -640,21 +640,21 @@ export function Calendar({
                     disabled={isDisabled}
                     className={cn(
                       "h-9 w-9 flex items-center justify-center text-sm font-medium rounded-md transition-all duration-200",
-                      "focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2",
-                      !isCurrentMonth && "text-gray-300",
+                      "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                      !isCurrentMonth && "text-muted-foreground/40",
                       isCurrentMonth &&
                         !selected &&
                         !inRange &&
                         !todayDate &&
-                        "text-gray-700 hover:bg-gray-100",
+                        "text-foreground hover:bg-muted",
                       todayDate &&
                         !selected &&
-                        "bg-blue-600 text-white font-semibold shadow-sm",
+                        "bg-primary text-primary-foreground font-semibold shadow-sm",
                       selected &&
-                        "bg-gray-800 text-white font-semibold shadow-md",
+                        "bg-secondary text-secondary-foreground font-semibold shadow-md",
                       inRange &&
                         !selected &&
-                        "bg-gray-100 text-gray-700 font-medium",
+                        "bg-secondary/20 text-secondary-foreground font-medium",
                       isDisabled &&
                         "opacity-30 cursor-not-allowed hover:transform-none"
                     )}
@@ -669,7 +669,7 @@ export function Calendar({
           {/* Navigation Button */}
           <button
             onClick={() => changeMonth(1)}
-            className="p-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm transition-colors duration-200 shrink-0"
+            className="p-3 bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg shadow-sm transition-colors duration-200 shrink-0"
           >
             <svg
               className="h-5 w-5"
@@ -690,13 +690,13 @@ export function Calendar({
         {/* Range Display for Inline */}
         {mode === "range" && Array.isArray(value) && value.length > 0 && (
           <div className="mt-4 flex items-center justify-center gap-3 text-sm">
-            <div className="px-4 py-2 rounded-md bg-gray-100 text-gray-700 font-medium border border-gray-300">
+            <div className="px-4 py-2 rounded-md bg-secondary/10 text-secondary-foreground font-medium border border-secondary/20">
               {value[0]?.toLocaleDateString()}
             </div>
             {value.length === 2 && (
               <>
-                <span className="text-gray-400 font-medium">→</span>
-                <div className="px-4 py-2 rounded-md bg-gray-100 text-gray-700 font-medium border border-gray-300">
+                <span className="text-muted-foreground font-medium">→</span>
+                <div className="px-4 py-2 rounded-md bg-secondary/10 text-secondary-foreground font-medium border border-secondary/20">
                   {value[1]?.toLocaleDateString()}
                 </div>
               </>
@@ -707,7 +707,7 @@ export function Calendar({
     );
   }
 
-  // Sidebar Variant (Professional Dark)
+  // Sidebar Variant (Dark Sidebar Theme)
   if (variant === "sidebar") {
     const weeks = [];
     for (let i = 0; i < days.length; i += 7) {
@@ -716,20 +716,20 @@ export function Calendar({
 
     return (
       <div className={cn("w-full max-w-sm", className)} {...props}>
-        <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+        <div className="bg-sidebar rounded-2xl p-6 shadow-lg border border-sidebar-border">
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-3xl font-bold text-sidebar-foreground">
               {monthNames[month]}
             </h2>
-            <p className="text-gray-300 text-lg mt-2 font-medium">{year}</p>
+            <p className="text-sidebar-foreground/70 text-lg mt-2 font-medium">{year}</p>
           </div>
 
           {/* Navigation */}
           <div className="flex justify-between mb-8">
             <button
               onClick={() => changeMonth(-1)}
-              className="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-200 text-gray-200 hover:text-white border border-gray-600"
+              className="p-3 bg-sidebar-accent/20 hover:bg-sidebar-accent/30 rounded-lg transition-colors duration-200 text-sidebar-accent-foreground border border-sidebar-border"
             >
               <svg
                 className="h-5 w-5"
@@ -747,7 +747,7 @@ export function Calendar({
             </button>
             <button
               onClick={() => changeMonth(1)}
-              className="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-200 text-gray-200 hover:text-white border border-gray-600"
+              className="p-3 bg-sidebar-accent/20 hover:bg-sidebar-accent/30 rounded-lg transition-colors duration-200 text-sidebar-accent-foreground border border-sidebar-border"
             >
               <svg
                 className="h-5 w-5"
@@ -772,7 +772,7 @@ export function Calendar({
               {dayNames.map((day) => (
                 <div
                   key={day}
-                  className="text-center text-sm font-semibold text-gray-400 uppercase tracking-wide"
+                  className="text-center text-sm font-semibold text-sidebar-foreground/60 uppercase tracking-wide"
                 >
                   {day.substring(0, 1)}
                 </div>
@@ -795,21 +795,21 @@ export function Calendar({
                       disabled={isDisabled}
                       className={cn(
                         "h-11 w-11 flex items-center justify-center text-sm font-medium rounded-lg transition-all duration-200",
-                        "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800",
-                        !isCurrentMonth && "text-gray-500",
+                        "focus:outline-none focus:ring-2 focus:ring-sidebar-primary focus:ring-offset-2 focus:ring-offset-sidebar",
+                        !isCurrentMonth && "text-sidebar-foreground/30",
                         isCurrentMonth &&
                           !selected &&
                           !inRange &&
                           !todayDate &&
-                          "text-gray-200 hover:bg-gray-700 hover:text-white",
+                          "text-sidebar-foreground hover:bg-sidebar-accent/20",
                         todayDate &&
                           !selected &&
-                          "bg-blue-600 text-white font-semibold shadow-md border border-blue-500",
+                          "bg-sidebar-primary text-sidebar-primary-foreground font-semibold shadow-md border border-sidebar-primary/50",
                         selected &&
-                          "bg-white text-gray-800 font-semibold shadow-lg",
+                          "bg-sidebar-foreground text-sidebar font-semibold shadow-lg",
                         inRange &&
                           !selected &&
-                          "bg-gray-700 text-gray-200 font-medium",
+                          "bg-sidebar-accent/30 text-sidebar-accent-foreground font-medium",
                         isDisabled &&
                           "opacity-30 cursor-not-allowed hover:transform-none"
                       )}
@@ -824,22 +824,22 @@ export function Calendar({
 
           {/* Range Display */}
           {mode === "range" && Array.isArray(value) && value.length > 0 && (
-            <div className="mt-8 pt-6 border-t border-gray-700">
+            <div className="mt-8 pt-6 border-t border-sidebar-border">
               <div className="space-y-3 text-sm">
-                <div className="bg-gray-700 rounded-lg px-4 py-3 border border-gray-600">
-                  <span className="text-gray-400 text-xs uppercase tracking-wide">
+                <div className="bg-sidebar-accent/20 rounded-lg px-4 py-3 border border-sidebar-border">
+                  <span className="text-sidebar-foreground/60 text-xs uppercase tracking-wide">
                     From:{" "}
                   </span>
-                  <span className="font-semibold text-white block mt-1">
+                  <span className="font-semibold text-sidebar-foreground block mt-1">
                     {value[0]?.toLocaleDateString()}
                   </span>
                 </div>
                 {value.length === 2 && (
-                  <div className="bg-gray-700 rounded-lg px-4 py-3 border border-gray-600">
-                    <span className="text-gray-400 text-xs uppercase tracking-wide">
+                  <div className="bg-sidebar-accent/20 rounded-lg px-4 py-3 border border-sidebar-border">
+                    <span className="text-sidebar-foreground/60 text-xs uppercase tracking-wide">
                       To:{" "}
                     </span>
-                    <span className="font-semibold text-white block mt-1">
+                    <span className="font-semibold text-sidebar-foreground block mt-1">
                       {value[1]?.toLocaleDateString()}
                     </span>
                   </div>

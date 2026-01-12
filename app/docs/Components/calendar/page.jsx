@@ -36,10 +36,10 @@ const CalendarVariantsDemo = () => {
 
   const variants = [
     {
-      name: "Default (Gradient)",
+      name: "Default (Primary Theme)",
       variant: "default",
       description:
-        "Modern gradient design with smooth animations and eye-catching visuals. Perfect for premium applications.",
+        "Clean professional design using project's primary orange colors with proper theme support. Perfect for business applications.",
       code: `<Calendar 
   value={date} 
   onValueChange={setDate}
@@ -48,13 +48,13 @@ const CalendarVariantsDemo = () => {
 />`,
       state: defaultDate,
       setState: setDefaultDate,
-      color: "from-purple-500 to-indigo-500",
+      color: "bg-primary",
     },
     {
-      name: "Minimal",
+      name: "Minimal (Theme Neutral)",
       variant: "minimal",
       description:
-        "Clean and simple design with a focus on functionality. Great for professional dashboards.",
+        "Ultra-clean design with theme-aware muted colors. Adapts to light/dark mode automatically.",
       code: `<Calendar 
   value={date} 
   onValueChange={setDate}
@@ -63,13 +63,13 @@ const CalendarVariantsDemo = () => {
 />`,
       state: minimalDate,
       setState: setMinimalDate,
-      color: "from-gray-500 to-gray-700",
+      color: "bg-muted-foreground",
     },
     {
-      name: "Card",
+      name: "Card (Accent Theme)",
       variant: "card",
       description:
-        "Large card-based layout with prominent dates. Ideal for booking and reservation systems.",
+        "Large professional card layout with accent pink colors. Perfect for booking systems with vibrant theming.",
       code: `<Calendar 
   value={date} 
   onValueChange={setDate}
@@ -78,13 +78,13 @@ const CalendarVariantsDemo = () => {
 />`,
       state: cardDate,
       setState: setCardDate,
-      color: "from-blue-500 to-indigo-500",
+      color: "bg-accent",
     },
     {
-      name: "Inline",
+      name: "Inline (Secondary Theme)",
       variant: "inline",
       description:
-        "Compact horizontal layout that fits in tight spaces. Perfect for navigation bars and toolbars.",
+        "Professional compact horizontal layout with secondary rose colors. Great for forms and toolbars.",
       code: `<Calendar 
   value={date} 
   onValueChange={setDate}
@@ -93,13 +93,13 @@ const CalendarVariantsDemo = () => {
 />`,
       state: inlineDate,
       setState: setInlineDate,
-      color: "from-teal-500 to-cyan-500",
+      color: "bg-secondary",
     },
     {
-      name: "Sidebar",
+      name: "Sidebar (Dark Theme)",
       variant: "sidebar",
       description:
-        "Vertical gradient design optimized for sidebars. Beautiful for date-based navigation.",
+        "Sophisticated sidebar-themed design using project's sidebar color variables. Perfect for navigation areas.",
       code: `<Calendar 
   value={date} 
   onValueChange={setDate}
@@ -108,7 +108,7 @@ const CalendarVariantsDemo = () => {
 />`,
       state: sidebarDate,
       setState: setSidebarDate,
-      color: "from-indigo-500 to-purple-500",
+      color: "bg-sidebar-primary",
     },
   ];
 
@@ -145,23 +145,22 @@ const CalendarVariantsDemo = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+      <div className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="space-y-4">
-            <div className="inline-block px-4 py-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full">
-              <span className="text-white text-sm font-semibold">
-                5 Unique Layouts
+            <div className="inline-block px-4 py-1.5 bg-primary rounded-full">
+              <span className="text-primary-foreground text-sm font-semibold">
+                5 Theme-Aware Layouts
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
               Calendar Variants
             </h1>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
-              Choose from 5 stunning calendar layouts, each designed for
-              specific use cases. From minimal to bold, find the perfect style
-              for your application.
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+              Choose from 5 calendar layouts that automatically adapt to your theme. 
+              Built with Elementra UI's Solar Edge color system for perfect light/dark mode support.
             </p>
           </div>
         </div>
@@ -170,12 +169,12 @@ const CalendarVariantsDemo = () => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-white border border-slate-200 p-1 rounded-xl shadow-sm">
+          <TabsList className="grid w-full grid-cols-3 bg-card border border-border p-1 rounded-xl shadow-sm">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="text-sm font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white rounded-lg transition-all duration-200"
+                className="text-sm font-semibold data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all duration-200"
               >
                 {tab.label}
               </TabsTrigger>
@@ -194,12 +193,11 @@ const CalendarVariantsDemo = () => {
                 {activeTab === "variants" && (
                   <div className="space-y-16">
                     <div className="text-center space-y-2">
-                      <h2 className="text-3xl font-bold text-slate-900">
-                        Choose Your Style
+                      <h2 className="text-3xl font-bold text-foreground">
+                        Choose Your Theme Style
                       </h2>
-                      <p className="text-slate-600">
-                        Each variant is designed for different use cases and
-                        aesthetics
+                      <p className="text-muted-foreground">
+                        Each variant uses Elementra UI's color system and automatically adapts to light/dark mode
                       </p>
                     </div>
 
@@ -213,21 +211,21 @@ const CalendarVariantsDemo = () => {
                       >
                         <div className="flex items-center gap-4">
                           <div
-                            className={`h-12 w-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white font-bold text-xl shadow-lg`}
+                            className={`h-12 w-12 rounded-xl ${item.color} flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg`}
                           >
                             {index + 1}
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-slate-900">
+                            <h3 className="text-2xl font-bold text-foreground">
                               {item.name}
                             </h3>
-                            <p className="text-slate-600">{item.description}</p>
+                            <p className="text-muted-foreground">{item.description}</p>
                           </div>
                         </div>
 
                         <div className="grid lg:grid-cols-2 gap-8 items-start">
                           {/* Preview */}
-                          <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-8 border-2 border-slate-200 shadow-xl">
+                          <div className="bg-muted/20 rounded-2xl p-8 border-2 border-border shadow-xl">
                             <div className="flex justify-center">
                               <Calendar
                                 value={item.state}
@@ -240,50 +238,50 @@ const CalendarVariantsDemo = () => {
 
                           {/* Code */}
                           <div className="space-y-4">
-                            <div className="bg-slate-900 rounded-xl overflow-hidden shadow-xl">
-                              <div className="bg-slate-800 px-6 py-3 border-b border-slate-700 flex items-center justify-between">
-                                <span className="text-sm font-semibold text-slate-300">
+                            <div className="bg-sidebar rounded-xl overflow-hidden shadow-xl">
+                              <div className="bg-sidebar-accent/20 px-6 py-3 border-b border-sidebar-border flex items-center justify-between">
+                                <span className="text-sm font-semibold text-sidebar-foreground">
                                   Usage
                                 </span>
                                 <Button
                                   size="sm"
                                   variant="ghost"
-                                  className="h-8 w-8 p-0 hover:bg-slate-700 rounded-lg text-slate-400 hover:text-white transition-colors"
+                                  className="h-8 w-8 p-0 hover:bg-sidebar-accent/30 rounded-lg text-sidebar-foreground/60 hover:text-sidebar-foreground transition-colors"
                                   onClick={() => handleCopy(item.code)}
                                 >
                                   <Copy className="h-3.5 w-3.5" />
                                 </Button>
                               </div>
                               <div className="p-6">
-                                <pre className="text-sm text-slate-100 overflow-x-auto">
+                                <pre className="text-sm text-sidebar-foreground overflow-x-auto">
                                   <code>{item.code}</code>
                                 </pre>
                               </div>
                             </div>
 
-                            <div className="bg-white border-2 border-slate-200 rounded-xl p-6">
-                              <h4 className="font-bold text-slate-900 mb-3">
+                            <div className="bg-card border-2 border-border rounded-xl p-6">
+                              <h4 className="font-bold text-foreground mb-3">
                                 Best For:
                               </h4>
-                              <ul className="space-y-2 text-sm text-slate-600">
+                              <ul className="space-y-2 text-sm text-muted-foreground">
                                 {item.variant === "default" && (
                                   <>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-purple-500">•</span>
+                                      <span className="text-primary">•</span>
                                       <span>
-                                        Premium applications and SaaS products
+                                        Business applications with primary branding
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-purple-500">•</span>
+                                      <span className="text-primary">•</span>
                                       <span>
-                                        Marketing websites and landing pages
+                                        Main content areas and hero sections
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-purple-500">•</span>
+                                      <span className="text-primary">•</span>
                                       <span>
-                                        Any interface where aesthetics matter
+                                        Corporate websites with orange branding
                                       </span>
                                     </li>
                                   </>
@@ -291,19 +289,19 @@ const CalendarVariantsDemo = () => {
                                 {item.variant === "minimal" && (
                                   <>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-gray-500">•</span>
+                                      <span className="text-muted-foreground">•</span>
                                       <span>
-                                        Enterprise dashboards and admin panels
+                                        Clean enterprise dashboards
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-gray-500">•</span>
-                                      <span>Data-heavy interfaces</span>
+                                      <span className="text-muted-foreground">•</span>
+                                      <span>Data management interfaces</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-gray-500">•</span>
+                                      <span className="text-muted-foreground">•</span>
                                       <span>
-                                        Professional productivity tools
+                                        Productivity tools requiring focus
                                       </span>
                                     </li>
                                   </>
@@ -311,19 +309,19 @@ const CalendarVariantsDemo = () => {
                                 {item.variant === "card" && (
                                   <>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-blue-500">•</span>
+                                      <span className="text-accent">•</span>
                                       <span>
-                                        Booking and reservation systems
+                                        Booking systems with accent highlights
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-blue-500">•</span>
-                                      <span>Event scheduling applications</span>
+                                      <span className="text-accent">•</span>
+                                      <span>Event planning with pink theming</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-blue-500">•</span>
+                                      <span className="text-accent">•</span>
                                       <span>
-                                        Hotel and travel booking platforms
+                                        Creative applications and portfolios
                                       </span>
                                     </li>
                                   </>
@@ -331,39 +329,39 @@ const CalendarVariantsDemo = () => {
                                 {item.variant === "inline" && (
                                   <>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-teal-500">•</span>
-                                      <span>Navigation bars and headers</span>
+                                      <span className="text-secondary">•</span>
+                                      <span>Compact form date inputs</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-teal-500">•</span>
+                                      <span className="text-secondary">•</span>
                                       <span>
-                                        Mobile applications with limited space
+                                        Toolbar components with secondary styling
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-teal-500">•</span>
-                                      <span>Inline form date pickers</span>
+                                      <span className="text-secondary">•</span>
+                                      <span>Navigation bars with rose accents</span>
                                     </li>
                                   </>
                                 )}
                                 {item.variant === "sidebar" && (
                                   <>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-indigo-500">•</span>
+                                      <span className="text-sidebar-primary">•</span>
                                       <span>
                                         Application sidebars and navigation
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-indigo-500">•</span>
+                                      <span className="text-sidebar-primary">•</span>
                                       <span>
-                                        Date-based filtering interfaces
+                                        Dark theme interface components
                                       </span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                      <span className="text-indigo-500">•</span>
+                                      <span className="text-sidebar-primary">•</span>
                                       <span>
-                                        Vertical space-optimized layouts
+                                        Professional admin panels
                                       </span>
                                     </li>
                                   </>
@@ -380,10 +378,10 @@ const CalendarVariantsDemo = () => {
                 {activeTab === "examples" && (
                   <div className="space-y-12">
                     <div className="text-center space-y-2">
-                      <h2 className="text-3xl font-bold text-slate-900">
+                      <h2 className="text-3xl font-bold text-foreground">
                         Real-World Examples
                       </h2>
-                      <p className="text-slate-600">
+                      <p className="text-muted-foreground">
                         See how different variants work in common scenarios
                       </p>
                     </div>
@@ -391,16 +389,16 @@ const CalendarVariantsDemo = () => {
                     {useCases.map((useCase, index) => (
                       <div key={index} className="space-y-6">
                         <div>
-                          <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                          <h3 className="text-2xl font-bold text-foreground mb-2">
                             {useCase.title}
                           </h3>
-                          <p className="text-slate-600">
+                          <p className="text-muted-foreground">
                             {useCase.description}
                           </p>
                         </div>
 
                         <div className="grid lg:grid-cols-2 gap-8">
-                          <div className="bg-white border-2 border-slate-200 rounded-xl p-8 shadow-lg">
+                          <div className="bg-card border-2 border-border rounded-xl p-8 shadow-lg">
                             <div className="flex justify-center">
                               <Calendar
                                 value={useCase.state}
@@ -411,22 +409,22 @@ const CalendarVariantsDemo = () => {
                             </div>
                           </div>
 
-                          <div className="bg-slate-900 rounded-xl overflow-hidden shadow-xl">
-                            <div className="bg-slate-800 px-6 py-3 border-b border-slate-700 flex items-center justify-between">
-                              <span className="text-sm font-semibold text-slate-300">
+                          <div className="bg-sidebar rounded-xl overflow-hidden shadow-xl">
+                            <div className="bg-sidebar-accent/20 px-6 py-3 border-b border-sidebar-border flex items-center justify-between">
+                              <span className="text-sm font-semibold text-sidebar-foreground">
                                 Code
                               </span>
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="h-8 w-8 p-0 hover:bg-slate-700 rounded-lg text-slate-400 hover:text-white"
+                                className="h-8 w-8 p-0 hover:bg-sidebar-accent/30 rounded-lg text-sidebar-foreground/60 hover:text-sidebar-foreground transition-colors"
                                 onClick={() => handleCopy(useCase.code)}
                               >
                                 <Copy className="h-3.5 w-3.5" />
                               </Button>
                             </div>
                             <div className="p-6">
-                              <pre className="text-sm text-slate-100 overflow-x-auto">
+                              <pre className="text-sm text-sidebar-foreground overflow-x-auto">
                                 <code>{useCase.code}</code>
                               </pre>
                             </div>
@@ -440,121 +438,121 @@ const CalendarVariantsDemo = () => {
                 {activeTab === "api" && (
                   <div className="space-y-8">
                     <div className="text-center space-y-2">
-                      <h2 className="text-3xl font-bold text-slate-900">
+                      <h2 className="text-3xl font-bold text-foreground">
                         API Reference
                       </h2>
-                      <p className="text-slate-600">
+                      <p className="text-muted-foreground">
                         Complete documentation of all props and variants
                       </p>
                     </div>
 
-                    <div className="bg-white border-2 border-slate-200 rounded-xl overflow-hidden shadow-xl">
-                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-4">
-                        <h3 className="text-lg font-bold text-white">
+                    <div className="bg-card border-2 border-border rounded-xl overflow-hidden shadow-xl">
+                      <div className="bg-primary px-6 py-4">
+                        <h3 className="text-lg font-bold text-primary-foreground">
                           Calendar Props
                         </h3>
                       </div>
                       <div className="overflow-x-auto">
                         <table className="w-full">
-                          <thead className="bg-slate-50">
+                          <thead className="bg-muted/50">
                             <tr>
-                              <th className="text-left py-4 px-6 font-bold text-slate-900">
+                              <th className="text-left py-4 px-6 font-bold text-foreground">
                                 Prop
                               </th>
-                              <th className="text-left py-4 px-6 font-bold text-slate-900">
+                              <th className="text-left py-4 px-6 font-bold text-foreground">
                                 Type
                               </th>
-                              <th className="text-left py-4 px-6 font-bold text-slate-900">
+                              <th className="text-left py-4 px-6 font-bold text-foreground">
                                 Default
                               </th>
-                              <th className="text-left py-4 px-6 font-bold text-slate-900">
+                              <th className="text-left py-4 px-6 font-bold text-foreground">
                                 Description
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr className="border-t border-slate-200">
-                              <td className="py-4 px-6 font-mono text-sm font-semibold text-indigo-600">
+                            <tr className="border-t border-border">
+                              <td className="py-4 px-6 font-mono text-sm font-semibold text-primary">
                                 value
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-700">
+                              <td className="py-4 px-6 text-sm text-foreground">
                                 Date | Date[]
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-500">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 null
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-600">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 Selected date(s)
                               </td>
                             </tr>
-                            <tr className="border-t border-slate-200">
-                              <td className="py-4 px-6 font-mono text-sm font-semibold text-indigo-600">
+                            <tr className="border-t border-border">
+                              <td className="py-4 px-6 font-mono text-sm font-semibold text-primary">
                                 onValueChange
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-700">
+                              <td className="py-4 px-6 text-sm text-foreground">
                                 (value) =&gt; void
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-500">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 -
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-600">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 Callback when selection changes
                               </td>
                             </tr>
-                            <tr className="border-t border-slate-200">
-                              <td className="py-4 px-6 font-mono text-sm font-semibold text-indigo-600">
+                            <tr className="border-t border-border">
+                              <td className="py-4 px-6 font-mono text-sm font-semibold text-primary">
                                 variant
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-700">
+                              <td className="py-4 px-6 text-sm text-foreground">
                                 "default" | "minimal" | "card" | "inline" |
                                 "sidebar"
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-500">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 "default"
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-600">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 Visual style variant
                               </td>
                             </tr>
-                            <tr className="border-t border-slate-200">
-                              <td className="py-4 px-6 font-mono text-sm font-semibold text-indigo-600">
+                            <tr className="border-t border-border">
+                              <td className="py-4 px-6 font-mono text-sm font-semibold text-primary">
                                 mode
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-700">
+                              <td className="py-4 px-6 text-sm text-foreground">
                                 "single" | "multiple" | "range"
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-500">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 "single"
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-600">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 Selection mode
                               </td>
                             </tr>
-                            <tr className="border-t border-slate-200">
-                              <td className="py-4 px-6 font-mono text-sm font-semibold text-indigo-600">
+                            <tr className="border-t border-border">
+                              <td className="py-4 px-6 font-mono text-sm font-semibold text-primary">
                                 disabled
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-700">
+                              <td className="py-4 px-6 text-sm text-foreground">
                                 (date) =&gt; boolean
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-500">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 -
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-600">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 Function to disable dates
                               </td>
                             </tr>
-                            <tr className="border-t border-slate-200">
-                              <td className="py-4 px-6 font-mono text-sm font-semibold text-indigo-600">
+                            <tr className="border-t border-border">
+                              <td className="py-4 px-6 font-mono text-sm font-semibold text-primary">
                                 className
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-700">
+                              <td className="py-4 px-6 text-sm text-foreground">
                                 string
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-500">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 -
                               </td>
-                              <td className="py-4 px-6 text-sm text-slate-600">
+                              <td className="py-4 px-6 text-sm text-muted-foreground">
                                 Additional CSS classes
                               </td>
                             </tr>
@@ -564,38 +562,38 @@ const CalendarVariantsDemo = () => {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
-                      <div className="bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl p-6 text-white shadow-xl">
+                      <div className="bg-primary rounded-xl p-6 text-primary-foreground shadow-xl">
                         <h4 className="font-bold text-lg mb-4">
-                          🎨 5 Variants
+                          🎨 5 Professional Variants
                         </h4>
                         <ul className="space-y-2 text-sm">
-                          <li>• Default (Gradient)</li>
-                          <li>• Minimal (Clean)</li>
-                          <li>• Card (Bold)</li>
-                          <li>• Inline (Compact)</li>
-                          <li>• Sidebar (Vertical)</li>
+                          <li>• Default (Primary Orange)</li>
+                          <li>• Minimal (Theme Neutral)</li>
+                          <li>• Card (Accent Pink)</li>
+                          <li>• Inline (Secondary Rose)</li>
+                          <li>• Sidebar (Dark Theme)</li>
                         </ul>
                       </div>
 
-                      <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl p-6 text-white shadow-xl">
-                        <h4 className="font-bold text-lg mb-4">⚡ Features</h4>
+                      <div className="bg-secondary rounded-xl p-6 text-secondary-foreground shadow-xl">
+                        <h4 className="font-bold text-lg mb-4">⚡ Business Features</h4>
                         <ul className="space-y-2 text-sm">
-                          <li>• Smooth animations</li>
-                          <li>• Range selection</li>
-                          <li>• Multiple dates</li>
-                          <li>• Disabled dates</li>
-                          <li>• Responsive design</li>
+                          <li>• Professional styling</li>
+                          <li>• Corporate color schemes</li>
+                          <li>• Enterprise-ready design</li>
+                          <li>• Clean animations</li>
+                          <li>• Responsive layouts</li>
                         </ul>
                       </div>
 
-                      <div className="bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl p-6 text-white shadow-xl">
-                        <h4 className="font-bold text-lg mb-4">✨ Design</h4>
+                      <div className="bg-accent rounded-xl p-6 text-accent-foreground shadow-xl">
+                        <h4 className="font-bold text-lg mb-4">✨ Professional Design</h4>
                         <ul className="space-y-2 text-sm">
-                          <li>• Modern gradients</li>
-                          <li>• Hover effects</li>
-                          <li>• Focus states</li>
-                          <li>• Today highlighting</li>
-                          <li>• Accessible</li>
+                          <li>• Business-appropriate colors</li>
+                          <li>• Subtle hover effects</li>
+                          <li>• Professional focus states</li>
+                          <li>• Clean typography</li>
+                          <li>• Accessible interface</li>
                         </ul>
                       </div>
                     </div>
