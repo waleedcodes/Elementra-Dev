@@ -56,7 +56,7 @@ export function InteractiveDemo() {
   ]
 
   return (
-    <section ref={ref} className="py-16 sm:py-24 bg-gradient-to-t from-primary/30 via-gray-900 to-secondary/40 relative overflow-hidden">
+    <section ref={ref} className="py-16 sm:py-24 bg-muted/20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
@@ -88,7 +88,7 @@ export function InteractiveDemo() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-6xl mx-auto"
         >
-          <Card className="p-6 backdrop-blur-sm bg-background/80 border-white/10">
+          <Card className="p-6 backdrop-blur-sm bg-card border-border">
             <CardHeader className="pb-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -189,16 +189,16 @@ export function InteractiveDemo() {
 
                     <div className="space-y-4">
                       <h4 className="text-lg font-semibold">Code Preview</h4>
-                      <div className="bg-black/90 rounded-lg p-4 text-sm font-mono text-green-400 overflow-x-auto">
-                        <div className="text-blue-300">// Button Component Usage</div>
-                        <div className="text-white mt-2">
-                          <span className="text-purple-300">&lt;Button</span>
-                          <span className="text-yellow-300"> variant=</span>
-                          <span className="text-green-300">"primary"</span>
-                          <span className="text-purple-300">&gt;</span>
+                      <div className="bg-muted rounded-lg p-4 text-sm font-mono overflow-x-auto">
+                        <div className="text-muted-foreground">// Button Component Usage</div>
+                        <div className="text-foreground mt-2">
+                          <span className="text-primary">&lt;Button</span>
+                          <span className="text-muted-foreground"> variant=</span>
+                          <span className="text-primary/80">"primary"</span>
+                          <span className="text-primary">&gt;</span>
                         </div>
-                        <div className="ml-2 text-white">Click me</div>
-                        <div className="text-purple-300">&lt;/Button&gt;</div>
+                        <div className="ml-2 text-foreground">Click me</div>
+                        <div className="text-primary">&lt;/Button&gt;</div>
                       </div>
                       <Button variant="outline" size="sm" className="w-full">
                         <Copy className="w-4 h-4 mr-2" />
@@ -243,7 +243,7 @@ export function InteractiveDemo() {
                               step="0.5"
                               value={animationSpeed}
                               onChange={(e) => setAnimationSpeed(Number(e.target.value))}
-                              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                              className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer"
                             />
                           </div>
                         </div>
@@ -295,7 +295,7 @@ export function InteractiveDemo() {
                     <div className="space-y-4">
                       <h4 className="text-lg font-semibold">Real-time Feedback</h4>
                       <motion.div
-                        className="bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg p-4 border border-green-500/20"
+                        className="bg-primary/5 rounded-lg p-4 border border-primary/20"
                         animate={{
                           scale: progress > 80 ? [1, 1.02, 1] : 1,
                         }}

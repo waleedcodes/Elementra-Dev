@@ -224,7 +224,7 @@ export function TestimonialsSection() {
               className="text-center"
             >
               <div className="flex justify-center mb-3">
-                <div className="p-3 rounded-full bg-background/80 border border-white/10">
+                <div className="p-3 rounded-full bg-card border border-border">
                   <stat.icon className={`w-6 h-6 ${stat.color}`} />
                 </div>
               </div>
@@ -241,7 +241,7 @@ export function TestimonialsSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-4xl mx-auto mb-12"
         >
-          <Card className="backdrop-blur-sm bg-background/80 border-white/10 overflow-hidden">
+          <Card className="backdrop-blur-sm bg-card border-border overflow-hidden">
             <CardContent className="p-0">
               <div className="relative h-[400px] overflow-hidden">
                 <AnimatePresence mode="wait">
