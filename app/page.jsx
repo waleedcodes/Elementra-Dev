@@ -124,7 +124,7 @@ export default function Home() {
         <Link className="cursor-pointer z-10" href="https://github.com/waleedcodes/Elementra-Dev" target="_blank" rel="noopener noreferrer">
           <Github
             size={25}
-            className="text-muted-foreground hover:text-foreground transition-colorsmr-2"
+            className="text-muted-foreground hover:text-foreground transition-colors mr-2"
           />
         </Link>
       </header>
