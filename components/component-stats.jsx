@@ -67,32 +67,32 @@ export function ComponentStats() {
       label: "Downloads",
       value: animatedStats.downloads.toLocaleString(),
       suffix: "+",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-500/10",
+      color: "from-primary to-primary/60",
+      bgColor: "bg-primary/10",
     },
     {
       icon: Palette,
       label: "Components",
       value: animatedStats.components,
       suffix: "+",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-500/10",
+      color: "from-primary to-primary/60",
+      bgColor: "bg-primary/10",
     },
     {
       icon: Users,
       label: "Developers",
       value: animatedStats.users.toLocaleString(),
       suffix: "+",
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-500/10",
+      color: "from-primary to-primary/60",
+      bgColor: "bg-primary/10",
     },
     {
       icon: GitBranch,
       label: "Commits",
       value: animatedStats.commits,
       suffix: "+",
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10",
+      color: "from-primary to-primary/60",
+      bgColor: "bg-primary/10",
     }
   ]
 
@@ -130,7 +130,7 @@ export function ComponentStats() {
   ]
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-t from-primary/30 via-gray-900 to-secondary/40 relative overflow-hidden">
+    <section ref={ref} className="py-24 bg-background relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl transform -translate-y-1/2"></div>
@@ -165,7 +165,7 @@ export function ComponentStats() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className={`${stat.bgColor} border-white/10 backdrop-blur-sm hover:scale-105 transition-transform duration-300`}>
+                <Card className={`${stat.bgColor} border-border backdrop-blur-sm hover:scale-105 transition-transform duration-300`}>
                   <CardContent className="p-4 sm:p-6 text-center">
                     <div className={`w-8 sm:w-12 h-8 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
                       <stat.icon className="w-4 sm:w-6 h-4 sm:h-6 text-white" />
@@ -199,7 +199,7 @@ export function ComponentStats() {
               whileHover={{ scale: 1.02 }}
               className="group"
             >
-              <Card className="h-full bg-background/50 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300">
+              <Card className="h-full bg-card backdrop-blur-sm border-border hover:border-primary/30 transition-all duration-300">
                 <CardContent className="p-4 sm:p-6">
                   <feature.icon className={`w-6 sm:w-8 h-6 sm:h-8 ${feature.color} mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300`} />
                   <h3 className="text-base sm:text-lg font-semibold mb-2">{feature.title}</h3>
@@ -233,7 +233,7 @@ export function ComponentStats() {
                 <div className={`w-12 sm:w-16 h-12 sm:h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                   device.active 
                     ? 'border-primary bg-primary/10' 
-                    : 'border-muted-foreground/30 hover:border-foreground/50'
+                    : 'border-border hover:border-primary/50'
                 }`}>
                   <device.icon className="w-6 sm:w-8 h-6 sm:h-8" />
                 </div>
@@ -248,14 +248,14 @@ export function ComponentStats() {
             transition={{ duration: 0.6, delay: 1.3 }}
             className="max-w-2xl mx-auto"
           >
-            <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-white/10 backdrop-blur-sm">
+            <Card className="bg-card border-border backdrop-blur-sm">
               <CardContent className="p-6 sm:p-8">
                 <div className="text-base sm:text-lg text-muted-foreground">
                   "Elementra UI has revolutionized our development process. The components are beautiful, 
                   performant, and incredibly easy to customize."
                 </div>
                 <div className="mt-4 flex items-center justify-center gap-3">
-                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm sm:text-base">
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm sm:text-base">
                     W
                   </div>
                   <div className="text-left">
