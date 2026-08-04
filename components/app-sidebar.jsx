@@ -95,6 +95,12 @@ const navigationData = {
           icon: AlertCircle,
         },
         {
+          title: "Aspect Ratio",
+          url: "/docs/Components/aspect-ratio",
+          description: "Enforces aspect ratio for images & videos",
+          icon: CreditCard,
+        },
+        {
           title: "Avatar",
           url: "/docs/Components/avatar",
           description: "User profile images with fallbacks",
@@ -131,10 +137,22 @@ const navigationData = {
           icon: CreditCard,
         },
         {
+          title: "Carousel",
+          url: "/docs/Components/carousel",
+          description: "Interactive slideshow slider",
+          icon: Sparkles,
+        },
+        {
           title: "Checkbox",
           url: "/docs/Components/checkbox",
           description: "Selection box control",
           icon: ToggleLeft,
+        },
+        {
+          title: "File Upload",
+          url: "/docs/Components/file-upload",
+          description: "Drag & drop file dropzone uploader",
+          icon: FileText,
         },
         {
           title: "Command",
