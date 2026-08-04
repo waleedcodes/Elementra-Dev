@@ -215,10 +215,22 @@ const navigationData = {
           icon: Layers,
         },
         {
+          title: "Menubar",
+          url: "/docs/Components/menubar",
+          description: "Desktop application top navigation bar",
+          icon: Menu,
+        },
+        {
           title: "Navigation Menu",
           url: "/docs/Components/navigation-menu",
           description: "Responsive top navigation bar",
           icon: Menu,
+        },
+        {
+          title: "Pagination",
+          url: "/docs/Components/pagination",
+          description: "Navigation pagination controls",
+          icon: ChevronRight,
         },
         {
           title: "Popover",
@@ -249,6 +261,12 @@ const navigationData = {
           url: "/docs/Components/scratch-to-reveal",
           description: "Interactive scratch card component",
           icon: Hash,
+        },
+        {
+          title: "Scroll Area",
+          url: "/docs/Components/scroll-area",
+          description: "Custom scrollable container viewport",
+          icon: Layers,
         },
         {
           title: "Select",
