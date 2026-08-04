@@ -162,7 +162,19 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/docs/Components/tooltip`,
+      url: `${baseUrl}/docs/Components/carousel`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/docs/Components/aspect-ratio`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/docs/Components/file-upload`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
