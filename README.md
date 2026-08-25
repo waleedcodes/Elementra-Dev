@@ -80,6 +80,56 @@ Elementra UI is a comprehensive React component library designed for modern web 
 
 ---
 
+## 🗂️ Project Structure
+
+```
+Elementra-Dev/
+├── app/
+│   ├── docs/                      # Documentation routes (50 component showcase pages)
+│   │   ├── Components/            # e.g., accordion, button, modal, etc.
+│   │   ├── Installation/
+│   │   └── Introduction/
+│   └── page.jsx                   # Homepage (uses marketing components)
+│
+├── components/                    # Website Infrastructure
+│   ├── marketing/                 # 🌟 Landing page & showcase sections
+│   │   ├── hero.jsx
+│   │   ├── features.jsx
+│   │   ├── code-showcase.jsx
+│   │   ├── component-stats.jsx
+│   │   ├── interactive-demo.jsx
+│   │   ├── testimonials-section.jsx
+│   │   ├── newsletter-section.jsx
+│   │   ├── pricing-section.jsx
+│   │   ├── faq-section.jsx
+│   │   ├── new-release-promo.jsx
+│   │   └── footer.jsx
+│   ├── ui/                        # 🟢 Shadcn UI primitives (site navigation, tabs, dialogs)
+│   ├── app-sidebar.jsx            # Documentation navigation sidebar
+│   ├── theme-toggle.jsx           # Theme toggle switcher
+│   ├── DocsComp/                  # Docs helper components
+│   └── magicui/                   # Marquee and decorative effects
+│
+└── src/
+    └── components/
+        └── ui/                    # 🔵 CANONICAL ELEMENTRA UI LIBRARY (50 Components)
+            ├── accordion/index.jsx
+            ├── alert-dialog/index.jsx
+            ├── aspect-ratio/index.jsx
+            ├── button/index.jsx
+            ├── carousel/index.jsx
+            ├── drawer/index.jsx
+            ├── file-upload/index.jsx
+            ├── menubar/index.jsx
+            ├── modal/index.jsx
+            ├── pagination/index.jsx
+            ├── react-signature/index.jsx
+            ├── scroll-area/index.jsx
+            └── ... (50 components total)
+```
+
+---
+
 ## Installation
 
 ### Package Installation
@@ -707,3 +757,5 @@ Special thanks to:
     <a href="https://elementra-ui.vercel.app">🌐 Visit our website</a>
   </p>
 </div>
+
+
