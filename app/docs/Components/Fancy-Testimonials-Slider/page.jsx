@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
-import { FancyTestimonialsSlider } from "@/components/fancy-testimonials-slider";
+import { FancyTestimonialsSlider } from "@/src/components/ui/Fancy-Testimonials-Slider";
 
 const FancyTestimonialsDocs = () => {
   const handleCopy = (text) => {
