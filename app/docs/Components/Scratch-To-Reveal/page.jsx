@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
-import ScratchToReveal from "@/components/scratch-to-reveal";
+import ScratchToReveal from "@/src/components/ui/scratch-to-reveal";
 
 const ScratchToRevealDocs = () => {
   const handleCopy = (text) => {
