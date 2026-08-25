@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Switch } from "@/components/Switch";
+import { Switch } from "@/src/components/ui/switch";
 
 // Navigation component for tabs
 const DocsNav = ({ activeTab, setActiveTab }) => {
