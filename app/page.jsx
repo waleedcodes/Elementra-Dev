@@ -1,15 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
-import Hero from "@/components/home/hero";
-import Features from "@/components/features";
-import { InteractiveDemo } from "@/components/interactive-demo";
-import { ComponentStats } from "@/components/component-stats";
-import { CodeShowcase } from "@/components/code-showcase";
-import { TestimonialsSection } from "@/components/testimonials-section";
+import Hero from "@/components/marketing/hero";
+import Features from "@/components/marketing/features";
+import { InteractiveDemo } from "@/components/marketing/interactive-demo";
+import { ComponentStats } from "@/components/marketing/component-stats";
+import { CodeShowcase } from "@/components/marketing/code-showcase";
+import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import Link from "next/link";
 import Image from "next/image";
-import NewsletterSection from "@/components/newsletter-section";
-import Footer from "./_Components/Footer";
+import NewsletterSection from "@/components/marketing/newsletter-section";
+import Footer from "@/components/marketing/footer";
 import { Github } from "lucide-react";
 
 export default function Home() {
