@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Progress } from "@/components/Progress";
+import { Progress } from "@/src/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { CheckCircle, AlertTriangle, Info, Star, Bell } from "lucide-react";
 
