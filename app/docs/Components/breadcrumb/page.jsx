@@ -12,7 +12,7 @@ import {
   BreadcrumbLink, 
   BreadcrumbSeparator, 
   BreadcrumbEllipsis 
-} from "@/components/Breadcrumb";
+} from "@/src/components/ui/breadcrumb";
 
 const BreadcrumbComponent = () => {
   const [activeTab, setActiveTab] = React.useState("overview");
@@ -42,7 +42,7 @@ const BreadcrumbComponent = () => {
   const codeExamples = [
     {
       title: "Basic Breadcrumb",
-      code: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@/components/Breadcrumb";
+      code: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@/components/ui/breadcrumb";
 
 export default function BasicBreadcrumb() {
   return (
@@ -66,7 +66,7 @@ export default function BasicBreadcrumb() {
     },
     {
       title: "Custom Separator",
-      code: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@/components/Breadcrumb";
+      code: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@/components/ui/breadcrumb";
 
 export default function CustomSeparator() {
   return (
@@ -92,7 +92,7 @@ export default function CustomSeparator() {
   BreadcrumbItem, 
   BreadcrumbLink, 
   BreadcrumbEllipsis 
-} from "@/components/Breadcrumb";
+} from "@/components/ui/breadcrumb";
 
 export default function WithEllipsis() {
   return (
@@ -118,7 +118,7 @@ export default function WithEllipsis() {
   Breadcrumb, 
   BreadcrumbItem, 
   BreadcrumbLink 
-} from "@/components/Breadcrumb";
+} from "@/components/ui/breadcrumb";
 import { Home, Folder, File } from "lucide-react";
 
 export default function WithIcons() {
@@ -153,7 +153,7 @@ export default function WithIcons() {
   Breadcrumb, 
   BreadcrumbItem, 
   BreadcrumbLink 
-} from "@/components/Breadcrumb";
+} from "@/components/ui/breadcrumb";
 import { ChevronDown } from "lucide-react";
 
 export default function DropdownBreadcrumb() {

@@ -4,7 +4,7 @@ import { Copy, CopyIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
-import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/Model";
+import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/src/components/ui/modal";
 
 const ModalDocs = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -165,7 +165,7 @@ const ModalDocs = () => {
                   <div className="bg-zinc-950 dark:bg-zinc-100 p-4 rounded-lg">
                     <pre className="text-[0.8rem] text-zinc-100 dark:text-zinc-900 font-mono overflow-x-auto">
                       <code>{`import { useState } from "react";
-import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/Model";
+import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 
 function ModalExample() {
@@ -198,7 +198,7 @@ function ModalExample() {
                     variant="ghost"
                     className="absolute top-3 right-3 h-6 w-6 p-0 text-zinc-400 hover:text-zinc-100"
                     onClick={() => handleCopy(`import { useState } from "react";
-import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/Model";
+import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 
 function ModalExample() {
@@ -326,7 +326,7 @@ function ModalExample() {
                       <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
                         <pre className="text-[0.8rem] font-mono whitespace-pre-wrap">{`"use client";
 import { useState } from "react";
-import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/Model";
+import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 
 export default function MyPage() {
@@ -366,7 +366,7 @@ function PageContent() {
                         className="absolute top-3 right-3 h-6 w-6 p-0 text-muted-foreground dark:text-white"
                         onClick={() => handleCopy(`"use client";
 import { useState } from "react";
-import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/Model";
+import { ModalProvider, useModal, Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 
 export default function MyPage() {

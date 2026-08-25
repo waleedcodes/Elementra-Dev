@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Input } from "./ui/input";
+import { Input } from "@/components/ui/input";
 import { Mail, Zap, Gift, Users, Bell } from "lucide-react";
 
 export default function NewsletterSection() {

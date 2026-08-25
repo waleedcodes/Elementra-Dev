@@ -93,6 +93,4 @@ export const Progress = React.forwardRef(
   }
 );
 
-Progress.displayName = "Progress";
-
-export { Progress };
+export default Progress;

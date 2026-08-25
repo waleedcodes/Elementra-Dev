@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Badge } from "@/components/Badge";
+import { Badge } from "@/src/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";

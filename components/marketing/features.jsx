@@ -1,29 +1,29 @@
 "use client";
 import { useTheme } from "next-themes";
-import Earth from "./ui/globe";
-import ScrambleHover from "./ui/scramble";
-import { FollowerPointerCard } from "./ui/following-pointer";
+import Earth from "@/components/ui/globe";
+import ScrambleHover from "@/components/ui/scramble";
+import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import { motion, useInView } from "framer-motion";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { geist } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
-import { Switch } from "./Switch";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/src/components/ui/switch";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { Progress } from "./Progress";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import FancyTestimonialsSlider from "./fancy-testimonials-slider";
-import ScratchToReveal from "./scratch-to-reveal";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+} from "@/components/ui/card";
+import { Progress } from "@/src/components/ui/progress";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import FancyTestimonialsSlider from "@/src/components/ui/Fancy-Testimonials-Slider";
+import ScratchToReveal from "@/src/components/ui/scratch-to-reveal";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function Features() {
   const ref = useRef(null);

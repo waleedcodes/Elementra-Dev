@@ -350,7 +350,6 @@ export function FormSignature({
     const signaturePad = $svg.current;
     if (!signaturePad) return;
 
-    // Function to check if signature exists and notify
     const checkSignature = () => {
       const isEmpty = !(
         signaturePad.svg && signaturePad.svg.querySelector("path")
@@ -433,6 +432,7 @@ export function FormSignature({
     </div>
   );
 }
+
 // Styled Signature Component
 export function StyledSignature({ className, ...props }) {
   const [readonly, setReadonly] = useState(false);
@@ -591,3 +591,5 @@ export function StyledSignature({ className, ...props }) {
     </div>
   );
 }
+
+export default ReactSignature;

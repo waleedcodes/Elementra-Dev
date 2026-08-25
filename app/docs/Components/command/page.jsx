@@ -15,7 +15,7 @@ import {
   CommandItem,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/Command";
+} from "@/src/components/ui/command";
 
 const CommandComponent = () => {
   const [activeTab, setActiveTab] = React.useState("overview");
@@ -47,7 +47,7 @@ const CommandComponent = () => {
   const codeExamples = [
     {
       title: "Basic Command Palette",
-      code: `import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/Command";
+      code: `import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command";
 import { useState } from "react";
 
 export default function BasicCommand() {
@@ -82,7 +82,7 @@ export default function BasicCommand() {
   CommandGroup,
   CommandItem,
   CommandShortcut,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { useState } from "react";
 
 export default function ShortcutCommand() {
@@ -123,7 +123,7 @@ export default function ShortcutCommand() {
   CommandGroup,
   CommandItem,
   CommandSeparator,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { useState } from "react";
 
 export default function GroupedCommand() {
@@ -158,7 +158,7 @@ export default function GroupedCommand() {
   CommandEmpty,
   CommandGroup,
   CommandItem,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { useState, useMemo } from "react";
 
 const items = ["Calendar", "Search Emoji", "Profile", "Billing", "Settings"];
@@ -203,7 +203,7 @@ export default function FilteredCommand() {
   CommandGroup,
   CommandItem,
   CommandShortcut,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { Calendar, Smile, User, CreditCard } from "lucide-react";
 import { useState } from "react";
 
@@ -250,7 +250,7 @@ export default function IconCommand() {
   CommandEmpty,
   CommandGroup,
   CommandItem,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { useState } from "react";
 
 export default function DisabledCommand() {
@@ -283,7 +283,7 @@ export default function DisabledCommand() {
   CommandGroup,
   CommandItem,
   CommandShortcut,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { useState } from "react";
 
 export default function GlobalTriggerCommand() {
@@ -327,7 +327,7 @@ export default function GlobalTriggerCommand() {
   CommandItem,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/Command";
+} from "@/components/ui/command";
 import { Clock, FileText, Users, Settings } from "lucide-react";
 import { useState } from "react";
 
@@ -1003,7 +1003,7 @@ export default function FullCommandMenu() {
   CommandItem,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/Command";`}
+} from "@/components/ui/command";`}
                     </code>
                   </div>
                   <Button
@@ -1019,7 +1019,7 @@ export default function FullCommandMenu() {
   CommandItem,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/Command";`)}
+} from "@/components/ui/command";`)}
                   >
                     <Copy className="h-3 w-3" />
                   </Button>

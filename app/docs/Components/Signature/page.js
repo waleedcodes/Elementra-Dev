@@ -10,7 +10,7 @@ import {
   CompactSignature,
   FormSignature,
   StyledSignature,
-} from "@/components/signature";
+} from "@/src/components/ui/react-signature";
 
 const SignatureDocs = () => {
   const [copied, setCopied] = useState(false);

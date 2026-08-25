@@ -11,7 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/Accordion";
+} from "@/src/components/ui/accordion";
 
 const AccordionComponent = () => {
   const [activeTab, setActiveTab] = React.useState("overview");
@@ -42,7 +42,7 @@ const AccordionComponent = () => {
   const codeExamples = [
     {
       title: "Basic Accordion",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function BasicAccordion() {
   return (
@@ -66,7 +66,7 @@ export default function BasicAccordion() {
     },
     {
       title: "Multiple Accordion",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function MultipleAccordion() {
   return (
@@ -96,7 +96,7 @@ export default function MultipleAccordion() {
     },
     {
       title: "FAQ Accordion",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function FAQAccordion() {
   return (
@@ -127,7 +127,7 @@ export default function FAQAccordion() {
     },
     {
       title: "Controlled Accordion",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useState } from "react";
 
 export default function ControlledAccordion() {
@@ -160,7 +160,7 @@ export default function ControlledAccordion() {
     },
     {
       title: "Custom Styled Accordion",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function CustomStyledAccordion() {
   return (
@@ -188,7 +188,7 @@ export default function CustomStyledAccordion() {
     },
     {
       title: "Nested Accordion",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function NestedAccordion() {
   return (
@@ -238,7 +238,7 @@ export default function NestedAccordion() {
     },
     {
       title: "Accordion with Icons & Rich Content",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function RichContentAccordion() {
   return (
@@ -308,7 +308,7 @@ export default function RichContentAccordion() {
     },
     {
       title: "Programmatic Control",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useState } from "react";
 
 export default function ProgrammaticAccordion() {
@@ -392,7 +392,7 @@ export default function ProgrammaticAccordion() {
     },
     {
       title: "Accordion with Form Integration",
-      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/Accordion";
+      code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useState } from "react";
 
 export default function FormAccordion() {
@@ -1496,7 +1496,7 @@ export default function FormAccordion() {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/Accordion";`}
+} from "@/components/ui/accordion";`}
                     </code>
                   </div>
                   <Button
@@ -1508,7 +1508,7 @@ export default function FormAccordion() {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/Accordion";`)}
+} from "@/components/ui/accordion";`)}
                   >
                     <Copy className="h-3 w-3" />
                   </Button>
