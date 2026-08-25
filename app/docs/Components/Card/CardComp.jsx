@@ -20,7 +20,7 @@ import {
   CardImage,
   CardBadge,
   CardIcon,
-} from "@/components/card";
+} from "@/src/components/ui/card";
 
 const CardComp = () => {
   return (
