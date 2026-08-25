@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
-import { Avatar, AvatarGroup } from "@/components/Avatar";
+import { Avatar, AvatarGroup } from "@/src/components/ui/avatar";
 
 const AvatarComponent = () => {
   const [activeTab, setActiveTab] = React.useState("overview");
@@ -33,7 +33,7 @@ const AvatarComponent = () => {
   const codeExamples = [
     {
       title: "Basic Avatar",
-      code: `import { Avatar } from "@/components/Avatar";
+      code: `import { Avatar } from "@/components/ui/avatar";
 
 export default function BasicAvatar() {
   return (
@@ -48,7 +48,7 @@ export default function BasicAvatar() {
     },
     {
       title: "Avatar Sizes",
-      code: `import { Avatar } from "@/components/Avatar";
+      code: `import { Avatar } from "@/components/ui/avatar";
 
 export default function AvatarSizes() {
   return (
@@ -65,7 +65,7 @@ export default function AvatarSizes() {
     },
     {
       title: "Avatar with Status",
-      code: `import { Avatar } from "@/components/Avatar";
+      code: `import { Avatar } from "@/components/ui/avatar";
 
 export default function AvatarWithStatus() {
   return (
@@ -81,7 +81,7 @@ export default function AvatarWithStatus() {
     },
     {
       title: "Avatar Shapes",
-      code: `import { Avatar } from "@/components/Avatar";
+      code: `import { Avatar } from "@/components/ui/avatar";
 
 export default function AvatarShapes() {
   return (
@@ -95,7 +95,7 @@ export default function AvatarShapes() {
     },
     {
       title: "Avatar Group",
-      code: `import { Avatar, AvatarGroup } from "@/components/Avatar";
+      code: `import { Avatar, AvatarGroup } from "@/components/ui/avatar";
 
 export default function AvatarGroupExample() {
   return (
