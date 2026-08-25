@@ -47,7 +47,7 @@ export const useModal = () => {
   return context;
 };
 
-const Modal = React.forwardRef(
+export const Modal = React.forwardRef(
   ({ children, isOpen, onClose, className, ...props }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -124,9 +124,4 @@ export const ModalFooter = React.forwardRef(
   )
 );
 
-Modal.displayName = "Modal";
-ModalHeader.displayName = "ModalHeader";
-ModalBody.displayName = "ModalBody";
-ModalFooter.displayName = "ModalFooter";
-
-export { Modal, ModalHeader, ModalBody, ModalFooter };
+export default Modal;
