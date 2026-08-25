@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Select, SelectOption } from "@/components/Select";
+import { Select, SelectOption } from "@/src/components/ui/select";
 
 // Navigation component for tabs
 const DocsNav = ({ activeTab, setActiveTab }) => {
