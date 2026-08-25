@@ -17,7 +17,7 @@ import {
   Copy,
   CopyIcon,
 } from "lucide-react";
-import { Buttons } from "@/components/Buttons";
+import { Button as Buttons } from "@/src/components/ui/button";
 
 const ButtonComponent = () => {
   const [activeTab, setActiveTab] = React.useState("overview");
