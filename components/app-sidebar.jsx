@@ -53,7 +53,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Tabs } from "./Tabs";
 
 // Enhanced navigation data with icons and additional structure
 const navigationData = {
@@ -320,7 +319,7 @@ const navigationData = {
           title: "Tabs",
           url: "/docs/Components/tabs",
           description: "Tab navigation components",
-          icon: Tabs,
+          icon: Layers,
         },
         {
           title: "Textarea",
