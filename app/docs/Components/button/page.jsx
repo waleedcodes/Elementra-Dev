@@ -1,904 +1,554 @@
 "use client";
 
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import {
-  Plus,
-  Star,
-  Heart,
-  Mail,
-  Settings,
-  Bell,
-  Download,
-  User,
-  ArrowRight,
   Copy,
-  CopyIcon,
+  Mouse,
+  Sparkles,
+  ArrowRight,
+  Download,
+  Trash2,
+  Settings,
+  Mail,
+  Heart,
+  Loader2,
+  Check,
+  Zap,
+  Play,
+  Share2,
+  Send,
+  Plus,
+  Shield,
+  Star,
+  Flame,
+  Volume2,
 } from "lucide-react";
-import { Button as Buttons } from "@/src/components/ui/button";
+import { Button as DocsButton } from "@/components/ui/button";
+import { toast } from "sonner";
+import { Button } from "@/src/components/ui/button";
+import { PlaygroundStage3D } from "@/components/DocsComp/playground-stage-3d";
+import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
 
-const ButtonComponent = () => {
-  const [activeTab, setActiveTab] = React.useState("overview");
-  const [activePreview, setActivePreview] = React.useState("preview");
-  const [mounted, setMounted] = React.useState(false);
+const ButtonDocPage = () => {
+  const [activeTab, setActiveTab] = useState("overview");
+  const [selectedVariant, setSelectedVariant] = useState("default");
+  const [selectedSize, setSelectedSize] = useState("md");
+  const [isLoadingDemo, setIsLoadingDemo] = useState(false);
+  const [likesCount, setLikesCount] = useState(42);
+  const [isLiked, setIsLiked] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
-  const tabs = [
-    { id: "overview", label: "Overview" },
-    { id: "examples", label: "Examples" },
-    { id: "api", label: "API" },
-  ];
-
-  if (!mounted) {
-    return null;
-  }
-
   const handleCopy = (text) => {
     if (text) {
       navigator.clipboard.writeText(text);
-      toast("Copied to clipboard", { type: "success" });
+      toast.success("Copied to clipboard");
     }
   };
 
-  const codeExamples = [
-    {
-      title: "Basic Button",
-      code: `import { Button } from "@/components/ui/button";
+  const tabs = [
+    { id: "overview", label: "Overview" },
+    { id: "examples", label: "Examples & Variants" },
+    { id: "api", label: "API Reference" },
+  ];
 
-export default function BasicButton() {
-  return <Button>Click me</Button>;
-}`,
-      description: "Simple button with default styling.",
-    },
+  const showcaseExamples = [
     {
-      title: "Button Variants",
+      id: "visual-variants",
+      title: "1. Core Visual Variants",
+      description: "Elementra UI provides 12+ crafted visual variants tailored for primary actions, warnings, notifications, and glassmorphism.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border">
+          <Button variant="default" onClick={() => toast("Default clicked")}>Default</Button>
+          <Button variant="outline" onClick={() => toast("Outline clicked")}>Outline</Button>
+          <Button variant="glass" onClick={() => toast("Glass clicked")}>Glass</Button>
+          <Button variant="gradient" onClick={() => toast("Gradient clicked")}>Gradient</Button>
+          <Button variant="success" onClick={() => toast.success("Success clicked")}>Success</Button>
+          <Button variant="danger" onClick={() => toast.error("Danger clicked")}>Danger</Button>
+          <Button variant="warning" onClick={() => toast.warning("Warning clicked")}>Warning</Button>
+          <Button variant="info" onClick={() => toast.info("Info clicked")}>Info</Button>
+          <Button variant="shadow" onClick={() => toast("Shadow clicked")}>Shadow Glow</Button>
+          <Button variant="neon" onClick={() => toast("Neon clicked")}>Neon Glow</Button>
+          <Button variant="elevated" onClick={() => toast("Elevated clicked")}>Elevated</Button>
+        </div>
+      ),
       code: `import { Button } from "@/components/ui/button";
 
 export default function ButtonVariants() {
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-wrap gap-3">
       <Button variant="default">Default</Button>
-      <Button variant="destructive">Destructive</Button>
       <Button variant="outline">Outline</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="link">Link</Button>
+      <Button variant="glass">Glass</Button>
+      <Button variant="gradient">Gradient</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="danger">Danger</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="info">Info</Button>
+      <Button variant="shadow">Shadow Glow</Button>
+      <Button variant="neon">Neon Glow</Button>
+      <Button variant="elevated">Elevated</Button>
     </div>
   );
 }`,
-      description: "Different button variants for various use cases.",
     },
     {
-      title: "Button Sizes",
+      id: "animations-physics",
+      title: "2. Micro-Animations & Dynamic Physics",
+      description: "Built-in interactive spring physics and keyframe animations triggered on hover and click.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border">
+          <Button variant="pulse" onClick={() => toast.info("Pulse clicked")}>Pulse Animation</Button>
+          <Button variant="bounce" onClick={() => toast.info("Bounce clicked")}>Bounce Animation</Button>
+          <Button variant="ripple" onClick={() => toast.info("Ripple clicked")}>Ripple Effect</Button>
+          <Button variant="scale" onClick={() => toast.info("Scale clicked")}>Scale Hover</Button>
+          <Button variant="shake" onClick={() => toast.info("Shake clicked")}>Shake Physics</Button>
+          <Button variant="emoji" onClick={() => toast.info("Emoji clicked")}>🎉 Emoji Tilt</Button>
+          <Button variant="frosted" onClick={() => toast.info("Frosted clicked")}>Frosted Blur</Button>
+        </div>
+      ),
       code: `import { Button } from "@/components/ui/button";
+
+export default function AnimatedButtons() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <Button variant="pulse">Pulse Animation</Button>
+      <Button variant="bounce">Bounce Animation</Button>
+      <Button variant="ripple">Ripple Effect</Button>
+      <Button variant="scale">Scale Hover</Button>
+      <Button variant="shake">Shake Physics</Button>
+      <Button variant="emoji">🎉 Emoji Tilt</Button>
+      <Button variant="frosted">Frosted Blur</Button>
+    </div>
+  );
+}`,
+    },
+    {
+      id: "sizes",
+      title: "3. Size Spectrum (xs → xl & icon)",
+      description: "Standardized size tokens from compact badges to prominent hero call-to-actions.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border">
+          <Button size="xs" variant="default">Extra Small (xs)</Button>
+          <Button size="sm" variant="default">Small (sm)</Button>
+          <Button size="md" variant="default">Medium (md)</Button>
+          <Button size="lg" variant="default">Large (lg)</Button>
+          <Button size="xl" variant="default">Extra Large (xl)</Button>
+          <Button size="icon" variant="outline" title="Settings">
+            <Settings className="h-4 w-4" />
+          </Button>
+          <Button size="icon" variant="gradient" title="Flame">
+            <Flame className="h-4 w-4" />
+          </Button>
+        </div>
+      ),
+      code: `import { Button } from "@/components/ui/button";
+import { Settings, Flame } from "lucide-react";
 
 export default function ButtonSizes() {
   return (
-    <div className="flex items-center gap-4">
-      <Button size="sm">Small</Button>
-      <Button size="default">Default</Button>
-      <Button size="lg">Large</Button>
+    <div className="flex flex-wrap items-center gap-3">
+      <Button size="xs">Extra Small (xs)</Button>
+      <Button size="sm">Small (sm)</Button>
+      <Button size="md">Medium (md)</Button>
+      <Button size="lg">Large (lg)</Button>
+      <Button size="xl">Extra Large (xl)</Button>
       <Button size="icon">
-        <Plus className="h-4 w-4" />
+        <Settings className="h-4 w-4" />
+      </Button>
+      <Button size="icon" variant="gradient">
+        <Flame className="h-4 w-4" />
       </Button>
     </div>
   );
 }`,
-      description: "Different button sizes including icon-only buttons.",
     },
     {
-      title: "Buttons with Icons",
+      id: "icons-slots",
+      title: "4. Icons, Slots & Badges",
+      description: "Seamless composition with Lucide React icons, animated trailing arrows, and badge counters.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border">
+          <Button variant="default" className="flex items-center gap-2">
+            <Download className="h-4 w-4" />
+            Download Assets
+          </Button>
+          <Button variant="gradient" className="flex items-center gap-2 group">
+            <span>Get Started</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+          <Button variant="outline" className="flex items-center gap-2">
+            <Mail className="h-4 w-4 text-primary" />
+            Inbox
+            <span className="ml-1 px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold">
+              3
+            </span>
+          </Button>
+          <Button
+            variant="glass"
+            className="flex items-center gap-2"
+            onClick={() => {
+              setIsLiked(!isLiked);
+              setLikesCount(isLiked ? likesCount - 1 : likesCount + 1);
+              toast.success(isLiked ? "Unliked" : "Liked!");
+            }}
+          >
+            <Heart className={`h-4 w-4 transition-colors ${isLiked ? "fill-red-500 text-red-500" : ""}`} />
+            <span>{likesCount}</span>
+          </Button>
+          <Button variant="danger" className="flex items-center gap-2">
+            <Trash2 className="h-4 w-4" />
+            Delete
+          </Button>
+        </div>
+      ),
       code: `import { Button } from "@/components/ui/button";
-import { Mail, Download, ArrowRight } from "lucide-react";
+import { Download, ArrowRight, Mail, Heart, Trash2 } from "lucide-react";
 
-export default function ButtonsWithIcons() {
+export default function ButtonWithIcons() {
   return (
-    <div className="flex gap-4">
-      <Button>
-        <Mail className="mr-2 h-4 w-4" />
-        Email
+    <div className="flex flex-wrap gap-3">
+      <Button variant="default">
+        <Download className="h-4 w-4 mr-2" /> Download
       </Button>
+
+      <Button variant="gradient" className="group">
+        <span>Get Started</span>
+        <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+      </Button>
+
       <Button variant="outline">
-        <Download className="mr-2 h-4 w-4" />
-        Download
-      </Button>
-      <Button variant="ghost">
-        Continue
-        <ArrowRight className="ml-2 h-4 w-4" />
+        <Mail className="h-4 w-4 mr-2" /> Inbox
+        <span className="ml-2 px-1.5 py-0.5 rounded-full bg-primary text-xs">3</span>
       </Button>
     </div>
   );
 }`,
-      description:
-        "Buttons combined with icons for better visual communication.",
+    },
+    {
+      id: "loading-states",
+      title: "5. Loading & Disabled States",
+      description: "Interactive async loading spinner overlay with disabled click handling and cursor wait.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border">
+          <Button
+            variant="default"
+            isLoading={isLoadingDemo}
+            onClick={() => {
+              setIsLoadingDemo(true);
+              setTimeout(() => {
+                setIsLoadingDemo(false);
+                toast.success("Action complete!");
+              }, 1500);
+            }}
+          >
+            {isLoadingDemo ? "Submitting..." : "Click to Trigger Loading"}
+          </Button>
+          <Button variant="gradient" isLoading>
+            Always Loading
+          </Button>
+          <Button variant="default" disabled>
+            Disabled Button
+          </Button>
+          <Button variant="outline" disabled>
+            Disabled Outline
+          </Button>
+        </div>
+      ),
+      code: `import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
+
+export default function LoadingButtonDemo() {
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1500);
+  };
+
+  return (
+    <div className="flex gap-3">
+      <Button isLoading={loading} onClick={handleClick}>
+        {loading ? "Processing..." : "Submit Transaction"}
+      </Button>
+      <Button disabled>Disabled Action</Button>
+    </div>
+  );
+}`,
+    },
+    {
+      id: "pills-capsules",
+      title: "6. Capsule & Pill Shapes",
+      description: "Fully rounded pill buttons ideal for tags, chips, status selectors, and audio controls.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border">
+          <Button variant="pill">Capsule Pill</Button>
+          <Button variant="gradient" className="rounded-full shadow-lg">
+            <Sparkles className="h-4 w-4 mr-1.5" />
+            AI Generator
+          </Button>
+          <Button variant="glass" className="rounded-full">
+            <Volume2 className="h-4 w-4 mr-1.5" />
+            Listen Audio
+          </Button>
+          <Button variant="outline" className="rounded-full">
+            <Share2 className="h-4 w-4 mr-1.5" />
+            Share Link
+          </Button>
+        </div>
+      ),
+      code: `import { Button } from "@/components/ui/button";
+import { Sparkles, Volume2 } from "lucide-react";
+
+export default function PillButtons() {
+  return (
+    <div className="flex gap-3">
+      <Button variant="pill">Capsule Pill</Button>
+      <Button variant="gradient" className="rounded-full">
+        <Sparkles className="h-4 w-4 mr-2" /> AI Generator
+      </Button>
+    </div>
+  );
+}`,
     },
   ];
 
+  if (!mounted) return null;
+
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
       {/* Header */}
-      <div className="mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">
-          Button
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-          A versatile button component with multiple variants, sizes, and states
-          for building interactive user interfaces.
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-2xl bg-blue-500/10 text-blue-500 border border-blue-500/20 shadow-sm">
+            <Mouse className="h-6 w-6" />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Button</h1>
+        </div>
+        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          An accessible, highly customizable interactive button with 20+ animated variants, loading states, icon slots, and spring physics.
         </p>
       </div>
 
-      {/* Tab Navigation */}
-      <div className="mb-8">
-        <div className="flex space-x-1 bg-muted p-1 rounded-lg w-fit">
+      {/* Tabs */}
+      <div className="w-full">
+        <div className="flex border-b border-border mb-8">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
                 activeTab === tab.id
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                  ? "border-primary text-foreground font-bold"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               {tab.label}
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Tab Content */}
-      {activeTab === "overview" && (
-        <div className="space-y-8 sm:space-y-12">
-          {/* Installation Section */}
-          <section className="space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-              <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                1
-              </span>
-              Installation
-            </h2>
-            <div className="relative">
-              <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
-                <code className="text-foreground">npm i elementra-ui</code>
-              </div>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
-                onClick={() => handleCopy("npm i elementra-ui")}
-              >
-                <Copy className="h-4 w-4 text-muted-foreground" />
-              </Button>
+        {/* Overview Tab */}
+        {activeTab === "overview" && (
+          <div className="space-y-10">
+            {/* Quick Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">1</span>
+                  Install Library
+                </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npm i elementra-ui</code>
+                  </pre>
+                  <DocsButton
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npm i elementra-ui")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </DocsButton>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">2</span>
+                  Add via CLI
+                </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npx elementra-ui add button</code>
+                  </pre>
+                  <DocsButton
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npx elementra-ui add button")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </DocsButton>
+                </div>
+              </SpotlightCard>
             </div>
-          </section>
 
-          <section className="space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-              <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                2
-              </span>
-              Add Components Using CLI
-            </h2>
+            {/* 3D Interactive Playground Stage */}
+            <section className="space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h2 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  3D Interactive Playground
+                </h2>
 
-            <div className="relative">
-              <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
-                <code className="text-foreground">npx elementra-ui add</code>
+                {/* Variant Switcher */}
+                <div className="flex items-center gap-1 p-1 rounded-xl bg-muted/60 border border-border text-xs font-medium">
+                  {["default", "gradient", "glass", "neon", "success", "danger"].map((variant) => (
+                    <button
+                      key={variant}
+                      type="button"
+                      onClick={() => setSelectedVariant(variant)}
+                      className={`px-3 py-1 rounded-lg capitalize transition-all ${
+                        selectedVariant === variant
+                          ? "bg-background text-primary font-bold shadow-sm"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {variant}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
-                onClick={() => handleCopy("npx elementra-ui add")}
-              >
-                <Copy className="h-4 w-4 text-muted-foreground" />
-              </Button>
-            </div>
-            <div className="bg-muted/50 border border-border rounded-lg p-4">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Select components using the up/down arrow keys. Press spacebar
-                to select multiple components, then press enter to add them to
-                your{" "}
-                <code className="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-xs font-mono">
-                  src
-                </code>{" "}
-                folder.
+
+              <PlaygroundStage3D code={showcaseExamples[0].code} defaultBackdrop="grid">
+                <div className="p-6 flex flex-wrap items-center justify-center gap-4">
+                  <Button
+                    variant={selectedVariant}
+                    size={selectedSize}
+                    onClick={() => {
+                      toast.success(`Clicked ${selectedVariant} button!`);
+                    }}
+                    className="shadow-xl"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Sparkles className="h-4 w-4" />
+                      Interactive {selectedVariant} Button
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </Button>
+                </div>
+              </PlaygroundStage3D>
+            </section>
+          </div>
+        )}
+
+        {/* Examples Tab: Rich Interactive Visual Showcases */}
+        {activeTab === "examples" && (
+          <div className="space-y-12">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold text-foreground">Complete Button Showcase</h2>
+              <p className="text-sm text-muted-foreground">
+                Interact with every design variant, size scale, icon alignment, and animation effect below with full copyable source code.
               </p>
             </div>
-          </section>
 
-          {/* Preview Section */}
-          <section className="space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-              <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                3
-              </span>
-              Component Preview
-            </h2>
+            {showcaseExamples.map((example) => (
+              <SpotlightCard key={example.id} className="p-6 sm:p-8 space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">{example.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{example.description}</p>
+                </div>
 
-            <div className="w-full">
-              <div className="w-full">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="grid w-[240px] grid-cols-2 bg-muted p-1 rounded-lg">
-                    <button
-                      onClick={() => setActivePreview("preview")}
-                      className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                        activePreview === "preview"
-                          ? "bg-background text-foreground shadow-sm"
-                          : "text-muted-foreground hover:text-foreground hover:bg-background/50"
-                      }`}
+                {/* Live Rendered Visual Preview */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Live Interactive Preview</div>
+                  {example.preview}
+                </div>
+
+                {/* Copyable Code Snippet */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Component Code</div>
+                  <div className="relative">
+                    <pre className="bg-zinc-950 text-zinc-100 border border-zinc-800 rounded-2xl p-5 font-mono text-xs overflow-x-auto shadow-inner">
+                      <code>{example.code}</code>
+                    </pre>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="absolute right-2.5 top-2.5 h-8 px-2 text-zinc-400 hover:text-white hover:bg-zinc-800"
+                      onClick={() => handleCopy(example.code)}
                     >
-                      Preview
-                    </button>
-                    <button
-                      onClick={() => setActivePreview("code")}
-                      className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                        activePreview === "code"
-                          ? "bg-background text-foreground shadow-sm"
-                          : "text-muted-foreground hover:text-foreground hover:bg-background/50"
-                      }`}
-                    >
-                      Code
-                    </button>
+                      <Copy className="h-3.5 w-3.5 mr-1" />
+                      Copy Code
+                    </Button>
                   </div>
                 </div>
+              </SpotlightCard>
+            ))}
+          </div>
+        )}
 
-                <AnimatePresence mode="wait">
-                  {activePreview === "preview" && (
-                    <motion.div
-                      key="preview"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="rounded-lg border border-border bg-background p-6 sm:p-8 min-h-[300px] sm:min-h-[400px] flex items-center justify-center"
-                    >
-                      <div className="flex flex-wrap gap-3 items-center justify-center">
-                        <Button variant="default">Default</Button>
-                        <Button variant="destructive">Destructive</Button>
-                        <Button variant="outline">Outline</Button>
-                        <Button variant="secondary">Secondary</Button>
-                        <Button variant="ghost">Ghost</Button>
-                        <Button variant="link">Link</Button>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {activePreview === "code" && (
-                    <motion.div
-                      key="code"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="relative rounded-lg border border-border bg-card"
-                    >
-                      <div className="p-4 overflow-x-auto">
-                        <pre className="text-xs sm:text-sm text-foreground font-mono">
-                          <code className="whitespace-pre-wrap">
-                            {codeExamples[1].code}
-                          </code>
-                        </pre>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
-                        onClick={() => handleCopy(codeExamples[1].code)}
-                      >
-                        <Copy className="h-4 w-4 text-muted-foreground" />
-                      </Button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </section>
-
-          {/* Basic Usage Section */}
-          <section className="space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-              <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                4
-              </span>
-              Basic Usage
-            </h2>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                <span className="w-1 h-6 bg-primary rounded-full"></span>
-                Import and Use
-              </h3>
-
-              <div className="relative">
-                <div className="bg-card border border-border rounded-lg p-4 overflow-x-auto">
-                  <pre className="text-xs sm:text-sm font-mono text-foreground">
-                    <code className="whitespace-pre-wrap">
-                      {codeExamples[0].code}
-                    </code>
-                  </pre>
-                </div>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
-                  onClick={() => handleCopy(codeExamples[0].code)}
-                >
-                  <Copy className="h-4 w-4 text-muted-foreground" />
-                </Button>
-              </div>
-            </div>
-          </section>
-        </div>
-      )}
-
-      {activeTab === "examples" && (
-        <div className="space-y-8 sm:space-y-12">
-          {/* Interactive Button Showcase */}
+        {/* API Reference Tab */}
+        {activeTab === "api" && (
           <div className="space-y-8">
-            {/* Standard UI Buttons */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Basic Variants */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                  <span className="w-1 h-6 bg-primary rounded-full"></span>
-                  Basic Variants
-                </h3>
-                <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-3">
-                  <div className="flex flex-wrap gap-3">
-                    <Button variant="default">Default</Button>
-                    <Button variant="destructive">Destructive</Button>
-                    <Button variant="outline">Outline</Button>
-                    <Button variant="secondary">Secondary</Button>
-                    <Button variant="ghost">Ghost</Button>
-                    <Button variant="link">Link</Button>
-                  </div>
-                </div>
+            <div className="rounded-2xl border border-border overflow-hidden bg-card shadow-sm">
+              <div className="p-4 bg-muted/60 border-b border-border">
+                <h3 className="font-bold text-foreground">Button Props</h3>
               </div>
-
-              {/* Button Sizes */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                  <span className="w-1 h-6 bg-primary rounded-full"></span>
-                  Button Sizes
-                </h3>
-                <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-3">
-                  <div className="flex flex-wrap gap-3 items-center">
-                    <Button size="sm">Small</Button>
-                    <Button size="default">Default</Button>
-                    <Button size="lg">Large</Button>
-                    <Button size="icon">
-                      <Plus className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Buttons with Icons */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                  <span className="w-1 h-6 bg-primary rounded-full"></span>
-                  Buttons with Icons
-                </h3>
-                <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-3">
-                  <div className="flex flex-wrap gap-3">
-                    <Button>
-                      <Mail className="mr-2 h-4 w-4" />
-                      Email
-                    </Button>
-                    <Button variant="outline">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download
-                    </Button>
-                    <Button variant="ghost">
-                      Continue
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Button States */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                  <span className="w-1 h-6 bg-primary rounded-full"></span>
-                  Button States
-                </h3>
-                <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-3">
-                  <div className="flex flex-wrap gap-3">
-                    <Button>Normal</Button>
-                    <Button disabled>Disabled</Button>
-                    <Button className="opacity-75 cursor-not-allowed">Loading</Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Custom Elementra Buttons */}
-            <div className="border-t border-border pt-8">
-              <h2 className="text-2xl font-semibold mb-6 text-foreground flex items-center gap-3">
-                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-bold">
-                  ✨
-                </span>
-                Custom Elementra Button Variants
-              </h2>
-              
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
-                {/* Basic Custom Variants */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-blue-500 rounded-full"></span>
-                    Basic Custom
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="default" className="min-w-[100px]">Default</Buttons>
-                      <Buttons variant="outline" className="min-w-[100px]">Outline</Buttons>
-                      <Buttons variant="gradient" className="min-w-[100px]">Gradient</Buttons>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Status Variants */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-green-500 rounded-full"></span>
-                    Status Variants
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="success" icon={Plus} className="min-w-[100px]">
-                        Success
-                      </Buttons>
-                      <Buttons variant="danger" icon={Heart} className="min-w-[100px]">
-                        Danger
-                      </Buttons>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="warning" icon={Bell} className="min-w-[100px]">
-                        Warning
-                      </Buttons>
-                      <Buttons variant="info" icon={Mail} className="min-w-[100px]">
-                        Info
-                      </Buttons>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Effect Variants */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-purple-500 rounded-full"></span>
-                    Effect Variants
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="glass" className="min-w-[120px]">Glass Effect</Buttons>
-                      <Buttons variant="shadow" className="min-w-[120px]">Shadow</Buttons>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="neon" className="min-w-[120px]">Neon</Buttons>
-                      <Buttons variant="frosted" className="min-w-[120px]">Frosted</Buttons>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Animation Variants */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-pink-500 rounded-full"></span>
-                    Animation Effects
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="ripple" icon={ArrowRight} className="min-w-[100px]">
-                        Ripple
-                      </Buttons>
-                      <Buttons variant="bounce" icon={Download} className="min-w-[100px]">
-                        Bounce
-                      </Buttons>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="pulse" icon={Star} className="min-w-[100px]">
-                        Pulse
-                      </Buttons>
-                      <Buttons variant="shake" icon={Bell} className="min-w-[100px]">
-                        Shake
-                      </Buttons>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Special Effects */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-cyan-500 rounded-full"></span>
-                    Special Effects
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="elevated" icon={Star} className="min-w-[120px]">
-                        Elevated
-                      </Buttons>
-                      <Buttons variant="pill" icon={Heart} className="min-w-[120px]">
-                        Pill Shape
-                      </Buttons>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="scale" icon={Plus} className="min-w-[120px]">
-                        Scale Effect
-                      </Buttons>
-                      <Buttons variant="text" className="min-w-[120px]">
-                        Text Button
-                      </Buttons>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Interactive States */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-orange-500 rounded-full"></span>
-                    Interactive States
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6 space-y-4">
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons isLoading className="min-w-[100px]">Loading</Buttons>
-                      <Buttons disabled className="min-w-[100px]">Disabled</Buttons>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      <Buttons variant="toggle" className="min-w-[100px]">Toggle</Buttons>
-                      <Buttons variant="emoji" className="min-w-[100px]">🚀 Emoji</Buttons>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Size Variants */}
-                <div className="space-y-4 lg:col-span-3">
-                  <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                    <span className="w-1 h-6 bg-indigo-500 rounded-full"></span>
-                    Size Variants
-                  </h3>
-                  <div className="bg-muted/30 border border-border rounded-lg p-6">
-                    <div className="flex flex-wrap gap-3 items-center justify-center">
-                      <Buttons size="xs" className="min-w-[100px]">Extra Small</Buttons>
-                      <Buttons size="sm" className="min-w-[100px]">Small</Buttons>
-                      <Buttons size="md" className="min-w-[100px]">Medium</Buttons>
-                      <Buttons size="lg" className="min-w-[100px]">Large</Buttons>
-                      <Buttons size="xl" className="min-w-[100px]">Extra Large</Buttons>
-                      <Buttons size="icon" icon={Settings} />
-                    </div>
-                  </div>
-                </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-card text-muted-foreground border-b border-border">
+                    <tr>
+                      <th className="p-4 font-medium">Prop</th>
+                      <th className="p-4 font-medium">Type</th>
+                      <th className="p-4 font-medium">Default</th>
+                      <th className="p-4 font-medium">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">variant</td>
+                      <td className="p-4 font-mono text-xs">"default" | "outline" | "glass" | "gradient" | "success" | "danger" | "warning" | "info" | "pill" | "shadow" | "neon" | "pulse" | "bounce" | "ripple" | "shake"</td>
+                      <td className="p-4 font-mono text-xs">"default"</td>
+                      <td className="p-4 text-muted-foreground">The visual style and micro-animation preset.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">size</td>
+                      <td className="p-4 font-mono text-xs">"xs" | "sm" | "md" | "lg" | "xl" | "icon"</td>
+                      <td className="p-4 font-mono text-xs">"md"</td>
+                      <td className="p-4 text-muted-foreground">The dimension scale and padding of the button.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">isLoading</td>
+                      <td className="p-4 font-mono text-xs">boolean</td>
+                      <td className="p-4 font-mono text-xs">false</td>
+                      <td className="p-4 text-muted-foreground">Shows an animated spinner and disables interaction.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">icon</td>
+                      <td className="p-4 font-mono text-xs">React.ComponentType</td>
+                      <td className="p-4 font-mono text-xs">undefined</td>
+                      <td className="p-4 text-muted-foreground">Lucide or custom SVG icon rendered inside the button slot.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">disabled</td>
+                      <td className="p-4 font-mono text-xs">boolean</td>
+                      <td className="p-4 font-mono text-xs">false</td>
+                      <td className="p-4 text-muted-foreground">Prevents user interaction and applies muted opacity.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-
-          {/* Code Examples */}
-          <div className="space-y-8">
-            {/* Button Sizes Example */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                <span className="w-1 h-6 bg-primary rounded-full"></span>
-                Different Button Sizes
-              </h3>
-
-              <div className="bg-muted/30 border border-border rounded-lg p-6 flex items-center justify-center">
-                <div className="flex gap-3 items-center">
-                  <Button size="sm">Small</Button>
-                  <Button size="default">Default</Button>
-                  <Button size="lg">Large</Button>
-                  <Button size="icon">
-                    <Plus className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="bg-card border border-border rounded-lg p-4 overflow-x-auto">
-                  <pre className="text-xs sm:text-sm font-mono text-foreground">
-                    <code className="whitespace-pre-wrap">
-                      {codeExamples[2].code}
-                    </code>
-                  </pre>
-                </div>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
-                  onClick={() => handleCopy(codeExamples[2].code)}
-                >
-                  <Copy className="h-4 w-4 text-muted-foreground" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Button with Icons Example */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium text-foreground flex items-center gap-2">
-                <span className="w-1 h-6 bg-primary rounded-full"></span>
-                Buttons with Icons
-              </h3>
-
-              <div className="bg-muted/30 border border-border rounded-lg p-6 flex items-center justify-center">
-                <div className="flex flex-wrap gap-3 items-center">
-                  <Button>
-                    <Mail className="mr-2 h-4 w-4" />
-                    Email
-                  </Button>
-                  <Button variant="outline">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download
-                  </Button>
-                  <Button variant="ghost">
-                    Continue
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="bg-card border border-border rounded-lg p-4 overflow-x-auto">
-                  <pre className="text-xs sm:text-sm font-mono text-foreground">
-                    <code className="whitespace-pre-wrap">
-                      {codeExamples[3].code}
-                    </code>
-                  </pre>
-                </div>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="absolute top-2 right-2 h-8 w-8 p-0 hover:bg-muted"
-                  onClick={() => handleCopy(codeExamples[3].code)}
-                >
-                  <Copy className="h-4 w-4 text-muted-foreground" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {activeTab === "api" && (
-        <div className="space-y-8 sm:space-y-12">
-          {/* API Reference Section */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">
-              Button Props
-            </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-2 px-2 font-medium text-foreground">
-                      Prop
-                    </th>
-                    <th className="text-left py-2 px-2 font-medium text-foreground">
-                      Type
-                    </th>
-                    <th className="text-left py-2 px-2 font-medium text-foreground">
-                      Default
-                    </th>
-                    <th className="text-left py-2 px-2 font-medium text-foreground">
-                      Description
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border/50">
-                    <td className="py-2 px-2">
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                        variant
-                      </code>
-                    </td>
-                    <td className="py-2 px-2">string</td>
-                    <td className="py-2 px-2">"default"</td>
-                    <td className="py-2 px-2">
-                      Button style variant: default, destructive, outline,
-                      secondary, ghost, link
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border/50">
-                    <td className="py-2 px-2">
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                        size
-                      </code>
-                    </td>
-                    <td className="py-2 px-2">string</td>
-                    <td className="py-2 px-2">"default"</td>
-                    <td className="py-2 px-2">
-                      Button size: default, sm, lg, icon
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border/50">
-                    <td className="py-2 px-2">
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                        disabled
-                      </code>
-                    </td>
-                    <td className="py-2 px-2">boolean</td>
-                    <td className="py-2 px-2">false</td>
-                    <td className="py-2 px-2">
-                      Whether the button is disabled
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border/50">
-                    <td className="py-2 px-2">
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                        asChild
-                      </code>
-                    </td>
-                    <td className="py-2 px-2">boolean</td>
-                    <td className="py-2 px-2">false</td>
-                    <td className="py-2 px-2">
-                      Change the default rendered element for the one passed as
-                      a child
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border/50">
-                    <td className="py-2 px-2">
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                        className
-                      </code>
-                    </td>
-                    <td className="py-2 px-2">string</td>
-                    <td className="py-2 px-2">-</td>
-                    <td className="py-2 px-2">
-                      Additional CSS classes for custom styling
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 px-2">
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                        children
-                      </code>
-                    </td>
-                    <td className="py-2 px-2">ReactNode</td>
-                    <td className="py-2 px-2">-</td>
-                    <td className="py-2 px-2">The content of the button</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Variant Details */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">
-              Variant Options
-            </h3>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Button variant="default">default</Button>
-                  <span className="text-sm text-muted-foreground">
-                    Primary button with solid background
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button variant="destructive">destructive</Button>
-                  <span className="text-sm text-muted-foreground">
-                    Destructive actions (delete, remove)
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button variant="outline">outline</Button>
-                  <span className="text-sm text-muted-foreground">
-                    Secondary button with border
-                  </span>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Button variant="secondary">secondary</Button>
-                  <span className="text-sm text-muted-foreground">
-                    Muted background alternative
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button variant="ghost">ghost</Button>
-                  <span className="text-sm text-muted-foreground">
-                    Transparent background
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button variant="link">link</Button>
-                  <span className="text-sm text-muted-foreground">
-                    Styled like a text link
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Size Guide */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">
-              Size Guide
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Button size="sm">Small (sm)</Button>
-                <span className="text-sm text-muted-foreground">
-                  Compact button for dense layouts
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button size="default">Default</Button>
-                <span className="text-sm text-muted-foreground">
-                  Standard button size for most cases
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button size="lg">Large (lg)</Button>
-                <span className="text-sm text-muted-foreground">
-                  Prominent button for emphasis
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button size="icon">
-                  <Plus className="h-4 w-4" />
-                </Button>
-                <span className="text-sm text-muted-foreground">
-                  Square button for icons only
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Usage Guidelines */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">
-              Usage Guidelines
-            </h3>
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <div>
-                <h4 className="font-medium text-foreground mb-2">
-                  When to use buttons:
-                </h4>
-                <ul className="space-y-1 pl-4">
-                  <li>• For primary actions like submit, save, or confirm</li>
-                  <li>• To trigger navigation to another page or section</li>
-                  <li>• For interactive elements that perform an action</li>
-                  <li>• In forms for submission and cancellation</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-medium text-foreground mb-2">
-                  Best practices:
-                </h4>
-                <ul className="space-y-1 pl-4">
-                  <li>• Use clear, action-oriented text labels</li>
-                  <li>• Maintain consistent button hierarchy</li>
-                  <li>• Provide adequate spacing between buttons</li>
-                  <li>• Use appropriate variants for context</li>
-                  <li>• Include loading states for async actions</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-medium text-foreground mb-2">
-                  Accessibility:
-                </h4>
-                <ul className="space-y-1 pl-4">
-                  <li>• Ensure sufficient color contrast</li>
-                  <li>• Use descriptive text for screen readers</li>
-                  <li>• Provide keyboard navigation support</li>
-                  <li>• Include focus indicators</li>
-                  <li>• Use ARIA labels when needed</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
 
-export default ButtonComponent;
+export default ButtonDocPage;

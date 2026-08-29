@@ -1,16 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
-import { Copy, Scroll, Sparkles, Tag } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { Copy, PenTool, Sparkles, Trash2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { ScrollArea, ScrollBar } from "@/src/components/ui/scroll-area";
+import {
+  ReactSignature,
+  CompactSignature,
+  FormSignature,
+} from "@/src/components/ui/signature";
 import { PlaygroundStage3D } from "@/components/DocsComp/playground-stage-3d";
 import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
 
-const ScrollAreaDocPage = () => {
+const SignatureDocPage = () => {
   const [activeTab, setActiveTab] = useState("overview");
+  const [penColor, setPenColor] = useState("#6366f1");
+  const [strokeWidth, setStrokeWidth] = useState(2.5);
   const [mounted, setMounted] = useState(false);
+  const sigRef = useRef(null);
 
   React.useEffect(() => {
     setMounted(true);
@@ -29,28 +36,21 @@ const ScrollAreaDocPage = () => {
     { id: "api", label: "API Reference" },
   ];
 
-  const tags = Array.from({ length: 40 }).map((_, i, a) => `v3.1.0-beta.${a.length - i}`);
-
   const codeExamples = [
     {
-      title: "Vertical Scroll Area for Feeds",
-      description: "Custom cross-browser styled scrollbars with smooth inertia.",
-      code: `import { ScrollArea } from "@/components/ui/scroll-area";
+      title: "Interactive Canvas Signature",
+      description: "Smooth vector signature pad with stroke configuration and export capabilities.",
+      code: `import { ReactSignature } from "@/components/ui/react-signature";
 
-const tags = Array.from({ length: 40 }).map((_, i, a) => \`v3.1.0-beta.\${a.length - i}\`);
-
-export default function VerticalScrollArea() {
+export default function BasicSignature() {
   return (
-    <ScrollArea className="h-72 w-64 rounded-2xl border border-border bg-card p-4">
-      <h4 className="mb-4 text-sm font-bold text-foreground">Tags & Releases</h4>
-      <div className="space-y-2">
-        {tags.map((tag) => (
-          <div key={tag} className="text-xs font-mono py-1.5 px-2 rounded-md hover:bg-muted text-muted-foreground">
-            {tag}
-          </div>
-        ))}
-      </div>
-    </ScrollArea>
+    <ReactSignature
+      penColor="#6366f1"
+      strokeWidth={2.5}
+      width={480}
+      height={220}
+      className="rounded-2xl border border-border shadow-lg"
+    />
   );
 }`,
     },
@@ -63,13 +63,13 @@ export default function VerticalScrollArea() {
       {/* Header */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shadow-sm">
-            <Scroll className="h-6 w-6" />
+          <div className="p-2.5 rounded-2xl bg-purple-500/10 text-purple-500 border border-purple-500/20 shadow-sm">
+            <PenTool className="h-6 w-6" />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Scroll Area</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Signature</h1>
         </div>
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          Augments native browser scrollbars with custom cross-browser theme-aware styling, smooth inertia, and horizontal/vertical orientation support.
+          An interactive vector signature canvas with pressure curve smoothing, color and stroke customization, and SVG/PNG exports.
         </p>
       </div>
 
@@ -103,13 +103,13 @@ export default function VerticalScrollArea() {
                 </div>
                 <div className="relative">
                   <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
-                    <code>npm i elementra-ui</code>
+                    <code>npm i elementra-ui @uiw/react-signature</code>
                   </pre>
                   <Button
                     size="icon"
                     variant="ghost"
                     className="absolute right-1 top-1 h-7 w-7"
-                    onClick={() => handleCopy("npm i elementra-ui")}
+                    onClick={() => handleCopy("npm i elementra-ui @uiw/react-signature")}
                   >
                     <Copy className="h-3.5 w-3.5" />
                   </Button>
@@ -123,13 +123,13 @@ export default function VerticalScrollArea() {
                 </div>
                 <div className="relative">
                   <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
-                    <code>npx elementra-ui add scroll-area</code>
+                    <code>npx elementra-ui add react-signature</code>
                   </pre>
                   <Button
                     size="icon"
                     variant="ghost"
                     className="absolute right-1 top-1 h-7 w-7"
-                    onClick={() => handleCopy("npx elementra-ui add scroll-area")}
+                    onClick={() => handleCopy("npx elementra-ui add react-signature")}
                   >
                     <Copy className="h-3.5 w-3.5" />
                   </Button>
@@ -139,29 +139,60 @@ export default function VerticalScrollArea() {
 
             {/* 3D Interactive Playground Stage */}
             <section className="space-y-4">
-              <h2 className="text-xl font-bold flex items-center gap-2 text-foreground">
-                <Sparkles className="h-5 w-5 text-primary" />
-                3D Interactive Playground
-              </h2>
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  3D Interactive Playground
+                </h2>
+
+                {/* Ink Color Picker */}
+                <div className="flex items-center gap-1.5 p-1 rounded-xl bg-muted/60 border border-border">
+                  {["#6366f1", "#06b6d4", "#10b981", "#f43f5e", "#ffffff"].map((color) => (
+                    <button
+                      key={color}
+                      type="button"
+                      onClick={() => setPenColor(color)}
+                      style={{ backgroundColor: color }}
+                      className={`h-5 w-5 rounded-full border border-border transition-all ${
+                        penColor === color ? "ring-2 ring-primary ring-offset-2 scale-110" : ""
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
 
               <PlaygroundStage3D code={codeExamples[0].code} defaultBackdrop="grid">
-                <div className="p-6">
-                  <ScrollArea className="h-64 w-64 rounded-2xl border border-border bg-card/90 backdrop-blur p-4 shadow-xl">
-                    <h4 className="mb-4 text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-2">
-                      <Tag className="h-3.5 w-3.5 text-primary" />
-                      Telemetry Tags
-                    </h4>
-                    <div className="space-y-2">
-                      {tags.map((tag) => (
-                        <div
-                          key={tag}
-                          className="text-xs font-mono py-1.5 px-2.5 rounded-lg hover:bg-muted/80 transition-colors text-muted-foreground hover:text-foreground"
-                        >
-                          {tag}
-                        </div>
-                      ))}
-                    </div>
-                  </ScrollArea>
+                <div className="p-4 flex flex-col items-center">
+                  <ReactSignature
+                    ref={sigRef}
+                    penColor={penColor}
+                    strokeWidth={strokeWidth}
+                    width={440}
+                    height={200}
+                    className="rounded-2xl border border-border bg-card/90 shadow-xl"
+                  />
+                  <div className="flex items-center gap-3 mt-4">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        sigRef.current?.clear?.();
+                        toast.info("Canvas cleared");
+                      }}
+                      className="flex items-center gap-1.5"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      Clear
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={() => toast.success("Signature captured successfully!")}
+                      className="flex items-center gap-1.5"
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      Export Signature
+                    </Button>
+                  </div>
                 </div>
               </PlaygroundStage3D>
             </section>
@@ -200,7 +231,7 @@ export default function VerticalScrollArea() {
           <div className="space-y-8">
             <div className="rounded-2xl border border-border overflow-hidden bg-card shadow-sm">
               <div className="p-4 bg-muted/60 border-b border-border">
-                <h3 className="font-bold text-foreground">ScrollArea Props</h3>
+                <h3 className="font-bold text-foreground">ReactSignature Props</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left">
@@ -214,16 +245,22 @@ export default function VerticalScrollArea() {
                   </thead>
                   <tbody className="divide-y divide-border">
                     <tr>
-                      <td className="p-4 font-mono text-primary font-semibold">orientation</td>
-                      <td className="p-4 font-mono text-xs">"vertical" | "horizontal" | "both"</td>
-                      <td className="p-4 font-mono text-xs">"vertical"</td>
-                      <td className="p-4 text-muted-foreground">The scrolling axis supported by the viewport.</td>
+                      <td className="p-4 font-mono text-primary font-semibold">penColor</td>
+                      <td className="p-4 font-mono text-xs">string</td>
+                      <td className="p-4 font-mono text-xs">"#000000"</td>
+                      <td className="p-4 text-muted-foreground">Ink stroke color.</td>
                     </tr>
                     <tr>
-                      <td className="p-4 font-mono text-primary font-semibold">type</td>
-                      <td className="p-4 font-mono text-xs">"auto" | "always" | "scroll" | "hover"</td>
-                      <td className="p-4 font-mono text-xs">"hover"</td>
-                      <td className="p-4 text-muted-foreground">Visibility behavior of the scrollbars.</td>
+                      <td className="p-4 font-mono text-primary font-semibold">strokeWidth</td>
+                      <td className="p-4 font-mono text-xs">number</td>
+                      <td className="p-4 font-mono text-xs">2</td>
+                      <td className="p-4 text-muted-foreground">Base line thickness in pixels.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">width / height</td>
+                      <td className="p-4 font-mono text-xs">number</td>
+                      <td className="p-4 font-mono text-xs">400 / 200</td>
+                      <td className="p-4 text-muted-foreground">Dimensions of the signature canvas.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -236,4 +273,4 @@ export default function VerticalScrollArea() {
   );
 };
 
-export default ScrollAreaDocPage;
+export default SignatureDocPage;

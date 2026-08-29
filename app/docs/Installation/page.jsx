@@ -1,93 +1,96 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Code, Rocket } from "lucide-react";
+import { ArrowRight, Code, Rocket, Sparkles, Terminal, Layers } from "lucide-react";
+import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
 
 const Installation = () => {
   const frameworks = [
     {
       name: "Next.js",
-      description: "The React framework for production",
-      icon: <Code size={24} />,
+      description: "App Router & Pages Router setup with Tailwind CSS and Turbopack support.",
+      icon: Code,
       url: "/docs/Installation/next",
-      color: "bg-black text-white",
+      badge: "Recommended",
+      badgeColor: "bg-primary/10 text-primary border-primary/20",
     },
     {
-      name: "React",
-      description: "A JavaScript library for building user interfaces",
-      icon: <Rocket size={24} />,
+      name: "React + Vite",
+      description: "Fast Single Page Application (SPA) development with modern ES modules.",
+      icon: Rocket,
       url: "/docs/Installation/react",
-      color: "bg-blue-600 text-white",
+      badge: "Client SPA",
+      badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
     },
   ];
 
   return (
-    <div className="max-w-8xl mx-auto px-6 py-12">
-      <div className="space-y-2 mb-16">
-        <h1 className="text-5xl font-bold tracking-tight">Installation</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl">
-          How to install dependencies and structure your app for optimal
-          performance.
+    <div className="max-w-5xl mx-auto space-y-12 py-6">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs font-bold text-primary">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Quickstart Setup</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">Installation</h1>
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          Get started with Elementra UI in seconds. Choose your preferred framework and follow our zero-config setup guide.
         </p>
       </div>
 
-      <div className="mb-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-semibold tracking-tight">Frameworks</h2>
-          <div className="hidden md:block text-sm text-muted-foreground">
-            Select your preferred framework
-          </div>
+      {/* Frameworks Grid */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-foreground">Supported Frameworks</h2>
+          <span className="text-xs text-muted-foreground">Select your stack</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {frameworks.map((framework) => (
-            <Link
-              href={framework.url}
-              key={framework.name}
-              className="block no-underline group"
-            >
-              <div className="relative rounded-xl border shadow-sm p-6 h-full transition-all duration-200 hover:shadow-md hover:border-foreground/30 flex flex-col">
-                <div
-                  className={`${framework.color} w-12 h-12 rounded-lg flex items-center justify-center mb-4`}
-                >
-                  {framework.icon}
+            <Link href={framework.url} key={framework.name} className="block group">
+              <SpotlightCard className="p-8 h-full flex flex-col justify-between space-y-6 transition-all group-hover:border-primary/40 group-hover:-translate-y-1 shadow-lg">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform">
+                      <framework.icon className="h-6 w-6" />
+                    </div>
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${framework.badgeColor}`}>
+                      {framework.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground">{framework.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {framework.description}
+                  </p>
                 </div>
 
-                <div className="mb-2 text-xl font-medium">{framework.name}</div>
-                <p className="text-muted-foreground text-sm mb-6">
-                  {framework.description}
-                </p>
-
-                <div className="mt-auto flex items-center text-sm font-medium">
-                  Get started
-                  <ArrowRight
-                    size={16}
-                    className="ml-1 transition-transform group-hover:translate-x-1"
-                  />
+                <div className="flex items-center gap-2 text-sm font-bold text-primary group-hover:translate-x-1 transition-transform">
+                  <span>Start with {framework.name}</span>
+                  <ArrowRight className="h-4 w-4" />
                 </div>
-              </div>
+              </SpotlightCard>
             </Link>
           ))}
         </div>
       </div>
 
-      <div className="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-xl border">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div>
-            <h3 className="text-lg font-medium mb-1">
-              Need help getting started?
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              Check out our comprehensive documentation and tutorials
-            </p>
+      {/* Manual CLI Summary */}
+      <SpotlightCard className="p-8 space-y-4 bg-muted/20">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 border border-purple-500/20">
+            <Terminal className="h-5 w-5" />
           </div>
-          <Link
-            href="/docs"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2"
-          >
-            View guides
-          </Link>
+          <div>
+            <h3 className="text-lg font-bold text-foreground">CLI Quick Add</h3>
+            <p className="text-xs text-muted-foreground">Already have an existing project? Add components directly.</p>
+          </div>
         </div>
-      </div>
+        <div className="p-4 rounded-xl bg-zinc-950 text-zinc-100 font-mono text-xs border border-zinc-800 flex items-center justify-between">
+          <code>npx elementra-ui add [component-name]</code>
+          <span className="text-[11px] text-zinc-500">e.g. alert-dialog, button, modal</span>
+        </div>
+      </SpotlightCard>
     </div>
   );
 };
