@@ -1,103 +1,236 @@
 "use client";
-import React from "react";
-import { Copy, CopyIcon } from "lucide-react";
+
+import React, { useState } from "react";
+import { Copy, Scroll, Sparkles, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { ScrollArea, ScrollBar } from "@/src/components/ui/scroll-area";
+import { PlaygroundStage3D } from "@/components/DocsComp/playground-stage-3d";
+import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
 
 const ScrollAreaDocPage = () => {
-  const tags = Array.from({ length: 30 }).map(
-    (_, i, a) => `v1.2.0-beta.${a.length - i}`
-  );
+  const [activeTab, setActiveTab] = useState("overview");
+  const [mounted, setMounted] = useState(false);
 
-  const codeExample = `import { ScrollArea } from "@/components/ui/scroll-area";
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
-export default function ScrollAreaDemo() {
+  const handleCopy = (text) => {
+    if (text) {
+      navigator.clipboard.writeText(text);
+      toast.success("Copied to clipboard");
+    }
+  };
+
+  const tabs = [
+    { id: "overview", label: "Overview" },
+    { id: "examples", label: "Examples" },
+    { id: "api", label: "API Reference" },
+  ];
+
+  const tags = Array.from({ length: 40 }).map((_, i, a) => `v3.1.0-beta.${a.length - i}`);
+
+  const codeExamples = [
+    {
+      title: "Vertical Scroll Area for Feeds",
+      description: "Custom cross-browser styled scrollbars with smooth inertia.",
+      code: `import { ScrollArea } from "@/components/ui/scroll-area";
+
+const tags = Array.from({ length: 40 }).map((_, i, a) => \`v3.1.0-beta.\${a.length - i}\`);
+
+export default function VerticalScrollArea() {
   return (
-    <ScrollArea className="h-72 w-48 rounded-md border border-border p-4">
-      <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
-      {tags.map((tag) => (
-        <div key={tag} className="text-sm py-1 border-b border-border/50 last:border-0">
-          {tag}
-        </div>
-      ))}
+    <ScrollArea className="h-72 w-64 rounded-2xl border border-border bg-card p-4">
+      <h4 className="mb-4 text-sm font-bold text-foreground">Tags & Releases</h4>
+      <div className="space-y-2">
+        {tags.map((tag) => (
+          <div key={tag} className="text-xs font-mono py-1.5 px-2 rounded-md hover:bg-muted text-muted-foreground">
+            {tag}
+          </div>
+        ))}
+      </div>
     </ScrollArea>
   );
-}`;
+}`,
+    },
+  ];
+
+  if (!mounted) return null;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
       {/* Header */}
-      <div className="mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">Scroll Area</h1>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-          Custom scrollable content viewport container with cross-browser scrollbar hiding.
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shadow-sm">
+            <Scroll className="h-6 w-6" />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Scroll Area</h1>
+        </div>
+        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          Augments native browser scrollbars with custom cross-browser theme-aware styling, smooth inertia, and horizontal/vertical orientation support.
         </p>
       </div>
 
-      <div className="space-y-8 sm:space-y-12">
-        {/* Step 1 */}
-        <section className="space-y-4">
-          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">1</span>
-            Installation
-          </h2>
-          <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
-            <code>npm i elementra-ui</code>
-          </div>
-        </section>
+      {/* Tabs */}
+      <div className="w-full">
+        <div className="flex border-b border-border mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
+                activeTab === tab.id
+                  ? "border-primary text-foreground font-bold"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-        {/* Step 2 */}
-        <section className="space-y-4">
-          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">2</span>
-            Add Component CLI
-          </h2>
-          <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
-            <code>npx elementra-ui add scroll-area</code>
-          </div>
-        </section>
-
-        {/* Step 3: Preview */}
-        <section className="space-y-4">
-          <h2 className="text-xl sm:text-2xl font-semibold flex items-center gap-3 text-foreground">
-            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
-            Interactive Preview
-          </h2>
-
-          <div className="bg-card border border-border rounded-xl p-6 sm:p-8 space-y-6">
-            <div className="h-64 w-64 mx-auto rounded-xl border border-border bg-background p-4 overflow-y-auto select-none space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Release Tags</h4>
-              {tags.map((tag) => (
-                <div key={tag} className="text-sm py-1.5 px-2 rounded hover:bg-muted text-foreground transition-colors font-mono">
-                  {tag}
+        {/* Overview Tab */}
+        {activeTab === "overview" && (
+          <div className="space-y-10">
+            {/* Quick Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">1</span>
+                  Install Library
                 </div>
-              ))}
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npm i elementra-ui</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npm i elementra-ui")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">2</span>
+                  Add via CLI
+                </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npx elementra-ui add scroll-area</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npx elementra-ui add scroll-area")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </SpotlightCard>
+            </div>
+
+            {/* 3D Interactive Playground Stage */}
+            <section className="space-y-4">
+              <h2 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                <Sparkles className="h-5 w-5 text-primary" />
+                3D Interactive Playground
+              </h2>
+
+              <PlaygroundStage3D code={codeExamples[0].code} defaultBackdrop="grid">
+                <div className="p-6">
+                  <ScrollArea className="h-64 w-64 rounded-2xl border border-border bg-card/90 backdrop-blur p-4 shadow-xl">
+                    <h4 className="mb-4 text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-2">
+                      <Tag className="h-3.5 w-3.5 text-primary" />
+                      Telemetry Tags
+                    </h4>
+                    <div className="space-y-2">
+                      {tags.map((tag) => (
+                        <div
+                          key={tag}
+                          className="text-xs font-mono py-1.5 px-2.5 rounded-lg hover:bg-muted/80 transition-colors text-muted-foreground hover:text-foreground"
+                        >
+                          {tag}
+                        </div>
+                      ))}
+                    </div>
+                  </ScrollArea>
+                </div>
+              </PlaygroundStage3D>
+            </section>
+          </div>
+        )}
+
+        {/* Examples Tab */}
+        {activeTab === "examples" && (
+          <div className="space-y-6">
+            {codeExamples.map((example, index) => (
+              <SpotlightCard key={index} className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">{example.title}</h3>
+                  <p className="text-sm text-muted-foreground">{example.description}</p>
+                </div>
+                <div className="relative">
+                  <pre className="bg-background/80 border border-border rounded-xl p-4 font-mono text-sm overflow-x-auto text-foreground">
+                    <code>{example.code}</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-2 top-2 h-8 w-8"
+                    onClick={() => handleCopy(example.code)}
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </SpotlightCard>
+            ))}
+          </div>
+        )}
+
+        {/* API Reference Tab */}
+        {activeTab === "api" && (
+          <div className="space-y-8">
+            <div className="rounded-2xl border border-border overflow-hidden bg-card shadow-sm">
+              <div className="p-4 bg-muted/60 border-b border-border">
+                <h3 className="font-bold text-foreground">ScrollArea Props</h3>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-card text-muted-foreground border-b border-border">
+                    <tr>
+                      <th className="p-4 font-medium">Prop</th>
+                      <th className="p-4 font-medium">Type</th>
+                      <th className="p-4 font-medium">Default</th>
+                      <th className="p-4 font-medium">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">orientation</td>
+                      <td className="p-4 font-mono text-xs">"vertical" | "horizontal" | "both"</td>
+                      <td className="p-4 font-mono text-xs">"vertical"</td>
+                      <td className="p-4 text-muted-foreground">The scrolling axis supported by the viewport.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">type</td>
+                      <td className="p-4 font-mono text-xs">"auto" | "always" | "scroll" | "hover"</td>
+                      <td className="p-4 font-mono text-xs">"hover"</td>
+                      <td className="p-4 text-muted-foreground">Visibility behavior of the scrollbars.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </section>
-
-        {/* Step 4: Code */}
-        <section className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl sm:text-2xl font-semibold text-foreground">Code Usage</h2>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                navigator.clipboard.writeText(codeExample);
-                toast.success("Code copied to clipboard!");
-              }}
-              className="flex items-center gap-2"
-            >
-              <Copy className="h-4 w-4" />
-              Copy Code
-            </Button>
-          </div>
-
-          <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
-            <pre>{codeExample}</pre>
-          </div>
-        </section>
+        )}
       </div>
     </div>
   );
