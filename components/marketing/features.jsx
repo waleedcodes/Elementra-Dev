@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/src/components/ui/progress";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import FancyTestimonialsSlider from "@/src/components/ui/Fancy-Testimonials-Slider";
+import FancyTestimonialsSlider from "@/src/components/ui/fancy-testimonials-slider";
 import ScratchToReveal from "@/src/components/ui/scratch-to-reveal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
