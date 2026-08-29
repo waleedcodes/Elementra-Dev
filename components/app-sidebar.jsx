@@ -42,6 +42,9 @@ import {
   Bell,
   ChevronUp,
   User,
+  ShieldAlert,
+  PanelBottom,
+  UploadCloud,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -92,6 +95,12 @@ const navigationData = {
           url: "/docs/Components/alert",
           description: "Customizable alert components",
           icon: AlertCircle,
+        },
+        {
+          title: "Alert Dialog",
+          url: "/docs/Components/alert-dialog",
+          description: "Modal confirmation alerts",
+          icon: ShieldAlert,
         },
         {
           title: "Aspect Ratio",
@@ -148,10 +157,16 @@ const navigationData = {
           icon: ToggleLeft,
         },
         {
-          title: "File Upload",
-          url: "/docs/Components/file-upload",
-          description: "Drag & drop file dropzone uploader",
-          icon: FileText,
+          title: "Collapsible",
+          url: "/docs/Components/collapsible",
+          description: "Expandable content sections",
+          icon: ChevronDown,
+        },
+        {
+          title: "Combobox",
+          url: "/docs/Components/combobox",
+          description: "Autocomplete combobox input",
+          icon: Menu,
         },
         {
           title: "Command",
@@ -172,10 +187,22 @@ const navigationData = {
           icon: Layers,
         },
         {
+          title: "Date Picker",
+          url: "/docs/Components/date-picker",
+          description: "Date selection input dropdown",
+          icon: Calendar,
+        },
+        {
           title: "Dialog",
           url: "/docs/Components/dialog",
           description: "Modal dialog windows",
           icon: Layers,
+        },
+        {
+          title: "Drawer",
+          url: "/docs/Components/drawer",
+          description: "Sliding drawer panels",
+          icon: PanelBottom,
         },
         {
           title: "Dropdown Menu",
@@ -190,6 +217,12 @@ const navigationData = {
           icon: Sparkles,
         },
         {
+          title: "File Upload",
+          url: "/docs/Components/file-upload",
+          description: "Drag & drop file dropzone uploader",
+          icon: UploadCloud,
+        },
+        {
           title: "Hover Card",
           url: "/docs/Components/hover-card",
           description: "Card preview on hover",
@@ -202,22 +235,28 @@ const navigationData = {
           icon: FileText,
         },
         {
+          title: "Input OTP",
+          url: "/docs/Components/input-otp",
+          description: "One-time password PIN input",
+          icon: Hash,
+        },
+        {
           title: "Label",
           url: "/docs/Components/label",
           description: "Accessible form field labels",
           icon: FileText,
         },
         {
-          title: "Modal",
-          url: "/docs/Components/modal",
-          description: "Popup dialog components",
-          icon: Layers,
-        },
-        {
           title: "Menubar",
           url: "/docs/Components/menubar",
           description: "Desktop application top navigation bar",
           icon: Menu,
+        },
+        {
+          title: "Modal",
+          url: "/docs/Components/modal",
+          description: "Popup dialog components",
+          icon: Layers,
         },
         {
           title: "Navigation Menu",
@@ -427,98 +466,122 @@ export function AppSidebar({ ...props }) {
           </SidebarMenu>
         </SidebarHeader>
 
-        {/* AI-Powered Search */}
+        {/* Real-time Component Search */}
         <div className="p-4 border-b border-sidebar-border bg-card">
-          <div className="flex gap-2 mb-3">
-            <div className="flex-1">
-              <form onSubmit={handleSearch} className="relative">
-                <Input
-                  type="search"
-                  placeholder="AI-powered search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pr-10 rounded-full border-input focus:ring-2 focus:ring-ring transition-all"
-                />
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors" />
-              </form>
+          <div className="flex gap-2 mb-2">
+            <div className="flex-1 relative">
+              <Input
+                type="search"
+                placeholder="Quick search 50 components..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pr-8 rounded-xl border-input text-xs focus:ring-2 focus:ring-primary/30 transition-all bg-background/80"
+              />
+              <Search className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
             </div>
             <ThemeToggle />
           </div>
+          {searchQuery && (
+            <div className="flex items-center justify-between text-[11px] text-muted-foreground px-1">
+              <span>Filter: <strong className="text-foreground">{searchQuery}</strong></span>
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="text-primary hover:underline"
+              >
+                Clear
+              </button>
+            </div>
+          )}
         </div>
 
         <SidebarContent className="py-4 overflow-y-auto">
           <SidebarGroup>
             <SidebarMenu>
-              {navigationData.navMain.map((section) => (
-                <SidebarMenuItem key={section.title} className="mb-2 px-2">
-                  <SidebarMenuButton
-                    onClick={() => toggleMenu(section.title)}
-                    className="flex items-center justify-between w-full text-lg py-3 px-4 hover:bg-sidebar-accent rounded-lg transition-all duration-200 group"
-                  >
-                    <div className="flex items-center gap-3">
-                      {section.icon &&
-                        React.createElement(section.icon, {
-                          className:
-                            "w-5 h-5 text-sidebar-primary group-hover:scale-110 transition-transform",
-                        })}
-                      <span className="font-medium text-sidebar-foreground">{section.title}</span>
-                    </div>
-                    {section.items?.length ? (
-                      openMenus[section.title] ? (
-                        <ChevronDown className="w-4 h-4 text-sidebar-primary transition-transform" />
-                      ) : (
-                        <ChevronRight className="w-4 h-4 text-muted-foreground transition-transform" />
-                      )
-                    ) : null}
-                  </SidebarMenuButton>
+              {navigationData.navMain.map((section) => {
+                const filteredItems = searchQuery
+                  ? section.items.filter(
+                      (item) =>
+                        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.description?.toLowerCase().includes(searchQuery.toLowerCase())
+                    )
+                  : section.items;
 
-                  {section.items?.length && openMenus[section.title] ? (
-                    <SidebarMenuSub className="mt-2 space-y-1 pl-4">
-                      {section.items.map((item) => (
-                        <SidebarMenuSubItem key={item.title} className="group">
-                          <SidebarMenuSubButton
-                            asChild
-                            isActive={path === item.url}
-                            className={`
-                              w-full h-auto min-h-[2.5rem] px-4 py-2 rounded-md 
-                              ${
-                                path === item.url
-                                  ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium border border-sidebar-primary/20"
-                                  : "hover:bg-sidebar-accent/50 hover:translate-x-1"
-                              }
-                              transition-all duration-200
-                            `}
-                          >
-                            <Link
-                              href={item.url}
-                              className="flex items-center gap-3 w-full"
+                if (searchQuery && filteredItems.length === 0) return null;
+
+                const isExpanded = searchQuery ? true : openMenus[section.title];
+
+                return (
+                  <SidebarMenuItem key={section.title} className="mb-2 px-2">
+                    <SidebarMenuButton
+                      onClick={() => toggleMenu(section.title)}
+                      className="flex items-center justify-between w-full text-base py-2.5 px-3 hover:bg-sidebar-accent rounded-lg transition-all duration-200 group"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        {section.icon &&
+                          React.createElement(section.icon, {
+                            className:
+                              "w-4 h-4 text-sidebar-primary group-hover:scale-110 transition-transform",
+                          })}
+                        <span className="font-semibold text-sidebar-foreground">{section.title}</span>
+                      </div>
+                      {section.items?.length ? (
+                        <div className="flex items-center gap-1.5">
+                          {searchQuery && (
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold">
+                              {filteredItems.length}
+                            </span>
+                          )}
+                          {isExpanded ? (
+                            <ChevronDown className="w-3.5 h-3.5 text-sidebar-primary transition-transform" />
+                          ) : (
+                            <ChevronRight className="w-3.5 h-3.5 text-muted-foreground transition-transform" />
+                          )}
+                        </div>
+                      ) : null}
+                    </SidebarMenuButton>
+
+                    {filteredItems?.length && isExpanded ? (
+                      <SidebarMenuSub className="mt-1 space-y-0.5 pl-3">
+                        {filteredItems.map((item) => (
+                          <SidebarMenuSubItem key={item.title} className="group">
+                            <SidebarMenuSubButton
+                              asChild
+                              isActive={path === item.url}
+                              className={`
+                                w-full h-auto min-h-[2.25rem] px-3 py-1.5 rounded-lg text-xs
+                                ${
+                                  path === item.url
+                                    ? "bg-primary text-primary-foreground font-bold shadow-sm"
+                                    : "hover:bg-sidebar-accent/70 hover:translate-x-0.5 text-muted-foreground hover:text-foreground"
+                                }
+                                transition-all duration-150
+                              `}
                             >
-                              {item.icon &&
-                                React.createElement(item.icon, {
-                                  className: `w-4 h-4 ${
-                                    path === item.url
-                                      ? "text-sidebar-primary"
-                                      : "text-muted-foreground"
-                                  }`,
-                                })}
-                              <div className="flex flex-col items-start">
-                                <span className="font-normal text-sm">
-                                  {item.title}
-                                </span>
-                                {item.description && (
-                                  <span className="text-xs text-muted-foreground truncate max-w-[180px]">
-                                    {item.description}
-                                  </span>
-                                )}
-                              </div>
-                            </Link>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  ) : null}
-                </SidebarMenuItem>
-              ))}
+                              <Link
+                                href={item.url}
+                                className="flex items-center gap-2.5 w-full"
+                              >
+                                {item.icon &&
+                                  React.createElement(item.icon, {
+                                    className: `w-3.5 h-3.5 ${
+                                      path === item.url
+                                        ? "text-primary-foreground"
+                                        : "text-muted-foreground group-hover:text-foreground"
+                                    }`,
+                                  })}
+                                <div className="truncate">
+                                  <p className="truncate font-medium">{item.title}</p>
+                                </div>
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        ))}
+                      </SidebarMenuSub>
+                    ) : null}
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroup>
         </SidebarContent>
