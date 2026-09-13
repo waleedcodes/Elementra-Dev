@@ -1,555 +1,334 @@
 "use client";
-import React, { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Select, SelectOption } from "@/src/components/ui/select";
 
-// Navigation component for tabs
-const DocsNav = ({ activeTab, setActiveTab }) => {
+import React, { useState } from "react";
+import {
+  Copy,
+  ChevronDown,
+  Sparkles,
+  Globe,
+  Check,
+  Code,
+  Laptop,
+  Palette,
+  Server,
+  Cloud,
+  Layers,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { Select, SelectOption } from "@/src/components/ui/select";
+import { PlaygroundStage3D } from "@/components/DocsComp/playground-stage-3d";
+import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
+
+const SelectDocPage = () => {
+  const [activeTab, setActiveTab] = useState("overview");
+  const [selectedFramework, setSelectedFramework] = useState("next");
+  const [selectedRegion, setSelectedRegion] = useState("iad1");
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleCopy = (text) => {
+    if (text) {
+      navigator.clipboard.writeText(text);
+      toast.success("Copied to clipboard");
+    }
+  };
+
   const tabs = [
     { id: "overview", label: "Overview" },
-    { id: "examples", label: "Examples" },
-    { id: "api", label: "API" },
+    { id: "examples", label: "Examples & Variants" },
+    { id: "api", label: "API Reference" },
   ];
 
-  return (
-    <div className="flex border-b mb-6">
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => setActiveTab(tab.id)}
-          className={cn(
-            "px-4 py-2 font-medium text-sm transition-colors",
-            activeTab === tab.id
-              ? "border-b-2 border-primary text-primary"
-              : "text-gray-600 hover:text-gray-900"
-          )}
-        >
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  );
-};
-
-// Code block component
-const CodeBlock = ({ children }) => {
-  return (
-    <div className="bg-gray-50 border rounded-md p-4 overflow-x-auto my-4">
-      <pre className="text-sm text-gray-800">{children}</pre>
-    </div>
-  );
-};
-
-// Section heading
-const SectionHeading = ({ number, title }) => {
-  return (
-    <h2 className="text-xl font-semibold mt-8 mb-4 flex items-center">
-      <span className="bg-primary text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2">
-        {number}
-      </span>
-      {title}
-    </h2>
-  );
-};
-
-// Examples component
-const SelectExamples = () => {
-  const [selectedBasic, setSelectedBasic] = useState(null);
-  const [selectedSize, setSelectedSize] = useState("md");
-  const [selectedTheme, setSelectedTheme] = useState("light");
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
-
-  return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="font-medium mb-3">Basic Select</h3>
-        <div className="flex items-center mb-4">
+  const showcaseExamples = [
+    {
+      id: "framework-selector",
+      title: "1. Framework & Tech Stack Picker",
+      description: "Custom dropdown with leading icons and active item checkmarks.",
+      preview: (
+        <div className="flex justify-center p-6 bg-card/60 rounded-2xl border border-border w-full max-w-md mx-auto">
           <Select
-            value={selectedBasic}
-            onChange={(value) => setSelectedBasic(value)}
-            placeholder="Choose an option"
+            placeholder="Select Framework"
+            value={selectedFramework}
+            onChange={(val) => {
+              setSelectedFramework(val);
+              toast.info(`Selected: ${val.toUpperCase()}`);
+            }}
+            className="w-full"
           >
-            <SelectOption value="option1">Option 1</SelectOption>
-            <SelectOption value="option2">Option 2</SelectOption>
-            <SelectOption value="option3">Option 3</SelectOption>
+            <SelectOption value="next" icon={Code}>Next.js App Router</SelectOption>
+            <SelectOption value="react" icon={Laptop}>React + Vite</SelectOption>
+            <SelectOption value="remix" icon={Layers}>Remix Run</SelectOption>
+            <SelectOption value="astro" icon={Sparkles}>Astro Framework</SelectOption>
           </Select>
         </div>
-        <CodeBlock>
-          {`import { Select, SelectOption } from "@/components/ui/select";
-import { useState } from "react";
+      ),
+      code: `import { Select, SelectOption } from "@/components/ui/select";
+import { Code, Laptop, Layers } from "lucide-react";
+import React, { useState } from "react";
 
-export default function SelectExample() {
-  const [selected, setSelected] = useState(null);
-  
+export default function FrameworkSelect() {
+  const [framework, setFramework] = useState("next");
+
   return (
-    <Select 
-      value={selected} 
-      onChange={(value) => setSelected(value)} 
-      placeholder="Choose an option"
-    >
-      <SelectOption value="option1">Option 1</SelectOption>
-      <SelectOption value="option2">Option 2</SelectOption>
-      <SelectOption value="option3">Option 3</SelectOption>
+    <Select value={framework} onChange={setFramework} placeholder="Choose Framework">
+      <SelectOption value="next" icon={Code}>Next.js</SelectOption>
+      <SelectOption value="react" icon={Laptop}>React Vite</SelectOption>
+      <SelectOption value="remix" icon={Layers}>Remix</SelectOption>
     </Select>
   );
-}`}
-        </CodeBlock>
-      </div>
-
-      <div>
-        <h3 className="font-medium mb-3">Select Sizes</h3>
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-4">
-            <span className="w-20 text-sm">Extra Small:</span>
-            <Select size="xs" placeholder="Extra Small">
-              <SelectOption value="option1">Option 1</SelectOption>
-              <SelectOption value="option2">Option 2</SelectOption>
-            </Select>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="w-20 text-sm">Small:</span>
-            <Select size="sm" placeholder="Small">
-              <SelectOption value="option1">Option 1</SelectOption>
-              <SelectOption value="option2">Option 2</SelectOption>
-            </Select>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="w-20 text-sm">Medium:</span>
-            <Select size="md" placeholder="Medium">
-              <SelectOption value="option1">Option 1</SelectOption>
-              <SelectOption value="option2">Option 2</SelectOption>
-            </Select>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="w-20 text-sm">Large:</span>
-            <Select size="lg" placeholder="Large">
-              <SelectOption value="option1">Option 1</SelectOption>
-              <SelectOption value="option2">Option 2</SelectOption>
-            </Select>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="w-20 text-sm">Extra Large:</span>
-            <Select size="xl" placeholder="Extra Large">
-              <SelectOption value="option1">Option 1</SelectOption>
-              <SelectOption value="option2">Option 2</SelectOption>
-            </Select>
-          </div>
-        </div>
-        <CodeBlock>
-          {`import { Select, SelectOption } from "@/components/ui/select";
-
-export default function SelectSizesExample() {
-  return (
-    <div className="flex flex-col gap-4">
-      <Select size="xs" placeholder="Extra Small">
-        <SelectOption value="option1">Option 1</SelectOption>
-        <SelectOption value="option2">Option 2</SelectOption>
-      </Select>
-      
-      <Select size="sm" placeholder="Small">
-        <SelectOption value="option1">Option 1</SelectOption>
-        <SelectOption value="option2">Option 2</SelectOption>
-      </Select>
-      
-      <Select size="md" placeholder="Medium">
-        <SelectOption value="option1">Option 1</SelectOption>
-        <SelectOption value="option2">Option 2</SelectOption>
-      </Select>
-      
-      <Select size="lg" placeholder="Large">
-        <SelectOption value="option1">Option 1</SelectOption>
-        <SelectOption value="option2">Option 2</SelectOption>
-      </Select>
-      
-      <Select size="xl" placeholder="Extra Large">
-        <SelectOption value="option1">Option 1</SelectOption>
-        <SelectOption value="option2">Option 2</SelectOption>
-      </Select>
-    </div>
-  );
-}`}
-        </CodeBlock>
-      </div>
-
-      <div>
-        <h3 className="font-medium mb-3">Disabled State</h3>
-        <div className="flex flex-col gap-4">
-          <Select disabled placeholder="Disabled select">
-            <SelectOption value="option1">Option 1</SelectOption>
-            <SelectOption value="option2">Option 2</SelectOption>
+}`,
+    },
+    {
+      id: "region-selector",
+      title: "2. Cloud Deployment Regions",
+      description: "Server cluster and latency zone selector.",
+      preview: (
+        <div className="flex justify-center p-6 bg-card/60 rounded-2xl border border-border w-full max-w-md mx-auto">
+          <Select
+            placeholder="Deploy Region"
+            value={selectedRegion}
+            onChange={(val) => {
+              setSelectedRegion(val);
+              toast.success(`Region switched to ${val}`);
+            }}
+            className="w-full"
+          >
+            <SelectOption value="iad1" icon={Server}>US East (N. Virginia - iad1)</SelectOption>
+            <SelectOption value="sfo1" icon={Server}>US West (San Francisco - sfo1)</SelectOption>
+            <SelectOption value="fra1" icon={Globe}>Europe (Frankfurt - fra1)</SelectOption>
+            <SelectOption value="hnd1" icon={Globe}>Asia Pacific (Tokyo - hnd1)</SelectOption>
           </Select>
         </div>
-        <CodeBlock>
-          {`import { Select, SelectOption } from "@/components/ui/select";
+      ),
+      code: `import { Select, SelectOption } from "@/components/ui/select";
+import { Server, Globe } from "lucide-react";
+import React, { useState } from "react";
 
-export default function DisabledSelectExample() {
+export default function RegionSelect() {
+  const [region, setRegion] = useState("iad1");
+
   return (
-    <Select disabled placeholder="Disabled select">
-      <SelectOption value="option1">Option 1</SelectOption>
-      <SelectOption value="option2">Option 2</SelectOption>
+    <Select value={region} onChange={setRegion} placeholder="Select Region">
+      <SelectOption value="iad1" icon={Server}>US East (iad1)</SelectOption>
+      <SelectOption value="fra1" icon={Globe}>Europe (fra1)</SelectOption>
+      <SelectOption value="hnd1" icon={Globe}>Asia (hnd1)</SelectOption>
     </Select>
   );
-}`}
-        </CodeBlock>
-      </div>
+}`,
+    },
+  ];
 
-      <div>
-        <h3 className="font-medium mb-3">Custom Width</h3>
-        <div className="flex flex-col gap-4">
-          <Select className="w-64" placeholder="Custom width">
-            <SelectOption value="option1">Option 1</SelectOption>
-            <SelectOption value="option2">Option 2</SelectOption>
-          </Select>
-        </div>
-        <CodeBlock>
-          {`import { Select, SelectOption } from "@/components/ui/select";
+  if (!mounted) return null;
 
-export default function CustomWidthSelectExample() {
   return (
-    <Select className="w-64" placeholder="Custom width">
-      <SelectOption value="option1">Option 1</SelectOption>
-      <SelectOption value="option2">Option 2</SelectOption>
-    </Select>
-  );
-}`}
-        </CodeBlock>
-      </div>
-
-      <div>
-        <h3 className="font-medium mb-3">Real-world Examples</h3>
-        <div className="space-y-4 p-4 border rounded-md bg-gray-50">
-          <div className="flex items-center justify-between">
-            <div>
-              <h4 className="font-medium">Theme Selection</h4>
-              <p className="text-sm text-gray-600">
-                Choose your preferred theme
-              </p>
-            </div>
-            <Select
-              value={selectedTheme}
-              onChange={(value) => setSelectedTheme(value)}
-              className="w-40"
-            >
-              <SelectOption value="light">Light</SelectOption>
-              <SelectOption value="dark">Dark</SelectOption>
-              <SelectOption value="system">System</SelectOption>
-            </Select>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-2xl bg-cyan-500/10 text-cyan-500 border border-cyan-500/20 shadow-sm">
+            <ChevronDown className="h-6 w-6" />
           </div>
-
-          <div className="flex items-center justify-between mt-4">
-            <div>
-              <h4 className="font-medium">Language</h4>
-              <p className="text-sm text-gray-600">
-                Select your preferred language
-              </p>
-            </div>
-            <Select
-              value={selectedLanguage}
-              onChange={(value) => setSelectedLanguage(value)}
-              className="w-40"
-            >
-              <SelectOption value="en">English</SelectOption>
-              <SelectOption value="fr">French</SelectOption>
-              <SelectOption value="es">Spanish</SelectOption>
-              <SelectOption value="de">German</SelectOption>
-              <SelectOption value="zh">Chinese</SelectOption>
-            </Select>
-          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Select</h1>
         </div>
-        <CodeBlock>
-          {`import { Select, SelectOption } from "@/components/ui/select";
-import { useState } from "react";
-
-export default function SettingsExample() {
-  const [selectedTheme, setSelectedTheme] = useState("light");
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
-  
-  return (
-    <div className="space-y-4 p-4 border rounded-md bg-gray-50">
-      <div className="flex items-center justify-between">
-        <div>
-          <h4 className="font-medium">Theme Selection</h4>
-          <p className="text-sm text-gray-600">Choose your preferred theme</p>
-        </div>
-        <Select
-          value={selectedTheme}
-          onChange={(value) => setSelectedTheme(value)}
-          className="w-40"
-        >
-          <SelectOption value="light">Light</SelectOption>
-          <SelectOption value="dark">Dark</SelectOption>
-          <SelectOption value="system">System</SelectOption>
-        </Select>
-      </div>
-
-      <div className="flex items-center justify-between mt-4">
-        <div>
-          <h4 className="font-medium">Language</h4>
-          <p className="text-sm text-gray-600">Select your preferred language</p>
-        </div>
-        <Select
-          value={selectedLanguage}
-          onChange={(value) => setSelectedLanguage(value)}
-          className="w-40"
-        >
-          <SelectOption value="en">English</SelectOption>
-          <SelectOption value="fr">French</SelectOption>
-          <SelectOption value="es">Spanish</SelectOption>
-          <SelectOption value="de">German</SelectOption>
-          <SelectOption value="zh">Chinese</SelectOption>
-        </Select>
-      </div>
-    </div>
-  );
-}`}
-        </CodeBlock>
-      </div>
-    </div>
-  );
-};
-
-// API Reference
-const ApiReference = () => {
-  return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="font-medium mb-3">Select Component Props</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Prop
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Type
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Default
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 border text-sm">value</td>
-                <td className="py-2 px-4 border text-sm">any</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Currently selected value
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">defaultValue</td>
-                <td className="py-2 px-4 border text-sm">any</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Initial value when uncontrolled
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">placeholder</td>
-                <td className="py-2 px-4 border text-sm">string</td>
-                <td className="py-2 px-4 border text-sm">"Select an option"</td>
-                <td className="py-2 px-4 border text-sm">
-                  Text to display when no option is selected
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">disabled</td>
-                <td className="py-2 px-4 border text-sm">boolean</td>
-                <td className="py-2 px-4 border text-sm">false</td>
-                <td className="py-2 px-4 border text-sm">
-                  Whether the select is disabled
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">size</td>
-                <td className="py-2 px-4 border text-sm">
-                  'xs' | 'sm' | 'md' | 'lg' | 'xl'
-                </td>
-                <td className="py-2 px-4 border text-sm">'md'</td>
-                <td className="py-2 px-4 border text-sm">Size of the select</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">onChange</td>
-                <td className="py-2 px-4 border text-sm">{`(value) => void`}</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Callback when selection changes
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">className</td>
-                <td className="py-2 px-4 border text-sm">string</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Additional CSS classes
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">children</td>
-                <td className="py-2 px-4 border text-sm">ReactNode</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  SelectOption components
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="font-medium mb-3">SelectOption Component Props</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Prop
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Type
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Default
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 border text-sm">value</td>
-                <td className="py-2 px-4 border text-sm">any</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Value of the option
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">children</td>
-                <td className="py-2 px-4 border text-sm">ReactNode</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Label content to display
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">disabled</td>
-                <td className="py-2 px-4 border text-sm">boolean</td>
-                <td className="py-2 px-4 border text-sm">false</td>
-                <td className="py-2 px-4 border text-sm">
-                  Whether the option is disabled
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Main Select docs page component
-const SelectDocsPage = () => {
-  const [activeTab, setActiveTab] = React.useState("overview");
-
-  return (
-    <div className="max-w-8xl mx-auto px-4 py-8">
-      <div className="border-b pb-8 mb-8">
-        <h1 className="text-3xl font-bold mb-2">Select</h1>
-        <p className="text-gray-600">
-          A customizable dropdown select component for choosing from a set of
-          options.
+        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          A stylized, customizable dropdown menu that allows users to pick a value from a list of options with click-outside dismiss.
         </p>
       </div>
 
-      <DocsNav activeTab={activeTab} setActiveTab={setActiveTab} />
+      {/* Tabs */}
+      <div className="w-full">
+        <div className="flex border-b border-border mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
+                activeTab === tab.id
+                  ? "border-primary text-foreground font-bold"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-      {activeTab === "overview" && (
-        <div>
-          <div className="bg-gray-100 border border-primary rounded-lg p-6 my-6 relative overflow-hidden">
-            <div className="relative z-10">
-              <div className="flex justify-center">
-                <Select placeholder="Select an option">
-                  <SelectOption value="option1">Option 1</SelectOption>
-                  <SelectOption value="option2">Option 2</SelectOption>
-                  <SelectOption value="option3">Option 3</SelectOption>
-                </Select>
+        {/* Overview Tab */}
+        {activeTab === "overview" && (
+          <div className="space-y-10">
+            {/* Quick Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">1</span>
+                  Install Library
+                </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npm i elementra-ui</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npm i elementra-ui")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">2</span>
+                  Add via CLI
+                </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npx elementra-ui add select</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npx elementra-ui add select")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </SpotlightCard>
+            </div>
+
+            {/* 3D Interactive Playground Stage */}
+            <section className="space-y-4">
+              <h2 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                <Sparkles className="h-5 w-5 text-primary" />
+                3D Interactive Playground
+              </h2>
+
+              <PlaygroundStage3D code={showcaseExamples[0].code} defaultBackdrop="grid">
+                <div className="p-6 w-full max-w-xs flex justify-center">
+                  <Select
+                    placeholder="Choose technology"
+                    value={selectedFramework}
+                    onChange={(val) => {
+                      setSelectedFramework(val);
+                      toast.success(`Option selected: ${val}`);
+                    }}
+                    className="w-full"
+                  >
+                    <SelectOption value="next" icon={Code}>Next.js App Router</SelectOption>
+                    <SelectOption value="react" icon={Laptop}>React + Vite</SelectOption>
+                    <SelectOption value="remix" icon={Layers}>Remix Run</SelectOption>
+                    <SelectOption value="astro" icon={Sparkles}>Astro</SelectOption>
+                  </Select>
+                </div>
+              </PlaygroundStage3D>
+            </section>
+          </div>
+        )}
+
+        {/* Examples Tab */}
+        {activeTab === "examples" && (
+          <div className="space-y-12">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold text-foreground">Complete Select Showcase</h2>
+              <p className="text-sm text-muted-foreground">
+                Interact with custom select dropdowns, icons, and region pickers below.
+              </p>
+            </div>
+
+            {showcaseExamples.map((example) => (
+              <SpotlightCard key={example.id} className="p-6 sm:p-8 space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">{example.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{example.description}</p>
+                </div>
+
+                {/* Live Rendered Visual Preview */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Live Interactive Preview</div>
+                  {example.preview}
+                </div>
+
+                {/* Copyable Code Snippet */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Component Code</div>
+                  <div className="relative">
+                    <pre className="bg-zinc-950 text-zinc-100 border border-zinc-800 rounded-2xl p-5 font-mono text-xs overflow-x-auto shadow-inner">
+                      <code>{example.code}</code>
+                    </pre>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="absolute right-2.5 top-2.5 h-8 px-2 text-zinc-400 hover:text-white hover:bg-zinc-800"
+                      onClick={() => handleCopy(example.code)}
+                    >
+                      <Copy className="h-3.5 w-3.5 mr-1" />
+                      Copy Code
+                    </Button>
+                  </div>
+                </div>
+              </SpotlightCard>
+            ))}
+          </div>
+        )}
+
+        {/* API Reference Tab */}
+        {activeTab === "api" && (
+          <div className="space-y-8">
+            <div className="rounded-2xl border border-border overflow-hidden bg-card shadow-sm">
+              <div className="p-4 bg-muted/60 border-b border-border">
+                <h3 className="font-bold text-foreground">Select Props</h3>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-card text-muted-foreground border-b border-border">
+                    <tr>
+                      <th className="p-4 font-medium">Prop</th>
+                      <th className="p-4 font-medium">Type</th>
+                      <th className="p-4 font-medium">Default</th>
+                      <th className="p-4 font-medium">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">value</td>
+                      <td className="p-4 font-mono text-xs">string</td>
+                      <td className="p-4 font-mono text-xs">-</td>
+                      <td className="p-4 text-muted-foreground">The controlled selected value.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">onChange</td>
+                      <td className="p-4 font-mono text-xs">{"(value: string) => void"}</td>
+                      <td className="p-4 font-mono text-xs">-</td>
+                      <td className="p-4 text-muted-foreground">Callback triggered when an option is chosen.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">placeholder</td>
+                      <td className="p-4 font-mono text-xs">string</td>
+                      <td className="p-4 font-mono text-xs">"Select an option"</td>
+                      <td className="p-4 text-muted-foreground">Text shown when no option is selected.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">disabled</td>
+                      <td className="p-4 font-mono text-xs">boolean</td>
+                      <td className="p-4 font-mono text-xs">false</td>
+                      <td className="p-4 text-muted-foreground">Disables the dropdown trigger.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-
-          <SectionHeading number="1" title="Installation" />
-          <CodeBlock>npm i elementra-ui</CodeBlock>
-
-          <SectionHeading number="2" title="Add Components Using CLI" />
-          <CodeBlock>npx elementra-ui add</CodeBlock>
-          <p className="text-gray-700 mb-4">
-            Select components using the up/down arrow keys. Press spacebar to
-            select multiple components, then press enter to add them to your src
-            folder.
-          </p>
-
-          <SectionHeading number="3" title="Basic Usage" />
-          <p className="text-gray-700 mb-4">
-            Import the Select component and use it in your application.
-          </p>
-          <CodeBlock>
-            {`import { Select, SelectOption } from "@/components/ui/select";
-
-export default function BasicSelect() {
-  return (
-    <Select placeholder="Choose an option">
-      <SelectOption value="option1">Option 1</SelectOption>
-      <SelectOption value="option2">Option 2</SelectOption>
-      <SelectOption value="option3">Option 3</SelectOption>
-    </Select>
-  );
-}`}
-          </CodeBlock>
-
-          <SectionHeading number="4" title="Controlled Usage" />
-          <p className="text-gray-700 mb-4">
-            Use the Select component with state to control its value.
-          </p>
-          <CodeBlock>
-            {`import { Select, SelectOption } from "@/components/ui/select";
-import { useState } from "react";
-
-export default function ControlledSelect() {
-  const [selected, setSelected] = useState(null);
-  
-  return (
-    <div>
-      <Select 
-        value={selected}
-        onChange={(value) => setSelected(value)}
-        placeholder="Choose an option"
-      >
-        <SelectOption value="option1">Option 1</SelectOption>
-        <SelectOption value="option2">Option 2</SelectOption>
-        <SelectOption value="option3">Option 3</SelectOption>
-      </Select>
-      
-      <p className="mt-2">Selected value: {selected || "None"}</p>
-    </div>
-  );
-}`}
-          </CodeBlock>
-        </div>
-      )}
-
-      {activeTab === "examples" && <SelectExamples />}
-
-      {activeTab === "api" && <ApiReference />}
+        )}
+      </div>
     </div>
   );
 };
 
-export default SelectDocsPage;
+export default SelectDocPage;
