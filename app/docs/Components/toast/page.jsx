@@ -1,631 +1,399 @@
 "use client";
-import React from "react";
-import { ToastProvider, useToast } from "@/components/ui/toast";
-import { cn } from "@/lib/utils";
 
-// Navigation component for tabs
-const DocsNav = ({ activeTab, setActiveTab }) => {
+import React, { useState } from "react";
+import {
+  Copy,
+  Bell,
+  Sparkles,
+  CheckCircle,
+  AlertTriangle,
+  Info,
+  XCircle,
+  RefreshCw,
+  Undo2,
+  Send,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { PlaygroundStage3D } from "@/components/DocsComp/playground-stage-3d";
+import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
+
+const ToastDocPage = () => {
+  const [activeTab, setActiveTab] = useState("overview");
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleCopy = (text) => {
+    if (text) {
+      navigator.clipboard.writeText(text);
+      toast.success("Copied to clipboard");
+    }
+  };
+
   const tabs = [
     { id: "overview", label: "Overview" },
-    { id: "examples", label: "Examples" },
-    { id: "api", label: "API" },
+    { id: "examples", label: "Examples & Variants" },
+    { id: "api", label: "API Reference" },
   ];
 
-  return (
-    <div className="flex border-b mb-6">
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => setActiveTab(tab.id)}
-          className={cn(
-            "px-4 py-2 font-medium text-sm transition-colors",
-            activeTab === tab.id
-              ? "border-b-2 border-primary text-primary"
-              : "text-gray-600 hover:text-gray-900"
-          )}
-        >
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  );
-};
-
-// Code block component
-const CodeBlock = ({ children }) => {
-  return (
-    <div className="bg-gray-50 border rounded-md p-4 overflow-x-auto my-4">
-      <pre className="text-sm text-gray-800">{children}</pre>
-    </div>
-  );
-};
-
-// Section heading
-const SectionHeading = ({ number, title }) => {
-  return (
-    <h2 className="text-xl font-semibold mt-8 mb-4 flex items-center">
-      <span className="bg-primary text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2">
-        {number}
-      </span>
-      {title}
-    </h2>
-  );
-};
-
-// Examples component
-const ToastExamples = () => {
-  const { addToast } = useToast();
-
-  return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="font-medium mb-3">Basic Toast</h3>
-        <button
-          onClick={() => {
-            addToast("Your changes have been saved.", {
-              title: "Success!",
-              variant: "success",
-            });
-          }}
-          className="bg-primary hover:bg-primary text-white rounded px-4 py-2 text-sm"
-        >
-          Show Basic Toast
-        </button>
-        <CodeBlock>
-          {`import { useToast } from "@/components/ui/toast";
-
-export default function ToastExample() {
-  const { addToast } = useToast();
-  
-  return (
-    <button 
-      onClick={() => {
-        addToast("Your changes have been saved.", {
-          title: "Success!",
-          variant: "success",
-        });
-      }}
-    >
-      Save Changes
-    </button>
-  );
-}`}
-        </CodeBlock>
-      </div>
-
-      <div>
-        <h3 className="font-medium mb-3">Toast Variants</h3>
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => {
-              addToast("This is a default message.", {
-                title: "Default",
-              });
-            }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
+  const showcaseExamples = [
+    {
+      id: "toast-variants",
+      title: "1. Core Toast Status Types",
+      description: "Trigger real-time success, error, warning, and info toast notifications.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border w-full max-w-md mx-auto">
+          <Button
+            variant="success"
+            className="flex items-center gap-2 shadow-md"
+            onClick={() =>
+              toast.success("Event created successfully!", {
+                description: "Monday, October 24 at 9:00 AM",
+              })
+            }
           >
-            Default
-          </button>
+            <CheckCircle className="h-4 w-4" /> Success Toast
+          </Button>
 
-          <button
-            onClick={() => {
-              addToast("Something went wrong!", {
-                title: "Error",
-                variant: "destructive",
-              });
-            }}
-            className="bg-red-500 hover:bg-red-600 text-white rounded px-4 py-2 text-sm"
+          <Button
+            variant="danger"
+            className="flex items-center gap-2 shadow-md"
+            onClick={() =>
+              toast.error("Failed to delete repository", {
+                description: "You do not have write access to this organization.",
+              })
+            }
           >
-            Error
-          </button>
+            <XCircle className="h-4 w-4" /> Error Toast
+          </Button>
 
-          <button
-            onClick={() => {
-              addToast("Please check this before proceeding.", {
-                title: "Warning",
-                variant: "warning",
-              });
-            }}
-            className="bg-yellow-500 hover:bg-yellow-600 text-white rounded px-4 py-2 text-sm"
+          <Button
+            variant="warning"
+            className="flex items-center gap-2 shadow-md"
+            onClick={() =>
+              toast.warning("Storage limit nearing capacity", {
+                description: "92% of your 50GB storage quota is used.",
+              })
+            }
           >
-            Warning
-          </button>
+            <AlertTriangle className="h-4 w-4" /> Warning Toast
+          </Button>
 
-          <button
-            onClick={() => {
-              addToast("Here's some useful information.", {
-                title: "Info",
-                variant: "info",
-              });
-            }}
-            className="bg-primary hover:bg-primary text-white rounded px-4 py-2 text-sm"
+          <Button
+            variant="info"
+            className="flex items-center gap-2 shadow-md"
+            onClick={() =>
+              toast.info("New update available", {
+                description: "Version 0.2.0 is ready to install.",
+              })
+            }
           >
-            Info
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Operation completed successfully!", {
-                title: "Success",
-                variant: "success",
-              });
-            }}
-            className="bg-green-500 hover:bg-green-600 text-white rounded px-4 py-2 text-sm"
-          >
-            Success
-          </button>
+            <Info className="h-4 w-4" /> Info Toast
+          </Button>
         </div>
-        <CodeBlock>
-          {`import { useToast } from "@/components/ui/toast";
+      ),
+      code: `import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
-export default function ToastVariantsExample() {
-  const { addToast } = useToast();
-  
+export default function ToastVariants() {
   return (
-    <div className="flex gap-4">
-      <button onClick={() => {
-        addToast("This is a default message.", { title: "Default" });
-      }}>
-        Default Toast
-      </button>
-      
-      <button onClick={() => {
-        addToast("Something went wrong!", {
-          title: "Error",
-          variant: "destructive"
-        });
-      }}>
-        Error Toast
-      </button>
-      
-      <button onClick={() => {
-        addToast("Please check this before proceeding.", {
-          title: "Warning",
-          variant: "warning"
-        });
-      }}>
-        Warning Toast
-      </button>
-      
-      <button onClick={() => {
-        addToast("Here's some useful information.", {
-          title: "Info",
-          variant: "info"
-        });
-      }}>
-        Info Toast
-      </button>
-      
-      <button onClick={() => {
-        addToast("Operation completed successfully!", {
-          title: "Success",
-          variant: "success"
-        });
-      }}>
+    <div className="flex flex-wrap gap-3">
+      <Button onClick={() => toast.success("Event created successfully!")}>
         Success Toast
-      </button>
+      </Button>
+      <Button onClick={() => toast.error("Failed to delete repository")}>
+        Error Toast
+      </Button>
+      <Button onClick={() => toast.warning("Storage quota 92% full")}>
+        Warning Toast
+      </Button>
+      <Button onClick={() => toast.info("New update ready")}>
+        Info Toast
+      </Button>
     </div>
   );
-}`}
-        </CodeBlock>
-      </div>
+}`,
+    },
+    {
+      id: "toast-actions",
+      title: "2. Toast with Action Buttons & Undo",
+      description: "Interactive actionable toast prompts allowing instant undo or link opening.",
+      preview: (
+        <div className="flex flex-wrap items-center justify-center gap-3 p-6 bg-card/60 rounded-2xl border border-border w-full max-w-md mx-auto">
+          <Button
+            variant="default"
+            className="flex items-center gap-2 shadow-md"
+            onClick={() =>
+              toast("Message archived", {
+                description: "Moved to archive folder.",
+                action: {
+                  label: "Undo",
+                  onClick: () => toast.success("Message restored to inbox"),
+                },
+              })
+            }
+          >
+            <Undo2 className="h-4 w-4" /> Trigger Undo Toast
+          </Button>
 
-      <div>
-        <h3 className="font-medium mb-3">Toast Positions</h3>
-        <div className="grid grid-cols-3 gap-2">
-          <button
+          <Button
+            variant="gradient"
+            className="flex items-center gap-2 shadow-md"
             onClick={() => {
-              addToast("Top-left toast", {
-                position: "top-left",
+              const promise = () =>
+                new Promise((resolve) =>
+                  setTimeout(() => resolve({ name: "Release Bundle" }), 2000)
+                );
+
+              toast.promise(promise, {
+                loading: "Building production assets...",
+                success: (data) => `${data.name} generated successfully!`,
+                error: "Build failed.",
               });
             }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
           >
-            Top Left
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Top-center toast", {
-                position: "top-center",
-              });
-            }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
-          >
-            Top Center
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Top-right toast", {
-                position: "top-right",
-              });
-            }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
-          >
-            Top Right
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Bottom-left toast", {
-                position: "bottom-left",
-              });
-            }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
-          >
-            Bottom Left
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Bottom-center toast", {
-                position: "bottom-center",
-              });
-            }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
-          >
-            Bottom Center
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Bottom-right toast", {
-                position: "bottom-right",
-              });
-            }}
-            className="bg-gray-500 hover:bg-gray-600 text-white rounded px-4 py-2 text-sm"
-          >
-            Bottom Right
-          </button>
+            <RefreshCw className="h-4 w-4" /> Async Promise Toast
+          </Button>
         </div>
-      </div>
+      ),
+      code: `import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
-      <div>
-        <h3 className="font-medium mb-3">Advanced Features</h3>
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => {
-              addToast(
-                "This toast won't disappear automatically. Click the X to dismiss it.",
-                {
-                  title: "Persistent Toast",
-                  variant: "info",
-                  duration: Infinity,
-                  dismissible: true,
-                }
-              );
-            }}
-            className="bg-primary hover:bg-primary text-white rounded px-4 py-2 text-sm"
-          >
-            Persistent Toast
-          </button>
-
-          <button
-            onClick={() => {
-              addToast("Downloading your file...", {
-                title: "Download in Progress",
-                variant: "info",
-                duration: 10000,
-                progress: true,
-              });
-            }}
-            className="bg-primary hover:bg-primary text-white rounded px-4 py-2 text-sm"
-          >
-            Progress Toast
-          </button>
-        </div>
-        <CodeBlock>
-          {`import { useToast } from "@/components/ui/toast";
-
-export default function AdvancedToastExample() {
-  const { addToast, removeToast } = useToast();
-  
-  const showPersistentToast = () => {
-    const id = addToast(
-      "This toast won't disappear automatically.",
-      {
-        title: "Persistent Toast",
-        variant: "info",
-        duration: Infinity, // Never auto-dismiss
-        dismissible: true, // Show close button
-      }
-    );
-    
-    return id;
-  };
-  
-  const showProgressToast = () => {
-    addToast("Downloading your file...", {
-      title: "Download in Progress",
-      variant: "info",
-      duration: 10000, // 10 seconds
-      progress: true, // Show progress bar
+export default function ActionToasts() {
+  const handleUndo = () => {
+    toast("Item removed", {
+      description: "The item has been deleted.",
+      action: {
+        label: "Undo",
+        onClick: () => toast.success("Restored!"),
+      },
     });
   };
-  
-  return (
-    <div className="flex flex-col gap-4">
-      <button onClick={showPersistentToast}>
-        Show Persistent Toast
-      </button>
-      
-      <button onClick={showProgressToast}>
-        Show Progress Toast
-      </button>
-    </div>
-  );
-}`}
-        </CodeBlock>
-      </div>
-    </div>
-  );
-};
 
-// API Reference
-const ApiReference = () => {
+  const handleAsync = () => {
+    toast.promise(fetchData(), {
+      loading: "Processing data...",
+      success: "Data loaded successfully!",
+      error: "Error loading data.",
+    });
+  };
+
   return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="font-medium mb-3">ToastProvider</h3>
-        <p className="text-gray-700 mb-3">
-          Wrap your application with{" "}
-          <code className="bg-gray-100 px-1 py-0.5 rounded">ToastProvider</code>{" "}
-          to enable toast functionality.
+    <div className="flex gap-3">
+      <Button onClick={handleUndo}>Action with Undo</Button>
+      <Button onClick={handleAsync}>Promise Toast</Button>
+    </div>
+  );
+}`,
+    },
+  ];
+
+  if (!mounted) return null;
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-2xl bg-amber-500/10 text-amber-500 border border-amber-500/20 shadow-sm">
+            <Bell className="h-6 w-6" />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Toast</h1>
+        </div>
+        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          A succinct message that is displayed temporarily to provide feedback on an action with promise lifecycle support.
         </p>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Prop
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Type
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Default
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 border text-sm">children</td>
-                <td className="py-2 px-4 border text-sm">ReactNode</td>
-                <td className="py-2 px-4 border text-sm">-</td>
-                <td className="py-2 px-4 border text-sm">
-                  The content of your application
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
 
-      <div>
-        <h3 className="font-medium mb-3">useToast</h3>
-        <p className="text-gray-700 mb-3">Hook to create and manage toasts.</p>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Function
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Type
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 border text-sm">addToast</td>
-                <td className="py-2 px-4 border text-sm">
-                  {`(message, options) => string`}
-                </td>
-                <td className="py-2 px-4 border text-sm">
-                  Creates a new toast
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">removeToast</td>
-                <td className="py-2 px-4 border text-sm">{`(id) => void`}</td>
-                <td className="py-2 px-4 border text-sm">
-                  Removes a toast by ID
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">toasts</td>
-                <td className="py-2 px-4 border text-sm">Toast[]</td>
-                <td className="py-2 px-4 border text-sm">
-                  Array of active toasts
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="font-medium mb-3">Toast Options</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Option
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Type
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Default
-                </th>
-                <th className="py-2 px-4 border text-left text-sm font-medium text-gray-700">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 border text-sm">title</td>
-                <td className="py-2 px-4 border text-sm">string</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Optional title for the toast
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">variant</td>
-                <td className="py-2 px-4 border text-sm">
-                  'default' | 'destructive' | 'warning' | 'info' | 'success'
-                </td>
-                <td className="py-2 px-4 border text-sm">'default'</td>
-                <td className="py-2 px-4 border text-sm">
-                  Visual style of the toast
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">duration</td>
-                <td className="py-2 px-4 border text-sm">number</td>
-                <td className="py-2 px-4 border text-sm">5000</td>
-                <td className="py-2 px-4 border text-sm">
-                  Time in ms before toast auto-dismisses
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">position</td>
-                <td className="py-2 px-4 border text-sm">
-                  'top-right' | 'top-left' | 'top-center' | 'bottom-right' |
-                  'bottom-left' | 'bottom-center'
-                </td>
-                <td className="py-2 px-4 border text-sm">'bottom-right'</td>
-                <td className="py-2 px-4 border text-sm">Screen position</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">dismissible</td>
-                <td className="py-2 px-4 border text-sm">boolean</td>
-                <td className="py-2 px-4 border text-sm">true</td>
-                <td className="py-2 px-4 border text-sm">
-                  Whether to show close button
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">progress</td>
-                <td className="py-2 px-4 border text-sm">boolean</td>
-                <td className="py-2 px-4 border text-sm">false</td>
-                <td className="py-2 px-4 border text-sm">
-                  Whether to show progress indicator
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border text-sm">icon</td>
-                <td className="py-2 px-4 border text-sm">ReactNode</td>
-                <td className="py-2 px-4 border text-sm">undefined</td>
-                <td className="py-2 px-4 border text-sm">
-                  Optional icon to display
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Main Toast docs page component
-const ToastDocsPage = () => {
-  const [activeTab, setActiveTab] = React.useState("overview");
-
-  return (
-    <ToastProvider>
-      <div className="max-w-8xl mx-auto px-4 py-8">
-        <div className="border-b pb-8 mb-8">
-          <h1 className="text-3xl font-bold mb-2">Toast</h1>
-          <p className="text-gray-600">
-            A toast component that displays brief, non-intrusive notifications
-            to the user.
-          </p>
+      {/* Tabs */}
+      <div className="w-full">
+        <div className="flex border-b border-border mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
+                activeTab === tab.id
+                  ? "border-primary text-foreground font-bold"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        <DocsNav activeTab={activeTab} setActiveTab={setActiveTab} />
-
+        {/* Overview Tab */}
         {activeTab === "overview" && (
-          <div>
-            <div className="bg-gray-100 border border-primary rounded-lg p-6 my-6 relative overflow-hidden">
-              <div className="relative z-10">
-                <div className="bg-white border border-gray-100 shadow-lg rounded-lg p-4 max-w-xs">
-                  <div className="font-medium">Success!</div>
-                  <div className="text-sm text-gray-500 mt-1">
-                    This toast will appear briefly at the bottom-right corner.
-                  </div>
+          <div className="space-y-10">
+            {/* Quick Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">1</span>
+                  Install Library
                 </div>
-              </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npm i sonner</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npm i sonner")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </SpotlightCard>
+
+              <SpotlightCard className="p-5 space-y-2">
+                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold">2</span>
+                  Add via CLI
+                </div>
+                <div className="relative">
+                  <pre className="p-3 rounded-xl bg-background border border-border font-mono text-xs text-foreground">
+                    <code>npx elementra-ui add toast</code>
+                  </pre>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1 h-7 w-7"
+                    onClick={() => handleCopy("npx elementra-ui add toast")}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </SpotlightCard>
             </div>
 
-            <SectionHeading number="1" title="Installation" />
-            <CodeBlock>npm i elementra-ui</CodeBlock>
+            {/* 3D Interactive Playground Stage */}
+            <section className="space-y-4">
+              <h2 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                <Sparkles className="h-5 w-5 text-primary" />
+                3D Interactive Playground
+              </h2>
 
-            <SectionHeading number="2" title="Add Components Using CLI" />
-            <CodeBlock>npx elementra-ui add</CodeBlock>
-            <p className="text-gray-700 mb-4">
-              Select components using the up/down arrow keys. Press spacebar to
-              select multiple components, then press enter to add them to your
-              src folder.
-            </p>
-
-            <SectionHeading number="3" title="Basic Usage" />
-            <p className="text-gray-700 mb-4">
-              Wrap your application with the ToastProvider and use the useToast
-              hook to create notifications.
-            </p>
-            <CodeBlock>
-              {`import { ToastProvider } from "@/src/components/ui/toast";
-
-export default function Layout({ children }) {
-  return (
-    <ToastProvider>
-      {children}
-    </ToastProvider>
-  );
-}`}
-            </CodeBlock>
-            <CodeBlock>
-              {`import { useToast } from "@/src/components/ui/toast";
-
-export default function ToastExample() {
-  const { addToast } = useToast();
-  
-  return (
-    <button 
-      onClick={() => {
-        addToast("Your changes have been saved.", {
-          title: "Success!",
-          variant: "success",
-        });
-      }}
-    >
-      Save Changes
-    </button>
-  );
-}`}
-            </CodeBlock>
+              <PlaygroundStage3D code={showcaseExamples[0].code} defaultBackdrop="grid">
+                <div className="p-6 flex flex-wrap items-center justify-center gap-3">
+                  <Button
+                    variant="default"
+                    className="shadow-xl"
+                    onClick={() =>
+                      toast.success("Successfully deployed to production!", {
+                        description: "Commit 9b8c2f1 deployed to Edge network.",
+                        action: {
+                          label: "View Logs",
+                          onClick: () => toast.info("Opening Edge Logs..."),
+                        },
+                      })
+                    }
+                  >
+                    <Send className="h-4 w-4 mr-2" /> Trigger Interactive Toast
+                  </Button>
+                </div>
+              </PlaygroundStage3D>
+            </section>
           </div>
         )}
 
-        {activeTab === "examples" && <ToastExamples />}
+        {/* Examples Tab */}
+        {activeTab === "examples" && (
+          <div className="space-y-12">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold text-foreground">Complete Toast Showcase</h2>
+              <p className="text-sm text-muted-foreground">
+                Click any of the buttons below to test real-time notification popups and async promise toasts.
+              </p>
+            </div>
 
-        {activeTab === "api" && <ApiReference />}
+            {showcaseExamples.map((example) => (
+              <SpotlightCard key={example.id} className="p-6 sm:p-8 space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">{example.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{example.description}</p>
+                </div>
+
+                {/* Live Rendered Visual Preview */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Live Interactive Preview</div>
+                  {example.preview}
+                </div>
+
+                {/* Copyable Code Snippet */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Component Code</div>
+                  <div className="relative">
+                    <pre className="bg-zinc-950 text-zinc-100 border border-zinc-800 rounded-2xl p-5 font-mono text-xs overflow-x-auto shadow-inner">
+                      <code>{example.code}</code>
+                    </pre>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="absolute right-2.5 top-2.5 h-8 px-2 text-zinc-400 hover:text-white hover:bg-zinc-800"
+                      onClick={() => handleCopy(example.code)}
+                    >
+                      <Copy className="h-3.5 w-3.5 mr-1" />
+                      Copy Code
+                    </Button>
+                  </div>
+                </div>
+              </SpotlightCard>
+            ))}
+          </div>
+        )}
+
+        {/* API Reference Tab */}
+        {activeTab === "api" && (
+          <div className="space-y-8">
+            <div className="rounded-2xl border border-border overflow-hidden bg-card shadow-sm">
+              <div className="p-4 bg-muted/60 border-b border-border">
+                <h3 className="font-bold text-foreground">Toast Methods & Props</h3>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-card text-muted-foreground border-b border-border">
+                    <tr>
+                      <th className="p-4 font-medium">Method / Option</th>
+                      <th className="p-4 font-medium">Type</th>
+                      <th className="p-4 font-medium">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">toast.success()</td>
+                      <td className="p-4 font-mono text-xs">{"(message: string, options?: ToastOptions) => void"}</td>
+                      <td className="p-4 text-muted-foreground">Renders a success toast with green checkmark.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">toast.error()</td>
+                      <td className="p-4 font-mono text-xs">{"(message: string, options?: ToastOptions) => void"}</td>
+                      <td className="p-4 text-muted-foreground">Renders an error toast with destructive alert styling.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">toast.promise()</td>
+                      <td className="p-4 font-mono text-xs">{"(promise: Promise<T>, options: PromiseOptions) => void"}</td>
+                      <td className="p-4 text-muted-foreground">Tracks an async operation with loading/success/error states.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-mono text-primary font-semibold">action</td>
+                      <td className="p-4 font-mono text-xs">{"{ label: string, onClick: () => void }"}</td>
+                      <td className="p-4 text-muted-foreground">Action button rendered inside the toast.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-    </ToastProvider>
+    </div>
   );
 };
 
-export default ToastDocsPage;
+export default ToastDocPage;
