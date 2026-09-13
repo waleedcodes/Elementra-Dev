@@ -8,7 +8,7 @@ import {
   ReactSignature,
   CompactSignature,
   FormSignature,
-} from "@/src/components/ui/signature";
+} from "@/src/components/ui/react-signature";
 import { PlaygroundStage3D } from "@/components/DocsComp/playground-stage-3d";
 import { SpotlightCard } from "@/components/DocsComp/spotlight-card";
 
